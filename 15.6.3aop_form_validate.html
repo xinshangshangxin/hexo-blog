@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    用户名：<input id="username" type="text"/>
+    密码： <input id="password" type="password"/>
+    <input id="submitBtn" type="button" value="提交"/>
+
+    <script>
+        var username = document.getElementById('username');
+        var password = document.getElementById('password');
+        var submitBtn = document.getElementById('submitBtn');
+
+
+        Function.prototype.before = function(beforefn) {
+            var _this = this;
+            return function() {
+                if (beforefn.apply(this, arguments) === false) {
+                    return;
+                }
+                return _this.apply(this, arguments);
+            }
+        };
+
+        var validate = function() {
+            if (username.value === '') {
+                alert('用户名不能为空');
+                return false;
+            }
+            if (password.value === '') {
+                alert('密码不能为空');
+                return false;
+            }
+        };
+
+        var formSubmit = function() {
+            var param = {
+                username: username.value,
+                password: password.value
+            };
+            alert('提交数据: ' + JSON.stringify(param));
+            // ajax;
+        };
+
+        formSubmit = formSubmit.before(validate);
+
+        submitBtn.onclick = function() {
+            formSubmit();
+        };
+    </script>
+</body>
+</html>
