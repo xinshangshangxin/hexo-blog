@@ -1,0 +1,86 @@
+﻿html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    border: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    font-family: inherit;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+}
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 1.4em;
+}
+caption, th, td {
+    text-align: left;
+    font-weight: 400;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+    content: "";
+}
+blockquote, q {
+    quotes: ;
+}
+a img {
+    border: none;
+}
+body {
+    color: #fff;
+    margin: 0;
+    background: url(/img/404/texture.png) repeat;
+}
+.container {
+    width: 960px;
+    margin: 50px auto;
+    text-align: center;
+    font: 13px/22px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+    color: #000;
+}
+h2 {
+    font: 22px/28px Georgia, "Times New Roman", Times, serif;
+}
+a {
+    color: #000;
+}
+.box {
+    background: url(/img/404/404.png) no-repeat 0 0;
+    border-bottom: 5px solid #000;
+    height: 343px;
+    margin-bottom: 25px;
+    padding-bottom: 50px;
+}
+.cover_pan {
+    background: #fff url(/img/404/covers.jpg) repeat 1055px bottom;
+    height: 343px;
+    margin-left: 1px;
+    overflow: hidden;
+    position: relative;
+    width: 99.5%;
+    z-index: -1;
+    -moz-animation-name: pan;
+    -moz-animation-duration: 40s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -webkit-animation-name: pan;
+    -webkit-animation-duration: 40s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+@-moz-keyframes pan {
+    0% {
+        background-position: 1338px bottom;
+    }
+    100% {
+        background-position: left bottom;
+    }
+}
+@-webkit-keyframes pan {
+    0% {
+        background-position: 1338px bottom;
+    }
+    100% {
+        background-position: left bottom;
+    }
+}
