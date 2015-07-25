@@ -18,7 +18,7 @@ push:
 back:
 	git add -A
 	git commit -m "backup"
-	git push origin master:backup
+	git push origin master:backup --force
 qn: mini
 	./qrsync --check-exist conf.json
 
