@@ -18,7 +18,39 @@ tags:
 **运行**
 > `./shadowsocks-local-linux64-1.1.4 -d=true -k="服务器的密码" -m="aes-256-cfb" -l=1080 -p=服务器的端口 -s="服务器的ip"`
 
-## 安装tsocks
+## 安装代理(二选一)
+
+### 安装proxychains.
+
+[原文地址](https://github.com/shadowsocks/shadowsocks/wiki/Using-Shadowsocks-with-Command-Line-Tools)
+
+安装: 
+```js
+apt-get install proxychains
+```
+新建文件 `~/.proxychains/proxychains.conf`, 
+```js
+strict_chain
+proxy_dns 
+remote_dns_subnet 224
+tcp_read_time_out 15000
+tcp_connect_time_out 8000
+localnet 127.0.0.0/255.0.0.0
+quiet_mode
+
+[ProxyList]
+socks5  127.0.0.1 1080
+```
+
+使用方法
+```js
+proxychains4 curl https://www.twitter.com/
+proxychains4 git push origin master
+```
+	
+
+### 安装tsocks
+
 > `apt-get install tsocks`
 > `vi /etc/tsocks.conf`
 

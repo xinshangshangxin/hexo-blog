@@ -12,7 +12,6 @@ mini:
 	mv -f ./test/ public/
 	hexo d
 push: 
-	hexo clean
 	hexo g
 	hexo d
 back:
