@@ -5,6 +5,9 @@ tags:
 - gulp
 ---
 
+## 本文略有过时,建议阅读: 
+## [https://github.com/lisposter/gulp-docs-zh-cn](https://github.com/lisposter/gulp-docs-zh-cn)
+
 # 入门图表
 [github_gulp-cheatsheet](https://github.com/osscafe/gulp-cheatsheet)
 > 中文版直接下载地址: [`pdf1`](https://github.com/osscafe/gulp-cheetsheet/raw/master/dist/cn-js-p1.pdf) [`pdf2`](https://github.com/osscafe/gulp-cheetsheet/raw/master/dist/cn-js-p2.pdf)

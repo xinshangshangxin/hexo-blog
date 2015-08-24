@@ -249,16 +249,47 @@ module.exports = function (gulp, plugins) {
 ## 一些个人见解
 
 ### 使用 grunt 而不是 gulp
-1. grunt基于配置, 所以项目变化,修改的tasks 不多, gulp是 '将配置写入代码', 所以项目切换,修改文件很多
-2. grunt进行大项目的jshint比gulp快的多, 所以如果需要jshint,并且文件很多,建议不要切换
-3. grunt的uglify比gulp得uglify快的多得多,所以项目越大,建议不要切换
-4. 不想折腾,直接官方的上
+- grunt基于配置, 所以项目变化,修改的tasks 不多, gulp是 '将配置写入代码', 所以项目切换,修改文件很多  
+
+> 15/08/24 update:   
+> gulp 也可以基于配置
+
+```js
+var config = require('./tasks/config.js');
+
+gulp
+  .src(config.less.src, config.less.opt)
+  .pipe(less({
+    expand: true,
+    ext: '.css'
+  }))
+  .pipe(gulp.dest(config.less.dest));
+```
+```js
+// config.js
+module.exports = {
+  'less': {
+    'src': [
+      'styles/**/*.less'
+    ],
+    'opt': {
+      'cwd': 'static',
+      'base': 'static'
+    },
+    'dest': 'sites/public'
+  }
+}
+```
+
+- grunt进行大项目的jshint比gulp快的多, 所以如果需要jshint,并且文件很多,建议不要切换
+- grunt的uglify比gulp得uglify快的多得多,所以项目越大,建议不要切换
+- 不想折腾,直接官方的上
 
 
 ### 使用 gulp 而不是 grunt
-1. 无法忍受 grunt 慢(每次修改前端文件,都要刷新2遍才有效果)
-2. jshint单独处理或者在开发时不使用jshint
-3. 小项目,而不是文件数目很多的大项目有
+- 无法忍受 grunt 慢(每次修改前端文件,都要刷新2遍才有效果)
+- jshint单独处理或者在开发时不使用jshint
+- 小项目,而不是文件数目很多的大项目有
 
 
 # 参考
