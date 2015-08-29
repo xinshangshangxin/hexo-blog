@@ -2,7 +2,7 @@ title: 7月angular使用笔记
 date: 2015-08-02 17:44:14
 description: 7月使用angular总结,包括一些库/规范/代码记录
 tags:
-- angular
+- AngularJS
 ---
 
 
