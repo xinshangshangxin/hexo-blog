@@ -2,7 +2,7 @@ title: '[转]AngularJS中的Provider们：Service和Factory等的区别'
 date: 2015-08-30 00:02:41
 description: AngularJS中的Provider们：Service和Factory等的区别
 tags:
-- AngularJs
+- AngularJS
 ---
 
 ## 引言
