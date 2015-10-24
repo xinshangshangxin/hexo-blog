@@ -2,15 +2,16 @@
 Thumbs.db
 db.json
 *.log
-node_modules/
-public/
+node_modules/*
+public/*
 .deploy*/
+
 
 # user
 scaffolds
-themes
 .deploy_git
+/themes/*
+!themes/jacman/
+!source/*
 !.gitignore
 !package.json
-!themes/jacman/*
-!source/*
