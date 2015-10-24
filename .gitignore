@@ -12,5 +12,5 @@ themes
 .deploy_git
 !.gitignore
 !package.json
-!themes/dream/*
+!themes/*
 !source/*
