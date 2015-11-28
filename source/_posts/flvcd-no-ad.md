@@ -83,7 +83,8 @@ function parseCookie(key, time) {
 
 # 完整脚本地址:
 
-- []()
+- [github](https://github.com/xinshangshangxin/youkuvod/tree/flvcd)
+- [greasyfork](https://greasyfork.org/zh-CN/scripts/14267-flvcdnoad)
 
 -----------------------
 
