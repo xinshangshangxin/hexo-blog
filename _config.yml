@@ -48,6 +48,18 @@ highlight:
   auto_detect: false
   tab_replace:
 
+
+clean_css:
+  exclude:
+    - "*.min.css"
+
+uglify:
+  mangle: true
+  output:
+  compress:
+  exclude: 
+    - "*.min.js"
+
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -73,8 +85,8 @@ theme: jacman
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
-   type: git
-   repo: 
-      github: git@github.com:xinshangshangxin/hexo-blog.git,gh-pages
-      gitcafe: git@gitcafe.com:xinshangshangxin/hexo-blog.git,gitcafe-pages
-      coding: git@git.coding.net:xinshangshangxin/blog.git,master
+  type: git
+  repo: 
+     github: git@github.com:xinshangshangxin/hexo-blog.git,gh-pages
+     gitcafe: git@gitcafe.com:xinshangshangxin/hexo-blog.git,gitcafe-pages
+     coding: git@git.coding.net:xinshangshangxin/blog.git,master
