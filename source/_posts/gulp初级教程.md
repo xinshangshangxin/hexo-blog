@@ -6,6 +6,7 @@ tags:
 ---
 
 ## 本文略有过时,建议阅读: 
+## [https://github.com/Platform-CUF/use-gulp](https://github.com/Platform-CUF/use-gulp)
 ## [https://github.com/lisposter/gulp-docs-zh-cn](https://github.com/lisposter/gulp-docs-zh-cn)
 
 # 入门图表
