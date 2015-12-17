@@ -1,11 +1,14 @@
 title: "angularjs ng-click 触发两次事件"
 date: 2015-12-17 09:21:24
-description:  angularjs ng-click 触发两次事件
+description:  在 pc的chrome中正常, 在 chrome 的`device mode`中触发2次, 在手机端触发2次
 tags:
 - AngularJS
 
 ---
 
+## 描述
+
+> 在 pc的chrome中正常, 在 chrome 的`device mode`中触发2次, 在手机端触发2次
 
 ## 触发原因: 同时使用了 ionic 和 angular-material  
 
