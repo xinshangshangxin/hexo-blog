@@ -3,6 +3,7 @@ date: 2016-01-07 09:17:22
 description:  在cygwin中安装是出现路径不正确,安装失败
 tags: 
 - npm
+- cygwin
 ----------
 
 ## 原因
