@@ -1,4 +1,4 @@
-title: “在cygwin中npm安装git packages 失败” 
+title: 在cygwin中npm安装git packages 失败
 date: 2016-01-07 09:17:22
 description:  在cygwin中安装是出现路径不正确,安装失败
 tags: 
