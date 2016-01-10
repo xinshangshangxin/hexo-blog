@@ -3,6 +3,8 @@ date: 2015-04-22 21:55:00
 description:  使用nodejs 踩坑微信JS-SDK记录
 tags:
 - js
+- node
+- wechat
 ---
 
 
