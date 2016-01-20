@@ -68,7 +68,7 @@ $    | 匹配字符串的结束
 ## 参考文档
 
 - [http://seanlook.com/2015/05/17/nginx-location-rewrite/](http://seanlook.com/2015/05/17/nginx-location-rewrite/)
-- [http://seanlook.com/2015/05/17/nginx-location-rewrite/](http://seanlook.com/2015/05/17/nginx-location-rewrite/)
+- [http://blog.csdn.net/gzh0222/article/details/7845981](http://blog.csdn.net/gzh0222/article/details/7845981)
 
 
 -----------------------
