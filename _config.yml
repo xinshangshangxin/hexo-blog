@@ -88,5 +88,4 @@ deploy:
   type: git
   repo: 
      github: git@github.com:xinshangshangxin/hexo-blog.git,gh-pages
-     gitcafe: git@gitcafe.com:xinshangshangxin/hexo-blog.git,gitcafe-pages
      coding: git@git.coding.net:xinshangshangxin/blog.git,master
