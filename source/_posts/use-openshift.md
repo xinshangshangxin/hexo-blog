@@ -81,9 +81,10 @@ c: 设置环境变量
 ```bash
 # 默认启动 zsh
 echo 'exec '$OPENSHIFT_DATA_DIR'.linuxbrew/bin/zsh -l' >> $OPENSHIFT_DATA_DIR/.bash_profile
-source $OPENSHIFT_DATA_DIR/.bash_profile
 # 将 上面linuxbrew的环境变量加入 .zshrc
 echo 'export PATH="'$OPENSHIFT_DATA_DIR'.linuxbrew/bin:$PATH"' >> $OPENSHIFT_DATA_DIR/.zshrc
+# 启用zsh
+source $OPENSHIFT_DATA_DIR/.bash_profile
 ```
 
 ## 7,安装mongo
