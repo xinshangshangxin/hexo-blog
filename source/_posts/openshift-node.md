@@ -36,7 +36,7 @@ $OPENSHIFT_DIY_IP     // 外网绑定IP
 
 b: 剩余容量
 ```plain
-du -h | sort -rh | head -10    // 查找前10的文件/文件爱你家
+du -h | sort -rh | head -10    // 查找前10的文件/文件夹
 quota -s                       // 查看总量
 ```
 
