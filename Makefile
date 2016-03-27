@@ -17,5 +17,5 @@ push:
 back:
 	git add -A
 	git commit -m "backup"
-	git push origin master:backup
+	git push origin backup:backup
 
