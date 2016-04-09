@@ -149,6 +149,18 @@ kill -9 xxxPID
 ```
 
 
+## 10, 删除无用文件
+```bash
+# mongo 无用文件
+rm -rf ~/data/mongodb/journal
+rm ~/mongodb-linux-x86_64-3.2.0.tgz
+# zsh 无用文件
+rm -r ~/zsh-5.2
+rm -r ~/zsh-5.2.tar.gz
+# brew cache
+rm -r ~/.cache
+```
+
 <br>
 <br>
 
