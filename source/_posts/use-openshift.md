@@ -61,8 +61,6 @@ echo "export HOME=\"$OPENSHIFT_DATA_DIR\"" >> $OPENSHIFT_DATA_DIR/.bash_profile
 ```bash
 # 安装  
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/linuxbrew/go/install)"
-# 禁用更新
-sed -i 's/^# DISABLE_AUTO_UPDATE="true"/DISABLE_AUTO_UPDATE="true"/g' ~/.zshrc
 # 环境配置
 echo 'export PATH="'$OPENSHIFT_DATA_DIR'.linuxbrew/bin:$PATH"' >> $OPENSHIFT_DATA_DIR/.bash_profile
 # 启用配置
@@ -70,17 +68,34 @@ source $OPENSHIFT_DATA_DIR/.bash_profile
 ```
 
 ## 6,安装zsh 和 oh-my-zsh 
-a: 安装 zsh (比较慢)
-`brew install zsh`
+a: 安装 zsh 
+```bash
+# 使用 brew 安装 zsh 太慢了!!
+# brew install zsh
+
+# 使用源码直接安装
+wget http://sourceforge.net/projects/zsh/files/zsh/5.2/zsh-5.2.tar.gz/download -O $OPENSHIFT_DATA_DIR/zsh-5.2.tar.gz
+
+tar xzvf zsh-5.2.tar.gz && cd zsh-5.2
+./configure --prefix=$HOME"".linuxbrew
+make && make install
+```
 b: 安装 [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh), 需要删除官方脚本中下面4行:
 ![](/img/openshift/10.png)
 
 或者下载 [修改好的脚本openshift-oh-my-zsh](/other/openshift-oh-my-zsh/openshift-oh-my-zsh.sh)
 
+```bash
+sh -c "$(wget http://blog.xinshangshangxin.com/other/openshift-oh-my-zsh/openshift-oh-my-zsh.sh -O -)"
+```
+
+
 c: 设置环境变量
 ```bash
 # 默认启动 zsh
 echo 'exec '$OPENSHIFT_DATA_DIR'.linuxbrew/bin/zsh -l' >> $OPENSHIFT_DATA_DIR/.bash_profile
+# 禁用oh-my-zsh 更新
+sed -i 's/^# DISABLE_AUTO_UPDATE="true"/DISABLE_AUTO_UPDATE="true"/g' ~/.zshrc
 # 将 上面linuxbrew的环境变量加入 .zshrc
 echo 'export PATH="'$OPENSHIFT_DATA_DIR'.linuxbrew/bin:$PATH"' >> $OPENSHIFT_DATA_DIR/.zshrc
 # 启用zsh
@@ -94,18 +109,32 @@ source $OPENSHIFT_DATA_DIR/.bash_profile
 wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.2.0.tgz
 # 解压 && 移动文件
 tar -zxvf mongodb-linux-x86_64-3.2.0.tgz
-mkdir softer
-mv mongodb-linux-x86_64-3.2.0 softer/mongodb
+mkdir softer && mv mongodb-linux-x86_64-3.2.0 softer/mongodb
 # 配置环境变量
 echo 'export PATH="'$OPENSHIFT_DATA_DIR'softer/mongodb/bin:$PATH$PATH"' >> $OPENSHIFT_DATA_DIR/.zshrc
+# 重新载入环境
+exec zsh -l
+# 创建mongodb存储路径
+cd ~ && mkdir -p data/mongodb
 # fork模式启动mongo
 mongod --bind_ip  $OPENSHIFT_DIY_IP --dbpath=$OPENSHIFT_DATA_DIR""data/mongodb --logpath $OPENSHIFT_DATA_DIR""data/mongodb.log  --fork
+
+# 命令行连接
+mongo --host $OPENSHIFT_DIY_IP
+
+# dump
+mongodump --host $OPENSHIFT_DIY_IP [-d <dnName>] [--out <outPath>]
+mongodump --host $OPENSHIFT_DIY_IP --out ~/mongodump
+
+# restore
+mongorestore --host $OPENSHIFT_DIY_IP [-d <dnName>] <restorePath> [--drop]
+mongorestore --host $OPENSHIFT_DIY_IP ~/mongodump --drop
 ```
 
 ## 8,安装 nvm (node版本管理器)
 ```bash
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
-echo 'export NVM_DIR="/root/.nvm"' >> $OPENSHIFT_DATA_DIR/.zshrc
+echo "export NVM_DIR=\"$OPENSHIFT_DATA_DIR.nvm\"" >> $OPENSHIFT_DATA_DIR/.zshrc
 echo '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm' >> $OPENSHIFT_DATA_DIR/.zshrc
 exec zsh -l
 nvm install 0.12.7
@@ -115,12 +144,13 @@ nvm alias default 0.12.7
 ## 9,停止自带的ruby占用8080端口
 ```bash
 ps -aux
-# 找到PID,kill掉
+# 找到ruby的PID,kill掉
 kill -9 xxxPID
 ```
 
 
-#  -
+<br>
+<br>
 
 -----------------------
 
