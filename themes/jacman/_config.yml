@@ -14,7 +14,7 @@ menu:
 widgets: 
 - category
 - tag
-- links
+# - links
 # - douban
 - rss
 ## provide seven widgets:category,tag,rss,archive,tagcloud,links,weibo,douban
@@ -74,7 +74,7 @@ toc:
 
 #### Links
 links:
-  最励志网: http://www.zuilizhi.net/
+  
 
 
 #### Comment
