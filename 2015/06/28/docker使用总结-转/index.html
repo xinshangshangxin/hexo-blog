@@ -1,0 +1,605 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>docker使用总结(转) | SHANG Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="xinshangshangxin">
+    
+
+    
+    <meta name="description" content="docker使用总结(转)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker使用总结(转)">
+<meta property="og:url" content="http://blog.xinshangshangxin.com/2015/06/28/docker使用总结-转/index.html">
+<meta property="og:site_name" content="SHANG Blog">
+<meta property="og:description" content="docker使用总结(转)">
+<meta property="og:updated_time" content="2016-09-22T07:30:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker使用总结(转)">
+<meta name="twitter:description" content="docker使用总结(转)">
+
+    
+    <link rel="alternative" href="atom.xml" title="SHANG Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="SHANG Blog" title="SHANG Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="SHANG Blog">SHANG Blog</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives/">文章</a></li>
+					
+						<li><a href="/about/">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.xinshangshangxin.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/06/28/docker使用总结-转/" title="docker使用总结(转)" itemprop="url">docker使用总结(转)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xinshangshangxin" target="_blank" itemprop="author">xinshangshangxin</a>
+		
+  <p class="article-time">
+    <time datetime="2015-06-28T05:51:56.000Z" itemprop="datePublished"> 发表于 2015年06月28日</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装注意"><span class="toc-number">1.</span> <span class="toc-text">安装注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#封装原则"><span class="toc-number">2.</span> <span class="toc-text">封装原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker的坑"><span class="toc-number">3.</span> <span class="toc-text">docker的坑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dockerfile编写技巧"><span class="toc-number">4.</span> <span class="toc-text">Dockerfile编写技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#好用的docker镜像"><span class="toc-number">5.</span> <span class="toc-text">好用的docker镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文章若有纰漏请大家补充指正-谢谢"><span class="toc-number">5.1.</span> <span class="toc-text">文章若有纰漏请大家补充指正,谢谢~~</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<p><strong><a href="http://weibo.com/p/1001603855970483702516" target="_blank" rel="external">转载自http://weibo.com/p/1001603855970483702516</a></strong></p>
+<h2 id="安装注意"><a href="#安装注意" class="headerlink" title="安装注意"></a>安装注意</h2><ol>
+<li>不要直接用apt-get安装docker,apt-get安装的版本有些低.<br>安装用<code>curl -sSL https://get.docker.com/ubuntu/ | sudo sh</code> 可以安装最新版</li>
+<li><p>docker对linux内核版本有要求,内核版本不能太低, 如果太低会导致docker的一些功能不能使用, 比如docker exec 命令在低版本的linux内核下不能用.</p>
+<blockquote>
+<p>运行linux命令uname -r 可以查看linux内核版本, docker官方文档说linux内核版本不能低于3.13<br>升级linux内核 : <code>sudo apt-get install linux-image-generic-lts-trusty</code>   </p>
+</blockquote>
+</li>
+<li><p>高版本的linux内核不支持aufs的存储类型,建议用devicemapper存储类型</p>
+</li>
+</ol>
+<h2 id="封装原则"><a href="#封装原则" class="headerlink" title="封装原则"></a>封装原则</h2><ol>
+<li>容器要有专职, 尽量一个容器只有一个服务,原则上说一个进程就一个容器,不要让一个容器里面有多个进程,进程越大,耦合性越大.</li>
+<li>容器内可以用supervisiod管理进程,防止进程异常退出.</li>
+<li>环境变量作为容器配置项, <code>Dockerfile</code>中可以用 <code>ENV</code> 设置环境变量, <code>docker run</code> 命令可以用 <code>-e</code> 设置环境变量.<br><strong>注意:设置的环境命令都是root用户的</strong>. 如果想让Apache 用户也使用这些环境变量, 执行下面shell命令 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">env | grep JD_  | sed  <span class="string">"s/^/export /g"</span> &gt;&gt; <span class="regexp">/etc/</span>apache2/envvars</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>表示以<code>JD_</code>开头的环境变量都设置为Apache的环境变量.<br>如果是一个纯前端的网站项目,你可以获得环境变量, 可以在index.html 中加载一个php文件: 在json.php 中获得环境变量输出.   </p>
+<h2 id="docker的坑"><a href="#docker的坑" class="headerlink" title="docker的坑"></a>docker的坑</h2><ul>
+<li><p><code>--link</code> 链接容器. </p>
+<blockquote>
+<p>用docker自带的<code>--link</code>把多个容器链接在以前, 有重启或升级的问题,<br>比如很多容器都依赖于 db 这个容器, 然后db容器重启了, 重启时docker分配的ip会变, 导致其他依赖于db的容器都要重启.<code>--link</code> 链接的容器还有启动顺序的问题, 需要先启动db容器再启动其他依赖于db的容器, 这样导致 <code>--link</code>和<code>--restart=always</code>不能一起用<br>如果一起用会发现宿主机重启了, docker容器并没有全部重启,因为这时候docker容器是同时被启动的,并不知道启动顺序. 最后决定不用 <code>--link</code> 链接容器了.<br>另外有两种链接容器的方法,一种是给容器设置固定ip , 这个方法比较复杂:<br>另外还有一种简单的链接方式, 可以用宿主机的端口链接, 比如一个mysql容器,先设置宿主机的3306端口映射到mysql容器中.<br>然后查宿主机的内网ip , 用ifconfig 查,eth0的网卡可以看见内网ip, 假设内网ip为10.128.130.175 , docker容器是可以访问这个宿主机内网ip的, 这样其他容器要链接mysql容器,链接数据库时 链接 10.128.130.175:3306 即可.<br>我们可以在docker run启动容器时用 –add-host 参数为容器设置一个hosts .这样容器内代码可以用指定的域名去访问数据库, 不用关心内网ip的变化.</p>
+</blockquote>
+</li>
+<li><p>pid的问题(1)</p>
+<blockquote>
+<p>docker容器中的进程有时会生成pid文件, 比如Apache进程会生成的pid文件为 <code>/var/run/apache2/apache2.pid</code>, 当进程启动时,这个pid文件就存在,当进程退出时,这个pid文件也会被删除, 我们把正在运行的容器用docker commit 提交为镜像时会把pid文件也提交到镜像中,这样从新镜像运行容器时,容器可能因为已经存在pid文件而无法启动.<br>以Apache为例,可能就会报 <code>httpd(pid 1) ready runing</code> 之类的错误 , 报错告诉你httpd正在运行,但其实并没有运行只是存在pid文件而已.<br>所以最好是用docker stop 把容器停掉, 再用docker commit 创建镜像.</p>
+</blockquote>
+</li>
+<li><p>pid的问题(2)</p>
+<blockquote>
+<p>还可能会出现在docker run时设置<code>--restart=always</code> 参数的时候, 设置了此参数容器退出了会自动重启, 宿主机重启了容器也能自动重启. 但是容器在重启的时候很容易pid文件存在.pid文件存在时进程会自动退出, 但又因为设置了<code>--restart=always</code> 进程退出的那一瞬间 容器又自动重启, 所以容器就在那里不断的退出再自动重启退出再自动重启. 此时 运行命令 docker ps 是能看见容器是运行中的状态.<br>但是用 <code>docker exec -it container_name bash</code> 始终进不了容器, 会报如下错误:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Cannot run exec command <span class="number">0</span>eb8e17609dd78c9137c62d94cfaa62795de161d643fc3cb00387b60f11090be <span class="keyword">in</span> container <span class="number">8837</span>b983fe2f08f5f3b9999259d5f255a83774b19282b6f9c21a9d688f7f7f2a: No active container exists <span class="keyword">with</span> ID <span class="number">8837</span>b983fe2f08f5f3b9999259d5f255a83774b19282b6f9c21a9d688f7f7f2a</div><div class="line">No active container exists <span class="keyword">with</span> ID</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<p>这句的意思是说 找不到有效的容器. 但是docker ps又看见容器是在运行中, 为什么会找不到有效的容器？ 这是因为这个容器现在其实一直在不断重启中, 所以进不去.</p>
+<blockquote>
+<p>解决方法, 可以在容器启动命令脚本（如 /run.sh） 中 加上一句删除pid文件的代码, 如 rm /var/run/apache2/apache2.pid 这样在启动进程之前强制删除了pid文件,就不会重复重启了.</p>
+</blockquote>
+<ul>
+<li>docker容器的hosts文件.</li>
+</ul>
+<blockquote>
+<p>在正在运行的容器 用docker exec 进入修改 /etc/hosts 文件 ,这个容器被重启后会发现 hosts文件会被还原. 所以不要直接修改hosts文件, 需要增加hosts ,在docker run时 用 –add-host 参数.</p>
+</blockquote>
+<ul>
+<li><p>虚拟目录不会提交到镜像</p>
+<blockquote>
+<p>Dockerfile 中 VOLUME 指定的目录 或 docker run 时 -v 参数指定的目录, 在docker commit 时不会提交到镜像中. 如果-v 参数指定的容器内的目录原本有文件, 原本的文件都会被删除, 只存在宿主机目录的文件. </p>
+</blockquote>
+</li>
+<li><p>docker容器的重启.</p>
+<blockquote>
+<p>容器一个容器运行中apache 我们要重启Apache , 应该怎么重启？ 可能新手会 docker exec -it container_name bash 进入容器, 然后运行 service apache2 restart 启动Apache , 这样是不能启动apache的, 只会把容器停止掉. 因为容器的主进程就是Apache , 主进程退出时会退出容器, 在重启apache的时候 主进程先退出了, 这时候docker容器也跟着退出了,所以Apache不会重启. 要重启Apache 用docker命令: docker restart container_name </p>
+</blockquote>
+</li>
+<li><p>退出容器的方法</p>
+</li>
+</ul>
+<blockquote>
+<p>如果是docker run 运行一个容器, 没有加 -d 参数让它后台运行, 这时候 ctrl+c 退出进程也会让容器停止, 如果先退出但不停止容器可以ctrl+p 然后 ctrl+q</p>
+</blockquote>
+<h2 id="Dockerfile编写技巧"><a href="#Dockerfile编写技巧" class="headerlink" title="Dockerfile编写技巧"></a>Dockerfile编写技巧</h2><ul>
+<li>将Ubuntu的源设置为国内的源,这样安装软件会快很多 RUN sed -i “s/archive.ubuntu.com/mirrors.163.com/g” /etc/apt/sources.list</li>
+<li><p>RUN</p>
+<blockquote>
+<p>Dockerfile 中可以RUN执行系统命令创建镜像.不能用RUN命令来常驻进程. 比如不能运行 RUN gearmand -d .</p>
+</blockquote>
+</li>
+<li><p>ONBUILD</p>
+<blockquote>
+<p>ONBUILD修饰的命令在子Dockerfile文件中也会被执行,举例说明:<br>一个Dockerfile中有ONBUILD命令, 如 ONBUILD ADD . /app/src , 运行 docker build -t Image_name . 创建一个名为Image_name的镜像. 另外在创建一个Dockerfile , 第一个行是 FROM Image_name 现在这个Dockerfile是继承于前一个Dockerfile的,现在这个Dockerfile在build时会执行他父Dockerfile的ONBUILD命令, 所以现在这个Dockerfile在build时也会执行 ADD . /app/src 这个命令.</p>
+</blockquote>
+</li>
+<li><p>ENTRYPOINT</p>
+<blockquote>
+<p>感觉 ENTRYPOINT 会比 CMD 更省资源, ENTRYPOINT 使用时用数组形式.如:<br>entrypoint [“/init.sh”, “/usr/bin/supervisord”, “-n”, “-c”, “/etc/supervisord.conf”]<br>/init.sh 是一个初始化脚本,初始化脚本内容大概为: </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">!<span class="regexp">/bin/</span>bash</div><div class="line">set -e</div><div class="line">执行一些初始化代码</div><div class="line">exec <span class="string">"$@"</span></div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>最后要跟上exec “$@” ,这样才能让init.sh 脚本后的 supervisord被执行.</p>
+</blockquote>
+<ul>
+<li>.dockerignore<br>.dockerignore文件中列的文件不会被 ADD或COPY 指令添加到容器中.</li>
+</ul>
+<h2 id="好用的docker镜像"><a href="#好用的docker镜像" class="headerlink" title="好用的docker镜像"></a>好用的docker镜像</h2><ul>
+<li>jwilder/nginx-proxy 这是一个nginx反向代理.<blockquote>
+<p>启动nginx反向代理:</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run --name nginx -d -p <span class="number">80</span>:<span class="number">80</span> -v /<span class="keyword">var</span>/run/docker.sock:<span class="regexp">/tmp/</span>docker.sock -t --restart=always jwilder/nginx-proxy</div></pre></td></tr></table></figure>
+<blockquote>
+<p>再启动其他容器, 如: </p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -e VIRTUAL_HOST=yourdomain.com -d tutum/apache-php</div></pre></td></tr></table></figure>
+<blockquote>
+<p>nginx的容器会监听其他容器的启动, 并根据VIRTUAL_HOST设置域名.这样可以通过 yourdomain.com 访问刚才启动的容器中的网站了.<br>tutum/apache-php 这个镜像是一个好用的apache环境.</p>
+</blockquote>
+<ul>
+<li><p>清理docker</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker info  <span class="comment">// 可以查看docker的信息, /var/lib/docker/devicemapper/devicemapper 目录下存放了docker的文件, 可以用du -h --max-depth=1 看文件的大小.</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>删除为none的镜像,可以立马回收空间:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker images --no-trunc| grep none | awk <span class="string">'&#123;print $3&#125;'</span> | xargs -r docker rmi</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除退出了的容器:</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker rm <span class="string">`docker ps -a | grep Exited | awk '&#123;print $1 &#125;’</span></div></pre></td></tr></table></figure>
+<ul>
+<li>删除没有用的镜像. （有容器运行的镜像不会被删除）:</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker rmi <span class="string">`docker images -aq`</span></div></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<h3 id="文章若有纰漏请大家补充指正-谢谢"><a href="#文章若有纰漏请大家补充指正-谢谢" class="headerlink" title="文章若有纰漏请大家补充指正,谢谢~~"></a>文章若有纰漏请大家补充指正,谢谢~~</h3><p><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG殇</p>
+</blockquote>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/docker/">docker</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://blog.xinshangshangxin.com/2015/06/28/docker使用总结-转/" data-title="docker使用总结(转) | SHANG Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/06/29/JS设计模式笔记-享元模式/" title="JS设计模式笔记(享元模式)">
+  <strong>上一篇：</strong><br/>
+  <span>
+  JS设计模式笔记(享元模式)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/06/27/JS设计模式笔记-模板方法模式/"  title="JS设计模式笔记(模板方法模式)">
+ <strong>下一篇：</strong><br/> 
+ <span>JS设计模式笔记(模板方法模式)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/06/28/docker使用总结-转/" data-title="docker使用总结(转)" data-url="http://blog.xinshangshangxin.com/2015/06/28/docker使用总结-转/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装注意"><span class="toc-number">1.</span> <span class="toc-text">安装注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#封装原则"><span class="toc-number">2.</span> <span class="toc-text">封装原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker的坑"><span class="toc-number">3.</span> <span class="toc-text">docker的坑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dockerfile编写技巧"><span class="toc-number">4.</span> <span class="toc-text">Dockerfile编写技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#好用的docker镜像"><span class="toc-number">5.</span> <span class="toc-text">好用的docker镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文章若有纰漏请大家补充指正-谢谢"><span class="toc-number">5.1.</span> <span class="toc-text">文章若有纰漏请大家补充指正,谢谢~~</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>35</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/node/" title="node">node<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/AngularJS/" title="AngularJS">AngularJS<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cygwin/" title="cygwin">cygwin<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/sails/" title="sails">sails<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ConEmu/" title="ConEmu">ConEmu<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ECS/" title="ECS">ECS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/youkuvod/" title="youkuvod">youkuvod<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cordova/" title="cordova">cordova<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/fiddler/" title="fiddler">fiddler<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iTerm2/" title="iTerm2">iTerm2<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p> SHANG殇 <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/xinshangshangxin" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:xinshangshangxin@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="xinshangshangxin">xinshangshangxin</a>
+		
+		
+		</p>
+</div>
+</footer>
+    
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"xinshangshangxin"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa428636dbcab9ddea4df16331711f970' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

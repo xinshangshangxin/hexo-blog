@@ -1,0 +1,530 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>DaoCloud部署Node | SHANG Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="xinshangshangxin">
+    
+
+    
+    <meta name="description" content="官方为提供node的example, 把我踩的坑记录分享">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DaoCloud部署Node">
+<meta property="og:url" content="http://blog.xinshangshangxin.com/2015/06/01/DaoCloud部署Node/index.html">
+<meta property="og:site_name" content="SHANG Blog">
+<meta property="og:description" content="官方为提供node的example, 把我踩的坑记录分享">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/daocloud/dc1.png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/daocloud/dc2.png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/daocloud/dc3.png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/daocloud/dc4.png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/daocloud/dc6.png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/daocloud/dc5.png">
+<meta property="og:updated_time" content="2016-09-22T07:30:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DaoCloud部署Node">
+<meta name="twitter:description" content="官方为提供node的example, 把我踩的坑记录分享">
+<meta name="twitter:image" content="http://blog.xinshangshangxin.com/img/daocloud/dc1.png">
+
+    
+    <link rel="alternative" href="atom.xml" title="SHANG Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="SHANG Blog" title="SHANG Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="SHANG Blog">SHANG Blog</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives/">文章</a></li>
+					
+						<li><a href="/about/">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.xinshangshangxin.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/06/01/DaoCloud部署Node/" title="DaoCloud部署Node" itemprop="url">DaoCloud部署Node</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xinshangshangxin" target="_blank" itemprop="author">xinshangshangxin</a>
+		
+  <p class="article-time">
+    <time datetime="2015-06-01T15:06:00.000Z" itemprop="datePublished"> 发表于 2015年06月1日</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#注册DaoCloud"><span class="toc-number">1.</span> <span class="toc-text">注册DaoCloud</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署Node-的-Dockerfile-详解"><span class="toc-number">2.</span> <span class="toc-text">部署Node 的 Dockerfile 详解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#上传github和绑定github"><span class="toc-number">3.</span> <span class="toc-text">上传github和绑定github</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文档"><span class="toc-number">3.1.</span> <span class="toc-text">参考文档</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文章若有纰漏请大家补充指正-谢谢"><span class="toc-number">3.1.1.</span> <span class="toc-text">文章若有纰漏请大家补充指正,谢谢~~</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<blockquote>
+<p>DaoCloud 有go和python 的 example;<br>却没有Node的example, 把我踩的坑记录分享</p>
+</blockquote>
+<h1 id="注册DaoCloud"><a href="#注册DaoCloud" class="headerlink" title="注册DaoCloud"></a>注册DaoCloud</h1><p>注册地址: <a href="https://account.daocloud.io/signup" target="_blank" rel="external">https://account.daocloud.io/signup</a></p>
+<blockquote>
+<p>整个构建和部署所需要的资源，DaoCloud都免费提供，为所有的注册用户免费提供以下资源：<br>3个项目，同时可以在DaoCloud关联和构建您的3个软件项目<br>2个容器，每个容器内存上限是256M内存空间<br>2个服务，可从MongoDB、Redis、MySQL和InfluxDB中任意选择</p>
+</blockquote>
+<h1 id="部署Node-的-Dockerfile-详解"><a href="#部署Node-的-Dockerfile-详解" class="headerlink" title="部署Node 的 Dockerfile 详解"></a>部署Node 的 Dockerfile 详解</h1><blockquote>
+<p>总的</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">FROM node</div><div class="line"></div><div class="line"># Build app</div><div class="line">RUN mkdir -p /usr/src/app</div><div class="line">WORKDIR /usr/src/app</div><div class="line">COPY . /usr/src/app</div><div class="line"></div><div class="line">RUN npm install --production</div><div class="line"></div><div class="line">EXPOSE 1340</div><div class="line"></div><div class="line">CMD [ "node","dist/server.js"]</div></pre></td></tr></table></figure>
+<p><code>FROM node</code> 是指基于 <a href="https://registry.hub.docker.com/_/node" target="_blank" rel="external">node最新版</a> 镜像 </p>
+<p><code>RUN mkdir -p /usr/src/app</code> 中 <code>RUN</code> 是安装环境, 整句话是指创建了一个<code>app</code>文件夹供后续使用<br><code>WORKDIR /usr/src/app</code>  中 <code>WORKDIR</code> 是切换目录, 整句话是指切换到 <code>/usr/src/app</code> 目录下<br><code>COPY . /usr/src/app</code> 整句话是指将当前文件夹下文件复制到 <code>app</code>目录下</p>
+<p><code>RUN npm install --production</code> 执行 <code>npm install</code> 命令,安装node程序的依赖包</p>
+<p><code>EXPOSE 1340</code>  中 <code>EXPOSE</code> 是端口映射; 1340 是你的 node程序跑的端口</p>
+<p><code>CMD [&quot;node&quot;,&quot;dist/server.js&quot;]</code> 中 <code>CMD</code>是 <code>container</code>(容器)启动时执行的命令;也就是平常我们使用的 <code>node dist/server.js</code></p>
+<h1 id="上传github和绑定github"><a href="#上传github和绑定github" class="headerlink" title="上传github和绑定github"></a>上传github和绑定github</h1><ul>
+<li><p>在你原来node程序的基础上,添加修改上面的Dockfile; 上传至github;<br><em>如果你没有现成的程序,可以直接 clone 我的项目 <a href="https://github.com/xinshangshangxin/ngMusic.git" target="_blank" rel="external">ngMusic项目地址</a></em> 到你的github中</p>
+</li>
+<li><p>在DaoCloud中选择 <em>代码构建</em><br><img src="/img/daocloud/dc1.png" alt="dc"></p>
+</li>
+<li><p>接着点击 <em>创建新项目</em><br><img src="/img/daocloud/dc2.png" alt="dc"></p>
+</li>
+<li><p>接着 <em>输入项目名称</em> 和 同步代码源,选择你部署的项目, 最后点击 <em>开始创建</em><br><em>此处我github已经绑定,所以使用 coding 做演示</em><br><img src="/img/daocloud/dc3.png" alt="dc"><br><em>开始构建</em><br><img src="/img/daocloud/dc4.png" alt="dc"><br><em>构建完成</em><br><img src="/img/daocloud/dc6.png" alt="dc"></p>
+</li>
+<li><p>点击 <em>查看镜像</em>, 接着在点击 <em>部署最新版本</em> 后开始部署</p>
+</li>
+</ul>
+<ul>
+<li>部署成功, 可以访问看看你的程序; 如果失败,回头看看那里出错了~~<br><img src="/img/daocloud/dc5.png" alt="dc"></li>
+</ul>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a href="https://github.com/DaoCloud/python-redis-sample/blob/master/application.py" target="_blank" rel="external">https://github.com/DaoCloud/python-redis-sample/blob/master/application.py</a></li>
+<li><a href="http://blog.csdn.net/wsscy2004/article/details/25878223" target="_blank" rel="external">http://blog.csdn.net/wsscy2004/article/details/25878223</a></li>
+</ul>
+<hr>
+<blockquote>
+<h3 id="文章若有纰漏请大家补充指正-谢谢"><a href="#文章若有纰漏请大家补充指正-谢谢" class="headerlink" title="文章若有纰漏请大家补充指正,谢谢~~"></a>文章若有纰漏请大家补充指正,谢谢~~</h3><p><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG殇</p>
+</blockquote>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/docker/">docker</a><a href="/tags/node/">node</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://blog.xinshangshangxin.com/2015/06/01/DaoCloud部署Node/" data-title="DaoCloud部署Node | SHANG Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/06/06/Docker学习笔记-1/" title="Docker学习笔记(1)">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Docker学习笔记(1)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/05/24/QQ互联踩坑记录/"  title="QQ互联踩坑记录">
+ <strong>下一篇：</strong><br/> 
+ <span>QQ互联踩坑记录
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/06/01/DaoCloud部署Node/" data-title="DaoCloud部署Node" data-url="http://blog.xinshangshangxin.com/2015/06/01/DaoCloud部署Node/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#注册DaoCloud"><span class="toc-number">1.</span> <span class="toc-text">注册DaoCloud</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署Node-的-Dockerfile-详解"><span class="toc-number">2.</span> <span class="toc-text">部署Node 的 Dockerfile 详解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#上传github和绑定github"><span class="toc-number">3.</span> <span class="toc-text">上传github和绑定github</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文档"><span class="toc-number">3.1.</span> <span class="toc-text">参考文档</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文章若有纰漏请大家补充指正-谢谢"><span class="toc-number">3.1.1.</span> <span class="toc-text">文章若有纰漏请大家补充指正,谢谢~~</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>35</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/node/" title="node">node<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/AngularJS/" title="AngularJS">AngularJS<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cygwin/" title="cygwin">cygwin<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/sails/" title="sails">sails<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ConEmu/" title="ConEmu">ConEmu<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ECS/" title="ECS">ECS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/youkuvod/" title="youkuvod">youkuvod<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cordova/" title="cordova">cordova<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/fiddler/" title="fiddler">fiddler<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iTerm2/" title="iTerm2">iTerm2<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p> SHANG殇 <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/xinshangshangxin" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:xinshangshangxin@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="xinshangshangxin">xinshangshangxin</a>
+		
+		
+		</p>
+</div>
+</footer>
+    
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"xinshangshangxin"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa428636dbcab9ddea4df16331711f970' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

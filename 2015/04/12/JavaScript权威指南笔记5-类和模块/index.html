@@ -1,0 +1,507 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>JavaScript权威指南笔记5_类和模块 | SHANG Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="xinshangshangxin">
+    
+
+    
+    <meta name="description" content="类和模块150412">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript权威指南笔记5_类和模块">
+<meta property="og:url" content="http://blog.xinshangshangxin.com/2015/04/12/JavaScript权威指南笔记5-类和模块/index.html">
+<meta property="og:site_name" content="SHANG Blog">
+<meta property="og:description" content="类和模块150412">
+<meta property="og:updated_time" content="2016-09-22T07:30:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript权威指南笔记5_类和模块">
+<meta name="twitter:description" content="类和模块150412">
+
+    
+    <link rel="alternative" href="atom.xml" title="SHANG Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="SHANG Blog" title="SHANG Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="SHANG Blog">SHANG Blog</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives/">文章</a></li>
+					
+						<li><a href="/about/">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.xinshangshangxin.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/04/12/JavaScript权威指南笔记5-类和模块/" title="JavaScript权威指南笔记5_类和模块" itemprop="url">JavaScript权威指南笔记5_类和模块</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xinshangshangxin" target="_blank" itemprop="author">xinshangshangxin</a>
+		
+  <p class="article-time">
+    <time datetime="2015-04-12T07:35:38.000Z" itemprop="datePublished"> 发表于 2015年04月12日</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#类和原型"><span class="toc-number">1.</span> <span class="toc-text">类和原型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#javascript-中-Java-式继承"><span class="toc-number">2.</span> <span class="toc-text">javascript 中 Java 式继承</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#集合类"><span class="toc-number">3.</span> <span class="toc-text">集合类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文章若有纰漏请大家补充指正-谢谢"><span class="toc-number">3.0.1.</span> <span class="toc-text">文章若有纰漏请大家补充指正,谢谢~~</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="类和原型"><a href="#类和原型" class="headerlink" title="类和原型"></a>类和原型</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">inherit</span>(<span class="params">p</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (p === <span class="literal">null</span>) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="built_in">TypeError</span>();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.create) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">Object</span>.create(p);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> t = <span class="keyword">typeof</span> p;</div><div class="line">    <span class="keyword">if</span> (t !== <span class="string">'object'</span> &amp;&amp; t !== <span class="string">'function'</span>) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="built_in">TypeError</span>();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    F.prototype = p;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 实现一个能表示值的范围的类</span></div><div class="line"><span class="comment">// 工厂方法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">range</span>(<span class="params">from, to</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> r = inherit(range.methods);</div><div class="line">    r.from = <span class="keyword">from</span>;</div><div class="line">    r.to = to;</div><div class="line">    <span class="keyword">return</span> r;</div><div class="line">&#125;</div><div class="line"></div><div class="line">range.methods = &#123;</div><div class="line">    <span class="attr">includes</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.from &lt;= x &amp;&amp; x &lt;= <span class="keyword">this</span>.to;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">foreach</span>: <span class="function"><span class="keyword">function</span>(<span class="params">f</span>) </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> x = <span class="built_in">Math</span>.ceil(<span class="keyword">this</span>.from); x &lt;= <span class="keyword">this</span>.to; x++) &#123;</div><div class="line">            f(x);</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">toString</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'('</span> + <span class="keyword">this</span>.from + <span class="string">'....'</span> + <span class="keyword">this</span>.to + <span class="string">')'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> r = range(<span class="number">1</span>, <span class="number">3</span>);            </div><div class="line"><span class="built_in">console</span>.log(r.includes(<span class="number">2</span>));     <span class="comment">// true</span></div><div class="line">r.foreach(<span class="built_in">console</span>.log);         <span class="comment">// 1  2  3</span></div><div class="line"><span class="built_in">console</span>.log(r);                 <span class="comment">// &#123; from: 1, to: 3 &#125;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 实现一个能表示值的范围的类</span></div><div class="line"><span class="comment">// 构造函数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Range</span>(<span class="params">from, to</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.from = <span class="keyword">from</span>;</div><div class="line">    <span class="keyword">this</span>.to = to;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Range.prototype = &#123;</div><div class="line">    <span class="attr">constructor</span>: Range,</div><div class="line">    <span class="attr">includes</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.from &lt;= x &amp;&amp; x &lt;= <span class="keyword">this</span>.to;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">foreach</span>: <span class="function"><span class="keyword">function</span>(<span class="params">f</span>) </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> x = <span class="built_in">Math</span>.ceil(<span class="keyword">this</span>.from); x &lt;= <span class="keyword">this</span>.to; x++) &#123;</div><div class="line">            f(x);</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">toString</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'('</span> + <span class="keyword">this</span>.from + <span class="string">'....'</span> + <span class="keyword">this</span>.to + <span class="string">')'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> r = <span class="keyword">new</span> Range(<span class="number">1</span>, <span class="number">3</span>);</div><div class="line"><span class="built_in">console</span>.log(r.includes(<span class="number">2</span>));     <span class="comment">// true</span></div><div class="line">r.foreach(<span class="built_in">console</span>.log);         <span class="comment">// 1  2  3</span></div><div class="line"><span class="built_in">console</span>.log(r);                 <span class="comment">// &#123; from: 1, to: 3 &#125;</span></div></pre></td></tr></table></figure>
+<h1 id="javascript-中-Java-式继承"><a href="#javascript-中-Java-式继承" class="headerlink" title="javascript 中 Java 式继承"></a>javascript 中 Java 式继承</h1><blockquote>
+<p>javascript定义类的步骤:</p>
+<blockquote>
+<ol>
+<li>定义一个构造函数,并设置初始化新对象的实例属性</li>
+<li>给构造函数的prototype对象定义实例的方法</li>
+<li>给构造函数定义类字段和类属性</li>
+</ol>
+</blockquote>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// P182中的extend</span></div><div class="line"><span class="keyword">var</span> extend = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> p <span class="keyword">in</span> &#123; <span class="attr">toString</span>: <span class="literal">null</span>&#125;) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">extend</span>(<span class="params">o</span>) </span>&#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="built_in">arguments</span>.length; i++) &#123;</div><div class="line">                <span class="keyword">var</span> source = <span class="built_in">arguments</span>[i];</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> source) &#123;</div><div class="line">                    o[prop] = source[prop];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> o;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">path_extend</span>(<span class="params">o</span>) </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="built_in">arguments</span>.length; i++) &#123;</div><div class="line">            <span class="keyword">var</span> source = <span class="built_in">arguments</span>[i];</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> source) &#123;</div><div class="line">                o[prop] = source[prop];</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; prototyprops.length; j++) &#123;</div><div class="line">                prop = prototyprops[j];</div><div class="line">                <span class="keyword">if</span> (source.hasOwnProperty(prop)) &#123;</div><div class="line">                    o[prop] = source[prop];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">return</span> o;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;());</div><div class="line"></div><div class="line"><span class="keyword">var</span> prototyprops = [<span class="string">'toString'</span>, <span class="string">'valueOf'</span>, <span class="string">'constructor'</span>, <span class="string">'hasOwnProperty'</span>, <span class="string">'isPrototypeOf'</span>,</div><div class="line">                    <span class="string">'propertyIsEnumerable'</span>, <span class="string">'toLocaleString'</span>];</div><div class="line"></div><div class="line"><span class="comment">// 一个用以定义类的简单函数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">defineClass</span>(<span class="params">constructor,           <span class="regexp">//</span> 用以设置实例的属性的函数</span></span></div><div class="line">                    methods,                <span class="regexp">//</span> 实例的方法, 复制至原型中</div><div class="line">                    statics) &#123;              <span class="comment">// 类属性, 复制至构造函数</span></div><div class="line">    <span class="keyword">if</span> (methods) &#123;</div><div class="line">        extend(<span class="keyword">constructor</span>.prototype, methods);</div><div class="line">    &#125;</div><div class="line">    if (statics) &#123;</div><div class="line">        extend(<span class="keyword">constructor</span>, statics);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return <span class="keyword">constructor</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// Range类的实现</div><div class="line">var simpleRange = defineClass(function(from, to) &#123;</div><div class="line">    <span class="keyword">this</span>.from = <span class="keyword">from</span>;</div><div class="line">    <span class="keyword">this</span>.to = to;</div><div class="line">&#125;,&#123;</div><div class="line">    <span class="attr">includes</span>: <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.from &lt;= x &amp;&amp; x &lt;= <span class="keyword">this</span>.to;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">toString</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'('</span> + <span class="keyword">this</span>.from + <span class="string">'....'</span> + <span class="keyword">this</span>.to + <span class="string">')'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">uptp</span>: <span class="function"><span class="keyword">function</span>(<span class="params">to</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> simpleRange(<span class="number">0</span>, to);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> r = <span class="keyword">new</span> simpleRange(<span class="number">1</span>, <span class="number">3</span>);</div><div class="line"><span class="built_in">console</span>.log(r.includes(<span class="number">2</span>));     <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(r);                 <span class="comment">// &#123; from: 1, to: 3 &#125;</span></div></pre></td></tr></table></figure>
+<h1 id="集合类"><a href="#集合类" class="headerlink" title="集合类"></a>集合类</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Set</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.values = &#123;&#125;;</div><div class="line">    <span class="keyword">this</span>.n = <span class="number">0</span>;</div><div class="line">    <span class="keyword">this</span>.add.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">Set</span>.prototype.add = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="built_in">arguments</span>.length; i++) &#123;</div><div class="line">        <span class="keyword">var</span> val = <span class="built_in">arguments</span>[i];</div><div class="line">        <span class="keyword">var</span> str = <span class="built_in">Set</span>._v2s(val);</div><div class="line">        <span class="keyword">if</span> (!<span class="keyword">this</span>.values.hasOwnProperty(str)) &#123;</div><div class="line">            <span class="keyword">this</span>.values[str] = val;</div><div class="line">            <span class="keyword">this</span>.n++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">Set</span>.prototype.remove = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="built_in">arguments</span>.length; i++) &#123;</div><div class="line">        <span class="keyword">var</span> str = <span class="built_in">Set</span>._v2s(<span class="built_in">arguments</span>[i]);</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.values.hasOwnProperty(str)) &#123;</div><div class="line">            <span class="keyword">delete</span> <span class="keyword">this</span>.values[str];</div><div class="line">            <span class="keyword">this</span>.n--;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">Set</span>.prototype.contains = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.values.hasOwnProperty(<span class="built_in">Set</span>._v2s(value));</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">Set</span>.prototype.size = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.n;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">Set</span>.prototype.foreach = <span class="function"><span class="keyword">function</span>(<span class="params">f, context</span>) </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> str <span class="keyword">in</span> <span class="keyword">this</span>.values) &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.values.hasOwnProperty(str)) &#123;</div><div class="line">            f.call(context, <span class="keyword">this</span>.values[str]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">Set</span>._v2s = <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</div><div class="line">    <span class="keyword">switch</span> (val) &#123;</div><div class="line">        <span class="keyword">case</span> <span class="literal">undefined</span>:</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">'u'</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">case</span> <span class="literal">null</span>:</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">'n'</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">case</span> <span class="literal">true</span>:</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">'t'</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">case</span> <span class="literal">false</span>:</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">'f'</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">default</span> :</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">switch</span> (<span class="keyword">typeof</span>(val)) &#123;</div><div class="line">                <span class="keyword">case</span> <span class="string">'number'</span>:</div><div class="line">                &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="string">'#'</span> + val;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">case</span> <span class="string">'string'</span>:</div><div class="line">                &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="string">'"'</span> + val;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">default</span> :</div><div class="line">                &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="string">'@'</span> + objectId(val);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">objectId</span>(<span class="params">o</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> prop = <span class="string">'|**objectid**|'</span>;</div><div class="line">            <span class="keyword">if</span> (!o.hasOwnProperty(prop)) &#123;</div><div class="line">                <span class="built_in">Object</span>.defineProperty(o, prop, &#123;</div><div class="line">                    <span class="attr">writable</span>: <span class="literal">true</span>,</div><div class="line">                    <span class="attr">enumerable</span>: <span class="literal">false</span>, <span class="comment">//不可枚举</span></div><div class="line">                    value: <span class="built_in">Set</span>._v2s.next++</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> o[prop];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">Set</span>._v2s.next = <span class="number">100</span>;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">var</span> mySet = <span class="keyword">new</span> <span class="built_in">Set</span>();</div><div class="line"><span class="keyword">var</span> o = &#123;<span class="string">'name'</span>: <span class="string">'shang'</span>&#125;;</div><div class="line">mySet.add(o);</div><div class="line">mySet.add(o);</div><div class="line"><span class="built_in">console</span>.log(mySet.size());      <span class="comment">// 1</span></div><div class="line">mySet.foreach(<span class="function"><span class="keyword">function</span>(<span class="params">o</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(o);             <span class="comment">// &#123; name: 'shang' &#125;</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(mySet.contains(o));     <span class="comment">// true</span></div><div class="line">mySet.remove(o);</div><div class="line"><span class="built_in">console</span>.log(mySet.size());          <span class="comment">// 0</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用枚举类型表示一副扑克牌</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * /**</div><div class="line"> * 兼容ECMAScript 5</div><div class="line"> * 返回一个继承自原型对象p的属性的新对象</div><div class="line"> * @param p 要继承原型对象</div><div class="line"> * @returns &#123;*&#125; 新对象</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">inherit</span>(<span class="params">p</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (p == <span class="literal">null</span>) &#123;</div><div class="line">        <span class="keyword">throw</span>  <span class="built_in">TypeError</span>();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.create) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">Object</span>.create(p);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> t = <span class="keyword">typeof</span> p;</div><div class="line">    <span class="keyword">if</span> (t !== <span class="string">'object'</span> &amp;&amp; t != <span class="string">'function'</span>) &#123;</div><div class="line">        <span class="keyword">throw</span>  <span class="built_in">TypeError</span>();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    F.prototype = p;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 枚举类型</div><div class="line"> * @param namesToValues 类的每个实例的名字和值</div><div class="line"> * @returns &#123;Function&#125;  构造函数 包含 名/值的映射表</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">enumeration</span>(<span class="params">namesToValues</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> enumeration = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">throw</span> <span class="string">'can\'t'</span>;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> proto = enumeration.prototype = &#123;</div><div class="line">        <span class="attr">construcetor</span>: enumeration,</div><div class="line">        <span class="attr">toString</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">valueOf</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.value;</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">toJson</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    enumeration.values = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> name <span class="keyword">in</span> namesToValues) &#123;</div><div class="line">        <span class="keyword">var</span> e = inherit(proto);</div><div class="line">        e.name = name;</div><div class="line">        e.value = namesToValues[name];</div><div class="line">        enumeration[name] = e;</div><div class="line">        enumeration.values.push(e);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    enumeration.foreach = <span class="function"><span class="keyword">function</span>(<span class="params">fun, context</span>) </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.values.length; i++) &#123;</div><div class="line">            fun.call(context, <span class="keyword">this</span>.values[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> enumeration;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Card</span>(<span class="params">suit, rank</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.suit = suit;</div><div class="line">    <span class="keyword">this</span>.rank = rank;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Card.Suit = enumeration(&#123;</div><div class="line">    <span class="attr">Clubs</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">Diamonds</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">Hearts</span>: <span class="number">3</span>,</div><div class="line">    <span class="attr">Spades</span>: <span class="number">4</span></div><div class="line">&#125;);</div><div class="line">Card.Rank = enumeration(&#123;</div><div class="line">    <span class="attr">Two</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">Three</span>: <span class="number">3</span>,</div><div class="line">    <span class="attr">Four</span>: <span class="number">4</span>,</div><div class="line">    <span class="attr">Five</span>: <span class="number">5</span>,</div><div class="line">    <span class="attr">Six</span>: <span class="number">6</span>,</div><div class="line">    <span class="attr">Seven</span>: <span class="number">7</span>,</div><div class="line">    <span class="attr">Eight</span>: <span class="number">8</span>,</div><div class="line">    <span class="attr">Nine</span>: <span class="number">9</span>,</div><div class="line">    <span class="attr">Ten</span>: <span class="number">10</span>,</div><div class="line">    <span class="attr">Jack</span>: <span class="number">11</span>,</div><div class="line">    <span class="attr">Queen</span>: <span class="number">12</span>,</div><div class="line">    <span class="attr">King</span>: <span class="number">13</span>,</div><div class="line">    <span class="attr">Ace</span>: <span class="number">14</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line">Card.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.rank.toString() + <span class="string">'of'</span> + <span class="keyword">this</span>.suit.toString();</div><div class="line">&#125;;</div><div class="line">Card.prototype.compareTo = <span class="function"><span class="keyword">function</span>(<span class="params">that</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.rank &lt; that.rank) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.rank &gt; that.rank) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">Card.orderByRank = <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> a.compareTo(b);</div><div class="line">&#125;;</div><div class="line">Card.orderBySuit = <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (a.suit &lt; b.suit) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (a.suit &gt; b.suit) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (a.rank &lt; b.rank) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (a.rank &gt; b.rank) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 牌组</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Deck</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> cards = <span class="keyword">this</span>.cards = [];</div><div class="line">    Card.Suit.foreach(<span class="function"><span class="keyword">function</span>(<span class="params">s</span>) </span>&#123;</div><div class="line">        Card.Rank.foreach(<span class="function"><span class="keyword">function</span>(<span class="params">r</span>) </span>&#123;</div><div class="line">            <span class="comment">// 无法使用 this</span></div><div class="line">            cards.push(<span class="keyword">new</span> Card(r, s));</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 洗牌</span></div><div class="line">Deck.prototype.shuffle = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> deck = <span class="keyword">this</span>.cards, len = deck.length;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = len - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">        <span class="keyword">var</span> r = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (i + <span class="number">1</span>));</div><div class="line">        <span class="keyword">var</span> temp = deck[i];</div><div class="line">        deck[i] = deck[r];</div><div class="line">        deck[r] = temp;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;;</div><div class="line"><span class="comment">// 发牌</span></div><div class="line">Deck.prototype.deal = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.cards.length &lt; n) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="string">'out of crads length'</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.cards.splice(<span class="keyword">this</span>.cards.length - n, n);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> deck = (<span class="keyword">new</span> Deck()).shuffle();</div><div class="line"><span class="keyword">var</span> hand = deck.deal(<span class="number">13</span>).sort(Card.orderBySuit);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(deck);</div><div class="line"><span class="built_in">console</span>.log(hand);</div></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<h3 id="文章若有纰漏请大家补充指正-谢谢"><a href="#文章若有纰漏请大家补充指正-谢谢" class="headerlink" title="文章若有纰漏请大家补充指正,谢谢~~"></a>文章若有纰漏请大家补充指正,谢谢~~</h3><p><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG殇</p>
+</blockquote>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/js/">js</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://blog.xinshangshangxin.com/2015/04/12/JavaScript权威指南笔记5-类和模块/" data-title="JavaScript权威指南笔记5_类和模块 | SHANG Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/04/12/JavaScript权威指南笔记6-正则表达式/" title="JavaScript权威指南笔记6_正则表达式">
+  <strong>上一篇：</strong><br/>
+  <span>
+  JavaScript权威指南笔记6_正则表达式</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/04/08/JavaScript权威指南笔记5-函数/"  title="JavaScript权威指南笔记5_函数">
+ <strong>下一篇：</strong><br/> 
+ <span>JavaScript权威指南笔记5_函数
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/04/12/JavaScript权威指南笔记5-类和模块/" data-title="JavaScript权威指南笔记5_类和模块" data-url="http://blog.xinshangshangxin.com/2015/04/12/JavaScript权威指南笔记5-类和模块/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#类和原型"><span class="toc-number">1.</span> <span class="toc-text">类和原型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#javascript-中-Java-式继承"><span class="toc-number">2.</span> <span class="toc-text">javascript 中 Java 式继承</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#集合类"><span class="toc-number">3.</span> <span class="toc-text">集合类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文章若有纰漏请大家补充指正-谢谢"><span class="toc-number">3.0.1.</span> <span class="toc-text">文章若有纰漏请大家补充指正,谢谢~~</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>35</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/node/" title="node">node<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/AngularJS/" title="AngularJS">AngularJS<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cygwin/" title="cygwin">cygwin<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/sails/" title="sails">sails<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ConEmu/" title="ConEmu">ConEmu<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ECS/" title="ECS">ECS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/youkuvod/" title="youkuvod">youkuvod<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cordova/" title="cordova">cordova<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/fiddler/" title="fiddler">fiddler<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iTerm2/" title="iTerm2">iTerm2<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p> SHANG殇 <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/xinshangshangxin" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:xinshangshangxin@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="xinshangshangxin">xinshangshangxin</a>
+		
+		
+		</p>
+</div>
+</footer>
+    
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"xinshangshangxin"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa428636dbcab9ddea4df16331711f970' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
