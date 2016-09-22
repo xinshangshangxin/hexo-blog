@@ -6,13 +6,13 @@ tags:
 - wechat
 ---
 
-
 ## 第三方平台 和 公众号自己开发
 存在 
 1. appid+appsecret
 2. B 第三方
 3. C 第三方
 
+---------------
 
 - 不限制授权第三方的次数
 - 获取accesstoken的额度为分开的(无官方文档说明,猜测)
@@ -100,7 +100,7 @@ module.exports = {
     });
   },
   authSuccess: function(req, res) {
-    res.redirect(UtilitiesService.joinQueryStr((req.param('from') || '/'), {
+    res.redirect(joinQueryStr((req.param('from') || '/'), {
       userInfo: req.user || {},
       unionid: (req.user || {}).unionid
     }));
