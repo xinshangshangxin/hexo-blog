@@ -34,7 +34,15 @@ tags:
 内存小的机型，这部分临时存储就会被系统释放掉 | cookie失效
 一般浏览器当浏览器退出后(chrome等)  | cookie失效
 
-## 网站授权登录(第三方平台)
+## 网页授权登录 和 网站应用登录
+
+> |网页授权登录   |  网站应用微信登录
+> ----------|----------|----------
+>  平台 | https://mp.weixin.qq.com     |  https://open.weixin.qq.com/
+> 微信文档 | [mp wiki](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140842&token=&lang=zh_CN) | [open wiki](https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419316505&token=&lang=zh_CN)
+> 区别 | scope为snsapi_base, 获取用户的openid 静默授权 <br> scope为snsapi_userinfo获取用户的基本信息,对于已关注公众号的用户,静默授权,否则需要用户同意 <br>未关注的用户也能获取到用户信息 | 微信用户 需同意授权第三方应用
+
+## 网站授权登录(https://open.weixin.qq.com/)
 [微信文档](https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419316505&token=&lang=zh_CN)
 [package passport-wechat](https://github.com/liangyali/passport-wechat)
 ```js
