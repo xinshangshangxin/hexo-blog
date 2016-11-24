@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://blog.xinshangshangxin.com/img/mina/mina1.png">
 <meta property="og:image" content="http://blog.xinshangshangxin.com/img/mina/mina3.png">
 <meta property="og:image" content="http://blog.xinshangshangxin.com/img/mina/mina4.png">
-<meta property="og:updated_time" content="2016-11-24T12:36:31.000Z">
+<meta property="og:updated_time" content="2016-11-24T12:52:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信小程序中使用bluebird">
 <meta name="twitter:description" content="微信小程序不支持Promise, 引入bluebird的探究过程">
@@ -131,7 +131,7 @@
 </ul>
 <h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><ol>
 <li><code>npm i bluebird</code></li>
-<li>进入<code>node_modules/bluebird</code>, 将 <code>node_modules/bluebird/js/release</code> 文件夹拷贝出来, 比如拷贝到 <code>utils</code> 目录下</li>
+<li>将 <code>node_modules/bluebird/js/release</code> 文件夹拷贝出来, 比如拷贝到 <code>utils</code> 目录下</li>
 <li><p>将 <code>utils/bluebird/js/release/schedule.js</code> 中的内容替换为</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">fn</span>) </span>&#123;</div><div class="line">  setTimeout(fn, <span class="number">0</span>);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 </li>
@@ -246,19 +246,11 @@
 			
 		
 			
-				<li><a href="/tags/ECS/" title="ECS">ECS<sup>3</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/ConEmu/" title="ConEmu">ConEmu<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/ECS/" title="ECS">ECS<sup>3</sup></a></li>
 			
 		
 			
@@ -270,15 +262,11 @@
 			
 		
 			
-				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/youkuvod/" title="youkuvod">youkuvod<sup>2</sup></a></li>
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
 			
 		
 			
@@ -286,15 +274,27 @@
 			
 		
 			
-				<li><a href="/tags/fiddler/" title="fiddler">fiddler<sup>1</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/iTerm2/" title="iTerm2">iTerm2<sup>1</sup></a></li>
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Intellij/" title="Intellij">Intellij<sup>1</sup></a></li>
+				<li><a href="/tags/youkuvod/" title="youkuvod">youkuvod<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/小程序/" title="小程序">小程序<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cordova/" title="cordova">cordova<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/http/" title="http">http<sup>1</sup></a></li>
 			
 		
 		</ul>
