@@ -50,7 +50,7 @@ const Promise = require('../node_modules/bluebird/js/release/bluebird.js');
 
 ## 结论
 1. `npm i bluebird`
-2. 进入`node_modules/bluebird`, 将 `node_modules/bluebird/js/release` 文件夹拷贝出来, 比如拷贝到 `utils` 目录下
+2. 将 `node_modules/bluebird/js/release` 文件夹拷贝出来, 比如拷贝到 `utils` 目录下
 3. 将 `utils/bluebird/js/release/schedule.js` 中的内容替换为
 
   ```js

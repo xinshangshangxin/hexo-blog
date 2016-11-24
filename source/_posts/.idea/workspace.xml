@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10bfaeee-2dd4-4ccc-84b5-2be7c1c6c9cb" name="Default" comment="" />
+    <list default="true" id="10bfaeee-2dd4-4ccc-84b5-2be7c1c6c9cb" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mina-bluebird.md" afterPath="$PROJECT_DIR$/mina-bluebird.md" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,10 +24,10 @@
         <entry file="file://$PROJECT_DIR$/mina-bluebird.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="513">
-                <caret line="67" column="179" lean-forward="false" selection-start-line="67" selection-start-column="179" selection-end-line="67" selection-end-column="179" />
+              <first_editor relative-caret-position="665">
+                <caret line="52" column="3" lean-forward="false" selection-start-line="52" selection-start-column="3" selection-end-line="52" selection-end-column="3" />
                 <folding>
-                  <marker date="1479990991000" expanded="true" signature="1335:1363" ph="{...}" />
+                  <marker date="1479991963000" expanded="true" signature="1308:1336" ph="{...}" />
                 </folding>
               </first_editor>
               <second_editor />
@@ -218,12 +220,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1479988239424</updated>
-      <workItem from="1479988241937" duration="2762000" />
+      <workItem from="1479988241937" duration="3718000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2762000" />
+    <option name="totallyTimeSpent" value="3718000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1276" height="777" extended-state="6" />
@@ -334,10 +336,10 @@
     <entry file="file://$PROJECT_DIR$/mina-bluebird.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="513">
-            <caret line="67" column="179" lean-forward="false" selection-start-line="67" selection-start-column="179" selection-end-line="67" selection-end-column="179" />
+          <first_editor relative-caret-position="665">
+            <caret line="52" column="3" lean-forward="false" selection-start-line="52" selection-start-column="3" selection-end-line="52" selection-end-column="3" />
             <folding>
-              <marker date="1479990991000" expanded="true" signature="1335:1363" ph="{...}" />
+              <marker date="1479991963000" expanded="true" signature="1308:1336" ph="{...}" />
             </folding>
           </first_editor>
           <second_editor />
