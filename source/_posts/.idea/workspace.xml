@@ -19,15 +19,30 @@
     <favorites_list name="_posts" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="mina-bluebird.md" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="mina-bluebird.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mina-bluebird.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="665">
-                <caret line="52" column="3" lean-forward="false" selection-start-line="52" selection-start-column="3" selection-end-line="52" selection-end-column="3" />
+              <first_editor relative-caret-position="209">
+                <caret line="67" column="3" lean-forward="false" selection-start-line="67" selection-start-column="3" selection-end-line="67" selection-end-column="3" />
                 <folding>
-                  <marker date="1479991963000" expanded="true" signature="1308:1336" ph="{...}" />
+                  <marker date="1480913823000" expanded="true" signature="1308:1336" ph="{...}" />
+                </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mina-lodash.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mina-lodash.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="209">
+                <caret line="109" column="190" lean-forward="true" selection-start-line="108" selection-start-column="3" selection-end-line="109" selection-end-column="190" />
+                <folding>
+                  <marker date="1480913806000" expanded="true" signature="4355:4689" ph="{&quot;Array&quot;: Array...}" />
                 </folding>
               </first_editor>
               <second_editor />
@@ -39,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/wechat-debug.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="19">
+              <first_editor relative-caret-position="2052">
                 <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="120" selection-end-column="77" />
                 <folding>
                   <marker date="1479988040000" expanded="true" signature="1530:1709" ph="{...}" />
@@ -64,6 +79,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/mina-lodash.md" />
         <option value="$PROJECT_DIR$/mina-bluebird.md" />
       </list>
     </option>
@@ -96,9 +112,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -113,6 +126,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -220,45 +236,49 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1479988239424</updated>
-      <workItem from="1479988241937" duration="3718000" />
+      <workItem from="1479988241937" duration="4506000" />
+      <workItem from="1480484931924" duration="1178000" />
+      <workItem from="1480667482039" duration="1620000" />
+      <workItem from="1480902211148" duration="763000" />
+      <workItem from="1480909033652" duration="2132000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3718000" />
+    <option name="totallyTimeSpent" value="10199000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1276" height="777" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959481" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,48 +292,27 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/7月angular使用笔记.md">
+    <entry file="file://$PROJECT_DIR$/mina-bluebird.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-2489">
-            <caret line="2" column="11" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="11" />
+          <first_editor relative-caret-position="551">
+            <caret line="29" column="24" lean-forward="false" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="24" />
             <folding>
-              <marker date="1479988040000" expanded="true" signature="1006:1168" ph="{...}" />
-              <marker date="1479988040000" expanded="true" signature="1295:2631" ph="{...}" />
-              <marker date="1479988040000" expanded="false" signature="1342:1476" ph="{&quot;url&quot;: '/news'...}" />
-              <marker date="1479988040000" expanded="false" signature="1509:1874" ph="{&quot;url&quot;: ''...}" />
-              <marker date="1479988040000" expanded="false" signature="1675:1866" ph="{...}" />
-              <marker date="1479988040000" expanded="true" signature="1718:1856" ph="{...}" />
-              <marker date="1479988040000" expanded="false" signature="1907:2184" ph="{&quot;url&quot;: '/add'...}" />
-              <marker date="1479988040000" expanded="false" signature="2037:2176" ph="{...}" />
-              <marker date="1479988040000" expanded="true" signature="2076:2166" ph="{...}" />
-              <marker date="1479988040000" expanded="false" signature="2217:2625" ph="{&quot;url&quot;: '/edit/:id'...}" />
-              <marker date="1479988040000" expanded="false" signature="2399:2617" ph="{...}" />
-              <marker date="1479988040000" expanded="true" signature="2452:2607" ph="{...}" />
-              <marker date="1479988040000" expanded="true" signature="3010:3742" ph="{...}" />
-              <marker date="1479988040000" expanded="true" signature="3093:3128" ph="{...}" />
-              <marker date="1479988040000" expanded="true" signature="3185:3260" ph="{...}" />
-              <marker date="1479988040000" expanded="true" signature="3299:3500" ph="{...}" />
-              <marker date="1479988040000" expanded="true" signature="3430:3485" ph="{...}" />
-              <marker date="1479988040000" expanded="true" signature="3538:3737" ph="{...}" />
-              <marker date="1479988040000" expanded="true" signature="3668:3723" ph="{...}" />
-              <marker date="1479988040000" expanded="true" signature="3847:4291" ph="{...}" />
-              <marker date="1479988040000" expanded="false" signature="3858:4288" ph="{&quot;restrict&quot;: 'EA'...}" />
-              <marker date="1479988040000" expanded="true" signature="4009:4284" ph="{...}" />
-              <marker date="1479988040000" expanded="false" signature="4101:4181" ph="{&quot;error&quot;: 'danger'...}" />
-              <marker date="1479988040000" expanded="true" signature="4221:4277" ph="{...}" />
+              <marker date="1480913823000" expanded="true" signature="1308:1336" ph="{...}" />
             </folding>
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/linux终端翻墙.md">
+    <entry file="file://$PROJECT_DIR$/mina-lodash.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-1330">
+          <first_editor relative-caret-position="0">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
+            <folding>
+              <marker date="1480913806000" expanded="true" signature="4355:4689" ph="{&quot;Array&quot;: Array...}" />
+            </folding>
           </first_editor>
           <second_editor />
         </state>
@@ -322,7 +321,7 @@
     <entry file="file://$PROJECT_DIR$/wechat-debug.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="19">
+          <first_editor relative-caret-position="2052">
             <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="120" selection-end-column="77" />
             <folding>
               <marker date="1479988040000" expanded="true" signature="1530:1709" ph="{...}" />
@@ -336,10 +335,164 @@
     <entry file="file://$PROJECT_DIR$/mina-bluebird.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="665">
-            <caret line="52" column="3" lean-forward="false" selection-start-line="52" selection-start-column="3" selection-end-line="52" selection-end-column="3" />
+          <first_editor relative-caret-position="551">
+            <caret line="29" column="24" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="24" />
             <folding>
-              <marker date="1479991963000" expanded="true" signature="1308:1336" ph="{...}" />
+              <marker date="1480913823000" expanded="true" signature="1308:1336" ph="{...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mina-lodash.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding>
+              <marker date="1480913806000" expanded="true" signature="4355:4689" ph="{&quot;Array&quot;: Array...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wechat-debug.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="2052">
+            <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="120" selection-end-column="77" />
+            <folding>
+              <marker date="1479988040000" expanded="true" signature="1530:1709" ph="{...}" />
+              <marker date="1479988040000" expanded="false" signature="1608:1633" ph="{&quot;proxy_pass&quot;: http...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mina-bluebird.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="1311">
+            <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="79" selection-end-column="77" />
+            <folding>
+              <marker date="1480913823000" expanded="true" signature="1308:1336" ph="{...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mina-lodash.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding>
+              <marker date="1480913806000" expanded="true" signature="4355:4689" ph="{&quot;Array&quot;: Array...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wechat-debug.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="2052">
+            <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="120" selection-end-column="77" />
+            <folding>
+              <marker date="1479988040000" expanded="true" signature="1530:1709" ph="{...}" />
+              <marker date="1479988040000" expanded="false" signature="1608:1633" ph="{&quot;proxy_pass&quot;: http...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mina-bluebird.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding>
+              <marker date="1480913823000" expanded="true" signature="1308:1336" ph="{...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wechat-debug.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="2052">
+            <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="120" selection-end-column="77" />
+            <folding>
+              <marker date="1479988040000" expanded="true" signature="1530:1709" ph="{...}" />
+              <marker date="1479988040000" expanded="false" signature="1608:1633" ph="{&quot;proxy_pass&quot;: http...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/7月angular使用笔记.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-2489">
+            <caret line="2" column="11" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="11" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/linux终端翻墙.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-1330">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wechat-debug.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="2052">
+            <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="120" selection-end-column="77" />
+            <folding>
+              <marker date="1479988040000" expanded="true" signature="1530:1709" ph="{...}" />
+              <marker date="1479988040000" expanded="false" signature="1608:1633" ph="{&quot;proxy_pass&quot;: http...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mina-bluebird.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="209">
+            <caret line="67" column="3" lean-forward="false" selection-start-line="67" selection-start-column="3" selection-end-line="67" selection-end-column="3" />
+            <folding>
+              <marker date="1480913823000" expanded="true" signature="1308:1336" ph="{...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mina-lodash.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="209">
+            <caret line="109" column="190" lean-forward="true" selection-start-line="108" selection-start-column="3" selection-end-line="109" selection-end-column="190" />
+            <folding>
+              <marker date="1480913806000" expanded="true" signature="4355:4689" ph="{&quot;Array&quot;: Array...}" />
             </folding>
           </first_editor>
           <second_editor />

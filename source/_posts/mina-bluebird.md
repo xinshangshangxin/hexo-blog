@@ -64,8 +64,8 @@ const Promise = require('../node_modules/bluebird/js/release/bluebird.js');
 const Promise = require('./bluebird/js/release/bluebird.js');
 ```
 
-5. 如果每次修改嫌麻烦, 可以使用脚本控制
-   也可以尝试 我自用的微信骨架 [https://github.com/xinshangshangxin/MINA-seed](https://github.com/xinshangshangxin/MINA-seed), *注入了 bluebird, promisify了wx.xxx接口, 修改了 vConsole时不输出function和error*
+5. 如果每次修改嫌麻烦, 可以使用脚本控制  
+   也可以尝试 我自用的微信骨架 [https://github.com/xinshangshangxin/MINA-seed](https://github.com/xinshangshangxin/MINA-seed), *注入了 bluebird, lodash, promisify了wx.xxx接口, 修改了 vConsole 不输出function和error*  
 
 ## 参考文档
 
