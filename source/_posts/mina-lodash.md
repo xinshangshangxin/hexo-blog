@@ -83,12 +83,14 @@ Uncaught TypeError: Cannot read property 'prototype' of undefined
     let get = require('./your_copy_path/lodash.get/index');
     // 直接使用 get(obj, path);
   ```
+
 2. 将lodash4.16.6 `lodash/lodash.js:416` 中  
 
     ```js
     var root = freeGlobal || freeSelf || Function('return this')();
-    ```  
-   替换为  
+    ```
+
+    替换为  
    ```js
     var root = {
       Array: Array,
@@ -107,7 +109,7 @@ Uncaught TypeError: Cannot read property 'prototype' of undefined
     };
    ```
 3. 如果每次修改嫌麻烦, 可以使用脚本控制  
-   也可以尝试 我自用的微信骨架 [https://github.com/xinshangshangxin/MINA-seed](https://github.com/xinshangshangxin/MINA-seed), *注入了 bluebird, lodash, promisify了wx.xxx接口, 修改了 vConsole 不输出function和error*  
+   也可以尝试我自用的微信骨架 [https://github.com/xinshangshangxin/MINA-seed](https://github.com/xinshangshangxin/MINA-seed), *注入了 bluebird, lodash, promisify了wx.xxx接口, 修改了 vConsole 不输出function和error*  
       
  <br>    
 -----------------------
