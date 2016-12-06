@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://blog.xinshangshangxin.com/img/mina/mina-lodash5.png">
 <meta property="og:image" content="http://blog.xinshangshangxin.com/img/mina/mina-lodash6.png">
 <meta property="og:image" content="http://blog.xinshangshangxin.com/img/mina/mina-lodash7.png">
-<meta property="og:updated_time" content="2016-12-05T04:56:46.000Z">
+<meta property="og:updated_time" content="2016-12-06T12:49:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信小程序中使用lodash">
 <meta name="twitter:description" content="微信小程序引入lodash出错解决方案">
@@ -129,9 +129,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install lodash.get</div><div class="line">let get = require(&apos;./your_copy_path/lodash.get/index&apos;);</div><div class="line">// 直接使用 get(obj, path);</div></pre></td></tr></table></figure>
 </li>
 <li><p>将lodash4.16.6 <code>lodash/lodash.js:416</code> 中  </p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">var</span> root = freeGlobal || freeSelf || <span class="built_in">Function</span>(<span class="string">'return this'</span>)();</div><div class="line"> <span class="string">``</span><span class="string">`  </span></div><div class="line">替换为  </div><div class="line">`<span class="string">``</span>js</div><div class="line"> <span class="keyword">var</span> root = &#123;</div><div class="line">   <span class="attr">Array</span>: <span class="built_in">Array</span>,</div><div class="line">   <span class="attr">Date</span>: <span class="built_in">Date</span>,</div><div class="line">   <span class="attr">Error</span>: <span class="built_in">Error</span>,</div><div class="line">   <span class="attr">Function</span>: <span class="built_in">Function</span>,</div><div class="line">   <span class="attr">Math</span>: <span class="built_in">Math</span>,</div><div class="line">   <span class="attr">Object</span>: <span class="built_in">Object</span>,</div><div class="line">   <span class="attr">RegExp</span>: <span class="built_in">RegExp</span>,</div><div class="line">   <span class="attr">String</span>: <span class="built_in">String</span>,</div><div class="line">   <span class="attr">TypeError</span>: <span class="built_in">TypeError</span>,</div><div class="line">   <span class="attr">setTimeout</span>: setTimeout,</div><div class="line">   <span class="attr">clearTimeout</span>: clearTimeout,</div><div class="line">   <span class="attr">setInterval</span>: setInterval,</div><div class="line">   <span class="attr">clearInterval</span>: clearInterval</div><div class="line"> &#125;;</div></pre></td></tr></table></figure>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> root = freeGlobal || freeSelf || <span class="built_in">Function</span>(<span class="string">'return this'</span>)();</div></pre></td></tr></table></figure>
+<p> 替换为  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> root = &#123;</div><div class="line">  <span class="attr">Array</span>: <span class="built_in">Array</span>,</div><div class="line">  <span class="attr">Date</span>: <span class="built_in">Date</span>,</div><div class="line">  <span class="attr">Error</span>: <span class="built_in">Error</span>,</div><div class="line">  <span class="attr">Function</span>: <span class="built_in">Function</span>,</div><div class="line">  <span class="attr">Math</span>: <span class="built_in">Math</span>,</div><div class="line">  <span class="attr">Object</span>: <span class="built_in">Object</span>,</div><div class="line">  <span class="attr">RegExp</span>: <span class="built_in">RegExp</span>,</div><div class="line">  <span class="attr">String</span>: <span class="built_in">String</span>,</div><div class="line">  <span class="attr">TypeError</span>: <span class="built_in">TypeError</span>,</div><div class="line">  <span class="attr">setTimeout</span>: setTimeout,</div><div class="line">  <span class="attr">clearTimeout</span>: clearTimeout,</div><div class="line">  <span class="attr">setInterval</span>: setInterval,</div><div class="line">  <span class="attr">clearInterval</span>: clearInterval</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 </li>
-<li><p>如果每次修改嫌麻烦, 可以使用脚本控制<br>也可以尝试 我自用的微信骨架 <a href="https://github.com/xinshangshangxin/MINA-seed" target="_blank" rel="external">https://github.com/xinshangshangxin/MINA-seed</a>, <em>注入了 bluebird, lodash, promisify了wx.xxx接口, 修改了 vConsole 不输出function和error</em>  </p>
+<li><p>如果每次修改嫌麻烦, 可以使用脚本控制<br>也可以尝试我自用的微信骨架 <a href="https://github.com/xinshangshangxin/MINA-seed" target="_blank" rel="external">https://github.com/xinshangshangxin/MINA-seed</a>, <em>注入了 bluebird, lodash, promisify了wx.xxx接口, 修改了 vConsole 不输出function和error</em>  </p>
 <p><br>    </p>
 </li>
 </ol>
@@ -236,7 +238,7 @@
 			
 		
 			
-				<li><a href="/tags/ConEmu/" title="ConEmu">ConEmu<sup>3</sup></a></li>
+				<li><a href="/tags/ECS/" title="ECS">ECS<sup>3</sup></a></li>
 			
 		
 			
@@ -244,15 +246,15 @@
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>3</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/ECS/" title="ECS">ECS<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ConEmu/" title="ConEmu">ConEmu<sup>3</sup></a></li>
 			
 		
 			
@@ -260,7 +262,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/git/" title="git">git<sup>2</sup></a></li>
 			
 		
 			
@@ -268,11 +270,11 @@
 			
 		
 			
-				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/git/" title="git">git<sup>2</sup></a></li>
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
 			
 		
 			
@@ -280,7 +282,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>2</sup></a></li>
+				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
 			
 		
 			
