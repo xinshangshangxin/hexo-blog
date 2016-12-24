@@ -10,6 +10,7 @@ public/*
 # user
 scaffolds
 .deploy_git
+source/_posts/.idea
 /themes/*
 !themes/jacman/
 !source/*
