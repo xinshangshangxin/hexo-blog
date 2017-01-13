@@ -3,13 +3,16 @@ title: 微信小程序中使用bluebird
 date: 2016-11-24 19:49:51
 description: 微信小程序不支持Promise, 引入bluebird的探究过程
 tags: 
-- 微信
+- wechat
 - 小程序
 - MINA
 ---
 
 
 # 微信小程序中使用bluebird
+
+
+**2017/1/13更新, 添加说明bluebird.join无法使用**
 
 ## 探究过程
 **不想看探究过程的, 结论在最后.**  
@@ -28,6 +31,8 @@ const Promise = require('../node_modules/bluebird/js/release/bluebird.js');
 `node_modules/bluebird/js/release` 存在 browser 和 release 2 个文件夹, 由于微信小程序并不运行在浏览器中, 故不能引入browser; 将 release 文件夹拷贝至 utils 文件夹后引入. 在微信开发者工具中虽然报了 8个 `can not create Function`,但是依然可以使用.
  
  ![](/img/mina/mina2.png)
+ 
+ **2017/1/13更新, 8个warn已经转换为error, 原因为 Promise.join需要使用 `new Function`, 但是小程序Function 表现不一致导致, 最终决定去除 `bluebird/js/release/join.js`, 即 `bluebird.jooin`不工作**
  
 - 真机环境测试   
  在真机环境中使用时(我Android4.4), 却出现了 `cannot create property 'createElement' of undefined`

@@ -3,7 +3,7 @@ title: 微信小程序中使用lodash
 date: 2016-11-30 13:48:34
 description: 微信小程序引入lodash出错解决方案
 tags: 
-- 微信
+- wechat
 - 小程序
 - MINA
 ---
