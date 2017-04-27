@@ -1,6 +1,6 @@
 layout: post
 title: "[转]Mac OS X EI Capitan 下安装及配置伪分布式 Hadoop 环境"
-date: 2017-04-27 15:40:39
+date: 2017-04-26 12:30:23
 description: 转载并进行适当修改
 tags:
   - Hadoop
