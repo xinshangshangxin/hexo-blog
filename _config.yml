@@ -82,8 +82,6 @@ pagination_dir: page
 ## Themes: http://hexo.io/themes/
 theme: jacman
 
-include:
-  - .gitlab-ci.yml
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
