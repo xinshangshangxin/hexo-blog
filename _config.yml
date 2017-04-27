@@ -86,7 +86,8 @@ theme: jacman
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: 
+  repo:
+    gitlba: git@gitlab.com:demoshang/blog.git,pages
     github: git@github.com:xinshangshangxin/hexo-blog.git,gh-pages
     github-https: git@github.com:xinshangshangxin/xinshangshangxin.github.io.git,master
     coding: git@git.coding.net:xinshangshangxin/blog.git,master
