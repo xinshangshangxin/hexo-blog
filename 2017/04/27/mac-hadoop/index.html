@@ -17,7 +17,7 @@
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2017/04/27/mac-hadoop/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="转载并进行适当修改">
-<meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
+<meta property="og:updated_time" content="2017-04-27T08:29:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[转]Mac OS X EI Capitan 下安装及配置伪分布式 Hadoop 环境">
 <meta name="twitter:description" content="转载并进行适当修改">
@@ -127,67 +127,37 @@
 <h4 id="配置-hadoop-env-sh"><a href="#配置-hadoop-env-sh" class="headerlink" title="配置 hadoop-env.sh"></a>配置 <code>hadoop-env.sh</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">open /usr/<span class="built_in">local</span>/Cellar/hadoop/2.7.3/libexec/etc/hadoop/hadoop-env.sh</div></pre></td></tr></table></figure>
 <p>将  </p>
 <blockquote>
-<p><code>plain
- export HADOOP_OPTS=&quot;$HADOOP_OPTS -Djava.net.preferIPv4Stack=true&quot;</code>js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export HADOOP_OPTS=&quot;$HADOOP_OPTS -Djava.net.preferIPv4Stack=true&quot;</div></pre></td></tr></table></figure>
 </blockquote>
-<p>修改为<br><code>plain
-export HADOOP_OPTS=&quot;$HADOOP_OPTS -Djava.net.preferIPv4Stack=true -Djava.security.krb5.realm= -Djava.security.krb5.kdc=&quot;</code>js</p>
-<h4 id="配置-yarn-env-sh"><a href="#配置-yarn-env-sh" class="headerlink" title="配置 yarn-env.sh"></a>配置 <code>yarn-env.sh</code></h4><p><code>bash
-oopen /usr/local/Cellar/hadoop/2.7.3/libexec/etc/hadoop/yarn-env.sh</code>js</p>
-<p>添加<br><code>plain
-YARN_OPTS=&quot;$YARN_OPTS -Djava.security.krb5.realm=OX.AC.UK -Djava.security.krb5.kdc=kdc0.ox.ac.uk:kdc1.ox.ac.uk&quot;</code>js</p>
-<h4 id="配置-core-site-xml"><a href="#配置-core-site-xml" class="headerlink" title="配置 core-site.xml"></a>配置 <code>core-site.xml</code></h4><p><code>plain
-open /usr/local/Cellar/hadoop/2.7.3/libexec/etc/hadoop/core-site.xml</code>js</p>
-<p>修改为:<br>```xml<br>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;?xml-stylesheet type=”text/xsl” href=”configuration.xsl”?&gt;<br>&lt;!–<br>  Licensed under the Apache License, Version 2.0 (the “License”);<br>  you may not use this file except in compliance with the License.<br>  You may obtain a copy of the License at</p>
-<pre><code>http://www.apache.org/licenses/LICENSE-2.0
-</code></pre><p>  Unless required by applicable law or agreed to in writing, software<br>  distributed under the License is distributed on an “AS IS” BASIS,<br>  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<br>  See the License for the specific language governing permissions and<br>  limitations under the License. See accompanying LICENSE file.<br>–&gt;</p>
-<!-- Put site-specific property overrides in this file. -->
-<p><configuration><br>  <property><br>    <name>fs.defaultFS</name><br>    <value>hdfs://localhost:9000</value><br>  </property><br></configuration><br>```js</p>
-<h4 id="配置-hdfs-core-xml"><a href="#配置-hdfs-core-xml" class="headerlink" title="配置 hdfs-core.xml"></a>配置 <code>hdfs-core.xml</code></h4><p><code>bash
-open /usr/local/Cellar/hadoop/2.7.3/libexec/etc/hadoop/hdfs-site.xml</code>js</p>
-<p>配置为:<br>```xml</p>
-<p><configuration><br>  <property><br>       <name>dfs.replication</name><br>       <value>1</value><br>  </property><br></configuration><br>```js</p>
-<h4 id="配置-mapred-site-xml"><a href="#配置-mapred-site-xml" class="headerlink" title="配置 mapred-site.xml"></a>配置 <code>mapred-site.xml</code></h4><p><code>bash
-cp /usr/local/Cellar/hadoop/2.7.3/libexec/etc/hadoop/mapred-site.xml.template /usr/local/Cellar/hadoop/2.7.3/libexec/etc/hadoop/mapred-site.xml
-open /usr/local/Cellar/hadoop/2.7.3/libexec/etc/hadoop/mapred-site.xml</code>js</p>
-<p>配置为:<br>```xml</p>
-<p><configuration><br>  <property><br>    <name>mapreduce.framework.name</name><br>    <value>yarn</value><br>  </property><br>  <property><br>    <name>mapred.child.java.opts</name><br>    <value>-Xmx4096m</value><br>  </property><br></configuration><br>```js</p>
-<h4 id="配置-yarn-site-xml"><a href="#配置-yarn-site-xml" class="headerlink" title="配置 yarn-site.xml"></a>配置 <code>yarn-site.xml</code></h4><p><code>bash
-open /usr/local/Cellar/hadoop/2.7.3/libexec/etc/hadoop/yarn-site.xml</code>js</p>
-<p>配置为:<br>```xml</p>
-<configuration>
-
-<!-- Site specific YARN configuration properties -->
-<p> <property><br>     <name>yarn.nodemanager.aux-services</name><br>     <value>mapreduce_shuffle</value><br> </property><br></p></configuration><br>```js<p></p>
-<h3 id="格式化-HDFS"><a href="#格式化-HDFS" class="headerlink" title="格式化 HDFS"></a>格式化 <code>HDFS</code></h3><p><code>bash
-rm -rf /tmp/hadoop-tanjiti
-hadoop namenode -format</code>js</p>
+<p>修改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export HADOOP_OPTS=&quot;$HADOOP_OPTS -Djava.net.preferIPv4Stack=true -Djava.security.krb5.realm= -Djava.security.krb5.kdc=&quot;</div></pre></td></tr></table></figure></p>
+<h4 id="配置-yarn-env-sh"><a href="#配置-yarn-env-sh" class="headerlink" title="配置 yarn-env.sh"></a>配置 <code>yarn-env.sh</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">oopen /usr/<span class="built_in">local</span>/Cellar/hadoop/2.7.3/libexec/etc/hadoop/yarn-env.sh</div></pre></td></tr></table></figure>
+<p>添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">YARN_OPTS=&quot;$YARN_OPTS -Djava.security.krb5.realm=OX.AC.UK -Djava.security.krb5.kdc=kdc0.ox.ac.uk:kdc1.ox.ac.uk&quot;</div></pre></td></tr></table></figure></p>
+<h4 id="配置-core-site-xml"><a href="#配置-core-site-xml" class="headerlink" title="配置 core-site.xml"></a>配置 <code>core-site.xml</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">open /usr/local/Cellar/hadoop/2.7.3/libexec/etc/hadoop/core-site.xml</div></pre></td></tr></table></figure>
+<p>修改为:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line">&lt;?xml-stylesheet type="text/xsl" href="configuration.xsl"?&gt;</div><div class="line"><span class="comment">&lt;!--</span></div><div class="line">  Licensed under the Apache License, Version 2.0 (the "License");</div><div class="line">  you may not use this file except in compliance with the License.</div><div class="line">  You may obtain a copy of the License at</div><div class="line"></div><div class="line">    http://www.apache.org/licenses/LICENSE-2.0</div><div class="line"></div><div class="line">  Unless required by applicable law or agreed to in writing, software</div><div class="line">  distributed under the License is distributed on an "AS IS" BASIS,</div><div class="line">  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</div><div class="line">  See the License for the specific language governing permissions and</div><div class="line">  limitations under the License. See accompanying LICENSE file.</div><div class="line">--&gt;</div><div class="line"></div><div class="line"><span class="comment">&lt;!-- Put site-specific property overrides in this file. --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">property</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span>             </div><div class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://localhost:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span>          </div><div class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="配置-hdfs-core-xml"><a href="#配置-hdfs-core-xml" class="headerlink" title="配置 hdfs-core.xml"></a>配置 <code>hdfs-core.xml</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">open /usr/<span class="built_in">local</span>/Cellar/hadoop/2.7.3/libexec/etc/hadoop/hdfs-site.xml</div></pre></td></tr></table></figure>
+<p>配置为:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="配置-mapred-site-xml"><a href="#配置-mapred-site-xml" class="headerlink" title="配置 mapred-site.xml"></a>配置 <code>mapred-site.xml</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cp /usr/<span class="built_in">local</span>/Cellar/hadoop/2.7.3/libexec/etc/hadoop/mapred-site.xml.template /usr/<span class="built_in">local</span>/Cellar/hadoop/2.7.3/libexec/etc/hadoop/mapred-site.xml</div><div class="line">open /usr/<span class="built_in">local</span>/Cellar/hadoop/2.7.3/libexec/etc/hadoop/mapred-site.xml</div></pre></td></tr></table></figure>
+<p>配置为:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.framework.name<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>yarn<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapred.child.java.opts<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>-Xmx4096m<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="配置-yarn-site-xml"><a href="#配置-yarn-site-xml" class="headerlink" title="配置 yarn-site.xml"></a>配置 <code>yarn-site.xml</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">open /usr/<span class="built_in">local</span>/Cellar/hadoop/2.7.3/libexec/etc/hadoop/yarn-site.xml</div></pre></td></tr></table></figure>
+<p>配置为:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- Site specific YARN configuration properties --&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.nodemanager.aux-services<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">value</span>&gt;</span>mapreduce_shuffle<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="格式化-HDFS"><a href="#格式化-HDFS" class="headerlink" title="格式化 HDFS"></a>格式化 <code>HDFS</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rm -rf /tmp/hadoop-tanjiti</div><div class="line">hadoop namenode -format</div></pre></td></tr></table></figure>
 <h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><ul>
-<li><p>启动 <code>HDFS</code><br><code>bash
-/usr/local/Cellar/hadoop/2.7.3/sbin/start-dfs.sh</code>js</p>
+<li><p>启动 <code>HDFS</code>   </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/<span class="built_in">local</span>/Cellar/hadoop/2.7.3/sbin/start-dfs.sh</div></pre></td></tr></table></figure>
 </li>
-<li><p>启动 MapReduce<br><code>bash
-/usr/local/Cellar/hadoop/2.7.3/sbin/start-yarn.sh</code>js</p>
+<li><p>启动 MapReduce</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/<span class="built_in">local</span>/Cellar/hadoop/2.7.3/sbin/start-yarn.sh</div></pre></td></tr></table></figure>
 </li>
-<li><p>检查启动情况<br><code>bash
-jps</code>js</p>
+<li><p>检查启动情况    </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jps</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
-<p>结果<br><code>plain
-1536
-6594 NameNode
-6818 SecondaryNameNode
-65478 Jps
-6694 DataNode
-6950 ResourceManager
-7051 NodeManager
-1982 Launcher
-15903 GradleDaemon</code>js</p>
+<p>结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">1536</div><div class="line">6594 NameNode</div><div class="line">6818 SecondaryNameNode</div><div class="line">65478 Jps</div><div class="line">6694 DataNode</div><div class="line">6950 ResourceManager</div><div class="line">7051 NodeManager</div><div class="line">1982 Launcher</div><div class="line">15903 GradleDaemon</div></pre></td></tr></table></figure></p>
 </blockquote>
 <ul>
-<li>运行 MapReduce 自带实例<br><code>bash
-hadoop jar /usr/local/Cellar/hadoop/2.7.3/libexec/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar pi 2 5</code>js</li>
+<li>运行 MapReduce 自带实例  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hadoop jar /usr/<span class="built_in">local</span>/Cellar/hadoop/2.7.3/libexec/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar pi 2 5</div></pre></td></tr></table></figure>
+</li>
 </ul>
 <h3 id="可视化查看"><a href="#可视化查看" class="headerlink" title="可视化查看"></a>可视化查看</h3><ul>
 <li>Cluster Status <a href="http://localhost:8088" target="_blank" rel="external">http://localhost:8088</a></li>
@@ -309,11 +279,11 @@ hadoop jar /usr/local/Cellar/hadoop/2.7.3/libexec/share/hadoop/mapreduce/hadoop-
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/ECS/" title="ECS">ECS<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/ECS/" title="ECS">ECS<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -321,15 +291,19 @@ hadoop jar /usr/local/Cellar/hadoop/2.7.3/libexec/share/hadoop/mapreduce/hadoop-
 			
 		
 			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/git/" title="git">git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MINA/" title="MINA">MINA<sup>2</sup></a></li>
 			
 		
 			
@@ -341,15 +315,11 @@ hadoop jar /usr/local/Cellar/hadoop/2.7.3/libexec/share/hadoop/mapreduce/hadoop-
 			
 		
 			
-				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/MINA/" title="MINA">MINA<sup>2</sup></a></li>
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
 			
 		
 		</ul>
