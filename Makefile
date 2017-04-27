@@ -13,6 +13,7 @@ mini:
 	hexo d
 push: 
 	hexo g
+	cp source/.gitlab-ci.yml public/.gitlab-ci.yml
 	hexo d
 back:
 	git add -A

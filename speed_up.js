@@ -53,7 +53,7 @@ function changeContext(filename) {
     var hasChange = false;
     var arr = [];
     eachLine(filename, function(line) {
-        if (/^```.*/.test(line)) {
+        if (/^[>\s]*```.*/.test(line)) {
             index++;
             if (/^```\s*$/.test(line)) {
                 if (index % 2 === 1) {

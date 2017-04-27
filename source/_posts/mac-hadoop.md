@@ -49,27 +49,27 @@ open /usr/local/Cellar/hadoop/2.7.3/libexec/etc/hadoop/hadoop-env.sh
 将  
 > ```plain
  export HADOOP_OPTS="$HADOOP_OPTS -Djava.net.preferIPv4Stack=true"
-```js
+```
 
 修改为  
 ```plain
 export HADOOP_OPTS="$HADOOP_OPTS -Djava.net.preferIPv4Stack=true -Djava.security.krb5.realm= -Djava.security.krb5.kdc="
-```js
+```
 
 #### 配置 `yarn-env.sh`  
 ```bash
 oopen /usr/local/Cellar/hadoop/2.7.3/libexec/etc/hadoop/yarn-env.sh
-```js
+```
 
 添加  
 ```plain
 YARN_OPTS="$YARN_OPTS -Djava.security.krb5.realm=OX.AC.UK -Djava.security.krb5.kdc=kdc0.ox.ac.uk:kdc1.ox.ac.uk"
-```js
+```
 
 #### 配置 `core-site.xml`  
 ```plain
 open /usr/local/Cellar/hadoop/2.7.3/libexec/etc/hadoop/core-site.xml
-```js
+```
 
 修改为:
 ```xml
@@ -96,13 +96,13 @@ open /usr/local/Cellar/hadoop/2.7.3/libexec/etc/hadoop/core-site.xml
     <value>hdfs://localhost:9000</value>          
   </property>
 </configuration>
-```js
+```
 
 #### 配置 `hdfs-core.xml`  
 
 ```bash
 open /usr/local/Cellar/hadoop/2.7.3/libexec/etc/hadoop/hdfs-site.xml
-```js
+```
 
 配置为:  
 ```xml
@@ -112,14 +112,14 @@ open /usr/local/Cellar/hadoop/2.7.3/libexec/etc/hadoop/hdfs-site.xml
        <value>1</value>
   </property>
 </configuration>
-```js
+```
 
 #### 配置 `mapred-site.xml`  
 
 ```bash
 cp /usr/local/Cellar/hadoop/2.7.3/libexec/etc/hadoop/mapred-site.xml.template /usr/local/Cellar/hadoop/2.7.3/libexec/etc/hadoop/mapred-site.xml
 open /usr/local/Cellar/hadoop/2.7.3/libexec/etc/hadoop/mapred-site.xml
-```js
+```
 
 配置为:  
 ```xml
@@ -133,13 +133,13 @@ open /usr/local/Cellar/hadoop/2.7.3/libexec/etc/hadoop/mapred-site.xml
     <value>-Xmx4096m</value>
   </property>
 </configuration>
-```js
+```
 
 #### 配置 `yarn-site.xml`
 
 ```bash
 open /usr/local/Cellar/hadoop/2.7.3/libexec/etc/hadoop/yarn-site.xml
-```js
+```
 
 配置为:
 ```xml
@@ -151,30 +151,30 @@ open /usr/local/Cellar/hadoop/2.7.3/libexec/etc/hadoop/yarn-site.xml
      <value>mapreduce_shuffle</value>
  </property>
 </configuration>
-```js
+```
 
 ### 格式化 `HDFS`
 ```bash
 rm -rf /tmp/hadoop-tanjiti
 hadoop namenode -format
-```js
+```
 
 ### 启动  
 
 - 启动 `HDFS`   
 ```bash
 /usr/local/Cellar/hadoop/2.7.3/sbin/start-dfs.sh
-```js
+```
 
 - 启动 MapReduce
 ```bash
 /usr/local/Cellar/hadoop/2.7.3/sbin/start-yarn.sh
-```js
+```
 
 - 检查启动情况    
 ```bash
 jps
-```js
+```
 
 > 结果  
 ```plain
@@ -187,12 +187,12 @@ jps
 7051 NodeManager
 1982 Launcher
 15903 GradleDaemon
-```js
+```
 
 - 运行 MapReduce 自带实例  
 ```bash
 hadoop jar /usr/local/Cellar/hadoop/2.7.3/libexec/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar pi 2 5
-```js
+```
 
 ### 可视化查看
 
