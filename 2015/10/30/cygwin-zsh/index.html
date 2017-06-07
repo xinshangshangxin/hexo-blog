@@ -12,6 +12,7 @@
 
     
     <meta name="description" content="cygwin下zsh安装">
+<meta name="keywords" content="ConEmu,cygwin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cygwin下zsh安装">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2015/10/30/cygwin-zsh/index.html">
@@ -105,7 +106,7 @@
 		</div>
 		
 		<p>相关文章<br><a href="http://blog.xinshangshangxin.com/2015/02/22/ConEmu%E8%AE%BE%E7%BD%AE%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E6%89%93%E5%BC%80/">ConEmu设置当前目录打开右键菜单</a><br><a href="http://blog.xinshangshangxin.com/2015/05/10/cygwin%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/">cygwin配置记录</a></p>
-<h2 id="安装-apt-cyg-类似linux的-apt-get"><a href="#安装-apt-cyg-类似linux的-apt-get" class="headerlink" title="安装 apt-cyg(类似linux的 apt-get)"></a>安装 <a href="https://github.com/transcode-open/apt-cyg" target="_blank" rel="external"><code>apt-cyg</code></a>(类似linux的 <code>apt-get</code>)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">lynx -source rawgit.com/transcode-open/apt-cyg/master/apt-cyg &gt; apt-cyg</div><div class="line">install apt-cyg /bin</div></pre></td></tr></table></figure>
+<h2 id="安装-apt-cyg-类似linux的-apt-get"><a href="#安装-apt-cyg-类似linux的-apt-get" class="headerlink" title="安装 apt-cyg(类似linux的 apt-get)"></a>安装 <a href="https://github.com/transcode-open/apt-cyg" target="_blank" rel="external"><code>apt-cyg</code></a>(类似linux的 <code>apt-get</code>)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">lynx -<span class="built_in">source</span> rawgit.com/transcode-open/apt-cyg/master/apt-cyg &gt; apt-cyg</div><div class="line">install apt-cyg /bin</div></pre></td></tr></table></figure>
 <h2 id="安装zsh"><a href="#安装zsh" class="headerlink" title="安装zsh"></a>安装zsh</h2><blockquote>
 <p>mac/linux 有 <a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="external">oh-my-zsh</a>, 在cygwin有<a href="https://github.com/haithembelhaj/oh-my-cygwin" target="_blank" rel="external">oh-my-cygwin</a>;安装<code>oh-my-cygwin</code>命令:</p>
 </blockquote>
@@ -113,7 +114,7 @@
 <blockquote>
 <p>安装过程中出现 <code>apt-cyg</code> 安装失败(可能是脚本里面地址写错了);但是上面已经安装过了 <code>apt-cyg</code>, 故注释安装 <code>apt-cyg</code>的代码,修改脚本,文件名为 <code>oh-my-cygwin.sh</code>, 内容为:</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="built_in">set</span> <span class="_">-e</span></div><div class="line"></div><div class="line"><span class="comment"># cd home</span></div><div class="line"><span class="built_in">cd</span> ~</div><div class="line"></div><div class="line">SIMPLE_BACKUP_SUFFIX=<span class="string">".orig"</span></div><div class="line">APT_CYG=<span class="string">"<span class="variable">$(mktemp /tmp/apt-cyg.XXXXXXXX)</span>"</span></div><div class="line"></div><div class="line"><span class="comment"># # install apt-cyg</span></div><div class="line"><span class="comment"># wget --no-check-certificate "https://github.com/john-peterson/apt-cyg/raw/path/apt-cyg" -O "$&#123;APT_CYG&#125;"</span></div><div class="line"><span class="comment"># chmod +x "$&#123;APT_CYG&#125;"</span></div><div class="line"></div><div class="line"><span class="comment"># install some stuff like vim and git</span></div><div class="line">apt-cyg install zsh mintty vim curl git openssh</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># install OH MY ZSH</span></div><div class="line">git <span class="built_in">clone</span> https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</div><div class="line"></div><div class="line"><span class="comment"># Create initial /etc/zshenv</span></div><div class="line">[[ ! <span class="_">-e</span> /etc/zshenv ]] &amp;&amp; <span class="built_in">echo</span> <span class="built_in">export</span> PATH=/usr/bin:\<span class="variable">$PATH</span> &gt; /etc/zshenv</div><div class="line"></div><div class="line">install --backup ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</div><div class="line"></div><div class="line"><span class="comment">#setting up vim</span></div><div class="line">VIMRC_EXAMPLE=`find /usr/share/vim -type f -name vimrc_example.vim | head -n 1`</div><div class="line"><span class="keyword">if</span> [ ! <span class="_">-f</span> ~/.vimrc ] &amp;&amp; [ -n <span class="string">"<span class="variable">$&#123;VIMRC_EXAMPLE&#125;</span>"</span> ]</div><div class="line"><span class="keyword">then</span></div><div class="line">  install <span class="string">"<span class="variable">$&#123;VIMRC_EXAMPLE&#125;</span>"</span> ~/.vimrc</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="comment"># install apt-cyg</span></div><div class="line">install --backup <span class="string">"<span class="variable">$&#123;APT_CYG&#125;</span>"</span> /bin/apt-cyg</div><div class="line"></div><div class="line"><span class="comment"># setting up zsh as default</span></div><div class="line">sed -i <span class="string">"s/<span class="variable">$USER</span>\:\/bin\/bash/<span class="variable">$USER</span>\:\/bin\/zsh/g"</span> /etc/passwd</div><div class="line"></div><div class="line"><span class="comment"># et voila just start it</span></div><div class="line">/usr/bin/env zsh</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="built_in">set</span> -e</div><div class="line"></div><div class="line"><span class="comment"># cd home</span></div><div class="line"><span class="built_in">cd</span> ~</div><div class="line"></div><div class="line">SIMPLE_BACKUP_SUFFIX=<span class="string">".orig"</span></div><div class="line">APT_CYG=<span class="string">"<span class="variable">$(mktemp /tmp/apt-cyg.XXXXXXXX)</span>"</span></div><div class="line"></div><div class="line"><span class="comment"># # install apt-cyg</span></div><div class="line"><span class="comment"># wget --no-check-certificate "https://github.com/john-peterson/apt-cyg/raw/path/apt-cyg" -O "$&#123;APT_CYG&#125;"</span></div><div class="line"><span class="comment"># chmod +x "$&#123;APT_CYG&#125;"</span></div><div class="line"></div><div class="line"><span class="comment"># install some stuff like vim and git</span></div><div class="line">apt-cyg install zsh mintty vim curl git openssh</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># install OH MY ZSH</span></div><div class="line">git <span class="built_in">clone</span> https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</div><div class="line"></div><div class="line"><span class="comment"># Create initial /etc/zshenv</span></div><div class="line">[[ ! -e /etc/zshenv ]] &amp;&amp; <span class="built_in">echo</span> <span class="built_in">export</span> PATH=/usr/bin:\<span class="variable">$PATH</span> &gt; /etc/zshenv</div><div class="line"></div><div class="line">install --backup ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</div><div class="line"></div><div class="line"><span class="comment">#setting up vim</span></div><div class="line">VIMRC_EXAMPLE=`find /usr/share/vim -<span class="built_in">type</span> f -name vimrc_example.vim | head -n 1`</div><div class="line"><span class="keyword">if</span> [ ! -f ~/.vimrc ] &amp;&amp; [ -n <span class="string">"<span class="variable">$&#123;VIMRC_EXAMPLE&#125;</span>"</span> ]</div><div class="line"><span class="keyword">then</span></div><div class="line">  install <span class="string">"<span class="variable">$&#123;VIMRC_EXAMPLE&#125;</span>"</span> ~/.vimrc</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="comment"># install apt-cyg</span></div><div class="line">install --backup <span class="string">"<span class="variable">$&#123;APT_CYG&#125;</span>"</span> /bin/apt-cyg</div><div class="line"></div><div class="line"><span class="comment"># setting up zsh as default</span></div><div class="line">sed -i <span class="string">"s/<span class="variable">$USER</span>\:\/bin\/bash/<span class="variable">$USER</span>\:\/bin\/zsh/g"</span> /etc/passwd</div><div class="line"></div><div class="line"><span class="comment"># et voila just start it</span></div><div class="line">/usr/bin/env zsh</div></pre></td></tr></table></figure>
 <blockquote>
 <p>然后执行 <code>./oh-my-cygwin.sh</code>后成功安装</p>
 </blockquote>
@@ -245,11 +246,11 @@
 			
 		
 			
-				<li><a href="/tags/ConEmu/" title="ConEmu">ConEmu<sup>3</sup></a></li>
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+				<li><a href="/tags/ConEmu/" title="ConEmu">ConEmu<sup>3</sup></a></li>
 			
 		
 			
@@ -257,11 +258,11 @@
 			
 		
 			
-				<li><a href="/tags/git/" title="git">git<sup>2</sup></a></li>
+				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/git/" title="git">git<sup>2</sup></a></li>
 			
 		
 			
@@ -269,15 +270,15 @@
 			
 		
 			
-				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/MINA/" title="MINA">MINA<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
 			
 		
 		</ul>
