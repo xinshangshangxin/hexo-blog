@@ -1,1 +1,591 @@
-<!DOCTYPE HTML><html lang="zh-CN"><head><meta charset="UTF-8"><title>iTerm2 | SHANG Blog</title><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><meta name="author" content="xinshangshangxin"><meta name="description" content="iTerm2折腾笔记"><meta name="keywords" content="iTerm2"><meta property="og:type" content="article"><meta property="og:title" content="iTerm2"><meta property="og:url" content="http://blog.xinshangshangxin.com/2015/09/13/iTerm2/index.html"><meta property="og:site_name" content="SHANG Blog"><meta property="og:description" content="iTerm2折腾笔记"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="http://blog.xinshangshangxin.com/img/iterm2/3.png"><meta property="og:image" content="http://blog.xinshangshangxin.com/img/iterm2/1.png"><meta property="og:image" content="http://blog.xinshangshangxin.com/img/iterm2/2.png"><meta property="og:image" content="http://blog.xinshangshangxin.com/img/iterm2/4.png"><meta property="og:image" content="http://blog.xinshangshangxin.com/img/iterm2/7.png"><meta property="og:image" content="http://blog.xinshangshangxin.com/img/iterm2/8.png"><meta property="og:updated_time" content="2017-04-27T08:24:53.000Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="iTerm2"><meta name="twitter:description" content="iTerm2折腾笔记"><meta name="twitter:image" content="http://blog.xinshangshangxin.com/img/iterm2/3.png"><link rel="alternative" href="atom.xml" title="SHANG Blog" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="apple-touch-icon" href="/img/pacman.jpg"><link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg"><link rel="stylesheet" href="/css/style.css"></head><body><header><div><div id="imglogo"> <a href="/"><img src="/img/logo.png" alt="SHANG Blog" title="SHANG Blog"></a></div><div id="textlogo"><h1 class="site-name"><a href="/" title="SHANG Blog">SHANG Blog</a></h1><h2 class="blog-motto"></h2></div><div class="navbar"><a class="navbutton navmobile" href="#" title="菜单"></a></div><nav class="animated"><ul><ul><li><a href="/">首页</a></li><li><a href="/archives/">文章</a></li><li><a href="/about/">关于</a></li><li><form class="search" action="//google.com/search" method="get" accept-charset="utf-8"> <label>Search</label> <input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索"> <input type="hidden" name="q" value="site:blog.xinshangshangxin.com"></form></li></ul></ul></nav></div></header><div id="container"><div id="main" class="post" itemscope itemprop="blogPost"><article itemprop="articleBody"><header class="article-info clearfix"><h1 itemprop="name"> <a href="/2015/09/13/iTerm2/" title="iTerm2" itemprop="url">iTerm2</a></h1><p class="article-author">By <a href="/about" title="xinshangshangxin" target="_blank" itemprop="author">xinshangshangxin</a></p><p class="article-time"> <time datetime="2015-09-13T13:49:26.000Z" itemprop="datePublished">发表于 2015年09月13日</time></p></header><div class="article-content"><div id="toc" class="toc-article"> <strong class="toc-title">文章目录</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载"><span class="toc-number">1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些配置"><span class="toc-number">2.</span> <span class="toc-text">一些配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快捷键"><span class="toc-number">3.</span> <span class="toc-text">快捷键</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#标签页操作"><span class="toc-number">3.1.</span> <span class="toc-text">标签页操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#面板操作"><span class="toc-number">3.2.</span> <span class="toc-text">面板操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搜索查找"><span class="toc-number">3.3.</span> <span class="toc-text">搜索查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他功能"><span class="toc-number">3.4.</span> <span class="toc-text">其他功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文本选取"><span class="toc-number">4.</span> <span class="toc-text">文本选取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#标签变色"><span class="toc-number">5.</span> <span class="toc-text">标签变色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配色"><span class="toc-number">6.</span> <span class="toc-text">配色</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文档"><span class="toc-number"></span> <span class="toc-text">参考文档</span></a></li></div><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="https://www.iterm2.com/" target="_blank" rel="noopener">https://www.iterm2.com/</a></p><h2 id="一些配置"><a href="#一些配置" class="headerlink" title="一些配置"></a>一些配置</h2><ul><li>保存ssh远程登录指令(1)</li><li>打开新窗口自动定位到使用tab键所在的目录(2)</li></ul><p><img src="/img/iterm2/3.png" alt="shang"></p><ul><li>每次新打开终端都会固定出现在屏幕的顶端且不会有窗口边框</li></ul><p><img src="/img/iterm2/1.png" alt="shang"></p><ul><li>背景透明度</li></ul><p><img src="/img/iterm2/2.png" alt="shang"></p><ul><li>使用 <code>option</code> + ‘-&gt;’ 在单词间跳转</li></ul><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 设置左 <span class="string">`option`</span></span><br><span class="line"><span class="number">2.</span> Keyboard Shortcut: ⌥←</span><br><span class="line">	Action: Send Escape Sequence</span><br><span class="line">	Esc+: b</span><br><span class="line"><span class="number">3.</span> Keyboard Shortcut: ⌥→</span><br><span class="line">	Action: Send Escape Sequence</span><br><span class="line">	Esc+: f</span><br></pre></td></tr></table></figure><p><img src="/img/iterm2/4.png" alt="shang"></p><ul><li>全局快捷键<br><img src="/img/iterm2/7.png" alt="shang"></li></ul><h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><h3 id="标签页操作"><a href="#标签页操作" class="headerlink" title="标签页操作"></a>标签页操作</h3><ul><li>新建标签页: <code>Command + T</code></li><li>关闭标签页: <code>Command + W</code></li><li>窗口切换: <code>Command + 方向键 或 Command + 窗口编号</code></li></ul><h3 id="面板操作"><a href="#面板操作" class="headerlink" title="面板操作"></a>面板操作</h3><ul><li>垂直分割: <code>Command + D</code></li><li>水平分割: <code>Shift + Command + D</code></li><li>前一个面板: <code>Command + [</code></li><li>后一个面板: <code>Command + ]</code></li><li>切换到上/下/左/右面板: <code>Option + Command + 上下左右方向键</code></li></ul><h3 id="搜索查找"><a href="#搜索查找" class="headerlink" title="搜索查找"></a>搜索查找</h3><ul><li><p><code>⌘ + f</code>查找。支持正则。<br>其中查找的内容会被自动复制(鼠标去选中的内容也会自动复制,也可以鼠标中键直接粘贴)<br>键入搜索关键词，然后用<code>shift+tab</code>或者<code>tab</code>左右自动补全<br><code>option + enter</code> 则自动将搜索结果键入,并且复制到剪贴板</p></li><li><p><code>⌘ + opt + e</code> Expose标签</p></li></ul><p><img src="/img/iterm2/8.png" alt="shang"></p><ul><li><p><code>Command + /</code>: 查看当前终端中光标的位置</p></li><li><p><code>`⌘ + opt + b</code> :快照回放, 对你的操作根据时间轴进行回放. 可以拖动下方的时间轴，也可以按左右方向键</p></li><li><p><code>Command + shift + H</code> iterm2将自动列出剪切板的历史记录</p></li></ul><h3 id="其他功能"><a href="#其他功能" class="headerlink" title="其他功能"></a>其他功能</h3><ul><li>进入和退出全屏: <code>Command + Enter</code></li><li>开启和关闭背景半透明: <code>Command + U</code></li><li>清屏（其实是滚到新的一屏，并没有清空）: <code>Command + R</code></li><li>清屏: <code>Ctrl+L</code></li><li>清空当前行，无论光标在什么位置: <code>ctrl + U</code></li><li>到行首: <code>ctrl + A 或 fn + 左方向键</code></li><li>到行末: <code>ctrl + E 或 fn + 右方向键</code></li><li>搜索命令历史: <code>ctrl + R</code></li><li>调整字体大小: <code>⌘ + —/+/0</code></li><li>命令自动补全: <code>Command + ;</code>（很少用这个)</li></ul><h2 id="文本选取"><a href="#文本选取" class="headerlink" title="文本选取"></a>文本选取</h2><ul><li>常见的点击并拖拽方式</li><li>双击选取整个单词</li><li>三击选取整行</li><li>选取某一部分，按住Shift，再点击某处，可以选取整个矩形内的文本（类似Windows下按住Shift可以批量选取图标）</li><li>按住Command + Option，可以用鼠标画出一个矩形，用类似截图的方式选取文本 另外，还可以使用鼠标完成以下操作：</li><li>按住Command然后点击某个URL，会在浏览器中打开这个URL，</li><li>点击某个文件夹，会在Finder里打开这个文件夹</li><li>点击某个文件名，会打开这个文件（文本文件支持MacVim，TextMate和BBEdit，如果后面跟随一个冒号和行号，文件会在行号处打开，其它格式的文件似乎不能调用默认程序打开）</li></ul><h2 id="标签变色"><a href="#标签变色" class="headerlink" title="标签变色"></a>标签变色</h2><blockquote><p>iTerm2 的标签的颜色会变化,以指示该 tab 当前的状态.当该标签有新输出的时候,<br>标签会变成洋红色;新的输出长时间没有查看,标签会变成红色.可在设置中关掉该功能</p></blockquote><h2 id="配色"><a href="#配色" class="headerlink" title="配色"></a>配色</h2><p>自行研究 <a href="http://iterm2colorschemes.com/" target="_blank" rel="noopener">http://iterm2colorschemes.com/</a></p><h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul><li><a href="https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x" target="_blank" rel="noopener">https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x</a></li><li><a href="http://pengjunjie.com/articles/mac-soft-iterm2/" target="_blank" rel="noopener">http://pengjunjie.com/articles/mac-soft-iterm2/</a></li><li><a href="http://wulfric.me/2015/08/iterm2/" target="_blank" rel="noopener">http://wulfric.me/2015/08/iterm2/</a></li><li><a href="http://www.wangyuxiong.com/archives/52137" target="_blank" rel="noopener">http://www.wangyuxiong.com/archives/52137</a></li><li><a href="http://xingrz.me/2013/2013-06-19/terminal-zhuangbility.html" target="_blank" rel="noopener">http://xingrz.me/2013/2013-06-19/terminal-zhuangbility.html</a></li></ul><hr><hr><blockquote><p><strong>文章若有纰漏请大家补充指正,谢谢~~</strong></p><p><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG殇</p></blockquote></div><footer class="article-footer clearfix"><div class="article-catetags"><div class="article-tags"><span></span> <a href="/tags/iTerm2/">iTerm2</a></div></div><div class="article-share" id="share"><div data-url="http://blog.xinshangshangxin.com/2015/09/13/iTerm2/" data-title="iTerm2 | SHANG Blog" data-tsina="null" class="share clearfix"></div></div></footer></article><nav class="article-nav clearfix"><div class="prev"> <a href="/2015/09/19/node命令行和控制台参数获取/" title="node命令行和控制台参数获取"><strong>上一篇：</strong><br> <span>node命令行和控制台参数获取</span></a></div><div class="next"> <a href="/2015/08/30/转-AngularJS中的Provider们：Service和Factory等的区别/" title="[转]AngularJS中的Provider们：Service和Factory等的区别"><strong>下一篇：</strong><br> <span>[转]AngularJS中的Provider们：Service和Factory等的区别</span></a></div></nav><section id="comments" class="comment"><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div></section></div><div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div><div id="toc" class="toc-aside"> <strong class="toc-title">文章目录</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载"><span class="toc-number">1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些配置"><span class="toc-number">2.</span> <span class="toc-text">一些配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快捷键"><span class="toc-number">3.</span> <span class="toc-text">快捷键</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#标签页操作"><span class="toc-number">3.1.</span> <span class="toc-text">标签页操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#面板操作"><span class="toc-number">3.2.</span> <span class="toc-text">面板操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搜索查找"><span class="toc-number">3.3.</span> <span class="toc-text">搜索查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他功能"><span class="toc-number">3.4.</span> <span class="toc-text">其他功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文本选取"><span class="toc-number">4.</span> <span class="toc-text">文本选取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#标签变色"><span class="toc-number">5.</span> <span class="toc-text">标签变色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配色"><span class="toc-number">6.</span> <span class="toc-text">配色</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文档"><span class="toc-number"></span> <span class="toc-text">参考文档</span></a></li></div><div id="asidepart"><div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div><aside class="clearfix"><div class="tagslist"><p class="asidetitle">标签</p><ul class="clearfix"><li><a href="/tags/js/" title="js">js<sup>36</sup></a></li><li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>13</sup></a></li><li><a href="/tags/node/" title="node">node<sup>12</sup></a></li><li><a href="/tags/AngularJS/" title="AngularJS">AngularJS<sup>9</sup></a></li><li><a href="/tags/docker/" title="docker">docker<sup>6</sup></a></li><li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li><li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li><li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li><li><a href="/tags/cygwin/" title="cygwin">cygwin<sup>4</sup></a></li><li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li><li><a href="/tags/ConEmu/" title="ConEmu">ConEmu<sup>3</sup></a></li><li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li><li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li><li><a href="/tags/ECS/" title="ECS">ECS<sup>3</sup></a></li><li><a href="/tags/git/" title="git">git<sup>2</sup></a></li><li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li><li><a href="/tags/youkuvod/" title="youkuvod">youkuvod<sup>2</sup></a></li><li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li><li><a href="/tags/MINA/" title="MINA">MINA<sup>2</sup></a></li><li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li></ul></div><div class="rsspart"> <a href="atom.xml" target="_blank" title="rss">RSS 订阅</a></div></aside></div></div><footer><div id="footer"><section class="info"><p> SHANG殇<br></p></section><div class="social-font" class="clearfix"><a href="https://github.com/xinshangshangxin" target="_blank" class="icon-github" title="github"></a><a href="mailto:xinshangshangxin@gmail.com" target="_blank" class="icon-email" title="Email Me"></a></div><p class="copyright"> Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 <a href="/about" target="_blank" title="xinshangshangxin">xinshangshangxin</a></p></div></footer><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.min.js"></script><script type="text/javascript">$(document).ready(function(){$(".navbar").click(function(){$("header nav").toggleClass("shownav")});var e=0;var s=$("#main"),n=$("#asidepart"),a=$(".closeaside"),o=$(".openaside");a.click(function(){n.addClass("fadeOut").css("display","none"),o.css("display","block").addClass("fadeIn"),s.addClass("moveMain")}),o.click(function(){o.css("display","none").removeClass("beforeFadeIn"),n.css("display","block").removeClass("fadeOut").addClass("fadeIn"),s.removeClass("moveMain")}),$(window).scroll(function(){o.css("top",Math.max(80,260-$(this).scrollTop()))}),$(window).resize(function(){"number"==typeof window.innerWidth?e=window.innerWidth:document.documentElement&&document.documentElement.clientWidth&&(e=document.documentElement.clientWidth),e>=1024?$("header nav").removeClass("shownav"):(s.removeClass("moveMain"),n.css("display","block").removeClass("fadeOut"),o.css("display","none"),$("#toc.toc-aside").css("display","none"))})})</script><script type="text/javascript">$(document).ready(function(){var c=$(".article-content>iframe"),n=$(".article-content>embed"),o=($("#toc"),$("#toc.toc-aside")),e=$(".openaside"),i=$(".closeaside");c.length>0&&c.wrap('<div class="video-container" />'),n.length>0&&n.wrap('<div class="video-container" />'),i.click(function(){o.css("display","block").addClass("fadeIn")}),e.click(function(){o.css("display","none")}),$(window).scroll(function(){o.css("top",Math.max(140,320-$(this).scrollTop()))})})</script><script type="text/javascript">$(document).ready(function(){var t=$(".share"),a=t.attr("data-url"),e=encodeURIComponent(a),r=t.attr("data-title"),c=t.attr("data-tsina"),s=(t.attr("description"),['<a href="#" class="overlay" id="qrcode"></a>','<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url='+e+'"/></div>','<a href="https://www.facebook.com/sharer.php?u='+e+'" class="article-share-facebook" target="_blank" title="Facebook"></a>','<a href="https://twitter.com/intent/tweet?url='+e+'" class="article-share-twitter" target="_blank" title="Twitter"></a>','<a href="#qrcode" class="article-share-qrcode" title="微信"></a>','<a href="http://widget.renren.com/dialog/share?resourceUrl='+e+"&srcUrl="+e+"&title="+r+'" class="article-share-renren" target="_blank" title="人人"></a>','<a href="http://service.weibo.com/share/share.php?title='+r+"&url="+e+"&ralateUid="+c+'&searchPic=true&style=number" class="article-share-weibo" target="_blank" title="微博"></a>','<span title="Share to"></span>'].join(""));t.append(s),$(".article-share-qrcode").click(function(){var t=$("#qrcode-pic").attr("data-src");$("#qrcode-pic").attr("src",t),$("#qrcode-pic").load(function(){$(".qrcode strong").text(" ")})})})</script><script type="text/javascript">var disqus_shortname="xinshangshangxin";!function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//"+disqus_shortname+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)}(),function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//"+disqus_shortname+".disqus.com/count.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)}()</script><link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css"><script src="/fancybox/jquery.fancybox.pack.js"></script><script type="text/javascript">$(document).ready(function(){$(".article-content").each(function(a){$(this).find("img").each(function(){if(!$(this).parent().hasClass("fancybox")){var a=this.alt;a&&$(this).after('<span class="caption">'+a+"</span>"),$(this).wrap('<a href="'+this.src+'" title="'+a+'" class="fancybox"></a>')}}),$(this).find(".fancybox").each(function(){$(this).attr("rel","article"+a)})}),$.fancybox&&$(".fancybox").fancybox()})</script><script type="text/javascript">var _bdhmProtocol="https:"==document.location.protocol?" https://":" http://";document.write(unescape("%3Cscript src='"+_bdhmProtocol+"hm.baidu.com/h.js%3Fa428636dbcab9ddea4df16331711f970' type='text/javascript'%3E%3C/script%3E"))</script></body></html>
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iTerm2 | SHANG Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="xinshangshangxin">
+    
+
+    
+    <meta name="description" content="iTerm2折腾笔记">
+<meta name="keywords" content="iTerm2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iTerm2">
+<meta property="og:url" content="http://blog.xinshangshangxin.com/2015/09/13/iTerm2/index.html">
+<meta property="og:site_name" content="SHANG Blog">
+<meta property="og:description" content="iTerm2折腾笔记">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/iterm2/3.png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/iterm2/1.png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/iterm2/2.png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/iterm2/4.png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/iterm2/7.png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/iterm2/8.png">
+<meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iTerm2">
+<meta name="twitter:description" content="iTerm2折腾笔记">
+<meta name="twitter:image" content="http://blog.xinshangshangxin.com/img/iterm2/3.png">
+
+    
+    <link rel="alternative" href="atom.xml" title="SHANG Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="SHANG Blog" title="SHANG Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="SHANG Blog">SHANG Blog</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives/">文章</a></li>
+					
+						<li><a href="/about/">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.xinshangshangxin.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/09/13/iTerm2/" title="iTerm2" itemprop="url">iTerm2</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xinshangshangxin" target="_blank" itemprop="author">xinshangshangxin</a>
+		
+  <p class="article-time">
+    <time datetime="2015-09-13T13:49:26.000Z" itemprop="datePublished"> 发表于 2015年09月13日</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载"><span class="toc-number">1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些配置"><span class="toc-number">2.</span> <span class="toc-text">一些配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快捷键"><span class="toc-number">3.</span> <span class="toc-text">快捷键</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#标签页操作"><span class="toc-number">3.1.</span> <span class="toc-text">标签页操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#面板操作"><span class="toc-number">3.2.</span> <span class="toc-text">面板操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搜索查找"><span class="toc-number">3.3.</span> <span class="toc-text">搜索查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他功能"><span class="toc-number">3.4.</span> <span class="toc-text">其他功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文本选取"><span class="toc-number">4.</span> <span class="toc-text">文本选取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#标签变色"><span class="toc-number">5.</span> <span class="toc-text">标签变色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配色"><span class="toc-number">6.</span> <span class="toc-text">配色</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文档"><span class="toc-number"></span> <span class="toc-text">参考文档</span></a>
+		
+		</div>
+		
+		<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="https://www.iterm2.com/" target="_blank" rel="noopener">https://www.iterm2.com/</a></p>
+<h2 id="一些配置"><a href="#一些配置" class="headerlink" title="一些配置"></a>一些配置</h2><ul>
+<li>保存ssh远程登录指令(1)</li>
+<li>打开新窗口自动定位到使用tab键所在的目录(2)</li>
+</ul>
+<p><img src="/img/iterm2/3.png" alt="shang"></p>
+<ul>
+<li>每次新打开终端都会固定出现在屏幕的顶端且不会有窗口边框</li>
+</ul>
+<p><img src="/img/iterm2/1.png" alt="shang"></p>
+<ul>
+<li>背景透明度</li>
+</ul>
+<p><img src="/img/iterm2/2.png" alt="shang"></p>
+<ul>
+<li>使用 <code>option</code> + ‘-&gt;’ 在单词间跳转</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 设置左 <span class="string">`option`</span></span><br><span class="line"><span class="number">2.</span> Keyboard Shortcut: ⌥←</span><br><span class="line">	Action: Send Escape Sequence</span><br><span class="line">	Esc+: b</span><br><span class="line"><span class="number">3.</span> Keyboard Shortcut: ⌥→</span><br><span class="line">	Action: Send Escape Sequence</span><br><span class="line">	Esc+: f</span><br></pre></td></tr></table></figure>
+<p><img src="/img/iterm2/4.png" alt="shang"></p>
+<ul>
+<li>全局快捷键<br><img src="/img/iterm2/7.png" alt="shang"></li>
+</ul>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><h3 id="标签页操作"><a href="#标签页操作" class="headerlink" title="标签页操作"></a>标签页操作</h3><ul>
+<li>新建标签页: <code>Command + T</code></li>
+<li>关闭标签页: <code>Command + W</code></li>
+<li>窗口切换: <code>Command + 方向键  或   Command + 窗口编号</code></li>
+</ul>
+<h3 id="面板操作"><a href="#面板操作" class="headerlink" title="面板操作"></a>面板操作</h3><ul>
+<li>垂直分割: <code>Command + D</code></li>
+<li>水平分割: <code>Shift + Command + D</code></li>
+<li>前一个面板: <code>Command + [</code></li>
+<li>后一个面板: <code>Command + ]</code></li>
+<li>切换到上/下/左/右面板: <code>Option + Command + 上下左右方向键</code></li>
+</ul>
+<h3 id="搜索查找"><a href="#搜索查找" class="headerlink" title="搜索查找"></a>搜索查找</h3><ul>
+<li><p><code>⌘ + f</code>查找。支持正则。<br>其中查找的内容会被自动复制(鼠标去选中的内容也会自动复制,也可以鼠标中键直接粘贴)<br>键入搜索关键词，然后用<code>shift+tab</code>或者<code>tab</code>左右自动补全<br><code>option + enter</code> 则自动将搜索结果键入,并且复制到剪贴板</p>
+</li>
+<li><p><code>⌘ + opt + e</code> Expose标签</p>
+</li>
+</ul>
+<p><img src="/img/iterm2/8.png" alt="shang"></p>
+<ul>
+<li><p><code>Command + /</code>: 查看当前终端中光标的位置</p>
+</li>
+<li><p><code>`⌘ + opt + b</code> :快照回放, 对你的操作根据时间轴进行回放. 可以拖动下方的时间轴，也可以按左右方向键</p>
+</li>
+<li><p><code>Command + shift + H</code> iterm2将自动列出剪切板的历史记录</p>
+</li>
+</ul>
+<h3 id="其他功能"><a href="#其他功能" class="headerlink" title="其他功能"></a>其他功能</h3><ul>
+<li>进入和退出全屏: <code>Command + Enter</code></li>
+<li>开启和关闭背景半透明: <code>Command + U</code></li>
+<li>清屏（其实是滚到新的一屏，并没有清空）: <code>Command + R</code></li>
+<li>清屏: <code>Ctrl+L</code></li>
+<li>清空当前行，无论光标在什么位置: <code>ctrl + U</code></li>
+<li>到行首: <code>ctrl + A  或 fn + 左方向键</code></li>
+<li>到行末: <code>ctrl + E 或 fn + 右方向键</code></li>
+<li>搜索命令历史: <code>ctrl + R</code></li>
+<li>调整字体大小: <code>⌘ + —/+/0</code></li>
+<li>命令自动补全: <code>Command + ;</code>（很少用这个)</li>
+</ul>
+<h2 id="文本选取"><a href="#文本选取" class="headerlink" title="文本选取"></a>文本选取</h2><ul>
+<li>常见的点击并拖拽方式</li>
+<li>双击选取整个单词</li>
+<li>三击选取整行</li>
+<li>选取某一部分，按住Shift，再点击某处，可以选取整个矩形内的文本（类似Windows下按住Shift可以批量选取图标）</li>
+<li>按住Command + Option，可以用鼠标画出一个矩形，用类似截图的方式选取文本 另外，还可以使用鼠标完成以下操作： </li>
+<li>按住Command然后点击某个URL，会在浏览器中打开这个URL，</li>
+<li>点击某个文件夹，会在Finder里打开这个文件夹</li>
+<li>点击某个文件名，会打开这个文件（文本文件支持MacVim，TextMate和BBEdit，如果后面跟随一个冒号和行号，文件会在行号处打开，其它格式的文件似乎不能调用默认程序打开） </li>
+</ul>
+<h2 id="标签变色"><a href="#标签变色" class="headerlink" title="标签变色"></a>标签变色</h2><blockquote>
+<p>iTerm2 的标签的颜色会变化,以指示该 tab 当前的状态.当该标签有新输出的时候,<br>标签会变成洋红色;新的输出长时间没有查看,标签会变成红色.可在设置中关掉该功能</p>
+</blockquote>
+<h2 id="配色"><a href="#配色" class="headerlink" title="配色"></a>配色</h2><p>自行研究 <a href="http://iterm2colorschemes.com/" target="_blank" rel="noopener">http://iterm2colorschemes.com/</a></p>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
+<li><a href="https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x" target="_blank" rel="noopener">https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x</a></li>
+<li><a href="http://pengjunjie.com/articles/mac-soft-iterm2/" target="_blank" rel="noopener">http://pengjunjie.com/articles/mac-soft-iterm2/</a></li>
+<li><a href="http://wulfric.me/2015/08/iterm2/" target="_blank" rel="noopener">http://wulfric.me/2015/08/iterm2/</a></li>
+<li><a href="http://www.wangyuxiong.com/archives/52137" target="_blank" rel="noopener">http://www.wangyuxiong.com/archives/52137</a></li>
+<li><a href="http://xingrz.me/2013/2013-06-19/terminal-zhuangbility.html" target="_blank" rel="noopener">http://xingrz.me/2013/2013-06-19/terminal-zhuangbility.html</a></li>
+</ul>
+<hr>
+<hr>
+<blockquote>
+<p><strong>文章若有纰漏请大家补充指正,谢谢~~</strong></p>
+<p><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG殇</p>
+</blockquote>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iTerm2/">iTerm2</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://blog.xinshangshangxin.com/2015/09/13/iTerm2/" data-title="iTerm2 | SHANG Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/09/19/node命令行和控制台参数获取/" title="node命令行和控制台参数获取">
+  <strong>上一篇：</strong><br/>
+  <span>
+  node命令行和控制台参数获取</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/08/30/转-AngularJS中的Provider们：Service和Factory等的区别/"  title="[转]AngularJS中的Provider们：Service和Factory等的区别">
+ <strong>下一篇：</strong><br/> 
+ <span>[转]AngularJS中的Provider们：Service和Factory等的区别
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载"><span class="toc-number">1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些配置"><span class="toc-number">2.</span> <span class="toc-text">一些配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快捷键"><span class="toc-number">3.</span> <span class="toc-text">快捷键</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#标签页操作"><span class="toc-number">3.1.</span> <span class="toc-text">标签页操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#面板操作"><span class="toc-number">3.2.</span> <span class="toc-text">面板操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搜索查找"><span class="toc-number">3.3.</span> <span class="toc-text">搜索查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他功能"><span class="toc-number">3.4.</span> <span class="toc-text">其他功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文本选取"><span class="toc-number">4.</span> <span class="toc-text">文本选取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#标签变色"><span class="toc-number">5.</span> <span class="toc-text">标签变色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配色"><span class="toc-number">6.</span> <span class="toc-text">配色</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文档"><span class="toc-number"></span> <span class="toc-text">参考文档</span></a>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>36</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/node/" title="node">node<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/AngularJS/" title="AngularJS">AngularJS<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cygwin/" title="cygwin">cygwin<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ECS/" title="ECS">ECS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ConEmu/" title="ConEmu">ConEmu<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/youkuvod/" title="youkuvod">youkuvod<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p> SHANG殇 <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/xinshangshangxin" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:xinshangshangxin@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="xinshangshangxin">xinshangshangxin</a>
+		
+		
+		</p>
+</div>
+</footer>
+    
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'xinshangshangxin';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa428636dbcab9ddea4df16331711f970' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

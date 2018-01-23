@@ -1,1 +1,535 @@
-<!DOCTYPE HTML><html lang="zh-CN"><head><meta charset="UTF-8"><title>JavaScript权威指南笔记9_客户端存储 | SHANG Blog</title><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><meta name="author" content="xinshangshangxin"><meta name="description" content="JavaScript权威指南笔记9_客户端存储"><meta name="keywords" content="js"><meta property="og:type" content="article"><meta property="og:title" content="JavaScript权威指南笔记9_客户端存储"><meta property="og:url" content="http://blog.xinshangshangxin.com/2015/05/06/JavaScript权威指南笔记9-客户端存储/index.html"><meta property="og:site_name" content="SHANG Blog"><meta property="og:description" content="JavaScript权威指南笔记9_客户端存储"><meta property="og:locale" content="zh-CN"><meta property="og:updated_time" content="2017-04-27T08:24:53.000Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="JavaScript权威指南笔记9_客户端存储"><meta name="twitter:description" content="JavaScript权威指南笔记9_客户端存储"><link rel="alternative" href="atom.xml" title="SHANG Blog" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="apple-touch-icon" href="/img/pacman.jpg"><link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg"><link rel="stylesheet" href="/css/style.css"></head><body><header><div><div id="imglogo"> <a href="/"><img src="/img/logo.png" alt="SHANG Blog" title="SHANG Blog"></a></div><div id="textlogo"><h1 class="site-name"><a href="/" title="SHANG Blog">SHANG Blog</a></h1><h2 class="blog-motto"></h2></div><div class="navbar"><a class="navbutton navmobile" href="#" title="菜单"></a></div><nav class="animated"><ul><ul><li><a href="/">首页</a></li><li><a href="/archives/">文章</a></li><li><a href="/about/">关于</a></li><li><form class="search" action="//google.com/search" method="get" accept-charset="utf-8"> <label>Search</label> <input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索"> <input type="hidden" name="q" value="site:blog.xinshangshangxin.com"></form></li></ul></ul></nav></div></header><div id="container"><div id="main" class="post" itemscope itemprop="blogPost"><article itemprop="articleBody"><header class="article-info clearfix"><h1 itemprop="name"> <a href="/2015/05/06/JavaScript权威指南笔记9-客户端存储/" title="JavaScript权威指南笔记9_客户端存储" itemprop="url">JavaScript权威指南笔记9_客户端存储</a></h1><p class="article-author">By <a href="/about" title="xinshangshangxin" target="_blank" itemprop="author">xinshangshangxin</a></p><p class="article-time"> <time datetime="2015-05-06T12:16:06.000Z" itemprop="datePublished">发表于 2015年05月6日</time></p></header><div class="article-content"><div id="toc" class="toc-article"> <strong class="toc-title">文章目录</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#localStorage-和-sessionStorage"><span class="toc-number">1.</span> <span class="toc-text">localStorage 和 sessionStorage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储API"><span class="toc-number">2.</span> <span class="toc-text">存储API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储事件"><span class="toc-number">3.</span> <span class="toc-text">存储事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cookie"><span class="toc-number">4.</span> <span class="toc-text">cookie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用程序缓存清单"><span class="toc-number">5.</span> <span class="toc-text">应用程序缓存清单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#离线web应用"><span class="toc-number">6.</span> <span class="toc-text">离线web应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文章若有纰漏请大家补充指正-谢谢"><span class="toc-number">6.1.</span> <span class="toc-text">文章若有纰漏请大家补充指正,谢谢~~</span></a></li></ol></li></ol></div><h2 id="localStorage-和-sessionStorage"><a href="#localStorage-和-sessionStorage" class="headerlink" title="localStorage 和 sessionStorage"></a>localStorage 和 sessionStorage</h2><blockquote><p><code>localStorage</code> 仅支持存储字符串<br><code>localStorage</code> 存储是永久的;除非web引用刻意删除,或者用户通过浏览器配置删除<br><code>localStorage</code> 作用域限定在文档源级别(协议;主机名;端口)</p><p><code>sessionStorage</code> 存储数据的脚本所在的 最顶层的窗口/浏览器标签页 的有效期<br><code>sessionStorage</code> 作用域限定在文档源级别(协议;主机名;端口)<br>如果一个浏览器标签页包含2个 <code>&lt;iframe&gt;</code> 元素, 它们可以共享 <code>sessionStorage</code></p></blockquote><h2 id="存储API"><a href="#存储API" class="headerlink" title="存储API"></a>存储API</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setItem()</span><br><span class="line">getItem()</span><br><span class="line">removeItem()</span><br><span class="line">clear()</span><br></pre></td></tr></table></figure><h2 id="存储事件"><a href="#存储事件" class="headerlink" title="存储事件"></a>存储事件</h2><blockquote><p>在 <code>localStorage</code> 或 <code>sessionStorage</code> 的数据发生改变,浏览器都会在其他对该数据可见的窗口对象上出发存储事件(不会在对数据进行改变的窗口对象上触发)<br>如果2个标签页打开了来自同源的页面,其中一个页面在 <code>localStorage</code> 上存储了数据,那么另外一个标签页会接受到一个存储事件<br>对 <code>sessionStorage</code> 限制在顶层窗口,所以对 <code>sessionStorage</code> 的改变只有当有牵连的窗口触发是才会触发存储事件<br>对已经存在的存储项设置一个一模一样的值,抑或是删除一个本来就不存在的存储项是不会触发事件的</p></blockquote><h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><blockquote><p><code>cookie</code> 的作用域是通过 文档源和文档路径 来确定的<br><code>cookie</code> 的值不可以包含分号,逗号,空白符, 因此需要 <code>encodeURIComponent</code> 进行编码</p></blockquote><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基于cookie的存储API</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CookieStorage</span>(<span class="params">maxage, path</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 获取一个存储全部cookie的对象</span></span><br><span class="line">    <span class="keyword">var</span> cookies = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> cookies = &#123;&#125;;</span><br><span class="line">        <span class="keyword">var</span> all = <span class="built_in">document</span>.cookie;</span><br><span class="line">        <span class="keyword">if</span> (all === <span class="string">""</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> cookies;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 分离出名/值对</span></span><br><span class="line">        <span class="keyword">var</span> list = all.split(<span class="string">"; "</span>);</span><br><span class="line">        <span class="comment">// 遍历每个cookie</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; list.length; i++) &#123;</span><br><span class="line">            <span class="keyword">var</span> cookie = list[i];</span><br><span class="line">            <span class="keyword">var</span> p = cookie.indexOf(<span class="string">"="</span>);</span><br><span class="line">            <span class="comment">// 获取cookie的名字</span></span><br><span class="line">            <span class="keyword">var</span> name = cookie.substring(<span class="number">0</span>, p);</span><br><span class="line">            <span class="comment">// 获取cookie对应的值</span></span><br><span class="line">            <span class="keyword">var</span> value = cookie.substring(p + <span class="number">1</span>);</span><br><span class="line">            <span class="comment">// 解码</span></span><br><span class="line">            value = <span class="built_in">decodeURIComponent</span>(value);</span><br><span class="line">            cookies[name] = value;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cookies;</span><br><span class="line">    &#125;());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将所有的cookie存储到一个数组中</span></span><br><span class="line">    <span class="keyword">var</span> keys = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> cookies) &#123;</span><br><span class="line">        keys.push(key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义存储API的公共方法和属性</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 存储cookie 的个数</span></span><br><span class="line">    <span class="keyword">this</span>.length = keys.length;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 返回第N个cookie的名字, N越界返回null</span></span><br><span class="line">    <span class="keyword">this</span>.key = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt; <span class="number">0</span> || n &gt;= keys.length) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> keys[n];</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 返回指定cookie的名字,如果不存在返回NULL</span></span><br><span class="line">    <span class="keyword">this</span>.getItem = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> cookies[name] || <span class="literal">null</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 存储cookie</span></span><br><span class="line">    <span class="keyword">this</span>.setItem = <span class="function"><span class="keyword">function</span>(<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 如果要存储的cookie还不存在</span></span><br><span class="line">        <span class="keyword">if</span> (!(key <span class="keyword">in</span> cookies)) &#123;</span><br><span class="line">            <span class="comment">// 加入数组</span></span><br><span class="line">            keys.push(key);</span><br><span class="line">            <span class="comment">// 长度加一</span></span><br><span class="line">            <span class="keyword">this</span>.length++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将名/值存储到cookies对象中</span></span><br><span class="line">        cookies[key] = value;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置cookie</span></span><br><span class="line">        <span class="keyword">var</span> cookie = key + <span class="string">"="</span> + <span class="built_in">encodeURIComponent</span>(value);</span><br><span class="line">        <span class="comment">// 添加 maxage</span></span><br><span class="line">        <span class="keyword">if</span> (maxage) &#123;</span><br><span class="line">            cookie += <span class="string">"; max-age="</span> + maxage;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 添加path</span></span><br><span class="line">        <span class="keyword">if</span> (path) &#123;</span><br><span class="line">            cookie += <span class="string">"; path="</span> + path;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置document.cookie</span></span><br><span class="line">        <span class="built_in">document</span>.cookie = cookie;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 删除指定的cookie</span></span><br><span class="line">    <span class="keyword">this</span>.removeItem = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!(key <span class="keyword">in</span> cookies)) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 删除内部cookies的指定cookie</span></span><br><span class="line">        <span class="keyword">delete</span> cookies[key];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 从数组中删除</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; keys.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (keys[i] === key) &#123;</span><br><span class="line">                keys.splice(i, <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.length--;</span><br><span class="line">        <span class="comment">// 通过设置有效期为0来删除cookie</span></span><br><span class="line">        <span class="built_in">document</span>.cookie = key + <span class="string">"=; max-age=0"</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 删除所有cookie</span></span><br><span class="line">    <span class="keyword">this</span>.clear = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; keys.length; i++) &#123;</span><br><span class="line">            <span class="built_in">document</span>.cookie = keys[i] + <span class="string">"=; max-age=0"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        cookies = &#123;&#125;;</span><br><span class="line">        keys = [];</span><br><span class="line">        <span class="keyword">this</span>.length = <span class="number">0</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="应用程序缓存清单"><a href="#应用程序缓存清单" class="headerlink" title="应用程序缓存清单"></a>应用程序缓存清单</h2><blockquote><p>注释 以 <code>#</code> 开头,后面跟一个空字符<br>应用程序缓存清单文件约定一.appcahe作为文件扩展名.但是web服务器怔怔识别清单文件的方式是通过 <code>text/cache-mainfest</code> 这个 <code>MIME</code>类型<br>浏览器在更新缓存过程中会触发一系列事件</p><blockquote><ol><li>没有可用的更新,触发 <code>noupdate</code></li><li>有可用的更新触发 <code>downloading</code>, 下载过程触发 <code>progress</code> 和 下载完成触发 <code>updateready</code></li><li>首次载入新的应用程序 <code>downloading</code>, 下载过程触发 <code>progress</code>, 下载完成后触发 <code>cached</code></li><li>浏览器处于离线状态触发 <code>error</code></li><li>清单文件不存在:<blockquote><ul><li>未缓存的应用程序触发 <code>error</code></li><li>应用程序已经缓存并且浏览器处于在线状态触发 <code>obsolete</code>, 并且将该应用从缓存中移除</li></ul></blockquote></li></ol></blockquote></blockquote><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 处理应用缓存的相关事件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">status</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"statusline"</span>).innerHTML = msg;</span><br><span class="line">    <span class="built_in">console</span>.log(msg);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.applicationCache.onchecking = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    status(<span class="string">"Checking for a new version."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.applicationCache.onnoupdate = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    status(<span class="string">"This version is up-to-date."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.applicationCache.ondownloading = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    status(<span class="string">"Downloading new version"</span>);</span><br><span class="line">    <span class="built_in">window</span>.progresscount = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.applicationCache.onprogress = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> progress = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">if</span> (e &amp;&amp; e.lengthComputable) &#123;</span><br><span class="line">        progress = <span class="string">" "</span> + <span class="built_in">Math</span>.round(<span class="number">100</span> * e.loaded / e.total) + <span class="string">"%"</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        progress = <span class="string">" ("</span> + ++progresscount + <span class="string">")"</span></span><br><span class="line">    &#125;</span><br><span class="line">    status(<span class="string">"Downloading new version"</span> + progress);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.applicationCache.oncached = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    status(<span class="string">"This application is now cached locally"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.applicationCache.onupdateready = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    status(<span class="string">"A new version has been downloaded.  Reload to run it"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.applicationCache.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    status(<span class="string">"Couldn't load manifest or cache application"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.applicationCache.onobsolete = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    status(<span class="string">"This application is no longer cached. "</span> +</span><br><span class="line">        <span class="string">"Reload to get the latest version from the network."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h2 id="离线web应用"><a href="#离线web应用" class="headerlink" title="离线web应用"></a>离线web应用</h2><blockquote><p>通过 <code>navigator.onLine</code> 来检测浏览器是否在线</p></blockquote><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// permanote.js</span></span><br><span class="line"><span class="keyword">var</span> editor, statusline, savebutton, idletimer;</span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (localStorage.note == <span class="literal">null</span>) &#123;</span><br><span class="line">        localStorage.note = <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (localStorage.lastModified == <span class="literal">null</span>) &#123;</span><br><span class="line">        localStorage.lastModified = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (localStorage.lastSaved == <span class="literal">null</span>) &#123;</span><br><span class="line">        localStorage.lastSaved = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    editor = <span class="built_in">document</span>.getElementById(<span class="string">"editor"</span>);</span><br><span class="line">    statusline = <span class="built_in">document</span>.getElementById(<span class="string">"statusline"</span>);</span><br><span class="line">    savebutton = <span class="built_in">document</span>.getElementById(<span class="string">"savebutton"</span>);</span><br><span class="line">    editor.value = localStorage.note;</span><br><span class="line">    editor.disabled = <span class="literal">true</span>;</span><br><span class="line">    editor.addEventListener(<span class="string">"input"</span>,</span><br><span class="line">        <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">            localStorage.note = editor.value;</span><br><span class="line">            localStorage.lastModified = <span class="built_in">Date</span>.now();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (idletimer) &#123;</span><br><span class="line">                clearTimeout(idletimer);</span><br><span class="line">            &#125;</span><br><span class="line">            idletimer = setTimeout(save, <span class="number">5000</span>);</span><br><span class="line"></span><br><span class="line">            savebutton.disabled = <span class="literal">false</span>;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="literal">false</span>);</span><br><span class="line">    sync();</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.onbeforeunload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (localStorage.lastModified &gt; localStorage.lastSaved) &#123;</span><br><span class="line">        save();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.onoffline = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    status(<span class="string">"Offline"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.ononline = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    sync();</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.applicationCache.onupdateready = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    status(<span class="string">"A new version of this application is available. Reload to run it"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.applicationCache.onnoupdate = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    status(<span class="string">"You are running the latest version of the application."</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">status</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">    statusline.innerHTML = msg;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">save</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (idletimer) &#123;</span><br><span class="line">        clearTimeout(idletimer);</span><br><span class="line">    &#125;</span><br><span class="line">    idletimer = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (navigator.onLine) &#123;</span><br><span class="line">        <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">        xhr.open(<span class="string">"PUT"</span>, <span class="string">"/note"</span>);</span><br><span class="line">        xhr.send(editor.value);</span><br><span class="line">        xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            localStorage.lastSaved = <span class="built_in">Date</span>.now();</span><br><span class="line">            savebutton.disabled = <span class="literal">true</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sync</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (navigator.onLine) &#123;</span><br><span class="line">        <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">        xhr.open(<span class="string">"GET"</span>, <span class="string">"/note"</span>);</span><br><span class="line">        xhr.send();</span><br><span class="line">        xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> remoteModTime = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (xhr.status == <span class="number">200</span>) &#123;</span><br><span class="line">                <span class="keyword">var</span> remoteModTime = xhr.getResponseHeader(<span class="string">"Last-Modified"</span>);</span><br><span class="line">                remoteModTime = <span class="keyword">new</span> <span class="built_in">Date</span>(remoteModTime).getTime();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (remoteModTime &gt; localStorage.lastModified) &#123;</span><br><span class="line">                status(<span class="string">"Newer note found on server."</span>);</span><br><span class="line">                <span class="keyword">var</span> useit =</span><br><span class="line">                    confirm(<span class="string">"There is a newer version of the note\n"</span> +</span><br><span class="line">                        <span class="string">"on the server. Click Ok to use that version\n"</span> +</span><br><span class="line">                        <span class="string">"or click Cancel to continue editing this\n"</span> +</span><br><span class="line">                        <span class="string">"version and overwrite the server"</span>);</span><br><span class="line">                <span class="keyword">var</span> now = <span class="built_in">Date</span>.now();</span><br><span class="line">                <span class="keyword">if</span> (useit) &#123;</span><br><span class="line">                    editor.value = localStorage.note = xhr.responseText;</span><br><span class="line">                    localStorage.lastSaved = now;</span><br><span class="line">                    status(<span class="string">"Newest version downloaded."</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    status(<span class="string">"Ignoring newer version of the note."</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                localStorage.lastModified = now;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                status(<span class="string">"You are editing the current version of the note."</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (localStorage.lastModified &gt; localStorage.lastSaved) &#123;</span><br><span class="line">                save();</span><br><span class="line">            &#125;</span><br><span class="line">            editor.disabled = <span class="literal">false</span>;</span><br><span class="line">            editor.focus();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        status(<span class="string">"Can't sync while offline"</span>);</span><br><span class="line">        editor.disabled = <span class="literal">false</span>;</span><br><span class="line">        editor.focus();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr><blockquote><h3 id="文章若有纰漏请大家补充指正-谢谢"><a href="#文章若有纰漏请大家补充指正-谢谢" class="headerlink" title="文章若有纰漏请大家补充指正,谢谢~~"></a>文章若有纰漏请大家补充指正,谢谢~~</h3><p><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG殇</p></blockquote></div><footer class="article-footer clearfix"><div class="article-catetags"><div class="article-tags"><span></span> <a href="/tags/js/">js</a></div></div><div class="article-share" id="share"><div data-url="http://blog.xinshangshangxin.com/2015/05/06/JavaScript权威指南笔记9-客户端存储/" data-title="JavaScript权威指南笔记9_客户端存储 | SHANG Blog" data-tsina="null" class="share clearfix"></div></div></footer></article><nav class="article-nav clearfix"><div class="prev"> <a href="/2015/05/09/JavaScript-replace/" title="JavaScript-replace"><strong>上一篇：</strong><br> <span>JavaScript-replace</span></a></div><div class="next"> <a href="/2015/05/05/JavaScript权威指南笔记8-脚本化HTTP/" title="JavaScript权威指南笔记8_脚本化HTTP"><strong>下一篇：</strong><br> <span>JavaScript权威指南笔记8_脚本化HTTP</span></a></div></nav><section id="comments" class="comment"><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div></section></div><div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div><div id="toc" class="toc-aside"> <strong class="toc-title">文章目录</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#localStorage-和-sessionStorage"><span class="toc-number">1.</span> <span class="toc-text">localStorage 和 sessionStorage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储API"><span class="toc-number">2.</span> <span class="toc-text">存储API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储事件"><span class="toc-number">3.</span> <span class="toc-text">存储事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cookie"><span class="toc-number">4.</span> <span class="toc-text">cookie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用程序缓存清单"><span class="toc-number">5.</span> <span class="toc-text">应用程序缓存清单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#离线web应用"><span class="toc-number">6.</span> <span class="toc-text">离线web应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文章若有纰漏请大家补充指正-谢谢"><span class="toc-number">6.1.</span> <span class="toc-text">文章若有纰漏请大家补充指正,谢谢~~</span></a></li></ol></li></ol></div><div id="asidepart"><div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div><aside class="clearfix"><div class="tagslist"><p class="asidetitle">标签</p><ul class="clearfix"><li><a href="/tags/js/" title="js">js<sup>36</sup></a></li><li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>13</sup></a></li><li><a href="/tags/node/" title="node">node<sup>12</sup></a></li><li><a href="/tags/AngularJS/" title="AngularJS">AngularJS<sup>9</sup></a></li><li><a href="/tags/docker/" title="docker">docker<sup>6</sup></a></li><li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li><li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li><li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li><li><a href="/tags/cygwin/" title="cygwin">cygwin<sup>4</sup></a></li><li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li><li><a href="/tags/ConEmu/" title="ConEmu">ConEmu<sup>3</sup></a></li><li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li><li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li><li><a href="/tags/ECS/" title="ECS">ECS<sup>3</sup></a></li><li><a href="/tags/git/" title="git">git<sup>2</sup></a></li><li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li><li><a href="/tags/youkuvod/" title="youkuvod">youkuvod<sup>2</sup></a></li><li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li><li><a href="/tags/MINA/" title="MINA">MINA<sup>2</sup></a></li><li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li></ul></div><div class="rsspart"> <a href="atom.xml" target="_blank" title="rss">RSS 订阅</a></div></aside></div></div><footer><div id="footer"><section class="info"><p> SHANG殇<br></p></section><div class="social-font" class="clearfix"><a href="https://github.com/xinshangshangxin" target="_blank" class="icon-github" title="github"></a><a href="mailto:xinshangshangxin@gmail.com" target="_blank" class="icon-email" title="Email Me"></a></div><p class="copyright"> Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 <a href="/about" target="_blank" title="xinshangshangxin">xinshangshangxin</a></p></div></footer><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.min.js"></script><script type="text/javascript">$(document).ready(function(){$(".navbar").click(function(){$("header nav").toggleClass("shownav")});var e=0;var s=$("#main"),n=$("#asidepart"),a=$(".closeaside"),o=$(".openaside");a.click(function(){n.addClass("fadeOut").css("display","none"),o.css("display","block").addClass("fadeIn"),s.addClass("moveMain")}),o.click(function(){o.css("display","none").removeClass("beforeFadeIn"),n.css("display","block").removeClass("fadeOut").addClass("fadeIn"),s.removeClass("moveMain")}),$(window).scroll(function(){o.css("top",Math.max(80,260-$(this).scrollTop()))}),$(window).resize(function(){"number"==typeof window.innerWidth?e=window.innerWidth:document.documentElement&&document.documentElement.clientWidth&&(e=document.documentElement.clientWidth),e>=1024?$("header nav").removeClass("shownav"):(s.removeClass("moveMain"),n.css("display","block").removeClass("fadeOut"),o.css("display","none"),$("#toc.toc-aside").css("display","none"))})})</script><script type="text/javascript">$(document).ready(function(){var c=$(".article-content>iframe"),n=$(".article-content>embed"),o=($("#toc"),$("#toc.toc-aside")),e=$(".openaside"),i=$(".closeaside");c.length>0&&c.wrap('<div class="video-container" />'),n.length>0&&n.wrap('<div class="video-container" />'),i.click(function(){o.css("display","block").addClass("fadeIn")}),e.click(function(){o.css("display","none")}),$(window).scroll(function(){o.css("top",Math.max(140,320-$(this).scrollTop()))})})</script><script type="text/javascript">$(document).ready(function(){var t=$(".share"),a=t.attr("data-url"),e=encodeURIComponent(a),r=t.attr("data-title"),c=t.attr("data-tsina"),s=(t.attr("description"),['<a href="#" class="overlay" id="qrcode"></a>','<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url='+e+'"/></div>','<a href="https://www.facebook.com/sharer.php?u='+e+'" class="article-share-facebook" target="_blank" title="Facebook"></a>','<a href="https://twitter.com/intent/tweet?url='+e+'" class="article-share-twitter" target="_blank" title="Twitter"></a>','<a href="#qrcode" class="article-share-qrcode" title="微信"></a>','<a href="http://widget.renren.com/dialog/share?resourceUrl='+e+"&srcUrl="+e+"&title="+r+'" class="article-share-renren" target="_blank" title="人人"></a>','<a href="http://service.weibo.com/share/share.php?title='+r+"&url="+e+"&ralateUid="+c+'&searchPic=true&style=number" class="article-share-weibo" target="_blank" title="微博"></a>','<span title="Share to"></span>'].join(""));t.append(s),$(".article-share-qrcode").click(function(){var t=$("#qrcode-pic").attr("data-src");$("#qrcode-pic").attr("src",t),$("#qrcode-pic").load(function(){$(".qrcode strong").text(" ")})})})</script><script type="text/javascript">var disqus_shortname="xinshangshangxin";!function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//"+disqus_shortname+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)}(),function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//"+disqus_shortname+".disqus.com/count.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)}()</script><link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css"><script src="/fancybox/jquery.fancybox.pack.js"></script><script type="text/javascript">$(document).ready(function(){$(".article-content").each(function(a){$(this).find("img").each(function(){if(!$(this).parent().hasClass("fancybox")){var a=this.alt;a&&$(this).after('<span class="caption">'+a+"</span>"),$(this).wrap('<a href="'+this.src+'" title="'+a+'" class="fancybox"></a>')}}),$(this).find(".fancybox").each(function(){$(this).attr("rel","article"+a)})}),$.fancybox&&$(".fancybox").fancybox()})</script><script type="text/javascript">var _bdhmProtocol="https:"==document.location.protocol?" https://":" http://";document.write(unescape("%3Cscript src='"+_bdhmProtocol+"hm.baidu.com/h.js%3Fa428636dbcab9ddea4df16331711f970' type='text/javascript'%3E%3C/script%3E"))</script></body></html>
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>JavaScript权威指南笔记9_客户端存储 | SHANG Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="xinshangshangxin">
+    
+
+    
+    <meta name="description" content="JavaScript权威指南笔记9_客户端存储">
+<meta name="keywords" content="js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript权威指南笔记9_客户端存储">
+<meta property="og:url" content="http://blog.xinshangshangxin.com/2015/05/06/JavaScript权威指南笔记9-客户端存储/index.html">
+<meta property="og:site_name" content="SHANG Blog">
+<meta property="og:description" content="JavaScript权威指南笔记9_客户端存储">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript权威指南笔记9_客户端存储">
+<meta name="twitter:description" content="JavaScript权威指南笔记9_客户端存储">
+
+    
+    <link rel="alternative" href="atom.xml" title="SHANG Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="SHANG Blog" title="SHANG Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="SHANG Blog">SHANG Blog</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives/">文章</a></li>
+					
+						<li><a href="/about/">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.xinshangshangxin.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/05/06/JavaScript权威指南笔记9-客户端存储/" title="JavaScript权威指南笔记9_客户端存储" itemprop="url">JavaScript权威指南笔记9_客户端存储</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xinshangshangxin" target="_blank" itemprop="author">xinshangshangxin</a>
+		
+  <p class="article-time">
+    <time datetime="2015-05-06T12:16:06.000Z" itemprop="datePublished"> 发表于 2015年05月6日</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#localStorage-和-sessionStorage"><span class="toc-number">1.</span> <span class="toc-text">localStorage 和 sessionStorage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储API"><span class="toc-number">2.</span> <span class="toc-text">存储API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储事件"><span class="toc-number">3.</span> <span class="toc-text">存储事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cookie"><span class="toc-number">4.</span> <span class="toc-text">cookie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用程序缓存清单"><span class="toc-number">5.</span> <span class="toc-text">应用程序缓存清单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#离线web应用"><span class="toc-number">6.</span> <span class="toc-text">离线web应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文章若有纰漏请大家补充指正-谢谢"><span class="toc-number">6.1.</span> <span class="toc-text">文章若有纰漏请大家补充指正,谢谢~~</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="localStorage-和-sessionStorage"><a href="#localStorage-和-sessionStorage" class="headerlink" title="localStorage 和 sessionStorage"></a>localStorage 和 sessionStorage</h2><blockquote>
+<p><code>localStorage</code> 仅支持存储字符串<br><code>localStorage</code> 存储是永久的;除非web引用刻意删除,或者用户通过浏览器配置删除<br><code>localStorage</code> 作用域限定在文档源级别(协议;主机名;端口)</p>
+<p><code>sessionStorage</code> 存储数据的脚本所在的 最顶层的窗口/浏览器标签页 的有效期<br><code>sessionStorage</code> 作用域限定在文档源级别(协议;主机名;端口)<br>如果一个浏览器标签页包含2个 <code>&lt;iframe&gt;</code> 元素, 它们可以共享 <code>sessionStorage</code></p>
+</blockquote>
+<h2 id="存储API"><a href="#存储API" class="headerlink" title="存储API"></a>存储API</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setItem()</span><br><span class="line">getItem()</span><br><span class="line">removeItem()</span><br><span class="line">clear()</span><br></pre></td></tr></table></figure>
+<h2 id="存储事件"><a href="#存储事件" class="headerlink" title="存储事件"></a>存储事件</h2><blockquote>
+<p>在 <code>localStorage</code> 或 <code>sessionStorage</code> 的数据发生改变,浏览器都会在其他对该数据可见的窗口对象上出发存储事件(不会在对数据进行改变的窗口对象上触发)<br>如果2个标签页打开了来自同源的页面,其中一个页面在 <code>localStorage</code> 上存储了数据,那么另外一个标签页会接受到一个存储事件<br>对 <code>sessionStorage</code> 限制在顶层窗口,所以对 <code>sessionStorage</code> 的改变只有当有牵连的窗口触发是才会触发存储事件<br>对已经存在的存储项设置一个一模一样的值,抑或是删除一个本来就不存在的存储项是不会触发事件的</p>
+</blockquote>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><blockquote>
+<p><code>cookie</code> 的作用域是通过 文档源和文档路径 来确定的<br><code>cookie</code> 的值不可以包含分号,逗号,空白符, 因此需要 <code>encodeURIComponent</code> 进行编码</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基于cookie的存储API</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CookieStorage</span>(<span class="params">maxage, path</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 获取一个存储全部cookie的对象</span></span><br><span class="line">    <span class="keyword">var</span> cookies = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> cookies = &#123;&#125;;</span><br><span class="line">        <span class="keyword">var</span> all = <span class="built_in">document</span>.cookie;</span><br><span class="line">        <span class="keyword">if</span> (all === <span class="string">""</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> cookies;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 分离出名/值对</span></span><br><span class="line">        <span class="keyword">var</span> list = all.split(<span class="string">"; "</span>);</span><br><span class="line">        <span class="comment">// 遍历每个cookie</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; list.length; i++) &#123;</span><br><span class="line">            <span class="keyword">var</span> cookie = list[i];</span><br><span class="line">            <span class="keyword">var</span> p = cookie.indexOf(<span class="string">"="</span>);</span><br><span class="line">            <span class="comment">// 获取cookie的名字</span></span><br><span class="line">            <span class="keyword">var</span> name = cookie.substring(<span class="number">0</span>, p);</span><br><span class="line">            <span class="comment">// 获取cookie对应的值</span></span><br><span class="line">            <span class="keyword">var</span> value = cookie.substring(p + <span class="number">1</span>);</span><br><span class="line">            <span class="comment">// 解码</span></span><br><span class="line">            value = <span class="built_in">decodeURIComponent</span>(value);</span><br><span class="line">            cookies[name] = value;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cookies;</span><br><span class="line">    &#125;());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将所有的cookie存储到一个数组中</span></span><br><span class="line">    <span class="keyword">var</span> keys = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> cookies) &#123;</span><br><span class="line">        keys.push(key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义存储API的公共方法和属性</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 存储cookie 的个数</span></span><br><span class="line">    <span class="keyword">this</span>.length = keys.length;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 返回第N个cookie的名字, N越界返回null</span></span><br><span class="line">    <span class="keyword">this</span>.key = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt; <span class="number">0</span> || n &gt;= keys.length) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> keys[n];</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 返回指定cookie的名字,如果不存在返回NULL</span></span><br><span class="line">    <span class="keyword">this</span>.getItem = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> cookies[name] || <span class="literal">null</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 存储cookie</span></span><br><span class="line">    <span class="keyword">this</span>.setItem = <span class="function"><span class="keyword">function</span>(<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 如果要存储的cookie还不存在</span></span><br><span class="line">        <span class="keyword">if</span> (!(key <span class="keyword">in</span> cookies)) &#123;</span><br><span class="line">            <span class="comment">// 加入数组</span></span><br><span class="line">            keys.push(key);</span><br><span class="line">            <span class="comment">// 长度加一</span></span><br><span class="line">            <span class="keyword">this</span>.length++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将名/值存储到cookies对象中</span></span><br><span class="line">        cookies[key] = value;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置cookie</span></span><br><span class="line">        <span class="keyword">var</span> cookie = key + <span class="string">"="</span> + <span class="built_in">encodeURIComponent</span>(value);</span><br><span class="line">        <span class="comment">// 添加 maxage</span></span><br><span class="line">        <span class="keyword">if</span> (maxage) &#123;</span><br><span class="line">            cookie += <span class="string">"; max-age="</span> + maxage;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 添加path</span></span><br><span class="line">        <span class="keyword">if</span> (path) &#123;</span><br><span class="line">            cookie += <span class="string">"; path="</span> + path;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置document.cookie</span></span><br><span class="line">        <span class="built_in">document</span>.cookie = cookie;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 删除指定的cookie</span></span><br><span class="line">    <span class="keyword">this</span>.removeItem = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!(key <span class="keyword">in</span> cookies)) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 删除内部cookies的指定cookie</span></span><br><span class="line">        <span class="keyword">delete</span> cookies[key];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 从数组中删除</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; keys.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (keys[i] === key) &#123;</span><br><span class="line">                keys.splice(i, <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.length--;</span><br><span class="line">        <span class="comment">// 通过设置有效期为0来删除cookie</span></span><br><span class="line">        <span class="built_in">document</span>.cookie = key + <span class="string">"=; max-age=0"</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 删除所有cookie</span></span><br><span class="line">    <span class="keyword">this</span>.clear = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; keys.length; i++) &#123;</span><br><span class="line">            <span class="built_in">document</span>.cookie = keys[i] + <span class="string">"=; max-age=0"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        cookies = &#123;&#125;;</span><br><span class="line">        keys = [];</span><br><span class="line">        <span class="keyword">this</span>.length = <span class="number">0</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="应用程序缓存清单"><a href="#应用程序缓存清单" class="headerlink" title="应用程序缓存清单"></a>应用程序缓存清单</h2><blockquote>
+<p>注释 以 <code>#</code> 开头,后面跟一个空字符<br>应用程序缓存清单文件约定一.appcahe作为文件扩展名.但是web服务器怔怔识别清单文件的方式是通过 <code>text/cache-mainfest</code> 这个 <code>MIME</code>类型<br>浏览器在更新缓存过程中会触发一系列事件</p>
+<blockquote>
+<ol>
+<li>没有可用的更新,触发 <code>noupdate</code> </li>
+<li>有可用的更新触发 <code>downloading</code>, 下载过程触发 <code>progress</code> 和 下载完成触发 <code>updateready</code></li>
+<li>首次载入新的应用程序 <code>downloading</code>, 下载过程触发 <code>progress</code>, 下载完成后触发 <code>cached</code></li>
+<li>浏览器处于离线状态触发 <code>error</code></li>
+<li>清单文件不存在:<blockquote>
+<ul>
+<li>未缓存的应用程序触发 <code>error</code></li>
+<li>应用程序已经缓存并且浏览器处于在线状态触发 <code>obsolete</code>, 并且将该应用从缓存中移除</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 处理应用缓存的相关事件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">status</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"statusline"</span>).innerHTML = msg;</span><br><span class="line">    <span class="built_in">console</span>.log(msg);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.applicationCache.onchecking = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    status(<span class="string">"Checking for a new version."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.applicationCache.onnoupdate = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    status(<span class="string">"This version is up-to-date."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.applicationCache.ondownloading = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    status(<span class="string">"Downloading new version"</span>);</span><br><span class="line">    <span class="built_in">window</span>.progresscount = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.applicationCache.onprogress = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> progress = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">if</span> (e &amp;&amp; e.lengthComputable) &#123;</span><br><span class="line">        progress = <span class="string">" "</span> + <span class="built_in">Math</span>.round(<span class="number">100</span> * e.loaded / e.total) + <span class="string">"%"</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        progress = <span class="string">" ("</span> + ++progresscount + <span class="string">")"</span></span><br><span class="line">    &#125;</span><br><span class="line">    status(<span class="string">"Downloading new version"</span> + progress);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.applicationCache.oncached = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    status(<span class="string">"This application is now cached locally"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.applicationCache.onupdateready = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    status(<span class="string">"A new version has been downloaded.  Reload to run it"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.applicationCache.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    status(<span class="string">"Couldn't load manifest or cache application"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.applicationCache.onobsolete = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    status(<span class="string">"This application is no longer cached. "</span> +</span><br><span class="line">        <span class="string">"Reload to get the latest version from the network."</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="离线web应用"><a href="#离线web应用" class="headerlink" title="离线web应用"></a>离线web应用</h2><blockquote>
+<p>通过 <code>navigator.onLine</code> 来检测浏览器是否在线</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// permanote.js</span></span><br><span class="line"><span class="keyword">var</span> editor, statusline, savebutton, idletimer;</span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (localStorage.note == <span class="literal">null</span>) &#123;</span><br><span class="line">        localStorage.note = <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (localStorage.lastModified == <span class="literal">null</span>) &#123;</span><br><span class="line">        localStorage.lastModified = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (localStorage.lastSaved == <span class="literal">null</span>) &#123;</span><br><span class="line">        localStorage.lastSaved = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    editor = <span class="built_in">document</span>.getElementById(<span class="string">"editor"</span>);</span><br><span class="line">    statusline = <span class="built_in">document</span>.getElementById(<span class="string">"statusline"</span>);</span><br><span class="line">    savebutton = <span class="built_in">document</span>.getElementById(<span class="string">"savebutton"</span>);</span><br><span class="line">    editor.value = localStorage.note;</span><br><span class="line">    editor.disabled = <span class="literal">true</span>;</span><br><span class="line">    editor.addEventListener(<span class="string">"input"</span>,</span><br><span class="line">        <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">            localStorage.note = editor.value;</span><br><span class="line">            localStorage.lastModified = <span class="built_in">Date</span>.now();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (idletimer) &#123;</span><br><span class="line">                clearTimeout(idletimer);</span><br><span class="line">            &#125;</span><br><span class="line">            idletimer = setTimeout(save, <span class="number">5000</span>);</span><br><span class="line"></span><br><span class="line">            savebutton.disabled = <span class="literal">false</span>;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="literal">false</span>);</span><br><span class="line">    sync();</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.onbeforeunload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (localStorage.lastModified &gt; localStorage.lastSaved) &#123;</span><br><span class="line">        save();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.onoffline = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    status(<span class="string">"Offline"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.ononline = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    sync();</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.applicationCache.onupdateready = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    status(<span class="string">"A new version of this application is available. Reload to run it"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.applicationCache.onnoupdate = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    status(<span class="string">"You are running the latest version of the application."</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">status</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">    statusline.innerHTML = msg;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">save</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (idletimer) &#123;</span><br><span class="line">        clearTimeout(idletimer);</span><br><span class="line">    &#125;</span><br><span class="line">    idletimer = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (navigator.onLine) &#123;</span><br><span class="line">        <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">        xhr.open(<span class="string">"PUT"</span>, <span class="string">"/note"</span>);</span><br><span class="line">        xhr.send(editor.value);</span><br><span class="line">        xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            localStorage.lastSaved = <span class="built_in">Date</span>.now();</span><br><span class="line">            savebutton.disabled = <span class="literal">true</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sync</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (navigator.onLine) &#123;</span><br><span class="line">        <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">        xhr.open(<span class="string">"GET"</span>, <span class="string">"/note"</span>);</span><br><span class="line">        xhr.send();</span><br><span class="line">        xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> remoteModTime = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (xhr.status == <span class="number">200</span>) &#123;</span><br><span class="line">                <span class="keyword">var</span> remoteModTime = xhr.getResponseHeader(<span class="string">"Last-Modified"</span>);</span><br><span class="line">                remoteModTime = <span class="keyword">new</span> <span class="built_in">Date</span>(remoteModTime).getTime();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (remoteModTime &gt; localStorage.lastModified) &#123;</span><br><span class="line">                status(<span class="string">"Newer note found on server."</span>);</span><br><span class="line">                <span class="keyword">var</span> useit =</span><br><span class="line">                    confirm(<span class="string">"There is a newer version of the note\n"</span> +</span><br><span class="line">                        <span class="string">"on the server. Click Ok to use that version\n"</span> +</span><br><span class="line">                        <span class="string">"or click Cancel to continue editing this\n"</span> +</span><br><span class="line">                        <span class="string">"version and overwrite the server"</span>);</span><br><span class="line">                <span class="keyword">var</span> now = <span class="built_in">Date</span>.now();</span><br><span class="line">                <span class="keyword">if</span> (useit) &#123;</span><br><span class="line">                    editor.value = localStorage.note = xhr.responseText;</span><br><span class="line">                    localStorage.lastSaved = now;</span><br><span class="line">                    status(<span class="string">"Newest version downloaded."</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    status(<span class="string">"Ignoring newer version of the note."</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                localStorage.lastModified = now;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                status(<span class="string">"You are editing the current version of the note."</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (localStorage.lastModified &gt; localStorage.lastSaved) &#123;</span><br><span class="line">                save();</span><br><span class="line">            &#125;</span><br><span class="line">            editor.disabled = <span class="literal">false</span>;</span><br><span class="line">            editor.focus();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        status(<span class="string">"Can't sync while offline"</span>);</span><br><span class="line">        editor.disabled = <span class="literal">false</span>;</span><br><span class="line">        editor.focus();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<h3 id="文章若有纰漏请大家补充指正-谢谢"><a href="#文章若有纰漏请大家补充指正-谢谢" class="headerlink" title="文章若有纰漏请大家补充指正,谢谢~~"></a>文章若有纰漏请大家补充指正,谢谢~~</h3><p><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG殇</p>
+</blockquote>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/js/">js</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://blog.xinshangshangxin.com/2015/05/06/JavaScript权威指南笔记9-客户端存储/" data-title="JavaScript权威指南笔记9_客户端存储 | SHANG Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/05/09/JavaScript-replace/" title="JavaScript-replace">
+  <strong>上一篇：</strong><br/>
+  <span>
+  JavaScript-replace</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/05/05/JavaScript权威指南笔记8-脚本化HTTP/"  title="JavaScript权威指南笔记8_脚本化HTTP">
+ <strong>下一篇：</strong><br/> 
+ <span>JavaScript权威指南笔记8_脚本化HTTP
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#localStorage-和-sessionStorage"><span class="toc-number">1.</span> <span class="toc-text">localStorage 和 sessionStorage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储API"><span class="toc-number">2.</span> <span class="toc-text">存储API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储事件"><span class="toc-number">3.</span> <span class="toc-text">存储事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cookie"><span class="toc-number">4.</span> <span class="toc-text">cookie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用程序缓存清单"><span class="toc-number">5.</span> <span class="toc-text">应用程序缓存清单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#离线web应用"><span class="toc-number">6.</span> <span class="toc-text">离线web应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文章若有纰漏请大家补充指正-谢谢"><span class="toc-number">6.1.</span> <span class="toc-text">文章若有纰漏请大家补充指正,谢谢~~</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>36</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/node/" title="node">node<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/AngularJS/" title="AngularJS">AngularJS<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cygwin/" title="cygwin">cygwin<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ECS/" title="ECS">ECS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ConEmu/" title="ConEmu">ConEmu<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/youkuvod/" title="youkuvod">youkuvod<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p> SHANG殇 <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/xinshangshangxin" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:xinshangshangxin@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="xinshangshangxin">xinshangshangxin</a>
+		
+		
+		</p>
+</div>
+</footer>
+    
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'xinshangshangxin';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa428636dbcab9ddea4df16331711f970' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

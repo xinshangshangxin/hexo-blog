@@ -23,14 +23,7 @@
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/09/20/git%E6%96%87%E4%BB%B6%E5%90%8D%E5%A4%A7%E5%B0%8F%E5%86%99%E6%95%8F%E6%84%9F/</loc>
-    
-    <lastmod>2017-04-27T08:24:53.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.xinshangshangxin.com/2015/03/31/AngularJS-Filter/</loc>
+    <loc>http://blog.xinshangshangxin.com/2015/03/01/gulp%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
@@ -38,6 +31,13 @@
   
   <url>
     <loc>http://blog.xinshangshangxin.com/2015/06/16/AngularJS%E8%B8%A9%E5%9D%91-1/</loc>
+    
+    <lastmod>2017-04-27T08:24:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.xinshangshangxin.com/2015/03/31/AngularJS-Filter/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
@@ -58,13 +58,6 @@
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/02/17/Cordova%E5%AF%BC%E5%85%A5IntelliJ-IDEA/</loc>
-    
-    <lastmod>2017-04-27T08:24:53.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://blog.xinshangshangxin.com/2015/06/11/DaoCloud%E4%BD%93%E9%AA%8C%EF%BC%8D%E4%BD%BF%E7%94%A8node%E6%9E%84%E5%BB%BA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
@@ -72,7 +65,7 @@
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/06/01/DaoCloud%E9%83%A8%E7%BD%B2Node/</loc>
+    <loc>http://blog.xinshangshangxin.com/2015/02/17/Cordova%E5%AF%BC%E5%85%A5IntelliJ-IDEA/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
@@ -86,7 +79,7 @@
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/06/19/Docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-2/</loc>
+    <loc>http://blog.xinshangshangxin.com/2015/06/01/DaoCloud%E9%83%A8%E7%BD%B2Node/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
@@ -107,14 +100,14 @@
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/06/23/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F-%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/</loc>
+    <loc>http://blog.xinshangshangxin.com/2015/06/22/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0-%E5%8D%95%E4%BE%8B%E5%92%8C%E7%AD%96%E7%95%A5/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/06/22/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0-%E5%8D%95%E4%BE%8B%E5%92%8C%E7%AD%96%E7%95%A5/</loc>
+    <loc>http://blog.xinshangshangxin.com/2015/06/23/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F-%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
@@ -129,6 +122,13 @@
   
   <url>
     <loc>http://blog.xinshangshangxin.com/2015/06/25/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/</loc>
+    
+    <lastmod>2017-04-27T08:24:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.xinshangshangxin.com/2015/06/19/Docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-2/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
@@ -191,14 +191,14 @@
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/04/01/JavaScript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0/</loc>
+    <loc>http://blog.xinshangshangxin.com/2015/04/05/JavaScript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E5%8B%98%E8%AF%AF%E8%AE%B0%E5%BD%95/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/04/05/JavaScript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E5%8B%98%E8%AF%AF%E8%AE%B0%E5%BD%95/</loc>
+    <loc>http://blog.xinshangshangxin.com/2015/04/01/JavaScript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
@@ -219,14 +219,14 @@
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/04/07/JavaScript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B04-%E6%95%B0%E7%BB%84/</loc>
+    <loc>http://blog.xinshangshangxin.com/2015/04/08/JavaScript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B05-%E5%87%BD%E6%95%B0/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/04/08/JavaScript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B05-%E5%87%BD%E6%95%B0/</loc>
+    <loc>http://blog.xinshangshangxin.com/2015/04/07/JavaScript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B04-%E6%95%B0%E7%BB%84/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
@@ -247,14 +247,14 @@
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/05/05/JavaScript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B08-%E8%84%9A%E6%9C%AC%E5%8C%96HTTP/</loc>
+    <loc>http://blog.xinshangshangxin.com/2015/04/23/JavaScript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B07-%E8%84%9A%E6%9C%AC%E5%8C%96%E6%96%87%E6%A1%A3/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/04/23/JavaScript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B07-%E8%84%9A%E6%9C%AC%E5%8C%96%E6%96%87%E6%A1%A3/</loc>
+    <loc>http://blog.xinshangshangxin.com/2015/05/05/JavaScript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B08-%E8%84%9A%E6%9C%AC%E5%8C%96HTTP/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
@@ -282,13 +282,6 @@
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/05/24/QQ%E4%BA%92%E8%81%94%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</loc>
-    
-    <lastmod>2017-04-27T08:24:53.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://blog.xinshangshangxin.com/2015/12/17/angular-form/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
@@ -296,14 +289,14 @@
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2016/12/23/assign-vs-extend-vs-merge-in-lodash/</loc>
+    <loc>http://blog.xinshangshangxin.com/2015/05/24/QQ%E4%BA%92%E8%81%94%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/03/08/blur%E8%B8%A9%E5%9D%91/</loc>
+    <loc>http://blog.xinshangshangxin.com/2016/12/23/assign-vs-extend-vs-merge-in-lodash/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
@@ -324,6 +317,13 @@
   </url>
   
   <url>
+    <loc>http://blog.xinshangshangxin.com/2015/03/08/blur%E8%B8%A9%E5%9D%91/</loc>
+    
+    <lastmod>2017-04-27T08:24:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.xinshangshangxin.com/2015/10/30/cygwin-zsh/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
@@ -338,14 +338,14 @@
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/10/24/exclude-everything-except-a-specific-directory/</loc>
+    <loc>http://blog.xinshangshangxin.com/2015/06/28/docker%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93-%E8%BD%AC/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/06/28/docker%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93-%E8%BD%AC/</loc>
+    <loc>http://blog.xinshangshangxin.com/2015/10/24/exclude-everything-except-a-specific-directory/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
@@ -373,7 +373,7 @@
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/03/01/gulp%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/</loc>
+    <loc>http://blog.xinshangshangxin.com/2015/09/20/git%E6%96%87%E4%BB%B6%E5%90%8D%E5%A4%A7%E5%B0%8F%E5%86%99%E6%95%8F%E6%84%9F/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
@@ -381,13 +381,6 @@
   
   <url>
     <loc>http://blog.xinshangshangxin.com/2015/02/27/gulp%E7%A7%BB%E5%8A%A8-%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6/</loc>
-    
-    <lastmod>2017-04-27T08:24:53.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.xinshangshangxin.com/2015/03/22/-%E8%BD%AC-AngularJS-%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
@@ -402,6 +395,13 @@
   
   <url>
     <loc>http://blog.xinshangshangxin.com/2015/03/31/hexo%E6%97%A0%E6%B3%95%E8%BE%93%E5%85%A5%E5%8F%8C%E6%8B%AC%E5%8F%B7/</loc>
+    
+    <lastmod>2017-04-27T08:24:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.xinshangshangxin.com/2015/03/22/-%E8%BD%AC-AngularJS-%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
@@ -513,6 +513,13 @@
   </url>
   
   <url>
+    <loc>http://blog.xinshangshangxin.com/2015/10/24/npm-throws-error-without-sudo/</loc>
+    
+    <lastmod>2017-04-27T08:24:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.xinshangshangxin.com/2015/03/15/node-webkit-%E6%92%AD%E6%94%BEvideo-audio%E7%9A%84mp3-mp4/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
@@ -527,20 +534,6 @@
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/10/24/npm-throws-error-without-sudo/</loc>
-    
-    <lastmod>2017-04-27T08:24:53.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.xinshangshangxin.com/2015/02/18/npm%E5%AE%89%E8%A3%85modules%E5%A4%B1%E8%B4%A5/</loc>
-    
-    <lastmod>2017-04-27T08:24:53.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://blog.xinshangshangxin.com/2017/01/09/safari-https-fail-to-connect/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
@@ -548,14 +541,14 @@
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2017/01/13/sails-lodash-mongodb-mapReduce/</loc>
+    <loc>http://blog.xinshangshangxin.com/2015/09/29/promise-problem/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/09/29/promise-problem/</loc>
+    <loc>http://blog.xinshangshangxin.com/2017/01/13/sails-lodash-mongodb-mapReduce/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
@@ -583,6 +576,13 @@
   </url>
   
   <url>
+    <loc>http://blog.xinshangshangxin.com/2015/02/18/npm%E5%AE%89%E8%A3%85modules%E5%A4%B1%E8%B4%A5/</loc>
+    
+    <lastmod>2017-04-27T08:24:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.xinshangshangxin.com/2016/09/22/wechat-summary/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
@@ -604,13 +604,6 @@
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/10/03/Agreeing-to-the-Xcode-iOS-license-requires-admin-privileges/</loc>
-    
-    <lastmod>2017-04-27T08:24:53.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://blog.xinshangshangxin.com/2015/04/22/%E4%BD%BF%E7%94%A8nodejs-%E8%B8%A9%E5%9D%91%E5%BE%AE%E4%BF%A1JS-SDK%E8%AE%B0%E5%BD%95/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
@@ -625,6 +618,13 @@
   </url>
   
   <url>
+    <loc>http://blog.xinshangshangxin.com/2015/10/03/Agreeing-to-the-Xcode-iOS-license-requires-admin-privileges/</loc>
+    
+    <lastmod>2017-04-27T08:24:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.xinshangshangxin.com/2015/06/13/%E5%9C%A8docker%E4%B8%AD%E4%BD%BF%E7%94%A8pm2%E6%88%96forever/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
@@ -632,14 +632,14 @@
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/08/16/%E5%9C%A8sails%E4%B8%AD%E4%BD%BF%E7%94%A8gulp%E4%BB%A3%E6%9B%BFgrunt%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/</loc>
+    <loc>http://blog.xinshangshangxin.com/2015/03/17/%E5%B8%B8%E7%94%A8meat%E6%95%B4%E7%90%86-%E8%BD%AC/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/03/17/%E5%B8%B8%E7%94%A8meat%E6%95%B4%E7%90%86-%E8%BD%AC/</loc>
+    <loc>http://blog.xinshangshangxin.com/2015/08/16/%E5%9C%A8sails%E4%B8%AD%E4%BD%BF%E7%94%A8gulp%E4%BB%A3%E6%9B%BFgrunt%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
@@ -674,13 +674,6 @@
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/2015/08/18/%E8%BD%AC-MongoDB%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/</loc>
-    
-    <lastmod>2017-04-27T08:24:53.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://blog.xinshangshangxin.com/2015/03/03/%E9%98%BF%E9%87%8C%E4%BA%91ECS%E4%B8%8Anode%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
@@ -702,6 +695,13 @@
   </url>
   
   <url>
+    <loc>http://blog.xinshangshangxin.com/2015/08/18/%E8%BD%AC-MongoDB%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/</loc>
+    
+    <lastmod>2017-04-27T08:24:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.xinshangshangxin.com/404.html</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
@@ -709,14 +709,14 @@
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/about/index.html</loc>
+    <loc>http://blog.xinshangshangxin.com/categories/index.html</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.xinshangshangxin.com/categories/index.html</loc>
+    <loc>http://blog.xinshangshangxin.com/about/index.html</loc>
     
     <lastmod>2017-04-27T08:24:53.000Z</lastmod>
     
