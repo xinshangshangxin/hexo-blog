@@ -16,7 +16,7 @@ push:
 	hexo d
 back:
 	git add -A
-	git commit -m "backup"
+	git commit -m "backup" || echo "no commit"
 	git push origin backup:backup
 	git push gitlab backup:backup
 
