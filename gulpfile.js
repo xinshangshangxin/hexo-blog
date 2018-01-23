@@ -90,6 +90,7 @@ gulp.task('backup', function (done) {
 gulp.task('default', gulp.series(
   'clean',
   'beauty',
+  'backup',
   'generage',
   'minify-html',
   'minify-css',
