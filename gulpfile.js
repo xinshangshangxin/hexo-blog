@@ -66,7 +66,18 @@ gulp.task('generage', function (done) {
 
 gulp.task('deploy', function (done) {
   exec('hexo d', function (err, data) {
-    if(err) {
+    if (err) {
+      return done(err);
+    }
+
+    console.info(data);
+    return done();
+  });
+});
+
+gulp.task('backup', function (done) {
+  exec('git add -A; git commit -m "backup" || echo "no commit"; git push origin backup:backup; git push gitlab backup:backup', function (err, data) {
+    if (err) {
       return done(err);
     }
 
