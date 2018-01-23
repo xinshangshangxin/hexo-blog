@@ -34,26 +34,35 @@ export PATH=$HOME/.nvm/versions/node/v8.0.0/bin/:$PATH
 
 
 ## 检查 .nvmrc 自动载入对应node版本处理
-
-原生的方法通过 `"$node_version" != "$(nvm version default)"`来判断是否需要返回到默认版本, 但是这样处理会导致上面的 `--no-use` 失效, 而大部分情况下,只需要处理有 `.nvmrc`转换后, 再进入其他路径时才需要 `nvm use default`, 故最终代码如下
+通过判断是否首次载入来加快速度
 
 ```bash
 # 自动切换node版本 #
-nvmVersionChanged=0;
+nvmVersionFirstDetect=1;
 autoload -U add-zsh-hook
 load-nvmrc() {
-  if [[ -f .nvmrc && -r .nvmrc ]]; then
-    nvmVersionChanged=1
-    nvm use
-  elif [[ ${nvmVersionChanged} -eq 1 ]]; then
-    nvmVersionChanged=0
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [[ ${nvmVersionFirstDetect} -eq 0 && "$node_version" != "$(nvm version default)" ]]; then
     echo "Reverting to nvm default version"
     nvm use default
   fi
+  nvmVersionFirstDetect=0
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 ```
+
+![load-nvmrc](/img/zsh-nvm-slow/1.png)
 
 # 参考文档
 - [解决nvm导致终端启动慢的问题
