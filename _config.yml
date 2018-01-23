@@ -49,16 +49,16 @@ highlight:
   tab_replace:
 
 
-clean_css:
-  exclude:
-    - "*.min.css"
+#clean_css:
+#  exclude:
+#    - "*.min.css"
 
-uglify:
-  mangle: true
-  output:
-  compress:
-  exclude: 
-    - "*.min.js"
+#uglify:
+#  mangle: true
+#  output:
+#  compress:
+#  exclude:
+#    - "*.min.js"
 
 # Category & Tag
 default_category: uncategorized
