@@ -1,0 +1,538 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>haraka收发邮件初级教程 | SHANG Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="xinshangshangxin">
+    
+
+    
+    <meta name="description" content="haraka没有开箱即用, 需要一番配置, 本文简单介绍了如何使用haraka和qq邮箱通讯">
+<meta name="keywords" content="haraka">
+<meta property="og:type" content="article">
+<meta property="og:title" content="haraka收发邮件初级教程">
+<meta property="og:url" content="http://blog.xinshangshangxin.com/2018/02/04/haraka-introduction/index.html">
+<meta property="og:site_name" content="SHANG Blog">
+<meta property="og:description" content="haraka没有开箱即用, 需要一番配置, 本文简单介绍了如何使用haraka和qq邮箱通讯">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/haraka/1.png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/haraka/2.png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/haraka/3.png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/haraka/4.png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/haraka/5.png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/haraka/7.png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/haraka/8.png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/haraka/9.png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/haraka/10.png">
+<meta property="og:updated_time" content="2018-02-04T07:19:48.510Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="haraka收发邮件初级教程">
+<meta name="twitter:description" content="haraka没有开箱即用, 需要一番配置, 本文简单介绍了如何使用haraka和qq邮箱通讯">
+<meta name="twitter:image" content="http://blog.xinshangshangxin.com/img/haraka/1.png">
+
+    
+    <link rel="alternative" href="atom.xml" title="SHANG Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="SHANG Blog" title="SHANG Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="SHANG Blog">SHANG Blog</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives/">文章</a></li>
+					
+						<li><a href="/about/">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.xinshangshangxin.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/02/04/haraka-introduction/" title="haraka收发邮件初级教程" itemprop="url">haraka收发邮件初级教程</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xinshangshangxin" target="_blank" itemprop="author">xinshangshangxin</a>
+		
+  <p class="article-time">
+    <time datetime="2018-02-04T05:47:16.000Z" itemprop="datePublished"> 发表于 2018年02月4日</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装并初始化"><span class="toc-number">1.</span> <span class="toc-text">安装并初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#需要有自定义域名和修改域名解析的权限"><span class="toc-number">1.1.</span> <span class="toc-text">需要有自定义域名和修改域名解析的权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#全局安装haraka"><span class="toc-number">1.2.</span> <span class="toc-text">全局安装haraka</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成配置文件"><span class="toc-number">1.3.</span> <span class="toc-text">生成配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动测试"><span class="toc-number">1.4.</span> <span class="toc-text">启动测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装测试工具-swaks-非必须-但是安装后测试方便"><span class="toc-number">1.5.</span> <span class="toc-text">安装测试工具 swaks (非必须, 但是安装后测试方便)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#接受邮件配置"><span class="toc-number">2.</span> <span class="toc-text">接受邮件配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#进入配置文件夹"><span class="toc-number">2.1.</span> <span class="toc-text">进入配置文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改日志level-方便查看错误"><span class="toc-number">2.2.</span> <span class="toc-text">修改日志level, 方便查看错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改QUEUE配置为-test-queue"><span class="toc-number">2.3.</span> <span class="toc-text">修改QUEUE配置为 test_queue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改-host-list-设置允许接受哪些后缀的-email-地址-将你的域名填入"><span class="toc-number">2.4.</span> <span class="toc-text">修改 host_list, 设置允许接受哪些后缀的 email 地址, 将你的域名填入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试接受邮件"><span class="toc-number">2.5.</span> <span class="toc-text">测试接受邮件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-使用-swaks-测试接受邮件-如果有域名-可看下一步-直接用外网域名测试"><span class="toc-number">2.5.1.</span> <span class="toc-text">a) 使用 swaks 测试接受邮件 (如果有域名, 可看下一步, 直接用外网域名测试)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b-配置MX记录-接收外部邮件-如果没有域名-请看上一步"><span class="toc-number">2.5.2.</span> <span class="toc-text">b) 配置MX记录,接收外部邮件 (如果没有域名, 请看上一步)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#发送邮件配置-必须有域名和-MX-记录"><span class="toc-number">3.</span> <span class="toc-text">发送邮件配置 (必须有域名和 MX 记录)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置-MX-记录-上面已经做过了-进入配置目录-cd-haraka-config"><span class="toc-number">3.1.</span> <span class="toc-text">配置 MX 记录 (上面已经做过了), 进入配置目录 cd ~/.haraka/config</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启用-auth-flat-file-配置"><span class="toc-number">3.2.</span> <span class="toc-text">启用 auth/flat_file 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加-auth-flat-file-配置文件"><span class="toc-number">3.3.</span> <span class="toc-text">添加 auth_flat_file 配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动haraka服务"><span class="toc-number">3.4.</span> <span class="toc-text">启动haraka服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-swaks-测试发送邮件"><span class="toc-number">3.5.</span> <span class="toc-text">使用 swaks 测试发送邮件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#指定非localhost地址发送邮件"><span class="toc-number">3.6.</span> <span class="toc-text">指定非localhost地址发送邮件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新建-plugin-忽略-TSL-要求"><span class="toc-number">3.7.</span> <span class="toc-text">新建 plugin 忽略 TSL 要求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建-新plugin"><span class="toc-number">3.7.1.</span> <span class="toc-text">创建 新plugin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复制-flat-file-并修改成忽略TSL-要求"><span class="toc-number">3.7.2.</span> <span class="toc-text">复制 flat_file 并修改成忽略TSL 要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改-plugins-使用-insecure-flat-file"><span class="toc-number">3.7.3.</span> <span class="toc-text">修改 plugins, 使用 insecure_flat_file</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动haraka服务-并测试"><span class="toc-number">3.7.4.</span> <span class="toc-text">启动haraka服务 并测试</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文档"><span class="toc-number">4.</span> <span class="toc-text">参考文档</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="安装并初始化"><a href="#安装并初始化" class="headerlink" title="安装并初始化"></a>安装并初始化</h1><h2 id="需要有自定义域名和修改域名解析的权限"><a href="#需要有自定义域名和修改域名解析的权限" class="headerlink" title="需要有自定义域名和修改域名解析的权限"></a>需要有自定义域名和修改域名解析的权限</h2><p><em>本地测试接收邮件可以不使用自定义域名, 外网接收邮件, 本地/外网发送邮件都需要设置域名解析 MX 设置</em></p>
+<h2 id="全局安装haraka"><a href="#全局安装haraka" class="headerlink" title="全局安装haraka"></a>全局安装haraka</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意 H 为大写</span></span><br><span class="line">npm install -g Haraka</span><br></pre></td></tr></table></figure>
+<h2 id="生成配置文件"><a href="#生成配置文件" class="headerlink" title="生成配置文件"></a>生成配置文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ~/.haraka 为配置文件目录, 自行更改</span></span><br><span class="line">haraka -i ~/.haraka</span><br></pre></td></tr></table></figure>
+<h2 id="启动测试"><a href="#启动测试" class="headerlink" title="启动测试"></a>启动测试</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 因为需要监听25端口, 部分账户需要sudo,   ~/.haraka为配置目录</span></span><br><span class="line">haraka -c ~/.haraka</span><br></pre></td></tr></table></figure>
+<h2 id="安装测试工具-swaks-非必须-但是安装后测试方便"><a href="#安装测试工具-swaks-非必须-但是安装后测试方便" class="headerlink" title="安装测试工具 swaks (非必须, 但是安装后测试方便)"></a>安装测试工具 <code>swaks</code> (非必须, 但是安装后测试方便)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt -y install swaks</span><br></pre></td></tr></table></figure>
+<h1 id="接受邮件配置"><a href="#接受邮件配置" class="headerlink" title="接受邮件配置"></a>接受邮件配置</h1><h2 id="进入配置文件夹"><a href="#进入配置文件夹" class="headerlink" title="进入配置文件夹"></a>进入配置文件夹</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.haraka/config</span><br></pre></td></tr></table></figure>
+<h2 id="修改日志level-方便查看错误"><a href="#修改日志level-方便查看错误" class="headerlink" title="修改日志level, 方便查看错误"></a>修改日志level, 方便查看错误</h2><p><code>vim log.ini</code>, 将 level 改成debug, 保存并退出<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">level=debug</span><br></pre></td></tr></table></figure></p>
+<h2 id="修改QUEUE配置为-test-queue"><a href="#修改QUEUE配置为-test-queue" class="headerlink" title="修改QUEUE配置为 test_queue"></a>修改QUEUE配置为 <code>test_queue</code></h2><p><code>vim plugins</code>, 注释 <code>queue/smtp_forward</code>, 添加 <code>test_queue</code>, 使用之后,接收到的邮件内容会写入<code>/tmp/mail.eml</code>文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># QUEUE</span></span><br><span class="line"><span class="comment"># queues: discard  qmail-queue  quarantine  smtp_forward  smtp_proxy</span></span><br><span class="line"><span class="comment"># Queue mail via smtp - see config/smtp_forward.ini for where your mail goes</span></span><br><span class="line"><span class="comment"># queue/smtp_forward</span></span><br><span class="line">test_queue</span><br></pre></td></tr></table></figure></p>
+<p><img src="/img/haraka/1.png" alt=""></p>
+<h2 id="修改-host-list-设置允许接受哪些后缀的-email-地址-将你的域名填入"><a href="#修改-host-list-设置允许接受哪些后缀的-email-地址-将你的域名填入" class="headerlink" title="修改 host_list, 设置允许接受哪些后缀的 email 地址, 将你的域名填入"></a>修改 <code>host_list</code>, 设置允许接受哪些后缀的 email 地址, 将你的域名填入</h2><p><code>vim host_list</code>, 添加你的域名, 比如 <code>example.com</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一行是原来的host</span></span><br><span class="line">example.com</span><br></pre></td></tr></table></figure></p>
+<h2 id="测试接受邮件"><a href="#测试接受邮件" class="headerlink" title="测试接受邮件"></a>测试接受邮件</h2><h3 id="a-使用-swaks-测试接受邮件-如果有域名-可看下一步-直接用外网域名测试"><a href="#a-使用-swaks-测试接受邮件-如果有域名-可看下一步-直接用外网域名测试" class="headerlink" title="a) 使用 swaks 测试接受邮件 (如果有域名, 可看下一步, 直接用外网域名测试)"></a>a) 使用 <code>swaks</code> 测试接受邮件 (如果有域名, 可看下一步, 直接用外网域名测试)</h3><p>下面命令中<code>-t to@example.com</code> 为本地接受地址, 域名后缀需要在<code>host_list</code>中存在  <code>-s localhost</code>为指定使用本地服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swaks -f from@qq.com -t to@example.com -s localhost</span><br></pre></td></tr></table></figure></p>
+<p>查看是否收到邮件: <code>cat /tmp/mail.eml</code><br><img src="/img/haraka/2.png" alt=""></p>
+<h3 id="b-配置MX记录-接收外部邮件-如果没有域名-请看上一步"><a href="#b-配置MX记录-接收外部邮件-如果没有域名-请看上一步" class="headerlink" title="b) 配置MX记录,接收外部邮件 (如果没有域名, 请看上一步)"></a>b) 配置MX记录,接收外部邮件 (如果没有域名, 请看上一步)</h3><ol>
+<li>将 MX 解析到安装 <code>Haraka</code> 的服务器, 以下为阿里云解析设置, 其它请自行谷歌配置<br><img src="/img/haraka/3.png" alt=""><br><img src="/img/haraka/4.png" alt=""></li>
+<li>把你的域名地址写入到 <code>host_list</code> (上面已经做过了)</li>
+<li><code>haraka -c ~/.haraka</code> 启动服务</li>
+<li>使用qq邮箱发送邮件<br><img src="/img/haraka/5.png" alt=""></li>
+<li>查看是否收到邮件 <code>cat /tmp/mail.eml</code><br>如下图对 <code>suLK1CBoYXJha2Eg1f3OxA==</code> 使用GBK的base64解密后为<code>测试 haraka 正文</code>. 解密地址  <a href="https://1024tools.com/base64" target="_blank" rel="noopener">https://1024tools.com/base64</a></li>
+</ol>
+<p><img src="/img/haraka/7.png" alt=""><br><img src="/img/haraka/8.png" alt=""></p>
+<h1 id="发送邮件配置-必须有域名和-MX-记录"><a href="#发送邮件配置-必须有域名和-MX-记录" class="headerlink" title="发送邮件配置 (必须有域名和 MX 记录)"></a>发送邮件配置 (必须有域名和 <code>MX</code> 记录)</h1><h2 id="配置-MX-记录-上面已经做过了-进入配置目录-cd-haraka-config"><a href="#配置-MX-记录-上面已经做过了-进入配置目录-cd-haraka-config" class="headerlink" title="配置 MX 记录 (上面已经做过了), 进入配置目录 cd ~/.haraka/config"></a>配置 <code>MX</code> 记录 (上面已经做过了), 进入配置目录 <code>cd ~/.haraka/config</code></h2><h2 id="启用-auth-flat-file-配置"><a href="#启用-auth-flat-file-配置" class="headerlink" title="启用 auth/flat_file 配置"></a>启用 <code>auth/flat_file</code> 配置</h2><p><code>vim plugins</code>, 放开 <code>auth/flat_file</code> 的注释<br><img src="/img/haraka/9.png" alt=""></p>
+<h2 id="添加-auth-flat-file-配置文件"><a href="#添加-auth-flat-file-配置文件" class="headerlink" title="添加 auth_flat_file 配置文件"></a>添加 <code>auth_flat_file</code> 配置文件</h2><p><code>vim auth_flat_file.ini</code>(新建文件), 其中 <code>users</code> 为配置用户名和密码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">methods=PLAIN,LOGIN</span><br><span class="line">[users]</span><br><span class="line">username=password</span><br></pre></td></tr></table></figure></p>
+<h2 id="启动haraka服务"><a href="#启动haraka服务" class="headerlink" title="启动haraka服务"></a>启动haraka服务</h2><p><code>haraka -c ~/.haraka</code></p>
+<h2 id="使用-swaks-测试发送邮件"><a href="#使用-swaks-测试发送邮件" class="headerlink" title="使用 swaks 测试发送邮件"></a>使用 <code>swaks</code> 测试发送邮件</h2><p>其中<code>from@example.com</code>改成你域名后缀, <code>to@qq.com</code>改成你要接收的地址, <code>-s localhost</code>使用本地服务<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swaks -f <span class="keyword">from</span>@example.com -t to@qq.com -au username -ap password -s localhost</span><br></pre></td></tr></table></figure></p>
+<h2 id="指定非localhost地址发送邮件"><a href="#指定非localhost地址发送邮件" class="headerlink" title="指定非localhost地址发送邮件"></a>指定非localhost地址发送邮件</h2><p>因为 <code>auth/flat_file</code> 针对 <code>localhost</code> 地址会忽略 <code>TLS</code> 要求, 当指定server后会发送失败, 从日志中可以看到 <code>[auth/flat_file] Auth disabled for insecure public connection</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定sever 发送</span></span><br><span class="line">swaks -f from@example.com -t to@qq.com -au username -ap password -s example.com</span><br></pre></td></tr></table></figure>
+<h2 id="新建-plugin-忽略-TSL-要求"><a href="#新建-plugin-忽略-TSL-要求" class="headerlink" title="新建 plugin 忽略 TSL 要求"></a>新建 plugin 忽略 <code>TSL</code> 要求</h2><h3 id="创建-新plugin"><a href="#创建-新plugin" class="headerlink" title="创建 新plugin"></a>创建 新plugin</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">haraka -c ~/.haraka -p auth/insecure_flat_file</span><br></pre></td></tr></table></figure>
+<h3 id="复制-flat-file-并修改成忽略TSL-要求"><a href="#复制-flat-file-并修改成忽略TSL-要求" class="headerlink" title="复制 flat_file 并修改成忽略TSL 要求"></a>复制 <code>flat_file</code> 并修改成忽略TSL 要求</h3><p>将<a href="https://github.com/haraka/Haraka/blob/bfa2156f961da0988c5e05b2e3c5582511e11b4d/plugins/auth/flat_file.js#L19" target="_blank" rel="noopener">原来flat_file.js</a>, 注释掉如图所示的这一行, 然后将内容写入 <code>insecure_flat_file.js</code><br><img src="/img/haraka/10.png" alt=""><br><code>vim ~/.haraka/plugins/auth/insecure_flat_file.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Auth against a flat file</span></span><br><span class="line"></span><br><span class="line">exports.register = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> plugin = <span class="keyword">this</span>;</span><br><span class="line">    plugin.inherits(<span class="string">'auth/auth_base'</span>);</span><br><span class="line">    plugin.load_flat_ini();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">exports.load_flat_ini = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> plugin = <span class="keyword">this</span>;</span><br><span class="line">    plugin.cfg = plugin.config.get(<span class="string">'auth_flat_file.ini'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        plugin.load_flat_ini();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">exports.hook_capabilities = <span class="function"><span class="keyword">function</span> (<span class="params">next, connection</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> plugin = <span class="keyword">this</span>;</span><br><span class="line">    <span class="comment">// don't allow AUTH unless private IP or encrypted</span></span><br><span class="line">    <span class="keyword">if</span> (!connection.remote.is_private &amp;&amp; !connection.tls.enabled) &#123;</span><br><span class="line">        connection.logdebug(plugin,<span class="string">"Auth continue, but insecure public connection"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> methods = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (plugin.cfg.core &amp;&amp; plugin.cfg.core.methods ) &#123;</span><br><span class="line">        methods = plugin.cfg.core.methods.split(<span class="string">','</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (methods &amp;&amp; methods.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        connection.capabilities.push(<span class="string">'AUTH '</span> + methods.join(<span class="string">' '</span>));</span><br><span class="line">        connection.notes.allowed_auth_methods = methods;</span><br><span class="line">    &#125;</span><br><span class="line">    next();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">exports.get_plain_passwd = <span class="function"><span class="keyword">function</span> (<span class="params">user, connection, cb</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> plugin = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">if</span> (plugin.cfg.users[user]) &#123;</span><br><span class="line">        <span class="keyword">return</span> cb(plugin.cfg.users[user].toString());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cb();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改-plugins-使用-insecure-flat-file"><a href="#修改-plugins-使用-insecure-flat-file" class="headerlink" title="修改 plugins, 使用 insecure_flat_file"></a>修改 plugins, 使用 insecure_flat_file</h3><p><code>vim ~/.haraka/config/plugins</code>, 添加<code>auth/insecure_flat_file</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># AUTH plugins require TLS before AUTH is advertised, see</span><br><span class="line">#     https://github.com/haraka/Haraka/wiki/Require-SSL-TLS</span><br><span class="line"># auth/flat_file</span><br><span class="line"># auth/auth_proxy</span><br><span class="line"># auth/auth_ldap</span><br><span class="line">auth/insecure_flat_file</span><br></pre></td></tr></table></figure></p>
+<h3 id="启动haraka服务-并测试"><a href="#启动haraka服务-并测试" class="headerlink" title="启动haraka服务 并测试"></a>启动haraka服务 并测试</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">haraka -c ~<span class="regexp">/.haraka</span></span><br><span class="line"><span class="regexp">swaks -f from@example.com -t to@qq.com -au username -ap password -s example.com</span></span><br></pre></td></tr></table></figure>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
+<li><a href="https://thihara.github.io/Creating-E-Mail-Service-with-Haraka/" target="_blank" rel="noopener">Creating Your Own E-Mail service with Haraka</a></li>
+<li><a href="https://haraka.github.io/README.html" target="_blank" rel="noopener">官方文档</a></li>
+<li><a href="https://www.youtube.com/watch?v=6twKXMAsPsw&amp;feature=youtu.be" target="_blank" rel="noopener">官方视频</a></li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>文章若有纰漏请大家补充指正,谢谢~~</strong></p>
+<p><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG殇</p>
+</blockquote>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/haraka/">haraka</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://blog.xinshangshangxin.com/2018/02/04/haraka-introduction/" data-title="haraka收发邮件初级教程 | SHANG Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2017/06/07/zsh-nvm-slow/"  title="使用nvm导致zsh启动慢">
+ <strong>下一篇：</strong><br/> 
+ <span>使用nvm导致zsh启动慢
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装并初始化"><span class="toc-number">1.</span> <span class="toc-text">安装并初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#需要有自定义域名和修改域名解析的权限"><span class="toc-number">1.1.</span> <span class="toc-text">需要有自定义域名和修改域名解析的权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#全局安装haraka"><span class="toc-number">1.2.</span> <span class="toc-text">全局安装haraka</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成配置文件"><span class="toc-number">1.3.</span> <span class="toc-text">生成配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动测试"><span class="toc-number">1.4.</span> <span class="toc-text">启动测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装测试工具-swaks-非必须-但是安装后测试方便"><span class="toc-number">1.5.</span> <span class="toc-text">安装测试工具 swaks (非必须, 但是安装后测试方便)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#接受邮件配置"><span class="toc-number">2.</span> <span class="toc-text">接受邮件配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#进入配置文件夹"><span class="toc-number">2.1.</span> <span class="toc-text">进入配置文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改日志level-方便查看错误"><span class="toc-number">2.2.</span> <span class="toc-text">修改日志level, 方便查看错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改QUEUE配置为-test-queue"><span class="toc-number">2.3.</span> <span class="toc-text">修改QUEUE配置为 test_queue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改-host-list-设置允许接受哪些后缀的-email-地址-将你的域名填入"><span class="toc-number">2.4.</span> <span class="toc-text">修改 host_list, 设置允许接受哪些后缀的 email 地址, 将你的域名填入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试接受邮件"><span class="toc-number">2.5.</span> <span class="toc-text">测试接受邮件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-使用-swaks-测试接受邮件-如果有域名-可看下一步-直接用外网域名测试"><span class="toc-number">2.5.1.</span> <span class="toc-text">a) 使用 swaks 测试接受邮件 (如果有域名, 可看下一步, 直接用外网域名测试)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b-配置MX记录-接收外部邮件-如果没有域名-请看上一步"><span class="toc-number">2.5.2.</span> <span class="toc-text">b) 配置MX记录,接收外部邮件 (如果没有域名, 请看上一步)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#发送邮件配置-必须有域名和-MX-记录"><span class="toc-number">3.</span> <span class="toc-text">发送邮件配置 (必须有域名和 MX 记录)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置-MX-记录-上面已经做过了-进入配置目录-cd-haraka-config"><span class="toc-number">3.1.</span> <span class="toc-text">配置 MX 记录 (上面已经做过了), 进入配置目录 cd ~/.haraka/config</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启用-auth-flat-file-配置"><span class="toc-number">3.2.</span> <span class="toc-text">启用 auth/flat_file 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加-auth-flat-file-配置文件"><span class="toc-number">3.3.</span> <span class="toc-text">添加 auth_flat_file 配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动haraka服务"><span class="toc-number">3.4.</span> <span class="toc-text">启动haraka服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-swaks-测试发送邮件"><span class="toc-number">3.5.</span> <span class="toc-text">使用 swaks 测试发送邮件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#指定非localhost地址发送邮件"><span class="toc-number">3.6.</span> <span class="toc-text">指定非localhost地址发送邮件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新建-plugin-忽略-TSL-要求"><span class="toc-number">3.7.</span> <span class="toc-text">新建 plugin 忽略 TSL 要求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建-新plugin"><span class="toc-number">3.7.1.</span> <span class="toc-text">创建 新plugin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复制-flat-file-并修改成忽略TSL-要求"><span class="toc-number">3.7.2.</span> <span class="toc-text">复制 flat_file 并修改成忽略TSL 要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改-plugins-使用-insecure-flat-file"><span class="toc-number">3.7.3.</span> <span class="toc-text">修改 plugins, 使用 insecure_flat_file</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动haraka服务-并测试"><span class="toc-number">3.7.4.</span> <span class="toc-text">启动haraka服务 并测试</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文档"><span class="toc-number">4.</span> <span class="toc-text">参考文档</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>36</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/node/" title="node">node<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/AngularJS/" title="AngularJS">AngularJS<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cygwin/" title="cygwin">cygwin<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ECS/" title="ECS">ECS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ConEmu/" title="ConEmu">ConEmu<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/youkuvod/" title="youkuvod">youkuvod<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p> SHANG殇 <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/xinshangshangxin" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:xinshangshangxin@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="xinshangshangxin">xinshangshangxin</a>
+		
+		
+		</p>
+</div>
+</footer>
+    
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'xinshangshangxin';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa428636dbcab9ddea4df16331711f970' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

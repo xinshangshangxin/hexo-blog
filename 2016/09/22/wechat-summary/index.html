@@ -1,1 +1,578 @@
-<!DOCTYPE HTML><html lang="zh-CN"><head><meta charset="UTF-8"><title>微信总结 | SHANG Blog</title><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><meta name="author" content="xinshangshangxin"><meta name="description" content="遇到的坑,或者其它混淆的概念"><meta name="keywords" content="wechat"><meta property="og:type" content="article"><meta property="og:title" content="微信总结"><meta property="og:url" content="http://blog.xinshangshangxin.com/2016/09/22/wechat-summary/index.html"><meta property="og:site_name" content="SHANG Blog"><meta property="og:description" content="遇到的坑,或者其它混淆的概念"><meta property="og:locale" content="zh-CN"><meta property="og:updated_time" content="2017-04-27T08:24:53.000Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="微信总结"><meta name="twitter:description" content="遇到的坑,或者其它混淆的概念"><link rel="alternative" href="atom.xml" title="SHANG Blog" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="apple-touch-icon" href="/img/pacman.jpg"><link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg"><link rel="stylesheet" href="/css/style.css"></head><body><header><div><div id="imglogo"> <a href="/"><img src="/img/logo.png" alt="SHANG Blog" title="SHANG Blog"></a></div><div id="textlogo"><h1 class="site-name"><a href="/" title="SHANG Blog">SHANG Blog</a></h1><h2 class="blog-motto"></h2></div><div class="navbar"><a class="navbutton navmobile" href="#" title="菜单"></a></div><nav class="animated"><ul><ul><li><a href="/">首页</a></li><li><a href="/archives/">文章</a></li><li><a href="/about/">关于</a></li><li><form class="search" action="//google.com/search" method="get" accept-charset="utf-8"> <label>Search</label> <input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索"> <input type="hidden" name="q" value="site:blog.xinshangshangxin.com"></form></li></ul></ul></nav></div></header><div id="container"><div id="main" class="post" itemscope itemprop="blogPost"><article itemprop="articleBody"><header class="article-info clearfix"><h1 itemprop="name"> <a href="/2016/09/22/wechat-summary/" title="微信总结" itemprop="url">微信总结</a></h1><p class="article-author">By <a href="/about" title="xinshangshangxin" target="_blank" itemprop="author">xinshangshangxin</a></p><p class="article-time"> <time datetime="2016-09-22T07:42:27.000Z" itemprop="datePublished">发表于 2016年09月22日</time></p></header><div class="article-content"><div id="toc" class="toc-article"> <strong class="toc-title">文章目录</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第三方平台-和-公众号自己开发"><span class="toc-number">1.</span> <span class="toc-text">第三方平台 和 公众号自己开发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微信会话cookie的时长"><span class="toc-number">2.</span> <span class="toc-text">微信会话cookie的时长</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网页授权登录-和-网站应用登录"><span class="toc-number">3.</span> <span class="toc-text">网页授权登录 和 网站应用登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网站授权登录-https-open-weixin-qq-com"><span class="toc-number">4.</span> <span class="toc-text">网站授权登录(https://open.weixin.qq.com/)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网页授权登录"><span class="toc-number">5.</span> <span class="toc-text">网页授权登录</span></a></li></ol></div><h2 id="第三方平台-和-公众号自己开发"><a href="#第三方平台-和-公众号自己开发" class="headerlink" title="第三方平台 和 公众号自己开发"></a>第三方平台 和 公众号自己开发</h2><p>存在</p><ol><li>appid+appsecret</li><li>B 第三方</li><li>C 第三方</li></ol><hr><ul><li>不限制授权第三方的次数</li><li>获取accesstoken的额度为分开的(无官方文档说明,猜测)</li><li>accesstoken对不同的第三方不会冲突</li><li>不同的第三方主动调用API不会冲突</li><li>事件通知目前支持向所有授权的第三方发送</li><li>每个第三方都可以回复消息</li><li>每个第三方回复空的就没关系，都回复会有混乱，只能靠公众号自己跟第三方协调</li><li>第三方 网页授权 文档: <a href="https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&amp;t=resource/res_list&amp;verify=1&amp;id=open1419318590&amp;token=&amp;lang=zh_CN" target="_blank" rel="noopener">https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&amp;t=resource/res_list&amp;verify=1&amp;id=open1419318590&amp;token=&amp;lang=zh_CN</a></li></ul><h2 id="微信会话cookie的时长"><a href="#微信会话cookie的时长" class="headerlink" title="微信会话cookie的时长"></a>微信会话cookie的时长</h2><table><thead><tr><th>操作</th><th>是否失效</th></tr></thead><tbody><tr><td>从WebView返回微信主界面</td><td>cookie不失效</td></tr><tr><td>返回手机系统主界面</td><td>cookie不失效</td></tr><tr><td>后台关闭微信进程</td><td>cookie失效</td></tr><tr><td>微信切换账号</td><td>cookie失效</td></tr><tr><td>内存小的机型，这部分临时存储就会被系统释放掉</td><td>cookie失效</td></tr><tr><td>一般浏览器当浏览器退出后(chrome等)</td><td>cookie失效</td></tr></tbody></table><h2 id="网页授权登录-和-网站应用登录"><a href="#网页授权登录-和-网站应用登录" class="headerlink" title="网页授权登录 和 网站应用登录"></a>网页授权登录 和 网站应用登录</h2><blockquote><table><thead><tr><th></th><th>网页授权登录</th><th>网站应用微信登录</th></tr></thead><tbody><tr><td> 平台</td><td><a href="https://mp.weixin.qq.com" target="_blank" rel="noopener">https://mp.weixin.qq.com</a></td><td><a href="https://open.weixin.qq.com/" target="_blank" rel="noopener">https://open.weixin.qq.com/</a></td></tr><tr><td>微信文档</td><td><a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140842&amp;token=&amp;lang=zh_CN" target="_blank" rel="noopener">mp wiki</a></td><td><a href="https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&amp;t=resource/res_list&amp;verify=1&amp;id=open1419316505&amp;token=&amp;lang=zh_CN" target="_blank" rel="noopener">open wiki</a></td></tr><tr><td>区别</td><td>scope为snsapi_base, 获取用户的openid 静默授权<br> scope为snsapi_userinfo获取用户的基本信息,对于已关注公众号的用户,静默授权,否则需要用户同意<br>未关注的用户也能获取到用户信息</td><td>微信用户 需同意授权第三方应用</td></tr></tbody></table></blockquote><h2 id="网站授权登录-https-open-weixin-qq-com"><a href="#网站授权登录-https-open-weixin-qq-com" class="headerlink" title="网站授权登录(https://open.weixin.qq.com/)"></a>网站授权登录(<a href="https://open.weixin.qq.com/" target="_blank" rel="noopener">https://open.weixin.qq.com/</a>)</h2><p><a href="https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&amp;t=resource/res_list&amp;verify=1&amp;id=open1419316505&amp;token=&amp;lang=zh_CN" target="_blank" rel="noopener">微信文档</a><br><a href="https://github.com/liangyali/passport-wechat" target="_blank" rel="noopener">package passport-wechat</a><br></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config 配置</span></span><br><span class="line">auth: &#123;</span><br><span class="line">    wechat: &#123;</span><br><span class="line">      passport: &#123;</span><br><span class="line">        strategy: <span class="string">'wechat'</span>,</span><br><span class="line">        <span class="built_in">module</span>: <span class="string">'passport-wechat'</span>,</span><br><span class="line">        options: &#123;</span><br><span class="line">          appID: <span class="string">''</span>,</span><br><span class="line">          appSecret: <span class="string">''</span>,</span><br><span class="line">          callbackURL: <span class="string">'prefix/auth/wechat/callback'</span>,</span><br><span class="line">          response_type: <span class="string">'code'</span>,</span><br><span class="line">          scope: <span class="string">'snsapi_login'</span>,</span><br><span class="line">          state: <span class="literal">true</span></span><br><span class="line">        &#125;,</span><br><span class="line">        verify: <span class="function"><span class="keyword">function</span>(<span class="params">openid, profile, userInfo, done</span>) </span>&#123;</span><br><span class="line">          done(<span class="literal">null</span>, userInfo);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> passport = <span class="built_in">require</span>(<span class="string">'passport'</span>);</span><br><span class="line"><span class="keyword">var</span> WechatStrategy = <span class="built_in">require</span>(<span class="string">'passport-wechat'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> callbackURL = <span class="string">'/auth/wechat/callback'</span>;</span><br><span class="line"></span><br><span class="line">passport.serializeUser(<span class="function"><span class="keyword">function</span>(<span class="params">user, done</span>) </span>&#123;</span><br><span class="line">  done(<span class="literal">null</span>, user);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">passport.deserializeUser(<span class="function"><span class="keyword">function</span>(<span class="params">obj, done</span>) </span>&#123;</span><br><span class="line">  done(<span class="literal">null</span>, obj);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 相关配置为测试账号信息</span></span><br><span class="line">passport.use(<span class="keyword">new</span> WechatStrategy(&#123;</span><br><span class="line">  appID: appID,</span><br><span class="line">  appSecret: appSecret,</span><br><span class="line">  callbackURL: callbackURL,</span><br><span class="line">  response_type: <span class="string">'code'</span>,</span><br><span class="line">  scope: <span class="string">'snsapi_login'</span>,</span><br><span class="line">  state: <span class="literal">true</span></span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">openid, profile, userInfo, done</span>) </span>&#123;</span><br><span class="line">  done(<span class="literal">null</span>, userInfo);</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  authCallback: <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="keyword">from</span> = <span class="built_in">encodeURIComponent</span>(req.param(<span class="string">'from'</span>)) || <span class="string">''</span>;</span><br><span class="line">    passport.authenticate(<span class="string">'wechat'</span>, &#123;</span><br><span class="line">      failureRedirect: <span class="string">'/auth/err'</span>,</span><br><span class="line">      successRedirect: <span class="string">'/auth/success'</span> + <span class="string">'?from='</span> + <span class="keyword">from</span></span><br><span class="line">    &#125;)(req, res);</span><br><span class="line">  &#125;,</span><br><span class="line">  authError: <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.json(<span class="number">400</span>, &#123;</span><br><span class="line">      message: <span class="string">'error'</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  authSuccess: <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.redirect(joinQueryStr((req.param(<span class="string">'from'</span>) || <span class="string">'/'</span>), &#123;</span><br><span class="line">      userInfo: req.user || &#123;&#125;,</span><br><span class="line">      unionid: (req.user || &#123;&#125;).unionid</span><br><span class="line">    &#125;));</span><br><span class="line">  &#125;,</span><br><span class="line">  authWechat: <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="keyword">from</span> = <span class="built_in">encodeURIComponent</span>(req.param(<span class="string">'from'</span>)) || <span class="string">''</span>;</span><br><span class="line">    passport.authenticate(<span class="string">'wechat'</span>, &#123;</span><br><span class="line">      callbackURL: callbackURL + <span class="string">'?from='</span> + <span class="keyword">from</span></span><br><span class="line">    &#125;)(req, res);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h2 id="网页授权登录"><a href="#网页授权登录" class="headerlink" title="网页授权登录"></a>网页授权登录</h2><p><a href="http://mp.weixin.qq.com/wiki/17/c0f37d5704f0b64713d5d2c37b468d75.html" target="_blank" rel="noopener">微信文档</a><br><a href="https://github.com/node-webot/wechat-oauth" target="_blank" rel="noopener">package wechat-oauth</a><br></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">auth: <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> code = req.query.code;</span><br><span class="line">    <span class="keyword">if</span>(req.query.state &amp;&amp; code === <span class="string">'authdeny'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> res.status(<span class="number">400</span>).send(<span class="string">'用户拒绝授权'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(!code) &#123;</span><br><span class="line">      <span class="keyword">var</span> callbackUrl = req.protocol + <span class="string">'://'</span> + req.get(<span class="string">'Host'</span>) + req.originalUrl;</span><br><span class="line">      <span class="keyword">var</span> url = oauth.getAuthorizeURL(callbackUrl, <span class="string">'random_state'</span>, <span class="string">'snsapi_userinfo'</span>);</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'redirect to'</span>, url);</span><br><span class="line">      <span class="keyword">return</span> res.redirect(url);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> openid;</span><br><span class="line">    <span class="keyword">var</span> wechatUser;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">async</span>.series([</span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">getAccessToken</span>(<span class="params">cb</span>) </span>&#123;</span><br><span class="line">        oauth.getAccessToken(code, <span class="function"><span class="keyword">function</span>(<span class="params">err, result</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">if</span>(err) &#123;</span><br><span class="line">            <span class="keyword">return</span> cb(err);</span><br><span class="line">          &#125;</span><br><span class="line">          openid = result.data.openid;</span><br><span class="line">          cb();</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">getWechatUser</span>(<span class="params">cb</span>) </span>&#123;</span><br><span class="line">        oauth.getUser(openid, <span class="function"><span class="keyword">function</span>(<span class="params">err, user</span>) </span>&#123;</span><br><span class="line">          req.session.wechat = user;</span><br><span class="line">          wechatUser = user;</span><br><span class="line">          cb(err, user);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    ], <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(err) &#123;</span><br><span class="line">        <span class="keyword">return</span> res.status(<span class="number">400</span>).json(err);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'session'</span>, req.session);</span><br><span class="line">      <span class="keyword">if</span>(req.query.referer) &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">          .redirect(UtilitiesService</span><br><span class="line">            .joinQueryStr((req.query.referer || <span class="string">'/'</span>), &#123;</span><br><span class="line">              userInfo: wechatUser || &#123;&#125;,</span><br><span class="line">              unionid: (wechatUser || &#123;&#125;).unionid</span><br><span class="line">            &#125;)</span><br><span class="line">          );</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      res.json(&#123;</span><br><span class="line">        userInfo: wechatUser,</span><br><span class="line">        unionid: openid</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure><p></p></div><footer class="article-footer clearfix"><div class="article-catetags"><div class="article-tags"><span></span> <a href="/tags/wechat/">wechat</a></div></div><div class="article-share" id="share"><div data-url="http://blog.xinshangshangxin.com/2016/09/22/wechat-summary/" data-title="微信总结 | SHANG Blog" data-tsina="null" class="share clearfix"></div></div></footer></article><nav class="article-nav clearfix"><div class="prev"> <a href="/2016/11/24/mina-bluebird/" title="微信小程序中使用bluebird"><strong>上一篇：</strong><br> <span>微信小程序中使用bluebird</span></a></div><div class="next"> <a href="/2016/06/14/cygwin-backup/" title="制作portable版Cygwin"><strong>下一篇：</strong><br> <span>制作portable版Cygwin</span></a></div></nav><section id="comments" class="comment"><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div></section></div><div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div><div id="toc" class="toc-aside"> <strong class="toc-title">文章目录</strong><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第三方平台-和-公众号自己开发"><span class="toc-number">1.</span> <span class="toc-text">第三方平台 和 公众号自己开发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微信会话cookie的时长"><span class="toc-number">2.</span> <span class="toc-text">微信会话cookie的时长</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网页授权登录-和-网站应用登录"><span class="toc-number">3.</span> <span class="toc-text">网页授权登录 和 网站应用登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网站授权登录-https-open-weixin-qq-com"><span class="toc-number">4.</span> <span class="toc-text">网站授权登录(https://open.weixin.qq.com/)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网页授权登录"><span class="toc-number">5.</span> <span class="toc-text">网页授权登录</span></a></li></ol></div><div id="asidepart"><div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div><aside class="clearfix"><div class="tagslist"><p class="asidetitle">标签</p><ul class="clearfix"><li><a href="/tags/js/" title="js">js<sup>36</sup></a></li><li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>13</sup></a></li><li><a href="/tags/node/" title="node">node<sup>12</sup></a></li><li><a href="/tags/AngularJS/" title="AngularJS">AngularJS<sup>9</sup></a></li><li><a href="/tags/docker/" title="docker">docker<sup>6</sup></a></li><li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li><li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li><li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li><li><a href="/tags/cygwin/" title="cygwin">cygwin<sup>4</sup></a></li><li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li><li><a href="/tags/ConEmu/" title="ConEmu">ConEmu<sup>3</sup></a></li><li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li><li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li><li><a href="/tags/ECS/" title="ECS">ECS<sup>3</sup></a></li><li><a href="/tags/git/" title="git">git<sup>2</sup></a></li><li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li><li><a href="/tags/MINA/" title="MINA">MINA<sup>2</sup></a></li><li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li><li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li><li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li></ul></div><div class="rsspart"> <a href="atom.xml" target="_blank" title="rss">RSS 订阅</a></div></aside></div></div><footer><div id="footer"><section class="info"><p> SHANG殇<br></p></section><div class="social-font" class="clearfix"><a href="https://github.com/xinshangshangxin" target="_blank" class="icon-github" title="github"></a><a href="mailto:xinshangshangxin@gmail.com" target="_blank" class="icon-email" title="Email Me"></a></div><p class="copyright"> Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 <a href="/about" target="_blank" title="xinshangshangxin">xinshangshangxin</a></p></div></footer><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.min.js"></script><script type="text/javascript">$(document).ready(function(){$(".navbar").click(function(){$("header nav").toggleClass("shownav")});var e=0;var s=$("#main"),n=$("#asidepart"),a=$(".closeaside"),o=$(".openaside");a.click(function(){n.addClass("fadeOut").css("display","none"),o.css("display","block").addClass("fadeIn"),s.addClass("moveMain")}),o.click(function(){o.css("display","none").removeClass("beforeFadeIn"),n.css("display","block").removeClass("fadeOut").addClass("fadeIn"),s.removeClass("moveMain")}),$(window).scroll(function(){o.css("top",Math.max(80,260-$(this).scrollTop()))}),$(window).resize(function(){"number"==typeof window.innerWidth?e=window.innerWidth:document.documentElement&&document.documentElement.clientWidth&&(e=document.documentElement.clientWidth),e>=1024?$("header nav").removeClass("shownav"):(s.removeClass("moveMain"),n.css("display","block").removeClass("fadeOut"),o.css("display","none"),$("#toc.toc-aside").css("display","none"))})})</script><script type="text/javascript">$(document).ready(function(){var c=$(".article-content>iframe"),n=$(".article-content>embed"),o=($("#toc"),$("#toc.toc-aside")),e=$(".openaside"),i=$(".closeaside");c.length>0&&c.wrap('<div class="video-container" />'),n.length>0&&n.wrap('<div class="video-container" />'),i.click(function(){o.css("display","block").addClass("fadeIn")}),e.click(function(){o.css("display","none")}),$(window).scroll(function(){o.css("top",Math.max(140,320-$(this).scrollTop()))})})</script><script type="text/javascript">$(document).ready(function(){var t=$(".share"),a=t.attr("data-url"),e=encodeURIComponent(a),r=t.attr("data-title"),c=t.attr("data-tsina"),s=(t.attr("description"),['<a href="#" class="overlay" id="qrcode"></a>','<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url='+e+'"/></div>','<a href="https://www.facebook.com/sharer.php?u='+e+'" class="article-share-facebook" target="_blank" title="Facebook"></a>','<a href="https://twitter.com/intent/tweet?url='+e+'" class="article-share-twitter" target="_blank" title="Twitter"></a>','<a href="#qrcode" class="article-share-qrcode" title="微信"></a>','<a href="http://widget.renren.com/dialog/share?resourceUrl='+e+"&srcUrl="+e+"&title="+r+'" class="article-share-renren" target="_blank" title="人人"></a>','<a href="http://service.weibo.com/share/share.php?title='+r+"&url="+e+"&ralateUid="+c+'&searchPic=true&style=number" class="article-share-weibo" target="_blank" title="微博"></a>','<span title="Share to"></span>'].join(""));t.append(s),$(".article-share-qrcode").click(function(){var t=$("#qrcode-pic").attr("data-src");$("#qrcode-pic").attr("src",t),$("#qrcode-pic").load(function(){$(".qrcode strong").text(" ")})})})</script><script type="text/javascript">var disqus_shortname="xinshangshangxin";!function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//"+disqus_shortname+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)}(),function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//"+disqus_shortname+".disqus.com/count.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)}()</script><link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css"><script src="/fancybox/jquery.fancybox.pack.js"></script><script type="text/javascript">$(document).ready(function(){$(".article-content").each(function(a){$(this).find("img").each(function(){if(!$(this).parent().hasClass("fancybox")){var a=this.alt;a&&$(this).after('<span class="caption">'+a+"</span>"),$(this).wrap('<a href="'+this.src+'" title="'+a+'" class="fancybox"></a>')}}),$(this).find(".fancybox").each(function(){$(this).attr("rel","article"+a)})}),$.fancybox&&$(".fancybox").fancybox()})</script><script type="text/javascript">var _bdhmProtocol="https:"==document.location.protocol?" https://":" http://";document.write(unescape("%3Cscript src='"+_bdhmProtocol+"hm.baidu.com/h.js%3Fa428636dbcab9ddea4df16331711f970' type='text/javascript'%3E%3C/script%3E"))</script></body></html>
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>微信总结 | SHANG Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="xinshangshangxin">
+    
+
+    
+    <meta name="description" content="遇到的坑,或者其它混淆的概念">
+<meta name="keywords" content="wechat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信总结">
+<meta property="og:url" content="http://blog.xinshangshangxin.com/2016/09/22/wechat-summary/index.html">
+<meta property="og:site_name" content="SHANG Blog">
+<meta property="og:description" content="遇到的坑,或者其它混淆的概念">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信总结">
+<meta name="twitter:description" content="遇到的坑,或者其它混淆的概念">
+
+    
+    <link rel="alternative" href="atom.xml" title="SHANG Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="SHANG Blog" title="SHANG Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="SHANG Blog">SHANG Blog</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives/">文章</a></li>
+					
+						<li><a href="/about/">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.xinshangshangxin.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/22/wechat-summary/" title="微信总结" itemprop="url">微信总结</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xinshangshangxin" target="_blank" itemprop="author">xinshangshangxin</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-22T07:42:27.000Z" itemprop="datePublished"> 发表于 2016年09月22日</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第三方平台-和-公众号自己开发"><span class="toc-number">1.</span> <span class="toc-text">第三方平台 和 公众号自己开发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微信会话cookie的时长"><span class="toc-number">2.</span> <span class="toc-text">微信会话cookie的时长</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网页授权登录-和-网站应用登录"><span class="toc-number">3.</span> <span class="toc-text">网页授权登录 和 网站应用登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网站授权登录-https-open-weixin-qq-com"><span class="toc-number">4.</span> <span class="toc-text">网站授权登录(https://open.weixin.qq.com/)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网页授权登录"><span class="toc-number">5.</span> <span class="toc-text">网页授权登录</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="第三方平台-和-公众号自己开发"><a href="#第三方平台-和-公众号自己开发" class="headerlink" title="第三方平台 和 公众号自己开发"></a>第三方平台 和 公众号自己开发</h2><p>存在 </p>
+<ol>
+<li>appid+appsecret</li>
+<li>B 第三方</li>
+<li>C 第三方</li>
+</ol>
+<hr>
+<ul>
+<li>不限制授权第三方的次数</li>
+<li>获取accesstoken的额度为分开的(无官方文档说明,猜测)</li>
+<li>accesstoken对不同的第三方不会冲突</li>
+<li>不同的第三方主动调用API不会冲突</li>
+<li>事件通知目前支持向所有授权的第三方发送</li>
+<li>每个第三方都可以回复消息</li>
+<li>每个第三方回复空的就没关系，都回复会有混乱，只能靠公众号自己跟第三方协调</li>
+<li>第三方 网页授权 文档: <a href="https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&amp;t=resource/res_list&amp;verify=1&amp;id=open1419318590&amp;token=&amp;lang=zh_CN" target="_blank" rel="noopener">https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&amp;t=resource/res_list&amp;verify=1&amp;id=open1419318590&amp;token=&amp;lang=zh_CN</a></li>
+</ul>
+<h2 id="微信会话cookie的时长"><a href="#微信会话cookie的时长" class="headerlink" title="微信会话cookie的时长"></a>微信会话cookie的时长</h2><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>是否失效</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>从WebView返回微信主界面</td>
+<td>cookie不失效</td>
+</tr>
+<tr>
+<td>返回手机系统主界面</td>
+<td>cookie不失效</td>
+</tr>
+<tr>
+<td>后台关闭微信进程</td>
+<td>cookie失效</td>
+</tr>
+<tr>
+<td>微信切换账号</td>
+<td>cookie失效</td>
+</tr>
+<tr>
+<td>内存小的机型，这部分临时存储就会被系统释放掉</td>
+<td>cookie失效</td>
+</tr>
+<tr>
+<td>一般浏览器当浏览器退出后(chrome等)</td>
+<td>cookie失效</td>
+</tr>
+</tbody>
+</table>
+<h2 id="网页授权登录-和-网站应用登录"><a href="#网页授权登录-和-网站应用登录" class="headerlink" title="网页授权登录 和 网站应用登录"></a>网页授权登录 和 网站应用登录</h2><blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>网页授权登录</th>
+<th>网站应用微信登录</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> 平台</td>
+<td><a href="https://mp.weixin.qq.com" target="_blank" rel="noopener">https://mp.weixin.qq.com</a></td>
+<td><a href="https://open.weixin.qq.com/" target="_blank" rel="noopener">https://open.weixin.qq.com/</a></td>
+</tr>
+<tr>
+<td>微信文档</td>
+<td><a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140842&amp;token=&amp;lang=zh_CN" target="_blank" rel="noopener">mp wiki</a></td>
+<td><a href="https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&amp;t=resource/res_list&amp;verify=1&amp;id=open1419316505&amp;token=&amp;lang=zh_CN" target="_blank" rel="noopener">open wiki</a></td>
+</tr>
+<tr>
+<td>区别</td>
+<td>scope为snsapi_base, 获取用户的openid 静默授权 <br> scope为snsapi_userinfo获取用户的基本信息,对于已关注公众号的用户,静默授权,否则需要用户同意 <br>未关注的用户也能获取到用户信息</td>
+<td>微信用户 需同意授权第三方应用</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h2 id="网站授权登录-https-open-weixin-qq-com"><a href="#网站授权登录-https-open-weixin-qq-com" class="headerlink" title="网站授权登录(https://open.weixin.qq.com/)"></a>网站授权登录(<a href="https://open.weixin.qq.com/" target="_blank" rel="noopener">https://open.weixin.qq.com/</a>)</h2><p><a href="https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&amp;t=resource/res_list&amp;verify=1&amp;id=open1419316505&amp;token=&amp;lang=zh_CN" target="_blank" rel="noopener">微信文档</a><br><a href="https://github.com/liangyali/passport-wechat" target="_blank" rel="noopener">package passport-wechat</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config 配置</span></span><br><span class="line">auth: &#123;</span><br><span class="line">    wechat: &#123;</span><br><span class="line">      passport: &#123;</span><br><span class="line">        strategy: <span class="string">'wechat'</span>,</span><br><span class="line">        <span class="built_in">module</span>: <span class="string">'passport-wechat'</span>,</span><br><span class="line">        options: &#123;</span><br><span class="line">          appID: <span class="string">''</span>,</span><br><span class="line">          appSecret: <span class="string">''</span>,</span><br><span class="line">          callbackURL: <span class="string">'prefix/auth/wechat/callback'</span>,</span><br><span class="line">          response_type: <span class="string">'code'</span>,</span><br><span class="line">          scope: <span class="string">'snsapi_login'</span>,</span><br><span class="line">          state: <span class="literal">true</span></span><br><span class="line">        &#125;,</span><br><span class="line">        verify: <span class="function"><span class="keyword">function</span>(<span class="params">openid, profile, userInfo, done</span>) </span>&#123;</span><br><span class="line">          done(<span class="literal">null</span>, userInfo);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> passport = <span class="built_in">require</span>(<span class="string">'passport'</span>);</span><br><span class="line"><span class="keyword">var</span> WechatStrategy = <span class="built_in">require</span>(<span class="string">'passport-wechat'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> callbackURL = <span class="string">'/auth/wechat/callback'</span>;</span><br><span class="line"></span><br><span class="line">passport.serializeUser(<span class="function"><span class="keyword">function</span>(<span class="params">user, done</span>) </span>&#123;</span><br><span class="line">  done(<span class="literal">null</span>, user);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">passport.deserializeUser(<span class="function"><span class="keyword">function</span>(<span class="params">obj, done</span>) </span>&#123;</span><br><span class="line">  done(<span class="literal">null</span>, obj);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 相关配置为测试账号信息</span></span><br><span class="line">passport.use(<span class="keyword">new</span> WechatStrategy(&#123;</span><br><span class="line">  appID: appID,</span><br><span class="line">  appSecret: appSecret,</span><br><span class="line">  callbackURL: callbackURL,</span><br><span class="line">  response_type: <span class="string">'code'</span>,</span><br><span class="line">  scope: <span class="string">'snsapi_login'</span>,</span><br><span class="line">  state: <span class="literal">true</span></span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">openid, profile, userInfo, done</span>) </span>&#123;</span><br><span class="line">  done(<span class="literal">null</span>, userInfo);</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  authCallback: <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="keyword">from</span> = <span class="built_in">encodeURIComponent</span>(req.param(<span class="string">'from'</span>)) || <span class="string">''</span>;</span><br><span class="line">    passport.authenticate(<span class="string">'wechat'</span>, &#123;</span><br><span class="line">      failureRedirect: <span class="string">'/auth/err'</span>,</span><br><span class="line">      successRedirect: <span class="string">'/auth/success'</span> + <span class="string">'?from='</span> + <span class="keyword">from</span></span><br><span class="line">    &#125;)(req, res);</span><br><span class="line">  &#125;,</span><br><span class="line">  authError: <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.json(<span class="number">400</span>, &#123;</span><br><span class="line">      message: <span class="string">'error'</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  authSuccess: <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.redirect(joinQueryStr((req.param(<span class="string">'from'</span>) || <span class="string">'/'</span>), &#123;</span><br><span class="line">      userInfo: req.user || &#123;&#125;,</span><br><span class="line">      unionid: (req.user || &#123;&#125;).unionid</span><br><span class="line">    &#125;));</span><br><span class="line">  &#125;,</span><br><span class="line">  authWechat: <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="keyword">from</span> = <span class="built_in">encodeURIComponent</span>(req.param(<span class="string">'from'</span>)) || <span class="string">''</span>;</span><br><span class="line">    passport.authenticate(<span class="string">'wechat'</span>, &#123;</span><br><span class="line">      callbackURL: callbackURL + <span class="string">'?from='</span> + <span class="keyword">from</span></span><br><span class="line">    &#125;)(req, res);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="网页授权登录"><a href="#网页授权登录" class="headerlink" title="网页授权登录"></a>网页授权登录</h2><p><a href="http://mp.weixin.qq.com/wiki/17/c0f37d5704f0b64713d5d2c37b468d75.html" target="_blank" rel="noopener">微信文档</a><br><a href="https://github.com/node-webot/wechat-oauth" target="_blank" rel="noopener">package wechat-oauth</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">auth: <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> code = req.query.code;</span><br><span class="line">    <span class="keyword">if</span>(req.query.state &amp;&amp; code === <span class="string">'authdeny'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> res.status(<span class="number">400</span>).send(<span class="string">'用户拒绝授权'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(!code) &#123;</span><br><span class="line">      <span class="keyword">var</span> callbackUrl = req.protocol + <span class="string">'://'</span> + req.get(<span class="string">'Host'</span>) + req.originalUrl;</span><br><span class="line">      <span class="keyword">var</span> url = oauth.getAuthorizeURL(callbackUrl, <span class="string">'random_state'</span>, <span class="string">'snsapi_userinfo'</span>);</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'redirect to'</span>, url);</span><br><span class="line">      <span class="keyword">return</span> res.redirect(url);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> openid;</span><br><span class="line">    <span class="keyword">var</span> wechatUser;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">async</span>.series([</span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">getAccessToken</span>(<span class="params">cb</span>) </span>&#123;</span><br><span class="line">        oauth.getAccessToken(code, <span class="function"><span class="keyword">function</span>(<span class="params">err, result</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">if</span>(err) &#123;</span><br><span class="line">            <span class="keyword">return</span> cb(err);</span><br><span class="line">          &#125;</span><br><span class="line">          openid = result.data.openid;</span><br><span class="line">          cb();</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">getWechatUser</span>(<span class="params">cb</span>) </span>&#123;</span><br><span class="line">        oauth.getUser(openid, <span class="function"><span class="keyword">function</span>(<span class="params">err, user</span>) </span>&#123;</span><br><span class="line">          req.session.wechat = user;</span><br><span class="line">          wechatUser = user;</span><br><span class="line">          cb(err, user);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    ], <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(err) &#123;</span><br><span class="line">        <span class="keyword">return</span> res.status(<span class="number">400</span>).json(err);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'session'</span>, req.session);</span><br><span class="line">      <span class="keyword">if</span>(req.query.referer) &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">          .redirect(UtilitiesService</span><br><span class="line">            .joinQueryStr((req.query.referer || <span class="string">'/'</span>), &#123;</span><br><span class="line">              userInfo: wechatUser || &#123;&#125;,</span><br><span class="line">              unionid: (wechatUser || &#123;&#125;).unionid</span><br><span class="line">            &#125;)</span><br><span class="line">          );</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      res.json(&#123;</span><br><span class="line">        userInfo: wechatUser,</span><br><span class="line">        unionid: openid</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/wechat/">wechat</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://blog.xinshangshangxin.com/2016/09/22/wechat-summary/" data-title="微信总结 | SHANG Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/11/24/mina-bluebird/" title="微信小程序中使用bluebird">
+  <strong>上一篇：</strong><br/>
+  <span>
+  微信小程序中使用bluebird</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/06/14/cygwin-backup/"  title="制作portable版Cygwin">
+ <strong>下一篇：</strong><br/> 
+ <span>制作portable版Cygwin
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第三方平台-和-公众号自己开发"><span class="toc-number">1.</span> <span class="toc-text">第三方平台 和 公众号自己开发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微信会话cookie的时长"><span class="toc-number">2.</span> <span class="toc-text">微信会话cookie的时长</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网页授权登录-和-网站应用登录"><span class="toc-number">3.</span> <span class="toc-text">网页授权登录 和 网站应用登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网站授权登录-https-open-weixin-qq-com"><span class="toc-number">4.</span> <span class="toc-text">网站授权登录(https://open.weixin.qq.com/)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网页授权登录"><span class="toc-number">5.</span> <span class="toc-text">网页授权登录</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>36</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/node/" title="node">node<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/AngularJS/" title="AngularJS">AngularJS<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cygwin/" title="cygwin">cygwin<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ECS/" title="ECS">ECS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ConEmu/" title="ConEmu">ConEmu<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/youkuvod/" title="youkuvod">youkuvod<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p> SHANG殇 <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/xinshangshangxin" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:xinshangshangxin@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="xinshangshangxin">xinshangshangxin</a>
+		
+		
+		</p>
+</div>
+</footer>
+    
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'xinshangshangxin';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa428636dbcab9ddea4df16331711f970' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
