@@ -1,0 +1,505 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>rabbitmq安装并配置 | SHANG Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="xinshangshangxin">
+    
+
+    
+    <meta name="description" content="按照官方文档在ubuntu上安装rabbitmq记录">
+<meta name="keywords" content="rabbitmq">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rabbitmq安装并配置">
+<meta property="og:url" content="http://blog.xinshangshangxin.com/2018/02/08/rabbitmq-start/index.html">
+<meta property="og:site_name" content="SHANG Blog">
+<meta property="og:description" content="按照官方文档在ubuntu上安装rabbitmq记录">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-02-13T02:18:35.319Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="rabbitmq安装并配置">
+<meta name="twitter:description" content="按照官方文档在ubuntu上安装rabbitmq记录">
+
+    
+    <link rel="alternative" href="atom.xml" title="SHANG Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="SHANG Blog" title="SHANG Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="SHANG Blog">SHANG Blog</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives/">文章</a></li>
+					
+						<li><a href="/about/">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.xinshangshangxin.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/02/08/rabbitmq-start/" title="rabbitmq安装并配置" itemprop="url">rabbitmq安装并配置</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xinshangshangxin" target="_blank" itemprop="author">xinshangshangxin</a>
+		
+  <p class="article-time">
+    <time datetime="2018-02-08T03:33:28.000Z" itemprop="datePublished"> 发表于 2018年02月8日</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rabbitmq-依赖-Erlang"><span class="toc-number">1.1.</span> <span class="toc-text">rabbitmq 依赖 Erlang</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu-16-04安装rabbitmq"><span class="toc-number">1.2.</span> <span class="toc-text">Ubuntu 16.04安装rabbitmq</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">2.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件位置"><span class="toc-number">2.1.</span> <span class="toc-text">配置文件位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rabbitmq-conf-从RabbitMQ-3-7-0开始"><span class="toc-number">2.2.</span> <span class="toc-text">rabbitmq.conf(从RabbitMQ 3.7.0开始)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打开管理页面"><span class="toc-number">2.3.</span> <span class="toc-text">打开管理页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看用户"><span class="toc-number">2.4.</span> <span class="toc-text">查看用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新增管理员用户"><span class="toc-number">2.5.</span> <span class="toc-text">新增管理员用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#限制-queue的大小"><span class="toc-number">2.6.</span> <span class="toc-text">限制 queue的大小</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动-暂停-状态"><span class="toc-number">3.</span> <span class="toc-text">启动/暂停/状态</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文档"><span class="toc-number"></span> <span class="toc-text">参考文档</span></a>
+		
+		</div>
+		
+		<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://www.rabbitmq.com/install-debian.html#apt" target="_blank" rel="noopener">官方安装文档</a></p>
+<h3 id="rabbitmq-依赖-Erlang"><a href="#rabbitmq-依赖-Erlang" class="headerlink" title="rabbitmq 依赖 Erlang"></a><a href="https://www.rabbitmq.com/which-erlang.html" target="_blank" rel="noopener">rabbitmq 依赖 Erlang</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb</span><br><span class="line">sudo dpkg -i erlang-solutions_1.0_all.deb</span><br><span class="line"></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install erlang</span><br></pre></td></tr></table></figure>
+<h3 id="Ubuntu-16-04安装rabbitmq"><a href="#Ubuntu-16-04安装rabbitmq" class="headerlink" title="Ubuntu 16.04安装rabbitmq"></a>Ubuntu 16.04安装rabbitmq</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># add  Apt repository</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"deb https://dl.bintray.com/rabbitmq/debian xenial main"</span> | sudo tee /etc/apt/sources.list.d/bintray.rabbitmq.list</span><br><span class="line"></span><br><span class="line"><span class="comment"># add public key </span></span><br><span class="line">wget -O- https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc | sudo apt-key add -</span><br><span class="line"></span><br><span class="line"><span class="comment"># update the package list</span></span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment"># Install rabbitmq-server package</span></span><br><span class="line">sudo apt-get install rabbitmq-server</span><br></pre></td></tr></table></figure>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="配置文件位置"><a href="#配置文件位置" class="headerlink" title="配置文件位置"></a><a href="https://www.rabbitmq.com/configure.html#config-location" target="_blank" rel="noopener">配置文件位置</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Generic UNIX - $RABBITMQ_HOME/etc/rabbitmq/</span><br><span class="line">Debian - /etc/rabbitmq/</span><br><span class="line">RPM - /etc/rabbitmq/</span><br><span class="line">Mac OSX (Homebrew) - $&#123;install_prefix&#125;/etc/rabbitmq/, the Homebrew prefix is usually /usr/local</span><br><span class="line">Windows - %APPDATA%\RabbitMQ\</span><br></pre></td></tr></table></figure>
+<h3 id="rabbitmq-conf-从RabbitMQ-3-7-0开始"><a href="#rabbitmq-conf-从RabbitMQ-3-7-0开始" class="headerlink" title="rabbitmq.conf(从RabbitMQ 3.7.0开始)"></a><a href="https://www.rabbitmq.com/configure.html#config-file" target="_blank" rel="noopener"><code>rabbitmq.conf</code>(<em>从RabbitMQ 3.7.0开始</em>)</a></h3><p>如果不存在 <code>rabbitmq.conf</code>, 可以手动创建一个, 使用默认配置请忽略<br>自己配置按照 <em><a href="https://github.com/rabbitmq/rabbitmq-server/blob/master/docs/rabbitmq.conf.example" target="_blank" rel="noopener">官方 example</a></em> 进行修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 修改 rabbitmq 端口</span><br><span class="line">listeners.tcp.default = 2018</span><br><span class="line"># 修改 rabbitmq 管理页面端口</span><br><span class="line">management.listener.port = 12018</span><br></pre></td></tr></table></figure>
+<h3 id="打开管理页面"><a href="#打开管理页面" class="headerlink" title="打开管理页面"></a>打开管理页面</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rabbitmq-plugins <span class="built_in">enable</span> rabbitmq_management</span><br></pre></td></tr></table></figure>
+<h3 id="查看用户"><a href="#查看用户" class="headerlink" title="查看用户"></a>查看用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rabbitmqctl list_users</span><br></pre></td></tr></table></figure>
+<h3 id="新增管理员用户"><a href="#新增管理员用户" class="headerlink" title="新增管理员用户"></a>新增管理员用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rabbitmqctl add_user rabbitmqAdmin password</span><br><span class="line">sudo rabbitmqctl set_user_tags rabbitmqAdmin administrator</span><br></pre></td></tr></table></figure>
+<h3 id="限制-queue的大小"><a href="#限制-queue的大小" class="headerlink" title="限制 queue的大小"></a>限制 queue的大小</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rabbitmqctl set_policy --priority 1 --apply-to queues seneca seneca <span class="string">'&#123;"max-length": 1000&#125;'</span></span><br></pre></td></tr></table></figure>
+<h2 id="启动-暂停-状态"><a href="#启动-暂停-状态" class="headerlink" title="启动/暂停/状态"></a>启动/暂停/状态</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ubuntu 16.04</span></span><br><span class="line">systemctl restart rabbitmq-server.service</span><br><span class="line">systemctl start rabbitmq-server.service</span><br><span class="line">systemctl stop rabbitmq-server.service</span><br><span class="line">systemctl status rabbitmq-server.service</span><br></pre></td></tr></table></figure>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a href="https://www.rabbitmq.com/configure.html" target="_blank" rel="noopener">官方文档</a><br><br></p>
+<hr>
+<blockquote>
+<p><strong>文章若有纰漏请大家补充指正,谢谢~~</strong></p>
+<p><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG殇</p>
+</blockquote>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/rabbitmq/">rabbitmq</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://blog.xinshangshangxin.com/2018/02/08/rabbitmq-start/" data-title="rabbitmq安装并配置 | SHANG Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2018/02/04/haraka-introduction/"  title="haraka收发邮件初级教程">
+ <strong>下一篇：</strong><br/> 
+ <span>haraka收发邮件初级教程
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rabbitmq-依赖-Erlang"><span class="toc-number">1.1.</span> <span class="toc-text">rabbitmq 依赖 Erlang</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu-16-04安装rabbitmq"><span class="toc-number">1.2.</span> <span class="toc-text">Ubuntu 16.04安装rabbitmq</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">2.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件位置"><span class="toc-number">2.1.</span> <span class="toc-text">配置文件位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rabbitmq-conf-从RabbitMQ-3-7-0开始"><span class="toc-number">2.2.</span> <span class="toc-text">rabbitmq.conf(从RabbitMQ 3.7.0开始)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打开管理页面"><span class="toc-number">2.3.</span> <span class="toc-text">打开管理页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看用户"><span class="toc-number">2.4.</span> <span class="toc-text">查看用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新增管理员用户"><span class="toc-number">2.5.</span> <span class="toc-text">新增管理员用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#限制-queue的大小"><span class="toc-number">2.6.</span> <span class="toc-text">限制 queue的大小</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动-暂停-状态"><span class="toc-number">3.</span> <span class="toc-text">启动/暂停/状态</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文档"><span class="toc-number"></span> <span class="toc-text">参考文档</span></a>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>36</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/node/" title="node">node<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/AngularJS/" title="AngularJS">AngularJS<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cygwin/" title="cygwin">cygwin<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ECS/" title="ECS">ECS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ConEmu/" title="ConEmu">ConEmu<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MINA/" title="MINA">MINA<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/youkuvod/" title="youkuvod">youkuvod<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p> SHANG殇 <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/xinshangshangxin" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:xinshangshangxin@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="xinshangshangxin">xinshangshangxin</a>
+		
+		
+		</p>
+</div>
+</footer>
+    
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery.imagesloaded/2.1.0/jquery.imagesloaded.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'xinshangshangxin';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa428636dbcab9ddea4df16331711f970' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
