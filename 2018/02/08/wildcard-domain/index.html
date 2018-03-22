@@ -11,22 +11,22 @@
     
 
     
-    <meta name="description" content="在VPS上申请letsencrypt泛域名, 并且加入nginx">
+    <meta name="description" content="在VPS上申请letsencrypt泛域名, 利用阿里云dns自动申请证书并且加入nginx">
 <meta name="keywords" content="letsencrypt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="申请letsencrypt安装泛域名">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2018/02/08/wildcard-domain/index.html">
 <meta property="og:site_name" content="SHANG Blog">
-<meta property="og:description" content="在VPS上申请letsencrypt泛域名, 并且加入nginx">
+<meta property="og:description" content="在VPS上申请letsencrypt泛域名, 利用阿里云dns自动申请证书并且加入nginx">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.xinshangshangxin.com/img/letsencrypt/001.png">
 <meta property="og:image" content="http://blog.xinshangshangxin.com/img/letsencrypt/002png">
 <meta property="og:image" content="http://blog.xinshangshangxin.com/img/letsencrypt/003.png">
 <meta property="og:image" content="http://blog.xinshangshangxin.com/img/letsencrypt/004.png">
-<meta property="og:updated_time" content="2018-03-22T10:25:24.487Z">
+<meta property="og:updated_time" content="2018-03-22T10:33:41.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="申请letsencrypt安装泛域名">
-<meta name="twitter:description" content="在VPS上申请letsencrypt泛域名, 并且加入nginx">
+<meta name="twitter:description" content="在VPS上申请letsencrypt泛域名, 利用阿里云dns自动申请证书并且加入nginx">
 <meta name="twitter:image" content="http://blog.xinshangshangxin.com/img/letsencrypt/001.png">
 
     
@@ -118,6 +118,11 @@
 <h2 id="申请-证书"><a href="#申请-证书" class="headerlink" title="申请 证书"></a>申请 证书</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> Ali_Key=<span class="string">"上面申请的AccessKeyId"</span></span><br><span class="line"><span class="built_in">export</span> Ali_Secret=<span class="string">"上面申请的AccessKeySecret"</span></span><br><span class="line"><span class="comment"># 把下面的 *.demo.com 改成 *.your.domain</span></span><br><span class="line">acme.sh --issue --dns dns_ali -d *.demo.com --dnssleep 0</span><br></pre></td></tr></table></figure>
 <h2 id="安装cert并重启nginx"><a href="#安装cert并重启nginx" class="headerlink" title="安装cert并重启nginx"></a>安装cert并重启nginx</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># *.demo.com 改成 *.your.domain</span></span><br><span class="line"><span class="comment"># /etc/nginx/ssl/*.demo.com.key 和 /etc/nginx/ssl/*.demo.com.cer 改成你想要在 nginx.conf中引入配置的路径</span></span><br><span class="line"></span><br><span class="line">acme.sh --install-cert -d <span class="string">"*.demo.com"</span> \</span><br><span class="line">--key-file       <span class="string">"/etc/nginx/ssl/*.demo.com.key"</span>  \</span><br><span class="line">--fullchain-file <span class="string">"/etc/nginx/ssl/*.demo.com.cer"</span> \</span><br><span class="line">--reloadcmd     <span class="string">"systemctl reload nginx"</span></span><br></pre></td></tr></table></figure>
 <h2 id="nginx-conf"><a href="#nginx-conf" class="headerlink" title="nginx.conf"></a>nginx.conf</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    server_name any-pre-domain.demo.com;</span><br><span class="line">    listen 80;</span><br><span class="line">    listen 443 ssl;</span><br><span class="line"></span><br><span class="line">    # 配置你上面 --fullchain-file 的路径</span><br><span class="line">    ssl_certificate /etc/nginx/ssl/*.demo.com.cer;</span><br><span class="line">    # 配置你上面 --key-file 的路径</span><br><span class="line">    ssl_certificate_key /etc/nginx/ssl/*.demo.com.key;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://localhost:1337;</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header Connection &apos;upgrade&apos;;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_cache_bypass $http_upgrade;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p><strong>文章若有纰漏请大家补充指正,谢谢~~</strong></p>
+<p><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG殇</p>
+</blockquote>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -148,11 +153,19 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2018/02/08/rabbitmq-start/" title="rabbitmq安装并配置">
+  <strong>上一篇：</strong><br/>
+  <span>
+  rabbitmq安装并配置</span>
+</a>
+</div>
+
 
 <div class="next">
-<a href="/2018/02/08/rabbitmq-start/"  title="rabbitmq安装并配置">
+<a href="/2018/02/04/haraka-introduction/"  title="haraka收发邮件初级教程">
  <strong>下一篇：</strong><br/> 
- <span>rabbitmq安装并配置
+ <span>haraka收发邮件初级教程
 </span>
 </a>
 </div>
@@ -233,11 +246,11 @@
 			
 		
 			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
 			
 		
 			
@@ -245,7 +258,7 @@
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/git/" title="git">git<sup>2</sup></a></li>
 			
 		
 			
@@ -261,7 +274,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
 			
 		
 			
