@@ -1,4 +1,6 @@
-macpush: beauty back push
+preview:
+	hexo server
+deploy: beauty back push
 beautyandpush: beauty all
 all: mini back
 beauty: 
