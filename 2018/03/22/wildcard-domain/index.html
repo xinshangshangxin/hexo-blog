@@ -4,32 +4,30 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>DaoCloud部署Node | SHANG Blog</title>
+    <title>申请letsencrypt安装泛域名 | SHANG Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="xinshangshangxin">
     
 
     
-    <meta name="description" content="官方为提供node的example, 把我踩的坑记录分享">
-<meta name="keywords" content="docker,node">
+    <meta name="description" content="在VPS上申请letsencrypt泛域名, 利用阿里云dns自动申请证书并且加入nginx">
+<meta name="keywords" content="letsencrypt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DaoCloud部署Node">
-<meta property="og:url" content="http://blog.xinshangshangxin.com/2015/06/01/DaoCloud部署Node/index.html">
+<meta property="og:title" content="申请letsencrypt安装泛域名">
+<meta property="og:url" content="http://blog.xinshangshangxin.com/2018/03/22/wildcard-domain/index.html">
 <meta property="og:site_name" content="SHANG Blog">
-<meta property="og:description" content="官方为提供node的example, 把我踩的坑记录分享">
+<meta property="og:description" content="在VPS上申请letsencrypt泛域名, 利用阿里云dns自动申请证书并且加入nginx">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://blog.xinshangshangxin.com/img/daocloud/dc1.png">
-<meta property="og:image" content="http://blog.xinshangshangxin.com/img/daocloud/dc2.png">
-<meta property="og:image" content="http://blog.xinshangshangxin.com/img/daocloud/dc3.png">
-<meta property="og:image" content="http://blog.xinshangshangxin.com/img/daocloud/dc4.png">
-<meta property="og:image" content="http://blog.xinshangshangxin.com/img/daocloud/dc6.png">
-<meta property="og:image" content="http://blog.xinshangshangxin.com/img/daocloud/dc5.png">
-<meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/letsencrypt/001.png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/letsencrypt/002png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/letsencrypt/003.png">
+<meta property="og:image" content="http://blog.xinshangshangxin.com/img/letsencrypt/004.png">
+<meta property="og:updated_time" content="2018-03-22T10:35:21.422Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DaoCloud部署Node">
-<meta name="twitter:description" content="官方为提供node的example, 把我踩的坑记录分享">
-<meta name="twitter:image" content="http://blog.xinshangshangxin.com/img/daocloud/dc1.png">
+<meta name="twitter:title" content="申请letsencrypt安装泛域名">
+<meta name="twitter:description" content="在VPS上申请letsencrypt泛域名, 利用阿里云dns自动申请证书并且加入nginx">
+<meta name="twitter:image" content="http://blog.xinshangshangxin.com/img/letsencrypt/001.png">
 
     
     <link rel="alternative" href="atom.xml" title="SHANG Blog" type="application/atom+xml">
@@ -89,14 +87,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/06/01/DaoCloud部署Node/" title="DaoCloud部署Node" itemprop="url">DaoCloud部署Node</a>
+      <a href="/2018/03/22/wildcard-domain/" title="申请letsencrypt安装泛域名" itemprop="url">申请letsencrypt安装泛域名</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="xinshangshangxin" target="_blank" itemprop="author">xinshangshangxin</a>
 		
   <p class="article-time">
-    <time datetime="2015-06-01T15:06:00.000Z" itemprop="datePublished"> 发表于 2015年06月1日</time>
+    <time datetime="2018-03-22T10:33:28.000Z" itemprop="datePublished"> 发表于 2018年03月22日</time>
     
   </p>
 </header>
@@ -105,48 +103,25 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#注册DaoCloud"><span class="toc-number">1.</span> <span class="toc-text">注册DaoCloud</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署Node-的-Dockerfile-详解"><span class="toc-number">2.</span> <span class="toc-text">部署Node 的 Dockerfile 详解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#上传github和绑定github"><span class="toc-number">3.</span> <span class="toc-text">上传github和绑定github</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文档"><span class="toc-number">3.1.</span> <span class="toc-text">参考文档</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文章若有纰漏请大家补充指正-谢谢"><span class="toc-number">3.1.1.</span> <span class="toc-text">文章若有纰漏请大家补充指正,谢谢~~</span></a></li></ol></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#域名申请工具-acme-sh"><span class="toc-number">1.</span> <span class="toc-text">域名申请工具 acme.sh</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载安装-acme-sh"><span class="toc-number">1.1.</span> <span class="toc-text">下载安装 acme.sh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重启-terminal"><span class="toc-number">1.2.</span> <span class="toc-text">重启 terminal</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成安装泛域名证书"><span class="toc-number">2.</span> <span class="toc-text">生成安装泛域名证书</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#申请阿里云-Api-key-和-Ali-Secret-可以按照-acme-sh-进行设置"><span class="toc-number">2.1.</span> <span class="toc-text">申请阿里云 Api_key 和 Ali_Secret (可以按照 acme.sh 进行设置)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#申请-证书"><span class="toc-number">3.</span> <span class="toc-text">申请 证书</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装cert并重启nginx"><span class="toc-number">4.</span> <span class="toc-text">安装cert并重启nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx-conf"><span class="toc-number">5.</span> <span class="toc-text">nginx.conf</span></a></li></ol>
 		
 		</div>
 		
-		<blockquote>
-<p>DaoCloud 有go和python 的 example;<br>却没有Node的example, 把我踩的坑记录分享</p>
-</blockquote>
-<h1 id="注册DaoCloud"><a href="#注册DaoCloud" class="headerlink" title="注册DaoCloud"></a>注册DaoCloud</h1><p>注册地址: <a href="https://account.daocloud.io/signup" target="_blank" rel="noopener">https://account.daocloud.io/signup</a></p>
-<blockquote>
-<p>整个构建和部署所需要的资源，DaoCloud都免费提供，为所有的注册用户免费提供以下资源：<br>3个项目，同时可以在DaoCloud关联和构建您的3个软件项目<br>2个容器，每个容器内存上限是256M内存空间<br>2个服务，可从MongoDB、Redis、MySQL和InfluxDB中任意选择</p>
-</blockquote>
-<h1 id="部署Node-的-Dockerfile-详解"><a href="#部署Node-的-Dockerfile-详解" class="headerlink" title="部署Node 的 Dockerfile 详解"></a>部署Node 的 Dockerfile 详解</h1><blockquote>
-<p>总的</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">FROM node</span><br><span class="line"></span><br><span class="line"># Build app</span><br><span class="line">RUN mkdir -p /usr/src/app</span><br><span class="line">WORKDIR /usr/src/app</span><br><span class="line">COPY . /usr/src/app</span><br><span class="line"></span><br><span class="line">RUN npm install --production</span><br><span class="line"></span><br><span class="line">EXPOSE <span class="number">1340</span></span><br><span class="line"></span><br><span class="line">CMD [ <span class="string">"node"</span>,<span class="string">"dist/server.js"</span>]</span><br></pre></td></tr></table></figure>
-<p><code>FROM node</code> 是指基于 <a href="https://registry.hub.docker.com/_/node" target="_blank" rel="noopener">node最新版</a> 镜像 </p>
-<p><code>RUN mkdir -p /usr/src/app</code> 中 <code>RUN</code> 是安装环境, 整句话是指创建了一个<code>app</code>文件夹供后续使用<br><code>WORKDIR /usr/src/app</code>  中 <code>WORKDIR</code> 是切换目录, 整句话是指切换到 <code>/usr/src/app</code> 目录下<br><code>COPY . /usr/src/app</code> 整句话是指将当前文件夹下文件复制到 <code>app</code>目录下</p>
-<p><code>RUN npm install --production</code> 执行 <code>npm install</code> 命令,安装node程序的依赖包</p>
-<p><code>EXPOSE 1340</code>  中 <code>EXPOSE</code> 是端口映射; 1340 是你的 node程序跑的端口</p>
-<p><code>CMD [&quot;node&quot;,&quot;dist/server.js&quot;]</code> 中 <code>CMD</code>是 <code>container</code>(容器)启动时执行的命令;也就是平常我们使用的 <code>node dist/server.js</code></p>
-<h1 id="上传github和绑定github"><a href="#上传github和绑定github" class="headerlink" title="上传github和绑定github"></a>上传github和绑定github</h1><ul>
-<li><p>在你原来node程序的基础上,添加修改上面的Dockfile; 上传至github;<br><em>如果你没有现成的程序,可以直接 clone 我的项目 <a href="https://github.com/xinshangshangxin/ngMusic.git" target="_blank" rel="noopener">ngMusic项目地址</a></em> 到你的github中</p>
-</li>
-<li><p>在DaoCloud中选择 <em>代码构建</em><br><img src="/img/daocloud/dc1.png" alt="dc"></p>
-</li>
-<li><p>接着点击 <em>创建新项目</em><br><img src="/img/daocloud/dc2.png" alt="dc"></p>
-</li>
-<li><p>接着 <em>输入项目名称</em> 和 同步代码源,选择你部署的项目, 最后点击 <em>开始创建</em><br><em>此处我github已经绑定,所以使用 coding 做演示</em><br><img src="/img/daocloud/dc3.png" alt="dc"><br><em>开始构建</em><br><img src="/img/daocloud/dc4.png" alt="dc"><br><em>构建完成</em><br><img src="/img/daocloud/dc6.png" alt="dc"></p>
-</li>
-<li><p>点击 <em>查看镜像</em>, 接着在点击 <em>部署最新版本</em> 后开始部署</p>
-</li>
-</ul>
-<ul>
-<li>部署成功, 可以访问看看你的程序; 如果失败,回头看看那里出错了~~<br><img src="/img/daocloud/dc5.png" alt="dc"></li>
-</ul>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
-<li><a href="https://github.com/DaoCloud/python-redis-sample/blob/master/application.py" target="_blank" rel="noopener">https://github.com/DaoCloud/python-redis-sample/blob/master/application.py</a></li>
-<li><a href="http://blog.csdn.net/wsscy2004/article/details/25878223" target="_blank" rel="noopener">http://blog.csdn.net/wsscy2004/article/details/25878223</a></li>
-</ul>
+		<h2 id="域名申请工具-acme-sh"><a href="#域名申请工具-acme-sh" class="headerlink" title="域名申请工具 acme.sh"></a>域名申请工具 <a href="https://github.com/Neilpang/acme.sh" target="_blank" rel="noopener">acme.sh</a></h2><h3 id="下载安装-acme-sh"><a href="#下载安装-acme-sh" class="headerlink" title="下载安装 acme.sh"></a>下载安装 acme.sh</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://get.acme.sh | sh</span><br></pre></td></tr></table></figure>
+<h3 id="重启-terminal"><a href="#重启-terminal" class="headerlink" title="重启 terminal"></a>重启 <code>terminal</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 重启zsh</span></span><br><span class="line"><span class="built_in">exec</span> zsh -l</span><br></pre></td></tr></table></figure>
+<h2 id="生成安装泛域名证书"><a href="#生成安装泛域名证书" class="headerlink" title="生成安装泛域名证书"></a>生成安装泛域名证书</h2><h3 id="申请阿里云-Api-key-和-Ali-Secret-可以按照-acme-sh-进行设置"><a href="#申请阿里云-Api-key-和-Ali-Secret-可以按照-acme-sh-进行设置" class="headerlink" title="申请阿里云 Api_key 和 Ali_Secret (可以按照 acme.sh 进行设置)"></a>申请阿里云 <code>Api_key</code> 和 <code>Ali_Secret</code> (可以按照 <a href="https://github.com/Neilpang/acme.sh#7-automatic-dns-api-integration" target="_blank" rel="noopener">acme.sh</a> 进行设置)</h3><ol>
+<li>访问 <a href="https://ram.console.aliyun.com" target="_blank" rel="noopener">https://ram.console.aliyun.com</a></li>
+<li>左侧菜单点击 用户管理, 右上角点击创建新用户</li>
+<li>填写用户名, 点击确定, 注意保存 <code>AccessKeyId</code> 和 <code>AccessKeySecret</code><br><img src="/img/letsencrypt/001.png" alt=""><br><img src="/img/letsencrypt/002png" alt=""></li>
+<li>添加授权<br><img src="/img/letsencrypt/003.png" alt=""><br><img src="/img/letsencrypt/004.png" alt=""></li>
+</ol>
+<h2 id="申请-证书"><a href="#申请-证书" class="headerlink" title="申请 证书"></a>申请 证书</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> Ali_Key=<span class="string">"上面申请的AccessKeyId"</span></span><br><span class="line"><span class="built_in">export</span> Ali_Secret=<span class="string">"上面申请的AccessKeySecret"</span></span><br><span class="line"><span class="comment"># 把下面的 *.demo.com 改成 *.your.domain</span></span><br><span class="line">acme.sh --issue --dns dns_ali -d *.demo.com --dnssleep 0</span><br></pre></td></tr></table></figure>
+<h2 id="安装cert并重启nginx"><a href="#安装cert并重启nginx" class="headerlink" title="安装cert并重启nginx"></a>安装cert并重启nginx</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># *.demo.com 改成 *.your.domain</span></span><br><span class="line"><span class="comment"># /etc/nginx/ssl/*.demo.com.key 和 /etc/nginx/ssl/*.demo.com.cer 改成你想要在 nginx.conf中引入配置的路径</span></span><br><span class="line"></span><br><span class="line">acme.sh --install-cert -d <span class="string">"*.demo.com"</span> \</span><br><span class="line">--key-file       <span class="string">"/etc/nginx/ssl/*.demo.com.key"</span>  \</span><br><span class="line">--fullchain-file <span class="string">"/etc/nginx/ssl/*.demo.com.cer"</span> \</span><br><span class="line">--reloadcmd     <span class="string">"systemctl reload nginx"</span></span><br></pre></td></tr></table></figure>
+<h2 id="nginx-conf"><a href="#nginx-conf" class="headerlink" title="nginx.conf"></a>nginx.conf</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    server_name any-pre-domain.demo.com;</span><br><span class="line">    listen 80;</span><br><span class="line">    listen 443 ssl;</span><br><span class="line"></span><br><span class="line">    # 配置你上面 --fullchain-file 的路径</span><br><span class="line">    ssl_certificate /etc/nginx/ssl/*.demo.com.cer;</span><br><span class="line">    # 配置你上面 --key-file 的路径</span><br><span class="line">    ssl_certificate_key /etc/nginx/ssl/*.demo.com.key;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://localhost:1337;</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header Connection &apos;upgrade&apos;;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_cache_bypass $http_upgrade;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
 <blockquote>
-<h3 id="文章若有纰漏请大家补充指正-谢谢"><a href="#文章若有纰漏请大家补充指正-谢谢" class="headerlink" title="文章若有纰漏请大家补充指正,谢谢~~"></a>文章若有纰漏请大家补充指正,谢谢~~</h3><p><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG殇</p>
+<p><strong>文章若有纰漏请大家补充指正,谢谢~~</strong></p>
+<p><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG殇</p>
 </blockquote>
   
 	</div>
@@ -156,7 +131,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/docker/">docker</a><a href="/tags/node/">node</a>
+  <span></span> <a href="/tags/letsencrypt/">letsencrypt</a>
   </div>
 
 </div>
@@ -165,7 +140,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://blog.xinshangshangxin.com/2015/06/01/DaoCloud部署Node/" data-title="DaoCloud部署Node | SHANG Blog" data-tsina="null" class="share clearfix">
+	  <div data-url="http://blog.xinshangshangxin.com/2018/03/22/wildcard-domain/" data-title="申请letsencrypt安装泛域名 | SHANG Blog" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -178,19 +153,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/06/06/Docker学习笔记-1/" title="Docker学习笔记(1)">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Docker学习笔记(1)</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/05/24/QQ互联踩坑记录/"  title="QQ互联踩坑记录">
+<a href="/2018/02/08/rabbitmq-start/"  title="rabbitmq安装并配置">
  <strong>下一篇：</strong><br/> 
- <span>QQ互联踩坑记录
+ <span>rabbitmq安装并配置
 </span>
 </a>
 </div>
@@ -211,7 +178,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#注册DaoCloud"><span class="toc-number">1.</span> <span class="toc-text">注册DaoCloud</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署Node-的-Dockerfile-详解"><span class="toc-number">2.</span> <span class="toc-text">部署Node 的 Dockerfile 详解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#上传github和绑定github"><span class="toc-number">3.</span> <span class="toc-text">上传github和绑定github</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文档"><span class="toc-number">3.1.</span> <span class="toc-text">参考文档</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文章若有纰漏请大家补充指正-谢谢"><span class="toc-number">3.1.1.</span> <span class="toc-text">文章若有纰漏请大家补充指正,谢谢~~</span></a></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#域名申请工具-acme-sh"><span class="toc-number">1.</span> <span class="toc-text">域名申请工具 acme.sh</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载安装-acme-sh"><span class="toc-number">1.1.</span> <span class="toc-text">下载安装 acme.sh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重启-terminal"><span class="toc-number">1.2.</span> <span class="toc-text">重启 terminal</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成安装泛域名证书"><span class="toc-number">2.</span> <span class="toc-text">生成安装泛域名证书</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#申请阿里云-Api-key-和-Ali-Secret-可以按照-acme-sh-进行设置"><span class="toc-number">2.1.</span> <span class="toc-text">申请阿里云 Api_key 和 Ali_Secret (可以按照 acme.sh 进行设置)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#申请-证书"><span class="toc-number">3.</span> <span class="toc-text">申请 证书</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装cert并重启nginx"><span class="toc-number">4.</span> <span class="toc-text">安装cert并重启nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx-conf"><span class="toc-number">5.</span> <span class="toc-text">nginx.conf</span></a></li></ol>
  
   </div>
 
