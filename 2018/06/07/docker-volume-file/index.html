@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="-v 出现 unknown: Are you trying to mount a directory onto a file (or vice-versa)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-07T03:30:38.272Z">
+<meta property="og:updated_time" content="2018-06-07T03:38:15.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker 使用 -v 或 --volume 映射文件报错">
 <meta name="twitter:description" content="-v 出现 unknown: Are you trying to mount a directory onto a file (or vice-versa)">
@@ -98,7 +98,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">1.</span> <span class="toc-text">解决方案:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原因"><span class="toc-number">2.</span> <span class="toc-text">原因:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文档"><span class="toc-number">3.</span> <span class="toc-text">参考文档</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">1.</span> <span class="toc-text">解决方案:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原因"><span class="toc-number">2.</span> <span class="toc-text">原因:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#排查方法"><span class="toc-number">3.</span> <span class="toc-text">排查方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文档"><span class="toc-number">4.</span> <span class="toc-text">参考文档</span></a></li></ol>
 		
 		</div>
 		
@@ -110,6 +110,8 @@
 <h2 id="原因"><a href="#原因" class="headerlink" title="原因:"></a>原因:</h2><p>从 <a href="https://docs.docker.com/storage/bind-mounts/#differences-between--v-and---mount-behavior" target="_blank" rel="noopener">docker 文档 <code>Differences between -v and --mount behavior</code></a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">If you use -v or --volume to bind-mount a file or directory that does not yet exist on the Docker host, -v creates the endpoint for you. </span><br><span class="line">It is always created as a directory.</span><br></pre></td></tr></table></figure>
 <p><strong>如果文件不存在, docker总会创建一个目录</strong></p>
+<h2 id="排查方法"><a href="#排查方法" class="headerlink" title="排查方法"></a>排查方法</h2><p>添加 <code>-it --entrypoint bash</code> 进入容器查看文件是否存在</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v local_file_path:docker_file_path -it --entrypoint bash docker_image</span><br></pre></td></tr></table></figure>
 <h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
 <li><a href="https://stackoverflow.com/questions/42248198/how-to-mount-a-single-file-in-a-volume#47099098" target="_blank" rel="noopener">How to mount a single file in a volume</a><br><br></li>
 </ul>
@@ -172,7 +174,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">1.</span> <span class="toc-text">解决方案:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原因"><span class="toc-number">2.</span> <span class="toc-text">原因:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文档"><span class="toc-number">3.</span> <span class="toc-text">参考文档</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">1.</span> <span class="toc-text">解决方案:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原因"><span class="toc-number">2.</span> <span class="toc-text">原因:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#排查方法"><span class="toc-number">3.</span> <span class="toc-text">排查方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文档"><span class="toc-number">4.</span> <span class="toc-text">参考文档</span></a></li></ol>
  
   </div>
 
@@ -208,15 +210,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -224,7 +222,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -232,11 +230,7 @@
 			
 		
 			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -244,11 +238,19 @@
 			
 		
 			
-				<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MINA/" title="MINA">MINA<sup>2</sup></a></li>
 			
 		
 			
@@ -260,11 +262,11 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/MINA/" title="MINA">MINA<sup>2</sup></a></li>
+				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
 			
 		
 		</ul>
