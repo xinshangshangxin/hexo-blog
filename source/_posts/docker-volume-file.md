@@ -22,6 +22,13 @@ It is always created as a directory.
 
 **如果文件不存在, docker总会创建一个目录**
 
+## 排查方法
+添加 `-it --entrypoint bash` 进入容器查看文件是否存在
+
+```bash
+docker run -v local_file_path:docker_file_path -it --entrypoint bash docker_image
+```
+
 ## 参考文档
 - [How to mount a single file in a volume](https://stackoverflow.com/questions/42248198/how-to-mount-a-single-file-in-a-volume#47099098)
 <br>
