@@ -21,4 +21,5 @@ back:
 	git commit -m "backup" || echo "no commit"
 	git push origin backup:backup
 	git push gitlab backup:backup
+	git push gitee backup:backup
 
