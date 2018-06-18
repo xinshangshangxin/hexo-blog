@@ -89,4 +89,3 @@ deploy:
   repo:
     gitlab: git@gitlab.com:demoshang/blog.git,gh-pages
     github: git@github.com:xinshangshangxin/hexo-blog.git,gh-pages
-    gitee: git@gitee.com:xinshangshangxin/blog.git,gh-pages
