@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="`30 天精通 RxJS` 的读书笔记">
-<meta name="keywords" content="js,rxjs,RxJS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RxJS 学习笔记">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2018/08/30/lean-rxjs/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="`30 天精通 RxJS` 的读书笔记">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-08-31T02:13:46.140Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxJS 学习笔记">
@@ -102,7 +100,7 @@
 		
 		</div>
 		
-		<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><p>本文章为台湾同胞写的 <a href="https://ithelp.ithome.com.tw/articles/10186103" target="_blank" rel="noopener">30 天精通 RxJS</a> 的读书笔记,  建议阅读 <code>30 天精通 RxJS</code><a href="https://ithelp.ithome.com.tw/articles/10186103" target="_blank" rel="noopener">(墙外地址)</a>/<a href="https://rxjs-cn.github.io/rxjs5-ultimate-cn/content/hot-n-cold-observables.html" target="_blank" rel="noopener">(gitbook地址)</a> 来学习 <code>RxJS</code></p>
+		<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><p>本文章为台湾同胞写的 <a href="https://ithelp.ithome.com.tw/articles/10186103" target="_blank" rel="external">30 天精通 RxJS</a> 的读书笔记,  建议阅读 <code>30 天精通 RxJS</code><a href="https://ithelp.ithome.com.tw/articles/10186103" target="_blank" rel="external">(墙外地址)</a>/<a href="https://rxjs-cn.github.io/rxjs5-ultimate-cn/content/hot-n-cold-observables.html" target="_blank" rel="external">(gitbook地址)</a> 来学习 <code>RxJS</code></p>
 <h1 id="RxJS-一个核心三个重点"><a href="#RxJS-一个核心三个重点" class="headerlink" title="RxJS 一个核心三个重点"></a>RxJS 一个核心三个重点</h1><ul>
 <li>核心: <code>Observable</code> 再加上相关的 <code>Operators</code> (<code>map</code>, <code>filter</code>, <code>...</code>)</li>
 <li>三个重点:<ul>
@@ -149,7 +147,7 @@
 <li>complete: 在 Observable 没有其他的资料可以取得时,complete 方法就会被呼叫,在 complete 被呼叫之后,next 方法就不会再起作用</li>
 <li>error: 每当 Observable 内发生错误时,error 方法就会被呼叫</li>
 </ul>
-<h2 id="察者可以是不完整的，可以只具有一个-next-方法"><a href="#察者可以是不完整的，可以只具有一个-next-方法" class="headerlink" title="察者可以是不完整的，可以只具有一个 next 方法"></a>察者可以是不完整的，可以只具有一个 <code>next</code> 方法</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Observable &#125; <span class="keyword">from</span> <span class="string">'rxjs'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> observable = Observable.create(<span class="function">(<span class="params">observer</span>) =&gt;</span> &#123;</span><br><span class="line">  observer.next(<span class="string">'Jerry'</span>);</span><br><span class="line">  observer.next(<span class="string">'Anna'</span>);</span><br><span class="line">  observer.complete();</span><br><span class="line">  observer.next(<span class="string">'not work'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个观察者，具有 next, error, complete 上个方法</span></span><br><span class="line"><span class="keyword">let</span> observer = &#123;</span><br><span class="line">  next(value) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(value);</span><br><span class="line">  &#125;,</span><br><span class="line">  error(error) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error);</span><br><span class="line">  &#125;,</span><br><span class="line">  complete() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'complete'</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">observable.subscribe(observer);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Jerry</span></span><br><span class="line"><span class="comment">Anna</span></span><br><span class="line"><span class="comment">complete</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="察者可以是不完整的，可以只具有一个-next-方法"><a href="#察者可以是不完整的，可以只具有一个-next-方法" class="headerlink" title="察者可以是不完整的，可以只具有一个 next 方法"></a>察者可以是不完整的，可以只具有一个 <code>next</code> 方法</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; Observable &#125; from <span class="string">'rxjs'</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> observable = Observable.create((observer) =&gt; &#123;</div><div class="line">  observer.next(<span class="string">'Jerry'</span>);</div><div class="line">  observer.next(<span class="string">'Anna'</span>);</div><div class="line">  observer.complete();</div><div class="line">  observer.next(<span class="string">'not work'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 创建一个观察者，具有 next, error, complete 上个方法</span></div><div class="line"><span class="keyword">let</span> observer = &#123;</div><div class="line">  next(value) &#123;</div><div class="line">    <span class="built_in">console</span>.log(value);</div><div class="line">  &#125;,</div><div class="line">  error(error) &#123;</div><div class="line">    <span class="built_in">console</span>.log(error);</div><div class="line">  &#125;,</div><div class="line">  complete() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'complete'</span>);</div><div class="line">  &#125;,</div><div class="line">&#125;;</div><div class="line"></div><div class="line">observable.subscribe(observer);</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line">Jerry</div><div class="line">Anna</div><div class="line">complete</div><div class="line">*/</div></pre></td></tr></table></figure>
 <h1 id="Observable-的订阅跟-addEventListener-的差异"><a href="#Observable-的订阅跟-addEventListener-的差异" class="headerlink" title="Observable 的订阅跟 addEventListener 的差异"></a><code>Observable</code> 的订阅跟 <code>addEventListener</code> 的差异</h1><ul>
 <li><code>addEventListener</code> 本质上就是 <code>Observer Pattern</code> 的实现,在内部会有一份订阅清单</li>
 <li><code>Observable</code> 的订阅 比较像是执行一个物件的方法,并把资料传进这个方法中</li>
@@ -180,7 +178,7 @@
 <li>订阅 <code>observable</code> 后，会回传一个 <code>subscription</code> 物件，这个物件具有释放资源的<code>unsubscribe</code>方法</li>
 <li><code>Events observable</code> 尽量不要用 <code>unsubscribe</code>，通常我们会使用 <code>takeUntil</code>，在某个事件发生后来完成 <code>Event observable</code></li>
 </ul>
-<h1 id="operators"><a href="#operators" class="headerlink" title="operators"></a>operators</h1><p><strong><a href="http://rxmarbles.com/" target="_blank" rel="noopener">珠宝图 http://rxmarbles.com/</a></strong></p>
+<h1 id="operators"><a href="#operators" class="headerlink" title="operators"></a>operators</h1><p><strong><a href="http://rxmarbles.com/" target="_blank" rel="external">珠宝图 http://rxmarbles.com/</a></strong></p>
 <p><strong>!!! 每个 operator 都会回传一个新的 observable</strong></p>
 <ul>
 <li>map</li>
@@ -196,8 +194,8 @@
 <li>startWith 一开始就<strong>同步</strong>发出的，这个<code>operator</code>常被用来保存程式的起始状态</li>
 <li>merge 把多个 <code>observable</code> 实例合并成一个, 多个 <code>observable</code> 同时处理</li>
 <li>combineLatest 取得各个 <code>observable</code> 最后送出的值，再输出成一个值</li>
-<li>zip<t, r="">(…observables: Array&lt;ObservableInput<any> | ((…values: Array<any>) =&gt; R)&gt;): Observable<r><br>每个 <code>observable</code> 的第 n 个元素会一起输出</r></any></any></t,></li>
-<li>withLatestFrom<t, r="">(…args: Array&lt;ObservableInput<any> | ((…values: Array<any>) =&gt; R)&gt;): OperatorFunction<t, r=""><br>和 <code>combineLatest</code> 像, 只有在主<code>observable</code> 送出新的值时，才会执行 callback</t,></any></any></t,></li>
+<li>zip<t, r="">(…observables: Array<observableinput<any> | ((…values: Array<any>) =&gt; R)&gt;): Observable<r><br>每个 <code>observable</code> 的第 n 个元素会一起输出</r></any></observableinput<any></t,></li>
+<li>withLatestFrom<t, r="">(…args: Array<observableinput<any> | ((…values: Array<any>) =&gt; R)&gt;): OperatorFunction<t, r=""><br>和 <code>combineLatest</code> 像, 只有在主<code>observable</code> 送出新的值时，才会执行 callback</t,></any></observableinput<any></t,></li>
 <li>reduce<t, r="">(accumulator: (acc: R, value: T, index?: number) =&gt; R, seed?: R): OperatorFunction<t, r=""><br>返回一个<code>reduce</code>之后的最终结果</t,></t,></li>
 <li>scan<t, r="">(accumulator: (acc: R, value: T, index: number) =&gt; R, seed?: T | R): OperatorFunction<t, r=""><br> 和<code>reduce</code> 相似,  但是  返回每个中间结果</t,></t,></li>
 <li>buffer<t>(closingNotifier: Observable<any>): OperatorFunction<t, t[]=""><br>缓冲源 Observable 的值直到 closingNotifier 发出</t,></any></t></li>
@@ -216,36 +214,36 @@
 <li>retryWhen</li>
 <li>repeat</li>
 <li>concatAll <code>source</code> observable 内部每次发送的值也是<code>observable</code>，用 <code>concatAll</code> 就可以把 <code>source</code> 摊平; 会处理 <code>source</code> 先发出来的 <code>observable</code>，必须等到这个 <code>observable</code> 结束，才会再处理下一个<code>source</code>发出来的<code>observable</code></li>
-<li>switchAll<t>(): OperatorFunction&lt;ObservableInput<t>, T&gt;<br>每当有新的 observable 送出就会直接把旧的 observable 退订(unsubscribe)，永远只处理最新的 observable!</t></t></li>
+<li>switchAll<t>(): OperatorFunction<observableinput<t>, T&gt;<br>每当有新的 observable 送出就会直接把旧的 observable 退订(unsubscribe)，永远只处理最新的 observable!</observableinput<t></t></li>
 <li>mergeAll<t>(concurrent: number = Number.POSITIVE_INFINITY): MonoTypeOperatorFunction<t></t></t></li>
 <li>concatMap<t, i,="" r="">(project: (value: T, index: number) =&gt; ObservableInput<i>, resultSelector?: (outerValue: T, innerValue: I, outerIndex: number, innerIndex: number) =&gt; R): OperatorFunction<t, i="" |="" r=""><br><code>map + concatAll</code><br>确定内部的 observable 结束时间比外部 observable 发送时间来快的情境，并且不希望有任何并行处理行为，适合少数要一次一次完成到底的的 UI 动画或特别的 HTTP request 行为</t,></i></t,></li>
 <li>switchMap<t, i,="" r="">(project: (value: T, index: number) =&gt; ObservableInput<i>, resultSelector?: (outerValue: T, innerValue: I, outerIndex: number, innerIndex: number) =&gt; R): OperatorFunction<t, i="" |="" r=""><br><code>map + switchAll</code><br>只要最后一次行为的结果，适合绝大多数的使用情境</t,></i></t,></li>
 <li>mergeMap<t, i,="" r="">(project: (value: T, index: number) =&gt; ObservableInput<i>, resultSelector?: ((outerValue: T, innerValue: I, outerIndex: number, innerIndex: number) =&gt; R) | number, concurrent: number = Number.POSITIVE_INFINITY): OperatorFunction<t, i="" |="" r=""><br><code>map + mergeAll</code><br>并行处理多个 observable，适合需要并行处理的行为，像是多个 I/O 的并行处理</t,></i></t,></li>
-<li>window<t>(windowBoundaries: Observable<any>): OperatorFunction&lt;T, Observable<t>&gt;<br>每当 windowBoundaries 发出项时，将源 Observable 的值分支成嵌套的 Observable</t></any></t></li>
-<li>windowToggle<t, o="">(openings: Observable<o>, closingSelector: (openValue: O) =&gt; Observable<any>): OperatorFunction&lt;T, Observable<t>&gt;<br>将源 Observable 的值分支成嵌套的 Observable，分支策略是以 openings 发出项为起始，以 closingSelector 发出为结束</t></any></o></t,></li>
-<li>groupBy<t, k,="" r="">(keySelector: (value: T) =&gt; K, elementSelector?: ((value: T) =&gt; R) | void, durationSelector?: (grouped: GroupedObservable<k, r="">) =&gt; Observable<any>, subjectSelector?: () =&gt; Subject<r>): OperatorFunction&lt;T, GroupedObservable<k, r="">&gt;<br>根据指定条件将源 Observable 发出的值进行分组，并将这些分组作为 GroupedObservables 发出，每一个分组都是一个 GroupedObservable</k,></r></any></k,></t,></li>
+<li>window<t>(windowBoundaries: Observable<any>): OperatorFunction<t, observable<t="">&gt;<br>每当 windowBoundaries 发出项时，将源 Observable 的值分支成嵌套的 Observable</t,></any></t></li>
+<li>windowToggle<t, o="">(openings: Observable<o>, closingSelector: (openValue: O) =&gt; Observable<any>): OperatorFunction<t, observable<t="">&gt;<br>将源 Observable 的值分支成嵌套的 Observable，分支策略是以 openings 发出项为起始，以 closingSelector 发出为结束</t,></any></o></t,></li>
+<li>groupBy<t, k,="" r="">(keySelector: (value: T) =&gt; K, elementSelector?: ((value: T) =&gt; R) | void, durationSelector?: (grouped: GroupedObservable<k, r="">) =&gt; Observable<any>, subjectSelector?: () =&gt; Subject<r>): OperatorFunction<t, groupedobservable<k,="" r="">&gt;<br>根据指定条件将源 Observable 发出的值进行分组，并将这些分组作为 GroupedObservables 发出，每一个分组都是一个 GroupedObservable</t,></r></any></k,></t,></li>
 </ul>
 <h1 id="Subject"><a href="#Subject" class="headerlink" title="Subject"></a>Subject</h1><ul>
 <li><code>Subject</code> 同时是 <code>Observable</code> 又是 <code>Observer</code></li>
 <li><code>Subject</code> 会对内部的 observers 清单进行组播(<code>multicast</code>)</li>
 <li><code>Subject</code> 就是 <code>Observer Pattern</code> 的实作并且继承自 <code>Observable</code></li>
 </ul>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Subject &#125; <span class="keyword">from</span> <span class="string">'rxjs'</span>;</span><br><span class="line"><span class="keyword">let</span> subject = <span class="keyword">new</span> Subject();</span><br><span class="line">subject.subscribe(observerA); <span class="comment">// 相当于 把 observerA 加入订阅清单</span></span><br><span class="line">source.subscribe(subject); <span class="comment">//  遍历订阅清单后发送当前数据</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; Subject &#125; from <span class="string">'rxjs'</span>;</div><div class="line"><span class="keyword">let</span> subject = <span class="keyword">new</span> Subject();</div><div class="line">subject.subscribe(observerA); <span class="comment">// 相当于 把 observerA 加入订阅清单</span></div><div class="line">source.subscribe(subject); <span class="comment">//  遍历订阅清单后发送当前数据</span></div></pre></td></tr></table></figure>
 <h2 id="BehaviorSubject"><a href="#BehaviorSubject" class="headerlink" title="BehaviorSubject"></a>BehaviorSubject</h2><p>一种 <code>subject</code> 能够表达当前的状态,在一订阅时就能收到最新的状态是什么,而不是订阅后要等到有变动才能接收到新的状态</p>
 <h2 id="ReplaySubject"><a href="#ReplaySubject" class="headerlink" title="ReplaySubject"></a>ReplaySubject</h2><p>事件的重放, 在新订阅时重新发送最后的几个元素</p>
 <h2 id="AsyncSubject"><a href="#AsyncSubject" class="headerlink" title="AsyncSubject"></a>AsyncSubject</h2><p>等到事情结束后送出一个值</p>
 <h2 id="和-Subject-相关的-Observable-operators"><a href="#和-Subject-相关的-Observable-operators" class="headerlink" title="和 Subject 相关的 Observable.operators"></a>和 Subject 相关的 Observable.operators</h2><ul>
 <li>multicast<t, r="">(subjectOrSubjectFactory: Subject<t> | (() =&gt; Subject<t>), selector?: (source: Observable<t>) =&gt; Observable<r>): OperatorFunction<t, r=""><br>可以用来挂载 <code>subject</code> 并回传一个可连结(<code>connectable</code>)的 <code>observable</code></t,></r></t></t></t></t,></li>
 </ul>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> source = Observable.multicast(<span class="keyword">new</span> Subject());</span><br><span class="line">source.subscribe(observerA);</span><br><span class="line"><span class="keyword">let</span> realSubscription = source.connect();</span><br><span class="line">realSubscription.unsubscribe();</span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> source = Observable.multicast(<span class="keyword">new</span> Subject());</div><div class="line">source.subscribe(observerA);</div><div class="line"><span class="keyword">let</span> realSubscription = source.connect();</div><div class="line">realSubscription.unsubscribe();</div></pre></td></tr></table></figure>
 <ul>
 <li>refCount<t>(): MonoTypeOperatorFunction<t><br>建立一个只要有订阅就会自动 <code>connect</code> 的 <code>observable</code>, 必须和 <code>multicast</code> 一起使用</t></t></li>
 </ul>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> source = Observable.multicast(<span class="keyword">new</span> Subject()).refCount();</span><br><span class="line"><span class="keyword">let</span> subscription = source.subscribe(observerA);</span><br><span class="line">subscription.unsubscribe();</span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> source = Observable.multicast(<span class="keyword">new</span> Subject()).refCount();</div><div class="line"><span class="keyword">let</span> subscription = source.subscribe(observerA);</div><div class="line">subscription.unsubscribe();</div></pre></td></tr></table></figure>
 <ul>
 <li>publish<t, r="">(selector?: OperatorFunction<t, r="">): MonoTypeOperatorFunction<t> | OperatorFunction<t, r=""><br>简化 <code>multicast(new Subject())</code></t,></t></t,></t,></li>
 </ul>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> source = Observable.publish().refCount();</span><br><span class="line"><span class="keyword">let</span> subscription = source.subscribe(observerA);</span><br><span class="line">subscription.unsubscribe();</span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> source = Observable.publish().refCount();</div><div class="line"><span class="keyword">let</span> subscription = source.subscribe(observerA);</div><div class="line">subscription.unsubscribe();</div></pre></td></tr></table></figure>
 <ul>
 <li><p>publishReplay<br><code>multicast(new ReplaySubject(1))</code></p>
 </li>
@@ -266,8 +264,8 @@
 <h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><p>asap 很像但是使用 setInterval 来运作，通常是跟时间相关的 operator 才会用到</p>
 <h2 id="animationFrame"><a href="#animationFrame" class="headerlink" title="animationFrame"></a>animationFrame</h2><p>在做复杂运算，且高频率触发的 UI 动画时，就很适合使用 animationFrame，以可以搭配 throttle operator 使用。</p>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
-<li><a href="https://ithelp.ithome.com.tw/articles/10186103" target="_blank" rel="noopener">30 天精通 RxJS</a>  </li>
-<li><a href="https://rxjs-cn.github.io/rxjs5-ultimate-cn/content/hot-n-cold-observables.html" target="_blank" rel="noopener">30-days-proficient-in-rxjs</a><br><br></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10186103" target="_blank" rel="external">30 天精通 RxJS</a>  </li>
+<li><a href="https://rxjs-cn.github.io/rxjs5-ultimate-cn/content/hot-n-cold-observables.html" target="_blank" rel="external">30-days-proficient-in-rxjs</a><br><br></li>
 </ul>
 <hr>
 <blockquote>
@@ -373,15 +371,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -389,7 +383,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -397,11 +391,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -409,11 +399,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -425,7 +423,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

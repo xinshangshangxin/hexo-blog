@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="微信小程序不支持Promise, 引入bluebird的探究过程">
-<meta name="keywords" content="wechat,小程序,MINA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信小程序中使用bluebird">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2016/11/24/mina-bluebird/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="微信小程序不支持Promise, 引入bluebird的探究过程">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.xinshangshangxin.com/img/mina/mina2.png">
 <meta property="og:image" content="http://blog.xinshangshangxin.com/img/mina/mina1.png">
 <meta property="og:image" content="http://blog.xinshangshangxin.com/img/mina/mina3.png">
@@ -112,7 +110,7 @@
 <ul>
 <li>直接引入<br>在 <code>npm install bluebird</code> 之后, 直接使用</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="built_in">Promise</span> = <span class="built_in">require</span>(<span class="string">'../node_modules/bluebird/js/release/bluebird.js'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="built_in">Promise</span> = <span class="built_in">require</span>(<span class="string">'../node_modules/bluebird/js/release/bluebird.js'</span>);</div></pre></td></tr></table></figure>
 <p>提示 <code>module &quot;node_modules/bluebird/js/release/bluebird.js&quot; is not defined</code>;</p>
 <ul>
 <li><p>将安装后的文件夹复制<br><code>node_modules/bluebird/js/release</code> 存在 browser 和 release 2 个文件夹, 由于微信小程序并不运行在浏览器中, 故不能引入browser; 将 release 文件夹拷贝至 utils 文件夹后引入. 在微信开发者工具中虽然报了 8个 <code>can not create Function</code>,但是依然可以使用.</p>
@@ -137,16 +135,16 @@
 <li><code>npm i bluebird</code></li>
 <li>将 <code>node_modules/bluebird/js/release</code> 文件夹拷贝出来, 比如拷贝到 <code>utils</code> 目录下</li>
 <li><p>将 <code>utils/bluebird/js/release/schedule.js</code> 中的内容替换为</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  setTimeout(fn, <span class="number">0</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">fn</span>) </span>&#123;</div><div class="line">  setTimeout(fn, <span class="number">0</span>);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 </li>
 <li><p>require 后使用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="built_in">Promise</span> = <span class="built_in">require</span>(<span class="string">'./bluebird/js/release/bluebird.js'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="built_in">Promise</span> = <span class="built_in">require</span>(<span class="string">'./bluebird/js/release/bluebird.js'</span>);</div></pre></td></tr></table></figure>
 </li>
-<li><p>如果每次修改嫌麻烦, 可以使用脚本控制<br>也可以尝试 我自用的微信骨架 <a href="https://github.com/xinshangshangxin/MINA-seed" target="_blank" rel="noopener">https://github.com/xinshangshangxin/MINA-seed</a>, <em>注入了 bluebird, lodash, promisify了wx.xxx接口, 修改了 vConsole 不输出function和error</em>  </p>
+<li><p>如果每次修改嫌麻烦, 可以使用脚本控制<br>也可以尝试 我自用的微信骨架 <a href="https://github.com/xinshangshangxin/MINA-seed" target="_blank" rel="external">https://github.com/xinshangshangxin/MINA-seed</a>, <em>注入了 bluebird, lodash, promisify了wx.xxx接口, 修改了 vConsole 不输出function和error</em>  </p>
 </li>
 </ol>
 <h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
-<li><a href="https://cnodejs.org/topic/57eb4e4bea2fa420446d4371" target="_blank" rel="noopener">https://cnodejs.org/topic/57eb4e4bea2fa420446d4371</a></li>
+<li><a href="https://cnodejs.org/topic/57eb4e4bea2fa420446d4371" target="_blank" rel="external">https://cnodejs.org/topic/57eb4e4bea2fa420446d4371</a></li>
 </ul>
 <p><br></p>
 <hr>
@@ -252,15 +250,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -268,7 +262,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -276,11 +270,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -288,11 +278,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -304,7 +302,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

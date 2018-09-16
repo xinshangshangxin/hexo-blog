@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="Docker学习笔记">
-<meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker学习笔记(1)">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2015/06/06/Docker学习笔记-1/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="Docker学习笔记">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker学习笔记(1)">
@@ -112,8 +110,8 @@
 <p><code>ENTRYPOINT</code> 镜像启动后自动执行的命令</p>
 <p><code>build</code>  使用docker file生成docker镜像<br>// -t 起名字<br>// dockerfile_path如果为当前目录为则 ( . )<br><code>docker build -t [registry_url/namespace/csphere/centos:7.1] [dockerfile_path]</code></p>
 <p><code>docker images</code> 查看镜像信息<br><code>docker rmi</code> 删除镜像<br><code>docker images -q</code> 批量删除镜像<br><code>docker run image_name</code>      用镜像 运行一个 container</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run -it：交互式 </span><br><span class="line">           -d：后端启动, 然后返回container的Id号 </span><br><span class="line">           -p <span class="number">2222</span>:<span class="number">22</span> 端口映射</span><br><span class="line">           -P <span class="number">22</span> 随机取未使用端口映射<span class="number">22</span>端口</span><br><span class="line">           --name 指定容器名称</span><br><span class="line">           -v host_dir:conatiner_dir 文件映射</span><br><span class="line">           --rm 容器退出就删除</span><br><span class="line">           -e 传入环境参数可指定多次</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p <span class="number">80</span>:<span class="number">80</span> --name wordpress -e WORDPRESS_DB_HOST=<span class="number">10.51</span><span class="number">.85</span><span class="number">.74</span> -e WORDPRESS_DB_USER=admin</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">docker run -it：交互式 </div><div class="line">           -d：后端启动, 然后返回container的Id号 </div><div class="line">           -p <span class="number">2222</span>:<span class="number">22</span> 端口映射</div><div class="line">           -P <span class="number">22</span> 随机取未使用端口映射<span class="number">22</span>端口</div><div class="line">           --name 指定容器名称</div><div class="line">           -v host_dir:conatiner_dir 文件映射</div><div class="line">           --rm 容器退出就删除</div><div class="line">           -e 传入环境参数可指定多次</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -d -p <span class="number">80</span>:<span class="number">80</span> --name wordpress -e WORDPRESS_DB_HOST=<span class="number">10.51</span><span class="number">.85</span><span class="number">.74</span> -e WORDPRESS_DB_USER=admin</div></pre></td></tr></table></figure>
 <p><code>docker ps</code>  查看运行容器<br><code>docker ps -a</code> 查看所有容器</p>
 <p><code>ONBUILD</code>  在下一个基于本镜像是执行的命令</p>
 <p><code>docker exec -it container_name</code> 交互式模式进入container<br><code>docker exec -it testNode /bin/bash</code></p>
@@ -236,15 +234,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -252,7 +246,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -260,11 +254,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -272,11 +262,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -288,7 +286,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

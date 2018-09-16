@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="硕鼠解析自动跳过广告">
-<meta name="keywords" content="youkuvod">
 <meta property="og:type" content="article">
 <meta property="og:title" content="硕鼠解析自动跳过广告">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2015/11/29/flvcd-no-ad/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="硕鼠解析自动跳过广告">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="硕鼠解析自动跳过广告">
@@ -109,7 +107,7 @@
 <p>通过设置cookie判断是否已经观看广告</p>
 </blockquote>
 <h2 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h2><ol>
-<li><p>postman抓取页面 <a href="http://www.flvcd.com/parse.php?flag=&amp;go=1&amp;format=&amp;kw=http%3A%2F%2Fv.youku.com%2Fv_show%2Fid_XMTI4OTgxNTE2NA%3D%3D.html%3Ffrom%3Ds1.8-1-1.1%26s%3D19545" target="_blank" rel="noopener">http://www.flvcd.com/parse.php?flag=&amp;go=1&amp;format=&amp;kw=http%3A%2F%2Fv.youku.com%2Fv_show%2Fid_XMTI4OTgxNTE2NA%3D%3D.html%3Ffrom%3Ds1.8-1-1.1%26s%3D19545</a></p>
+<li><p>postman抓取页面 <a href="http://www.flvcd.com/parse.php?flag=&amp;go=1&amp;format=&amp;kw=http%3A%2F%2Fv.youku.com%2Fv_show%2Fid_XMTI4OTgxNTE2NA%3D%3D.html%3Ffrom%3Ds1.8-1-1.1%26s%3D19545" target="_blank" rel="external">http://www.flvcd.com/parse.php?flag=&amp;go=1&amp;format=&amp;kw=http%3A%2F%2Fv.youku.com%2Fv_show%2Fid_XMTI4OTgxNTE2NA%3D%3D.html%3Ffrom%3Ds1.8-1-1.1%26s%3D19545</a></p>
 </li>
 <li><p>观察代码,发现多个eval函数</p>
 </li>
@@ -117,10 +115,10 @@
 <li>得到1个关键函数 <code>createSc</code> 和 2个 <code>document.cookie=</code></li>
 <li>提取关键函数跳过广告</li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> html = <span class="built_in">document</span>.documentElement.innerHTML;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> isParsed = <span class="regexp">/&lt;input type="hidden" name="inf" value="/</span>.test(html);</span><br><span class="line"><span class="keyword">if</span> (isParsed) &#123;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> key = ((html.match(<span class="regexp">/\='\w&#123;32,32&#125;'\;/</span>) || [])[<span class="number">0</span>] || <span class="string">''</span>).replace(<span class="string">'=\''</span>, <span class="string">''</span>).replace(<span class="string">'\';'</span>, <span class="string">''</span>);</span><br><span class="line"><span class="keyword">var</span> time = ((html.match(<span class="regexp">/\=\d&#123;13,13&#125;/</span>) || [])[<span class="number">0</span>] || <span class="string">''</span>).replace(<span class="string">'='</span>, <span class="string">''</span>);</span><br><span class="line"></span><br><span class="line">parseCookie(key, time);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parseCookie</span>(<span class="params">key, time</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">createSc</span>(<span class="params">a, t</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="string">'24227945943216730751837054267565'</span>;</span><br><span class="line">    t = <span class="built_in">Math</span>.floor(t / (<span class="number">600</span> * <span class="number">1000</span>));</span><br><span class="line">    <span class="keyword">var</span> ret = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; a.length; i++) &#123;</span><br><span class="line">      <span class="keyword">var</span> j = a.charCodeAt(i) ^ b.charCodeAt(i) ^ t;</span><br><span class="line">      j = j % <span class="string">'z'</span>.charCodeAt(<span class="number">0</span>);</span><br><span class="line">      <span class="keyword">var</span> c;</span><br><span class="line">      <span class="keyword">if</span> (j &lt; <span class="string">'0'</span>.charCodeAt(<span class="number">0</span>)) &#123;</span><br><span class="line">        c = <span class="built_in">String</span>.fromCharCode(<span class="string">'0'</span>.charCodeAt(<span class="number">0</span>) + j % <span class="number">9</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (j &gt;= <span class="string">'0'</span>.charCodeAt(<span class="number">0</span>) &amp;&amp; j &lt;= <span class="string">'9'</span>.charCodeAt(<span class="number">0</span>)) &#123;</span><br><span class="line">        c = <span class="built_in">String</span>.fromCharCode(j);</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (j &gt; <span class="string">'9'</span>.charCodeAt(<span class="number">0</span>) &amp;&amp; j &lt; <span class="string">'A'</span>.charCodeAt(<span class="number">0</span>)) &#123;</span><br><span class="line">        c = <span class="string">'9'</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (j &gt;= <span class="string">'A'</span>.charCodeAt(<span class="number">0</span>) &amp;&amp; j &lt;= <span class="string">'Z'</span>.charCodeAt(<span class="number">0</span>)) &#123;</span><br><span class="line">        c = <span class="built_in">String</span>.fromCharCode(j);</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (j &gt; <span class="string">'Z'</span>.charCodeAt(<span class="number">0</span>) &amp;&amp; j &lt; <span class="string">'a'</span>.charCodeAt(<span class="number">0</span>)) &#123;</span><br><span class="line">        c = <span class="string">'Z'</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (j &gt;= <span class="string">'z'</span>.charCodeAt(<span class="number">0</span>) &amp;&amp; j &lt;= <span class="string">'z'</span>.charCodeAt(<span class="number">0</span>)) &#123;</span><br><span class="line">        c = <span class="built_in">String</span>.fromCharCode(j);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        c = <span class="string">'z'</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      ret += c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> g = createSc(key, time);</span><br><span class="line">  <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">  date.setTime(date.getTime() + <span class="number">300</span> * <span class="number">1000</span>);</span><br><span class="line">  <span class="built_in">document</span>.cookie = <span class="string">'go='</span> + g + <span class="string">';expires='</span> + date.toGMTString();</span><br><span class="line">  <span class="built_in">document</span>.cookie = <span class="string">'avdGggggtt='</span> + time + <span class="string">';expires='</span> + date.toGMTString();</span><br><span class="line"></span><br><span class="line">  <span class="built_in">window</span>.setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">window</span>.location.reload();</span><br><span class="line">  &#125;, <span class="number">16</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> html = <span class="built_in">document</span>.documentElement.innerHTML;</div><div class="line"></div><div class="line"><span class="keyword">var</span> isParsed = <span class="regexp">/&lt;input type="hidden" name="inf" value="/</span>.test(html);</div><div class="line"><span class="keyword">if</span> (isParsed) &#123;</div><div class="line">  <span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> key = ((html.match(<span class="regexp">/\='\w&#123;32,32&#125;'\;/</span>) || [])[<span class="number">0</span>] || <span class="string">''</span>).replace(<span class="string">'=\''</span>, <span class="string">''</span>).replace(<span class="string">'\';'</span>, <span class="string">''</span>);</div><div class="line"><span class="keyword">var</span> time = ((html.match(<span class="regexp">/\=\d&#123;13,13&#125;/</span>) || [])[<span class="number">0</span>] || <span class="string">''</span>).replace(<span class="string">'='</span>, <span class="string">''</span>);</div><div class="line"></div><div class="line">parseCookie(key, time);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">parseCookie</span>(<span class="params">key, time</span>) </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">createSc</span>(<span class="params">a, t</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> b = <span class="string">'24227945943216730751837054267565'</span>;</div><div class="line">    t = <span class="built_in">Math</span>.floor(t / (<span class="number">600</span> * <span class="number">1000</span>));</div><div class="line">    <span class="keyword">var</span> ret = <span class="string">''</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; a.length; i++) &#123;</div><div class="line">      <span class="keyword">var</span> j = a.charCodeAt(i) ^ b.charCodeAt(i) ^ t;</div><div class="line">      j = j % <span class="string">'z'</span>.charCodeAt(<span class="number">0</span>);</div><div class="line">      <span class="keyword">var</span> c;</div><div class="line">      <span class="keyword">if</span> (j &lt; <span class="string">'0'</span>.charCodeAt(<span class="number">0</span>)) &#123;</div><div class="line">        c = <span class="built_in">String</span>.fromCharCode(<span class="string">'0'</span>.charCodeAt(<span class="number">0</span>) + j % <span class="number">9</span>);</div><div class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (j &gt;= <span class="string">'0'</span>.charCodeAt(<span class="number">0</span>) &amp;&amp; j &lt;= <span class="string">'9'</span>.charCodeAt(<span class="number">0</span>)) &#123;</div><div class="line">        c = <span class="built_in">String</span>.fromCharCode(j);</div><div class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (j &gt; <span class="string">'9'</span>.charCodeAt(<span class="number">0</span>) &amp;&amp; j &lt; <span class="string">'A'</span>.charCodeAt(<span class="number">0</span>)) &#123;</div><div class="line">        c = <span class="string">'9'</span>;</div><div class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (j &gt;= <span class="string">'A'</span>.charCodeAt(<span class="number">0</span>) &amp;&amp; j &lt;= <span class="string">'Z'</span>.charCodeAt(<span class="number">0</span>)) &#123;</div><div class="line">        c = <span class="built_in">String</span>.fromCharCode(j);</div><div class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (j &gt; <span class="string">'Z'</span>.charCodeAt(<span class="number">0</span>) &amp;&amp; j &lt; <span class="string">'a'</span>.charCodeAt(<span class="number">0</span>)) &#123;</div><div class="line">        c = <span class="string">'Z'</span>;</div><div class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (j &gt;= <span class="string">'z'</span>.charCodeAt(<span class="number">0</span>) &amp;&amp; j &lt;= <span class="string">'z'</span>.charCodeAt(<span class="number">0</span>)) &#123;</div><div class="line">        c = <span class="built_in">String</span>.fromCharCode(j);</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        c = <span class="string">'z'</span>;</div><div class="line">      &#125;</div><div class="line">      ret += c;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">  &#125;</div><div class="line"></div><div class="line"></div><div class="line">  <span class="keyword">var</span> g = createSc(key, time);</div><div class="line">  <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">  date.setTime(date.getTime() + <span class="number">300</span> * <span class="number">1000</span>);</div><div class="line">  <span class="built_in">document</span>.cookie = <span class="string">'go='</span> + g + <span class="string">';expires='</span> + date.toGMTString();</div><div class="line">  <span class="built_in">document</span>.cookie = <span class="string">'avdGggggtt='</span> + time + <span class="string">';expires='</span> + date.toGMTString();</div><div class="line"></div><div class="line">  <span class="built_in">window</span>.setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">window</span>.location.reload();</div><div class="line">  &#125;, <span class="number">16</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="完整脚本地址"><a href="#完整脚本地址" class="headerlink" title="完整脚本地址:"></a>完整脚本地址:</h1><ul>
-<li><a href="https://github.com/xinshangshangxin/youkuvod/tree/flvcd" target="_blank" rel="noopener">github</a></li>
-<li><a href="https://greasyfork.org/zh-CN/scripts/14267-flvcdnoad" target="_blank" rel="noopener">greasyfork</a></li>
+<li><a href="https://github.com/xinshangshangxin/youkuvod/tree/flvcd" target="_blank" rel="external">github</a></li>
+<li><a href="https://greasyfork.org/zh-CN/scripts/14267-flvcdnoad" target="_blank" rel="external">greasyfork</a></li>
 </ul>
 <hr>
 <blockquote>
@@ -225,15 +223,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -241,7 +235,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -249,11 +243,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -261,11 +251,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -277,7 +275,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="平常使用pm2没有问题,但是在docker中需要参数--no-daemon">
-<meta name="keywords" content="docker,node">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在docker中使用pm2或forever">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2015/06/13/在docker中使用pm2或forever/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="平常使用pm2没有问题,但是在docker中需要参数--no-daemon">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在docker中使用pm2或forever">
@@ -105,15 +103,15 @@
 		<blockquote>
 <p>使用命令 <code>pm2 start app.js</code> 之后, <code>pm2</code> 默认在后台运行,<br>如果使用了docker后,容器运行并立即退出,需要手动指定参数<code>--no-daemon</code></p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--no-daemon                          </span><br><span class="line"><span class="comment">// run pm2 daemon in the foreground if it doesn't exist already</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 start app.js --no-daemon <span class="comment">// 设置启动方式</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">--no-daemon                          </div><div class="line"><span class="comment">// run pm2 daemon in the foreground if it doesn't exist already</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pm2 start app.js --no-daemon <span class="comment">// 设置启动方式</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>同理forever也是<br>Forever start script.js runs in the background. To run forever in the foreground, try forever script.js.</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">forever -c <span class="string">'node --harmony'</span> app.js <span class="comment">// 设置启动方式</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">forever -c <span class="string">'node --harmony'</span> app.js <span class="comment">// 设置启动方式</span></div></pre></td></tr></table></figure>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
-<li><a href="https://github.com/Unitech/PM2/blob/master/ADVANCED_README.md" target="_blank" rel="noopener">https://github.com/Unitech/PM2/blob/master/ADVANCED_README.md</a></li>
-<li><a href="http://stackoverflow.com/questions/26237044/error-starting-node-with-forever-in-docker-container" target="_blank" rel="noopener">http://stackoverflow.com/questions/26237044/error-starting-node-with-forever-in-docker-container</a></li>
+<li><a href="https://github.com/Unitech/PM2/blob/master/ADVANCED_README.md" target="_blank" rel="external">https://github.com/Unitech/PM2/blob/master/ADVANCED_README.md</a></li>
+<li><a href="http://stackoverflow.com/questions/26237044/error-starting-node-with-forever-in-docker-container" target="_blank" rel="external">http://stackoverflow.com/questions/26237044/error-starting-node-with-forever-in-docker-container</a></li>
 </ul>
 <hr>
 <blockquote>
@@ -218,15 +216,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -234,7 +228,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -242,11 +236,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -254,11 +244,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -270,7 +268,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

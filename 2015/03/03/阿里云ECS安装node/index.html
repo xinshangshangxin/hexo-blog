@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="借了个阿里云的账号尝试安装nodejs,其实和linux一样....">
-<meta name="keywords" content="node,ECS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="阿里云ECS安装node">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2015/03/03/阿里云ECS安装node/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="借了个阿里云的账号尝试安装nodejs,其实和linux一样....">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里云ECS安装node">
@@ -105,37 +103,37 @@
 		<h1 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h1><ul>
 <li>确认服务器有nodejs编译及依赖相关软件 <em>没有运行下面命令安装</em></li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc gcc-c++ openssl-devel</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install gcc gcc-c++ openssl-devel</div></pre></td></tr></table></figure>
 <ul>
 <li><p>下载Node</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http:<span class="comment">//nodejs.org/dist/v0.10.24/node-v0.10.24.tar.gz</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http:<span class="comment">//nodejs.org/dist/v0.10.24/node-v0.10.24.tar.gz</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>解压Node源码包</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf node-v0<span class="number">.10</span><span class="number">.24</span>.tar.gz</span><br><span class="line"></span><br><span class="line">cd node-v0<span class="number">.10</span><span class="number">.24</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tar zxvf node-v0<span class="number">.10</span><span class="number">.24</span>.tar.gz</div><div class="line"></div><div class="line">cd node-v0<span class="number">.10</span><span class="number">.24</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>配置</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=<span class="regexp">/usr/</span>local/node</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure --prefix=<span class="regexp">/usr/</span>local/node</div></pre></td></tr></table></figure>
 </li>
 <li><p>编译,安装  <strong>编译时间较长!</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
 </li>
 <li><p>配置Node环境</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/profile</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
 <p>输入 <code>i</code> 进行插入 <code>原来的文件内容不要改~~</code></p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> NODE_HOME=<span class="regexp">/usr/</span>local/node</span><br><span class="line"><span class="keyword">export</span> PATH=$NODE_HOME/bin:$PATH</span><br><span class="line"><span class="keyword">export</span> NODE_PATH=$NODE_HOME/lib/node_modules:$PATH</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> NODE_HOME=<span class="regexp">/usr/</span>local/node</div><div class="line"><span class="keyword">export</span> PATH=$NODE_HOME/bin:$PATH</div><div class="line"><span class="keyword">export</span> NODE_PATH=$NODE_HOME/lib/node_modules:$PATH</div></pre></td></tr></table></figure>
 <blockquote>
 <p>按<code>esc</code>键, 然后输入 <code>:wq</code> 回车退出</p>
 </blockquote>
 <ul>
 <li><p>重启生效</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source /etc/profile</div></pre></td></tr></table></figure>
 </li>
 <li><p>测试</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v &amp;&amp; npm -v</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node -v &amp;&amp; npm -v</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
@@ -240,15 +238,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -256,7 +250,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -264,11 +258,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -276,11 +266,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -292,7 +290,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

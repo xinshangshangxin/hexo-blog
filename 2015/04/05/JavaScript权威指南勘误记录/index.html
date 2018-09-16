@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="记录我所认为的第六版中文版的错误;欢迎批评~~">
-<meta name="keywords" content="js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript权威指南勘误记录">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2015/04/05/JavaScript权威指南勘误记录/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="记录我所认为的第六版中文版的错误;欢迎批评~~">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript权威指南勘误记录">
@@ -103,104 +101,104 @@
 		</div>
 		
 		<h1 id="记录我所认为的第六版中文版的错误-欢迎批评"><a href="#记录我所认为的第六版中文版的错误-欢迎批评" class="headerlink" title="记录我所认为的第六版中文版的错误;欢迎批评~~"></a>记录我所认为的第六版中文版的错误;欢迎批评~~</h1><a id="more"></a>
-<h1 id="P56"><a href="#P56" class="headerlink" title="P56"></a>P56</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myscope = <span class="string">"local"</span>;  <span class="comment">//这里显式地声明了一个新的全局变量</span></span><br></pre></td></tr></table></figure>
+<h1 id="P56"><a href="#P56" class="headerlink" title="P56"></a>P56</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">myscope = <span class="string">"local"</span>;  <span class="comment">//这里显式地声明了一个新的全局变量</span></div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myscope = <span class="string">"local"</span>;  <span class="comment">//这里隐式地声明了一个新的全局变量</span></span><br></pre></td></tr></table></figure>
-<h1 id="P57"><a href="#P57" class="headerlink" title="P57"></a>P57</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">checkscope()  <span class="comment">// =&gt; "嵌套的作用域"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">myscope = <span class="string">"local"</span>;  <span class="comment">//这里隐式地声明了一个新的全局变量</span></div></pre></td></tr></table></figure>
+<h1 id="P57"><a href="#P57" class="headerlink" title="P57"></a>P57</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">checkscope()  <span class="comment">// =&gt; "嵌套的作用域"</span></div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注释部分应保持英文不翻译</span></span><br><span class="line">checkscope()  <span class="comment">// =&gt; "nested scope"</span></span><br></pre></td></tr></table></figure>
-<h1 id="P75"><a href="#P75" class="headerlink" title="P75"></a>P75</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果两个值都是<span class="literal">null</span>或者都是<span class="literal">undefined</span>，则它们不相等。</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 注释部分应保持英文不翻译</span></div><div class="line">checkscope()  <span class="comment">// =&gt; "nested scope"</span></div></pre></td></tr></table></figure>
+<h1 id="P75"><a href="#P75" class="headerlink" title="P75"></a>P75</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">如果两个值都是<span class="literal">null</span>或者都是<span class="literal">undefined</span>，则它们不相等。</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果两个值都是<span class="literal">null</span>或者都是<span class="literal">undefined</span>，则它们相等。</span><br></pre></td></tr></table></figure>
-<h1 id="P77"><a href="#P77" class="headerlink" title="P77"></a>P77</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span>.localCompare()方法</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">如果两个值都是<span class="literal">null</span>或者都是<span class="literal">undefined</span>，则它们相等。</div></pre></td></tr></table></figure>
+<h1 id="P77"><a href="#P77" class="headerlink" title="P77"></a>P77</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">String</span>.localCompare()方法</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span>.prototype.localeCompare() <span class="comment">// 个人觉得是prototype; 并且是localeCompare</span></span><br></pre></td></tr></table></figure>
-<h1 id="P125"><a href="#P125" class="headerlink" title="P125"></a>P125</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果之前o继承自属性x</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">String</span>.prototype.localeCompare() <span class="comment">// 个人觉得是prototype; 并且是localeCompare</span></div></pre></td></tr></table></figure>
+<h1 id="P125"><a href="#P125" class="headerlink" title="P125"></a>P125</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">如果之前o继承自属性x</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果之前o继承了属性x</span><br><span class="line">下同，所有“继承自”都应改为“继承了”。</span><br></pre></td></tr></table></figure>
-<h1 id="P129"><a href="#P129" class="headerlink" title="P129"></a>P129</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果x是undefined、null、false、" "、0或NaN,则它保持不变</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">如果之前o继承了属性x</div><div class="line">下同，所有“继承自”都应改为“继承了”。</div></pre></td></tr></table></figure>
+<h1 id="P129"><a href="#P129" class="headerlink" title="P129"></a>P129</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//如果x是undefined、null、false、" "、0或NaN,则它保持不变</span></div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">字符串中应没有空格：</span><br><span class="line"><span class="comment">//如果x是undefined、null、false、""、0或NaN,则它保持不变</span></span><br></pre></td></tr></table></figure>
-<h1 id="P140"><a href="#P140" class="headerlink" title="P140"></a>P140</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.esExtensible()</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">字符串中应没有空格：</div><div class="line"><span class="comment">//如果x是undefined、null、false、""、0或NaN,则它保持不变</span></div></pre></td></tr></table></figure>
+<h1 id="P140"><a href="#P140" class="headerlink" title="P140"></a>P140</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.esExtensible()</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.isExtensible()</span><br></pre></td></tr></table></figure>
-<h1 id="P145"><a href="#P145" class="headerlink" title="P145"></a>P145</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = [,,,]  </span><br><span class="line"><span class="number">0</span> <span class="keyword">in</span> a1  <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.isExtensible()</div></pre></td></tr></table></figure>
+<h1 id="P145"><a href="#P145" class="headerlink" title="P145"></a>P145</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a1 = [,,,]  </div><div class="line"><span class="number">0</span> <span class="keyword">in</span> a1  <span class="comment">// =&gt; true</span></div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = [, , ,];</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0</span> <span class="keyword">in</span> a1);<span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-<h1 id="P150"><a href="#P150" class="headerlink" title="P150"></a>P150</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!a[i]) <span class="keyword">continue</span>;        <span class="comment">// 跳过 null, undefined 和不存在元素</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a1 = [, , ,];</div><div class="line"><span class="built_in">console</span>.log(<span class="number">0</span> <span class="keyword">in</span> a1);<span class="comment">// false</span></div></pre></td></tr></table></figure>
+<h1 id="P150"><a href="#P150" class="headerlink" title="P150"></a>P150</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (!a[i]) <span class="keyword">continue</span>;        <span class="comment">// 跳过 null, undefined 和不存在元素</span></div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!a[i]) <span class="keyword">continue</span>;        <span class="comment">// 跳过 null, undefined , 0, '' 和不存在元素</span></span><br></pre></td></tr></table></figure>
-<h1 id="P152"><a href="#P152" class="headerlink" title="P152"></a>P152</h1><p>数组方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 个人觉得方法不都是在 Array.prototype 上的吗?</span></span><br><span class="line"><span class="comment">// P163 说在Firefox 上可以使用 Array.join() 等,但是chrome下失败........</span></span><br></pre></td></tr></table></figure></p>
-<h1 id="P196"><a href="#P196" class="headerlink" title="P196"></a>P196</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> even = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;        <span class="comment">// 判断a是否为偶数的函数</span></span><br><span class="line">    <span class="keyword">return</span> x % <span class="number">2</span> === <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (!a[i]) <span class="keyword">continue</span>;        <span class="comment">// 跳过 null, undefined , 0, '' 和不存在元素</span></div></pre></td></tr></table></figure>
+<h1 id="P152"><a href="#P152" class="headerlink" title="P152"></a>P152</h1><p>数组方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 个人觉得方法不都是在 Array.prototype 上的吗?</span></div><div class="line"><span class="comment">// P163 说在Firefox 上可以使用 Array.join() 等,但是chrome下失败........</span></div></pre></td></tr></table></figure></p>
+<h1 id="P196"><a href="#P196" class="headerlink" title="P196"></a>P196</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> even = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;        <span class="comment">// 判断a是否为偶数的函数</span></div><div class="line">    <span class="keyword">return</span> x % <span class="number">2</span> === <span class="number">0</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> even = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;        <span class="comment">// 判断x是否为偶数的函数</span></span><br><span class="line">    <span class="keyword">return</span> x % <span class="number">2</span> === <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="P203"><a href="#P203" class="headerlink" title="P203"></a>P203</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> r = range(<span class="number">1</span>, <span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(r.includes(<span class="number">2</span>));</span><br><span class="line">r.foreach(<span class="built_in">console</span>.log);</span><br><span class="line"><span class="built_in">console</span>.log(r);             <span class="comment">// 输出(1...3)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> even = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;        <span class="comment">// 判断x是否为偶数的函数</span></div><div class="line">    <span class="keyword">return</span> x % <span class="number">2</span> === <span class="number">0</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h1 id="P203"><a href="#P203" class="headerlink" title="P203"></a>P203</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> r = range(<span class="number">1</span>, <span class="number">3</span>);</div><div class="line"><span class="built_in">console</span>.log(r.includes(<span class="number">2</span>));</div><div class="line">r.foreach(<span class="built_in">console</span>.log);</div><div class="line"><span class="built_in">console</span>.log(r);             <span class="comment">// 输出(1...3)</span></div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> r = range(<span class="number">1</span>, <span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(r.includes(<span class="number">2</span>));</span><br><span class="line">r.foreach(<span class="built_in">console</span>.log);         <span class="comment">// node下正确  chrome/firefox的 Console 下输出如下错误:</span></span><br><span class="line">                                <span class="comment">// TypeError: 'log' called on an object that does not implement interface Console</span></span><br><span class="line">                                <span class="comment">// 参考: https://bugzilla.mozilla.org/show_bug.cgi?id=989619</span></span><br><span class="line"><span class="built_in">console</span>.log(r); <span class="comment">// node下: &#123; from: 1, to: 3 &#125;   chrome下: Object &#123;from: 1, to: 3, includes: function, foreach: function, toString: function&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(r.toString());          <span class="comment">// 显示 或 隐式 调用才会输出 (1...3)</span></span><br><span class="line"><span class="built_in">console</span>.log(r + <span class="string">''</span>);</span><br></pre></td></tr></table></figure>
-<h1 id="P204"><a href="#P204" class="headerlink" title="P204"></a>P204</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> r = range(<span class="number">1</span>, <span class="number">3</span>);            <span class="comment">// 这里应该使用 构造函数的方式了!!</span></span><br><span class="line"><span class="built_in">console</span>.log(r.includes(<span class="number">2</span>));</span><br><span class="line">r.foreach(<span class="built_in">console</span>.log);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> r = range(<span class="number">1</span>, <span class="number">3</span>);</div><div class="line"><span class="built_in">console</span>.log(r.includes(<span class="number">2</span>));</div><div class="line">r.foreach(<span class="built_in">console</span>.log);         <span class="comment">// node下正确  chrome/firefox的 Console 下输出如下错误:</span></div><div class="line">                                <span class="comment">// TypeError: 'log' called on an object that does not implement interface Console</span></div><div class="line">                                <span class="comment">// 参考: https://bugzilla.mozilla.org/show_bug.cgi?id=989619</span></div><div class="line"><span class="built_in">console</span>.log(r); <span class="comment">// node下: &#123; from: 1, to: 3 &#125;   chrome下: Object &#123;from: 1, to: 3, includes: function, foreach: function, toString: function&#125;</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(r.toString());          <span class="comment">// 显示 或 隐式 调用才会输出 (1...3)</span></div><div class="line"><span class="built_in">console</span>.log(r + <span class="string">''</span>);</div></pre></td></tr></table></figure>
+<h1 id="P204"><a href="#P204" class="headerlink" title="P204"></a>P204</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> r = range(<span class="number">1</span>, <span class="number">3</span>);            <span class="comment">// 这里应该使用 构造函数的方式了!!</span></div><div class="line"><span class="built_in">console</span>.log(r.includes(<span class="number">2</span>));</div><div class="line">r.foreach(<span class="built_in">console</span>.log);</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> r = <span class="keyword">new</span> Range(<span class="number">1</span>, <span class="number">3</span>);        <span class="comment">// new Range(1, 3)</span></span><br><span class="line"><span class="built_in">console</span>.log(r.includes(<span class="number">2</span>));     </span><br><span class="line">r.foreach(<span class="built_in">console</span>.log);</span><br></pre></td></tr></table></figure>
-<h1 id="P211"><a href="#P211" class="headerlink" title="P211"></a>P211</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.toString().match( <span class="regexp">/function\s*([^()*]\(/</span> )[<span class="number">1</span>];</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> r = <span class="keyword">new</span> Range(<span class="number">1</span>, <span class="number">3</span>);        <span class="comment">// new Range(1, 3)</span></div><div class="line"><span class="built_in">console</span>.log(r.includes(<span class="number">2</span>));     </div><div class="line">r.foreach(<span class="built_in">console</span>.log);</div></pre></td></tr></table></figure>
+<h1 id="P211"><a href="#P211" class="headerlink" title="P211"></a>P211</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.toString().match( <span class="regexp">/function\s*([^()*]\(/</span> )[<span class="number">1</span>];</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.toString().match( <span class="regexp">/function\s*([^(]*)\(/</span> )[<span class="number">1</span>];</span><br></pre></td></tr></table></figure>
-<h1 id="P230"><a href="#P230" class="headerlink" title="P230"></a>P230</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果B方法重载了A方法</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.toString().match( <span class="regexp">/function\s*([^(]*)\(/</span> )[<span class="number">1</span>];</div></pre></td></tr></table></figure>
+<h1 id="P230"><a href="#P230" class="headerlink" title="P230"></a>P230</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">如果B方法重载了A方法</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如果B方法覆盖了A方法  <span class="comment">// 重载（overload）覆盖（override）</span></span><br><span class="line"><span class="comment">// 英文原版P228  If a method of B overrides a method of A</span></span><br><span class="line"><span class="comment">// 9.7节将所有的override都错误地翻译成了“重载”，应为“覆盖”。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">如果B方法覆盖了A方法  <span class="comment">// 重载（overload）覆盖（override）</span></div><div class="line"><span class="comment">// 英文原版P228  If a method of B overrides a method of A</span></div><div class="line"><span class="comment">// 9.7节将所有的override都错误地翻译成了“重载”，应为“覆盖”。</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p> 重载是指不同的函数使用相同的函数名，但是函数的参数个数或类型不同。调 的时候根据函数的参数来区别不同的函数。</p>
 <p> 覆盖（也叫重写）是指在派生类中重新对基类中的虚函数（注意是虚函数）重新实现。即函数名和参数都一样，只是函数的实现体不一样。</p>
 <p>隐藏是指派生类中的函数把基类中相同名字的函数屏蔽掉了。隐藏与另外两个概念表面上看来很像，很难区分，其实他们的关键区别就是在多态的实现上。什么叫多态？简单地说就是一个接口，多种实现吧。</p>
-<p><a href="http://blog.csdn.net/yanjun_1982/article/details/470405" target="_blank" rel="noopener">重载 覆盖 解释来自于yanjun_1982</a></p>
+<p><a href="http://blog.csdn.net/yanjun_1982/article/details/470405" target="_blank" rel="external">重载 覆盖 解释来自于yanjun_1982</a></p>
 </blockquote>
-<h1 id="P233"><a href="#P233" class="headerlink" title="P233"></a>P233</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">但它需要完全重新实现一个add()方法</span><br></pre></td></tr></table></figure>
+<h1 id="P233"><a href="#P233" class="headerlink" title="P233"></a>P233</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">但它需要完全重新实现一个add()方法</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">但它不需要完全重新实现一个add()方法</span><br></pre></td></tr></table></figure>
-<h1 id="P255"><a href="#P255" class="headerlink" title="P255"></a>P255</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\o     NUL字符(\u0000)]</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">但它不需要完全重新实现一个add()方法</div></pre></td></tr></table></figure>
+<h1 id="P255"><a href="#P255" class="headerlink" title="P255"></a>P255</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">\o     NUL字符(\u0000)]</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\<span class="number">0</span>     NUL字符(\u0000)]   <span class="comment">// 是零不是欧</span></span><br></pre></td></tr></table></figure>
-<h1 id="P256"><a href="#P256" class="headerlink" title="P256"></a>P256</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\w	任何ASCII字符组成的单词，等价于[a-zA-Z0<span class="number">-9</span>]</span><br><span class="line">\W	任何不是ASCII字符组成的单词，等价于[^a-zA-Z0<span class="number">-9</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">\<span class="number">0</span>     NUL字符(\u0000)]   <span class="comment">// 是零不是欧</span></div></pre></td></tr></table></figure>
+<h1 id="P256"><a href="#P256" class="headerlink" title="P256"></a>P256</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">\w	任何ASCII字符组成的单词，等价于[a-zA-Z0<span class="number">-9</span>]</div><div class="line">\W	任何不是ASCII字符组成的单词，等价于[^a-zA-Z0<span class="number">-9</span>]</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\w	任何ASCII字符，等价于 [a-zA-Z0<span class="number">-9</span>_]      <span class="comment">// 是字符而非单词，且遗漏原文中等价类的下划线</span></span><br><span class="line">\W	任何非ASCII字符，等价于 [^a-zA-Z0<span class="number">-9</span>_]</span><br></pre></td></tr></table></figure>
-<h1 id="P260"><a href="#P260" class="headerlink" title="P260"></a>P260</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Java(?! Script)([A-Z]\w*)/</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">\w	任何ASCII字符，等价于 [a-zA-Z0<span class="number">-9</span>_]      <span class="comment">// 是字符而非单词，且遗漏原文中等价类的下划线</span></div><div class="line">\W	任何非ASCII字符，等价于 [^a-zA-Z0<span class="number">-9</span>_]</div></pre></td></tr></table></figure>
+<h1 id="P260"><a href="#P260" class="headerlink" title="P260"></a>P260</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Java(?! Script)([A-Z]\w*)/</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Java(?!Script)([A-Z]\w*)/     没有空格</span><br></pre></td></tr></table></figure>
-<h1 id="P260-1"><a href="#P260-1" class="headerlink" title="P260"></a>P260</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">它可以匹配“JavaScript”，但不能匹配“JavaScripter”。</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Java(?!Script)([A-Z]\w*)/     没有空格</div></pre></td></tr></table></figure>
+<h1 id="P260-1"><a href="#P260-1" class="headerlink" title="P260"></a>P260</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">它可以匹配“JavaScript”，但不能匹配“JavaScripter”。</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原文: it matches “JavaScrip” but not “JavaScript” or “JavaScripter”.</span></span><br><span class="line">它可以匹配“JavaScrip”，但不能匹配“JavaScript”或“JavaScripter”。</span><br></pre></td></tr></table></figure>
-<h1 id="P371"><a href="#P371" class="headerlink" title="P371"></a>P371</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nextSibling previoursSibling   <span class="comment">// 拼写错误</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 原文: it matches “JavaScrip” but not “JavaScript” or “JavaScripter”.</span></div><div class="line">它可以匹配“JavaScrip”，但不能匹配“JavaScript”或“JavaScripter”。</div></pre></td></tr></table></figure>
+<h1 id="P371"><a href="#P371" class="headerlink" title="P371"></a>P371</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nextSibling previoursSibling   <span class="comment">// 拼写错误</span></div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nextSibling previousSibling</span><br></pre></td></tr></table></figure>
-<h1 id="P393"><a href="#P393" class="headerlink" title="P393"></a>P393</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Window对象的ScrollTop()方法</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nextSibling previousSibling</div></pre></td></tr></table></figure>
+<h1 id="P393"><a href="#P393" class="headerlink" title="P393"></a>P393</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Window对象的ScrollTop()方法</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Window对象的ScrollTo()方法</span><br></pre></td></tr></table></figure>
-<h1 id="P408"><a href="#P408" class="headerlink" title="P408"></a>P408</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bold</span>(<span class="params"></span>) </span>&#123; <span class="built_in">document</span>.execCommand(<span class="string">"bold"</span>, <span class="literal">false</span>, url); &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Window对象的ScrollTo()方法</div></pre></td></tr></table></figure>
+<h1 id="P408"><a href="#P408" class="headerlink" title="P408"></a>P408</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bold</span>(<span class="params"></span>) </span>&#123; <span class="built_in">document</span>.execCommand(<span class="string">"bold"</span>, <span class="literal">false</span>, url); &#125;</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bold</span>(<span class="params"></span>) </span>&#123; <span class="built_in">document</span>.execCommand(<span class="string">"bold"</span>, <span class="literal">false</span>, <span class="literal">null</span>); &#125;   <span class="comment">// 没有 url.........</span></span><br></pre></td></tr></table></figure>
-<h1 id="P409"><a href="#P409" class="headerlink" title="P409"></a>P409</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.queryCommandSupport()</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bold</span>(<span class="params"></span>) </span>&#123; <span class="built_in">document</span>.execCommand(<span class="string">"bold"</span>, <span class="literal">false</span>, <span class="literal">null</span>); &#125;   <span class="comment">// 没有 url.........</span></div></pre></td></tr></table></figure>
+<h1 id="P409"><a href="#P409" class="headerlink" title="P409"></a>P409</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.queryCommandSupport()</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.queryCommandSupported()</span><br></pre></td></tr></table></figure>
-<h1 id="P447-17-1-2-DOM事件"><a href="#P447-17-1-2-DOM事件" class="headerlink" title="P447  17.1.2 DOM事件"></a>P447  17.1.2 DOM事件</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span>级DOM事件规范标准化了不冒泡的focusin和focusout事件来取代冒泡的focus和blur事件</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.queryCommandSupported()</div></pre></td></tr></table></figure>
+<h1 id="P447-17-1-2-DOM事件"><a href="#P447-17-1-2-DOM事件" class="headerlink" title="P447  17.1.2 DOM事件"></a>P447  17.1.2 DOM事件</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">3</span>级DOM事件规范标准化了不冒泡的focusin和focusout事件来取代冒泡的focus和blur事件</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span>级DOM事件规范标准化了冒泡的focusin和focusout事件来取代不冒泡的focus和blur事件</span><br></pre></td></tr></table></figure>
-<h1 id="P447-17-1-2-DOM事件-1"><a href="#P447-17-1-2-DOM事件-1" class="headerlink" title="P447  17.1.2 DOM事件"></a>P447  17.1.2 DOM事件</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">标准化了冒泡的mouseenter和mouseleave事件来取代不冒泡的mouseover和mouseout事件</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">3</span>级DOM事件规范标准化了冒泡的focusin和focusout事件来取代不冒泡的focus和blur事件</div></pre></td></tr></table></figure>
+<h1 id="P447-17-1-2-DOM事件-1"><a href="#P447-17-1-2-DOM事件-1" class="headerlink" title="P447  17.1.2 DOM事件"></a>P447  17.1.2 DOM事件</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">标准化了冒泡的mouseenter和mouseleave事件来取代不冒泡的mouseover和mouseout事件</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">标准化了不冒泡的mouseenter和mouseleave事件来取代冒泡的mouseover和mouseout事件</span><br></pre></td></tr></table></figure>
-<h1 id="P453-17-2-3-addEventListener"><a href="#P453-17-2-3-addEventListener" class="headerlink" title="P453 17.2.3 addEventListener()"></a>P453 17.2.3 addEventListener()</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button id=<span class="string">"my button"</span>&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">标准化了不冒泡的mouseenter和mouseleave事件来取代冒泡的mouseover和mouseout事件</div></pre></td></tr></table></figure>
+<h1 id="P453-17-2-3-addEventListener"><a href="#P453-17-2-3-addEventListener" class="headerlink" title="P453 17.2.3 addEventListener()"></a>P453 17.2.3 addEventListener()</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;button id=<span class="string">"my button"</span>&gt;</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button id=<span class="string">"mybutton"</span>&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="P490-18-1-1-指定请求"><a href="#P490-18-1-1-指定请求" class="headerlink" title="P490 18.1.1 指定请求"></a>P490 18.1.1 指定请求</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setRequestHeader()方法的调用必须在调用open()之前但在调用send()之后</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;button id=<span class="string">"mybutton"</span>&gt;</div></pre></td></tr></table></figure>
+<h1 id="P490-18-1-1-指定请求"><a href="#P490-18-1-1-指定请求" class="headerlink" title="P490 18.1.1 指定请求"></a>P490 18.1.1 指定请求</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">setRequestHeader()方法的调用必须在调用open()之前但在调用send()之后</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setRequestHeader()方法的调用必须在调用open()之后但在调用send()之前</span><br></pre></td></tr></table></figure>
-<h1 id="P580-客户端存储-导言"><a href="#P580-客户端存储-导言" class="headerlink" title="P580 客户端存储_导言"></a>P580 客户端存储_导言</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">本书第<span class="number">8</span>章介绍过现在主流浏览器都支持一个文件对象</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">setRequestHeader()方法的调用必须在调用open()之后但在调用send()之前</div></pre></td></tr></table></figure>
+<h1 id="P580-客户端存储-导言"><a href="#P580-客户端存储-导言" class="headerlink" title="P580 客户端存储_导言"></a>P580 客户端存储_导言</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">本书第<span class="number">8</span>章介绍过现在主流浏览器都支持一个文件对象</div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">本书第<span class="number">18</span>章介绍过现在主流浏览器都支持一个文件对象</span><br></pre></td></tr></table></figure>
-<h1 id="P598-20-4-2-缓存更新-例20-4"><a href="#P598-20-4-2-缓存更新-例20-4" class="headerlink" title="P598 20.4.2 缓存更新_例20-4"></a>P598 20.4.2 缓存更新_例20-4</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事件对象应当是"process"事件(就像哪些被XH2使用的)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">本书第<span class="number">18</span>章介绍过现在主流浏览器都支持一个文件对象</div></pre></td></tr></table></figure>
+<h1 id="P598-20-4-2-缓存更新-例20-4"><a href="#P598-20-4-2-缓存更新-例20-4" class="headerlink" title="P598 20.4.2 缓存更新_例20-4"></a>P598 20.4.2 缓存更新_例20-4</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 事件对象应当是"process"事件(就像哪些被XH2使用的)</span></div></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事件对象应当是"progress"事件(就像那些被XH2使用的)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 事件对象应当是"progress"事件(就像那些被XH2使用的)</span></div></pre></td></tr></table></figure>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="http://mjpclab.blog.163.com/blog/static/6234841120142250612657/" target="_blank" rel="noopener">http://mjpclab.blog.163.com/blog/static/6234841120142250612657/</a></li>
-<li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=989619" target="_blank" rel="noopener">https://bugzilla.mozilla.org/show_bug.cgi?id=989619</a></li>
-<li><a href="http://blog.csdn.net/yanjun_1982/article/details/470405" target="_blank" rel="noopener">http://blog.csdn.net/yanjun_1982/article/details/470405</a></li>
+<li><a href="http://mjpclab.blog.163.com/blog/static/6234841120142250612657/" target="_blank" rel="external">http://mjpclab.blog.163.com/blog/static/6234841120142250612657/</a></li>
+<li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=989619" target="_blank" rel="external">https://bugzilla.mozilla.org/show_bug.cgi?id=989619</a></li>
+<li><a href="http://blog.csdn.net/yanjun_1982/article/details/470405" target="_blank" rel="external">http://blog.csdn.net/yanjun_1982/article/details/470405</a></li>
 </ul>
 <hr>
 <blockquote>
@@ -305,15 +303,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -321,7 +315,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -329,11 +323,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -341,11 +331,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -357,7 +355,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

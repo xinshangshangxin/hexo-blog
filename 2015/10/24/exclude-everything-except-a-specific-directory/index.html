@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="网上搜索到的答案有很多是错误的,故记录之">
-<meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在已忽略文件夹中不忽略指定文件夹">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2015/10/24/exclude-everything-except-a-specific-directory/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="网上搜索到的答案有很多是错误的,故记录之">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在已忽略文件夹中不忽略指定文件夹">
@@ -106,10 +104,10 @@
 <li>在已忽略文件夹中不忽略指定文件夹<code>忽略themes文件夹所有内容, 除了 themes/jacman/文件夹</code></li>
 </ul>
 <blockquote>
-<p><strong><code>/*</code>  不可省略!</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">themes/*</span><br><span class="line">!themes/jacman/</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>/*</code>  不可省略!</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">themes/*</div><div class="line">!themes/jacman/</div></pre></td></tr></table></figure></p>
 <p>(英文原文: ) Example to exclude everything except a specific directory foo/bar (note the /* - without the slash, the wildcard would also exclude everything within foo/bar):</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># exclude everything except directory foo/bar</span><br><span class="line">/*</span><br><span class="line">!/foo</span><br><span class="line">/foo/*</span><br><span class="line">!/foo/bar</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># exclude everything except directory foo/bar</div><div class="line">/*</div><div class="line">!/foo</div><div class="line">/foo/*</div><div class="line">!/foo/bar</div></pre></td></tr></table></figure>
 <ul>
 <li>其它注意点</li>
 </ul>
@@ -122,9 +120,9 @@
 <li>如果一个匹配 pattern 不包含斜杠,如 foo,Git 会将其作为一个 shell 的查找命令匹配内容</li>
 </ol>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
-<li><a href="http://www.barretlee.com/blog/2015/09/06/set-gitignore-after-add-file/" target="_blank" rel="noopener">此文章为错误说明已忽略文件夹中不忽略指定文件夹写法</a></li>
-<li><a href="http://my.oschina.net/longyuan/blog/521098" target="_blank" rel="noopener">http://my.oschina.net/longyuan/blog/521098</a></li>
-<li><a href="https://git-scm.com/docs/gitignore" target="_blank" rel="noopener">https://git-scm.com/docs/gitignore</a></li>
+<li><a href="http://www.barretlee.com/blog/2015/09/06/set-gitignore-after-add-file/" target="_blank" rel="external">此文章为错误说明已忽略文件夹中不忽略指定文件夹写法</a></li>
+<li><a href="http://my.oschina.net/longyuan/blog/521098" target="_blank" rel="external">http://my.oschina.net/longyuan/blog/521098</a></li>
+<li><a href="https://git-scm.com/docs/gitignore" target="_blank" rel="external">https://git-scm.com/docs/gitignore</a></li>
 </ul>
 <hr>
 <blockquote>
@@ -229,15 +227,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -245,7 +239,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -253,11 +247,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -265,11 +255,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -281,7 +279,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

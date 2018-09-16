@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="借了个阿里云的账号,外网访问nodejs遇到问题,做下记录...">
-<meta name="keywords" content="node,ECS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="阿里云ECS上node外网访问">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2015/03/03/阿里云ECS上node外网访问/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="借了个阿里云的账号,外网访问nodejs遇到问题,做下记录...">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里云ECS上node外网访问">
@@ -105,24 +103,24 @@
 		<blockquote>
 <p>原来是这么写的: </p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    res.writeHead(<span class="number">200</span>,&#123;<span class="string">'Content-Type'</span>:<span class="string">'text/plain'</span>&#125;);</span><br><span class="line">    res.end(<span class="string">'Hello Aliyun Node.js\n'</span>);</span><br><span class="line">&#125;).listen(<span class="number">80</span>,<span class="string">"127.0.0.1"</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</div><div class="line">    res.writeHead(<span class="number">200</span>,&#123;<span class="string">'Content-Type'</span>:<span class="string">'text/plain'</span>&#125;);</div><div class="line">    res.end(<span class="string">'Hello Aliyun Node.js\n'</span>);</div><div class="line">&#125;).listen(<span class="number">80</span>,<span class="string">"127.0.0.1"</span>);</div></pre></td></tr></table></figure>
 <blockquote>
 <p>提示出错,原因是80端口被占用,可以使用8888等端口</p>
-<p>使用<code>ECS外网IP:8888</code> 访问发现无法打开<br><a href="http://www.aboutit.cn/post/598" target="_blank" rel="noopener">这篇文章</a>是这么做的:</p>
+<p>使用<code>ECS外网IP:8888</code> 访问发现无法打开<br><a href="http://www.aboutit.cn/post/598" target="_blank" rel="external">这篇文章</a>是这么做的:</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　createServer(...).listen(<span class="number">8888</span>,<span class="string">"阿里云ECS外网IP"</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">　createServer(...).listen(<span class="number">8888</span>,<span class="string">"阿里云ECS外网IP"</span>);</div></pre></td></tr></table></figure>
 <blockquote>
-<p>但是在我这里失败了;<br>接着<a href="http://www.haodaima.net/art/2657330" target="_blank" rel="noopener">这篇文章</a>说: <code>启动NodeJs的侦听进程时，需要侦听所有IP（0.0.0.0）</code></p>
+<p>但是在我这里失败了;<br>接着<a href="http://www.haodaima.net/art/2657330" target="_blank" rel="external">这篇文章</a>说: <code>启动NodeJs的侦听进程时，需要侦听所有IP（0.0.0.0）</code></p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">createServer(...).listen(<span class="number">8888</span>,<span class="string">"0.0.0.0"</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">createServer(...).listen(<span class="number">8888</span>,<span class="string">"0.0.0.0"</span>);</div></pre></td></tr></table></figure>
 <blockquote>
 <p>成功了~~~</p>
 <p>完整测试例子</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"></span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">      <span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span></span><br><span class="line">    &#125;</span><br><span class="line">  );</span><br><span class="line">  res.end(<span class="string">'Hello Aliyun Node.js\n'</span>);</span><br><span class="line">&#125;).listen(<span class="number">8888</span>, <span class="string">"0.0.0.0"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'NodeJS Server running at http://0.0.0.0:8888'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line"></div><div class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.writeHead(<span class="number">200</span>, &#123;</div><div class="line">      <span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span></div><div class="line">    &#125;</div><div class="line">  );</div><div class="line">  res.end(<span class="string">'Hello Aliyun Node.js\n'</span>);</div><div class="line">&#125;).listen(<span class="number">8888</span>, <span class="string">"0.0.0.0"</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'NodeJS Server running at http://0.0.0.0:8888'</span>);</div></pre></td></tr></table></figure>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ol>
-<li><a href="http://www.aboutit.cn/post/598" target="_blank" rel="noopener">http://www.aboutit.cn/post/598</a></li>
-<li><a href="http://www.haodaima.net/art/2657330" target="_blank" rel="noopener">http://www.haodaima.net/art/2657330</a></li>
+<li><a href="http://www.aboutit.cn/post/598" target="_blank" rel="external">http://www.aboutit.cn/post/598</a></li>
+<li><a href="http://www.haodaima.net/art/2657330" target="_blank" rel="external">http://www.haodaima.net/art/2657330</a></li>
 </ol>
   
 	</div>
@@ -223,15 +221,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -239,7 +233,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -247,11 +241,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -259,11 +249,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -275,7 +273,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

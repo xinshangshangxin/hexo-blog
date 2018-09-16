@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="AngularJS使用$http.post之后后台无法收到数据">
-<meta name="keywords" content="AngularJS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AngularJS $http踩坑(1)">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2015/06/16/AngularJS踩坑-1/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="AngularJS使用$http.post之后后台无法收到数据">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AngularJS $http踩坑(1)">
@@ -106,31 +104,31 @@
 <h1 id="对比"><a href="#对比" class="headerlink" title="对比:"></a>对比:</h1><blockquote>
 <p>AngularJS：</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$http.post(<span class="string">'/myserver'</span>, &#123;<span class="attr">username</span>: <span class="string">'shang'</span>&#125;)</span><br><span class="line">.success(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// some code</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$http.post(<span class="string">'/myserver'</span>, &#123;<span class="attr">username</span>: <span class="string">'shang'</span>&#125;)</div><div class="line">.success(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">// some code</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <blockquote>
 <p>jQuery</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$.post(<span class="string">'/myserver'</span>, &#123;<span class="attr">username</span>: <span class="string">'shang'</span>&#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// some code</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$.post(<span class="string">'/myserver'</span>, &#123;<span class="attr">username</span>: <span class="string">'shang'</span>&#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// some code</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <blockquote>
 <p>后台Express接受</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.body.username <span class="comment">// jq: 'shang'; ng: undefined</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">req.body.username <span class="comment">// jq: 'shang'; ng: undefined</span></div></pre></td></tr></table></figure>
 <p><strong>jq会把作为JSON对象的序列化, 而Angular不会</strong></p>
 <h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法:"></a>解决办法:</h1><ul>
 <li>引入jquery (不推荐)</li>
 <li><p>指定header</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myobject = &#123;<span class="attr">username</span>: <span class="string">'shang'</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ObjecttoParams</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> p = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">        p.push(key + <span class="string">'='</span> + <span class="built_in">encodeURIComponent</span>(obj[key]));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> p.join(<span class="string">'&amp;'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$http(&#123;</span><br><span class="line">    method: <span class="string">'POST'</span>,</span><br><span class="line">    url: url,</span><br><span class="line">    data: ObjecttoParams(myobject),</span><br><span class="line">    headers: &#123;<span class="string">'Content-Type'</span>:<span class="string">'application/x-www-form-urlencoded'</span>&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myobject = &#123;<span class="attr">username</span>: <span class="string">'shang'</span>&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ObjecttoParams</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> p = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</div><div class="line">        p.push(key + <span class="string">'='</span> + <span class="built_in">encodeURIComponent</span>(obj[key]));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> p.join(<span class="string">'&amp;'</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">$http(&#123;</div><div class="line">    <span class="attr">method</span>: <span class="string">'POST'</span>,</div><div class="line">    <span class="attr">url</span>: url,</div><div class="line">    <span class="attr">data</span>: ObjecttoParams(myobject),</div><div class="line">    <span class="attr">headers</span>: &#123;<span class="string">'Content-Type'</span>:<span class="string">'application/x-www-form-urlencoded'</span>&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
 <li><p>使用 <code>angular-post-fix</code></p>
 </li>
 </ul>
 <blockquote>
-<p><a href="https://gist.github.com/JensRantil/5713606" target="_blank" rel="noopener">https://gist.github.com/JensRantil/5713606</a></p>
+<p><a href="https://gist.github.com/JensRantil/5713606" target="_blank" rel="external">https://gist.github.com/JensRantil/5713606</a></p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Modifies $httpProvider for correct server communication (POST variable format)</span></span><br><span class="line">angular.module(<span class="string">'http-post-fix'</span>, [], <span class="function"><span class="keyword">function</span>(<span class="params">$httpProvider</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// This code is taken from http://victorblog.com/2012/12/20/make-angularjs-http-service-behave-like-jquery-ajax/</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">// Use x-www-form-urlencoded Content-Type</span></span><br><span class="line">  $httpProvider.defaults.headers.post[<span class="string">'Content-Type'</span>] = <span class="string">'application/x-www-form-urlencoded;charset=utf-8'</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Override $http service's default transformRequest</span></span><br><span class="line">  $httpProvider.defaults.transformRequest = [<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The workhorse; converts an object to x-www-form-urlencoded serialization.</span></span><br><span class="line"><span class="comment">     * @param &#123;Object&#125; obj</span></span><br><span class="line"><span class="comment">     * @return &#123;String&#125;</span></span><br><span class="line"><span class="comment">     */</span> </span><br><span class="line">    <span class="keyword">var</span> param = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> query = <span class="string">''</span>;</span><br><span class="line">      <span class="keyword">var</span> name, value, fullSubName, subValue, innerObj, i;</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">for</span>(name <span class="keyword">in</span> obj) &#123;</span><br><span class="line">        value = obj[name];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(value <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</span><br><span class="line">          <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;value.length; ++i) &#123;</span><br><span class="line">            subValue = value[i];</span><br><span class="line">            fullSubName = name + <span class="string">'['</span> + i + <span class="string">']'</span>;</span><br><span class="line">            innerObj = &#123;&#125;;</span><br><span class="line">            innerObj[fullSubName] = subValue;</span><br><span class="line">            query += param(innerObj) + <span class="string">'&amp;'</span>;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(value <span class="keyword">instanceof</span> <span class="built_in">Object</span>) &#123;</span><br><span class="line">          <span class="keyword">for</span>(subName <span class="keyword">in</span> value) &#123;</span><br><span class="line">            subValue = value[subName];</span><br><span class="line">            fullSubName = name + <span class="string">'['</span> + subName + <span class="string">']'</span>;</span><br><span class="line">            innerObj = &#123;&#125;;</span><br><span class="line">            innerObj[fullSubName] = subValue;</span><br><span class="line">            query += param(innerObj) + <span class="string">'&amp;'</span>;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(value !== <span class="literal">undefined</span> &amp;&amp; value !== <span class="literal">null</span>) &#123;</span><br><span class="line">          query += <span class="built_in">encodeURIComponent</span>(name) + <span class="string">'='</span> + <span class="built_in">encodeURIComponent</span>(value) + <span class="string">'&amp;'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">return</span> query.length ? query.substr(<span class="number">0</span>, query.length - <span class="number">1</span>) : query;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> angular.isObject(data) &amp;&amp; <span class="built_in">String</span>(data) !== <span class="string">'[object File]'</span> ? param(data) : data;</span><br><span class="line">  &#125;];</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Modifies $httpProvider for correct server communication (POST variable format)</span></div><div class="line">angular.module(<span class="string">'http-post-fix'</span>, [], <span class="function"><span class="keyword">function</span>(<span class="params">$httpProvider</span>) </span>&#123;</div><div class="line">  <span class="comment">// This code is taken from http://victorblog.com/2012/12/20/make-angularjs-http-service-behave-like-jquery-ajax/</span></div><div class="line">  </div><div class="line">  <span class="comment">// Use x-www-form-urlencoded Content-Type</span></div><div class="line">  $httpProvider.defaults.headers.post[<span class="string">'Content-Type'</span>] = <span class="string">'application/x-www-form-urlencoded;charset=utf-8'</span>;</div><div class="line"></div><div class="line">  <span class="comment">// Override $http service's default transformRequest</span></div><div class="line">  $httpProvider.defaults.transformRequest = [<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * The workhorse; converts an object to x-www-form-urlencoded serialization.</div><div class="line">     * @param &#123;Object&#125; obj</div><div class="line">     * @return &#123;String&#125;</div><div class="line">     */ </div><div class="line">    <span class="keyword">var</span> param = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">      <span class="keyword">var</span> query = <span class="string">''</span>;</div><div class="line">      <span class="keyword">var</span> name, value, fullSubName, subValue, innerObj, i;</div><div class="line">      </div><div class="line">      <span class="keyword">for</span>(name <span class="keyword">in</span> obj) &#123;</div><div class="line">        value = obj[name];</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(value <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</div><div class="line">          <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;value.length; ++i) &#123;</div><div class="line">            subValue = value[i];</div><div class="line">            fullSubName = name + <span class="string">'['</span> + i + <span class="string">']'</span>;</div><div class="line">            innerObj = &#123;&#125;;</div><div class="line">            innerObj[fullSubName] = subValue;</div><div class="line">            query += param(innerObj) + <span class="string">'&amp;'</span>;</div><div class="line">          &#125;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(value <span class="keyword">instanceof</span> <span class="built_in">Object</span>) &#123;</div><div class="line">          <span class="keyword">for</span>(subName <span class="keyword">in</span> value) &#123;</div><div class="line">            subValue = value[subName];</div><div class="line">            fullSubName = name + <span class="string">'['</span> + subName + <span class="string">']'</span>;</div><div class="line">            innerObj = &#123;&#125;;</div><div class="line">            innerObj[fullSubName] = subValue;</div><div class="line">            query += param(innerObj) + <span class="string">'&amp;'</span>;</div><div class="line">          &#125;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(value !== <span class="literal">undefined</span> &amp;&amp; value !== <span class="literal">null</span>) &#123;</div><div class="line">          query += <span class="built_in">encodeURIComponent</span>(name) + <span class="string">'='</span> + <span class="built_in">encodeURIComponent</span>(value) + <span class="string">'&amp;'</span>;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">      </div><div class="line">      <span class="keyword">return</span> query.length ? query.substr(<span class="number">0</span>, query.length - <span class="number">1</span>) : query;</div><div class="line">    &#125;;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> angular.isObject(data) &amp;&amp; <span class="built_in">String</span>(data) !== <span class="string">'[object File]'</span> ? param(data) : data;</div><div class="line">  &#125;];</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
-<li><a href="http://stackoverflow.com/questions/19254029/angularjs-http-post-does-not-send-data" target="_blank" rel="noopener">http://stackoverflow.com/questions/19254029/angularjs-http-post-does-not-send-data</a></li>
-<li><a href="http://my.oschina.net/tommyfok/blog/287748" target="_blank" rel="noopener">http://my.oschina.net/tommyfok/blog/287748</a></li>
+<li><a href="http://stackoverflow.com/questions/19254029/angularjs-http-post-does-not-send-data" target="_blank" rel="external">http://stackoverflow.com/questions/19254029/angularjs-http-post-does-not-send-data</a></li>
+<li><a href="http://my.oschina.net/tommyfok/blog/287748" target="_blank" rel="external">http://my.oschina.net/tommyfok/blog/287748</a></li>
 </ul>
 <hr>
 <blockquote>
@@ -235,15 +233,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -251,7 +245,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -259,11 +253,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -271,11 +261,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -287,7 +285,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

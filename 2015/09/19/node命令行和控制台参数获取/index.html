@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="node命令行和控制台参数获取笔记">
-<meta name="keywords" content="node">
 <meta property="og:type" content="article">
 <meta property="og:title" content="node命令行和控制台参数获取">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2015/09/19/node命令行和控制台参数获取/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="node命令行和控制台参数获取笔记">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node命令行和控制台参数获取">
@@ -102,39 +100,39 @@
 		
 		</div>
 		
-		<h2 id="命令行参数的原始写法"><a href="#命令行参数的原始写法" class="headerlink" title="命令行参数的原始写法"></a>命令行参数的原始写法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="built_in">arguments</span> = process.argv.splice(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+		<h2 id="命令行参数的原始写法"><a href="#命令行参数的原始写法" class="headerlink" title="命令行参数的原始写法"></a>命令行参数的原始写法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> <span class="built_in">arguments</span> = process.argv.splice(<span class="number">2</span>);</div></pre></td></tr></table></figure>
 <blockquote>
 <p>process是一个全局对象，argv返回的是一组包含命令行参数的数组。第一项为’node’，第二项为执行的js的完整路径，后面是附加在命令行后的参数</p>
 </blockquote>
-<h2 id="yargs-模块"><a href="#yargs-模块" class="headerlink" title="yargs 模块"></a>yargs 模块</h2><p><a href="https://github.com/bcoe/yargs" target="_blank" rel="noopener">https://github.com/bcoe/yargs</a></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> argv = <span class="built_in">require</span>(<span class="string">'yargs'</span>)</span><br><span class="line">  .option(<span class="string">'n'</span>, &#123;</span><br><span class="line">    alias : <span class="string">'name'</span>,</span><br><span class="line">    demand: <span class="literal">true</span>,</span><br><span class="line">    <span class="keyword">default</span>: <span class="string">'tom'</span>,</span><br><span class="line">    describe: <span class="string">'your name'</span>,</span><br><span class="line">    type: <span class="string">'string'</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .argv;</span><br><span class="line"><span class="built_in">console</span>.log(argv.n);</span><br></pre></td></tr></table></figure>
-<h2 id="commander-js-模块"><a href="#commander-js-模块" class="headerlink" title="commander.js 模块"></a>commander.js 模块</h2><p><a href="https://github.com/tj/commander.js" target="_blank" rel="noopener">https://github.com/tj/commander.js</a></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> program = <span class="built_in">require</span>(<span class="string">'commander'</span>);</span><br><span class="line"></span><br><span class="line">program</span><br><span class="line">  .version(<span class="string">'0.0.1'</span>)</span><br><span class="line">  .option(<span class="string">'-p, --peppers'</span>, <span class="string">'Add peppers'</span>)</span><br><span class="line">  .option(<span class="string">'-P, --pineapple'</span>, <span class="string">'Add pineapple'</span>)</span><br><span class="line">  .option(<span class="string">'-b, --bbq-sauce'</span>, <span class="string">'Add bbq sauce'</span>)</span><br><span class="line">  .option(<span class="string">'-c, --cheese [type]'</span>, <span class="string">'Add the specified type of cheese [marble]'</span>, <span class="string">'marble'</span>)</span><br><span class="line">  .parse(process.argv);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'you ordered a pizza with:'</span>);</span><br><span class="line"><span class="keyword">if</span> (program.peppers) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'  - peppers'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (program.pineapple) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'  - pineapple'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (program.bbqSauce) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'  - bbq'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'  - %s cheese'</span>, program.cheese);</span><br></pre></td></tr></table></figure>
-<h2 id="控制台输入"><a href="#控制台输入" class="headerlink" title="控制台输入"></a>控制台输入</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">process.stdin.setEncoding(<span class="string">'utf8'</span>);</span><br><span class="line"></span><br><span class="line">process.stdin.on(<span class="string">'readable'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> chunk = process.stdin.read();</span><br><span class="line">  <span class="keyword">if</span> (chunk !== <span class="literal">null</span>) &#123;</span><br><span class="line">    process.stdout.write(<span class="string">'data: '</span> + chunk);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">process.stdin.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  process.stdout.write(<span class="string">'end'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="yargs-模块"><a href="#yargs-模块" class="headerlink" title="yargs 模块"></a>yargs 模块</h2><p><a href="https://github.com/bcoe/yargs" target="_blank" rel="external">https://github.com/bcoe/yargs</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> argv = <span class="built_in">require</span>(<span class="string">'yargs'</span>)</div><div class="line">  .option(<span class="string">'n'</span>, &#123;</div><div class="line">    <span class="attr">alias</span> : <span class="string">'name'</span>,</div><div class="line">    <span class="attr">demand</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">default</span>: <span class="string">'tom'</span>,</div><div class="line">    <span class="attr">describe</span>: <span class="string">'your name'</span>,</div><div class="line">    <span class="attr">type</span>: <span class="string">'string'</span></div><div class="line">  &#125;)</div><div class="line">  .argv;</div><div class="line"><span class="built_in">console</span>.log(argv.n);</div></pre></td></tr></table></figure>
+<h2 id="commander-js-模块"><a href="#commander-js-模块" class="headerlink" title="commander.js 模块"></a>commander.js 模块</h2><p><a href="https://github.com/tj/commander.js" target="_blank" rel="external">https://github.com/tj/commander.js</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> program = <span class="built_in">require</span>(<span class="string">'commander'</span>);</div><div class="line"></div><div class="line">program</div><div class="line">  .version(<span class="string">'0.0.1'</span>)</div><div class="line">  .option(<span class="string">'-p, --peppers'</span>, <span class="string">'Add peppers'</span>)</div><div class="line">  .option(<span class="string">'-P, --pineapple'</span>, <span class="string">'Add pineapple'</span>)</div><div class="line">  .option(<span class="string">'-b, --bbq-sauce'</span>, <span class="string">'Add bbq sauce'</span>)</div><div class="line">  .option(<span class="string">'-c, --cheese [type]'</span>, <span class="string">'Add the specified type of cheese [marble]'</span>, <span class="string">'marble'</span>)</div><div class="line">  .parse(process.argv);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'you ordered a pizza with:'</span>);</div><div class="line"><span class="keyword">if</span> (program.peppers) &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'  - peppers'</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span> (program.pineapple) &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'  - pineapple'</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span> (program.bbqSauce) &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'  - bbq'</span>);</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'  - %s cheese'</span>, program.cheese);</div></pre></td></tr></table></figure>
+<h2 id="控制台输入"><a href="#控制台输入" class="headerlink" title="控制台输入"></a>控制台输入</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">process.stdin.setEncoding(<span class="string">'utf8'</span>);</div><div class="line"></div><div class="line">process.stdin.on(<span class="string">'readable'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> chunk = process.stdin.read();</div><div class="line">  <span class="keyword">if</span> (chunk !== <span class="literal">null</span>) &#123;</div><div class="line">    process.stdout.write(<span class="string">'data: '</span> + chunk);</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">process.stdin.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  process.stdout.write(<span class="string">'end'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <h2 id="可执行脚本"><a href="#可执行脚本" class="headerlink" title="可执行脚本"></a>可执行脚本</h2><ul>
 <li>使用 JavaScript 语言,写一个可执行脚本hello</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env node</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'hello world'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/usr/bin/env node</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'hello world'</span>);</div></pre></td></tr></table></figure>
 <ul>
 <li>修改 hello 的权限</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod <span class="number">755</span> hello</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod <span class="number">755</span> hello</div></pre></td></tr></table></figure>
 <ul>
 <li>执行脚本</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./hello</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./hello</div></pre></td></tr></table></figure>
 <ul>
 <li>把 hello 前面的路径去除: 在当前目录下新建 <code>package.json</code></li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"hello"</span>,</span><br><span class="line">  <span class="string">"bin"</span>: &#123;</span><br><span class="line">    <span class="string">"hello"</span>: <span class="string">"hello"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"name"</span>: <span class="string">"hello"</span>,</div><div class="line">  <span class="string">"bin"</span>: &#123;</div><div class="line">    <span class="string">"hello"</span>: <span class="string">"hello"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>执行 <code>npm link</code> 命令</li>
 <li>现在再执行 hello就不用输入路径了</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hello</div></pre></td></tr></table></figure>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
-<li><a href="http://www.ruanyifeng.com/blog/2015/05/command-line-with-node.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/05/command-line-with-node.html</a></li>
-<li><a href="https://nodejs.org/api/process.html#process_process_stdin" target="_blank" rel="noopener">https://nodejs.org/api/process.html#process_process_stdin</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2015/05/command-line-with-node.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2015/05/command-line-with-node.html</a></li>
+<li><a href="https://nodejs.org/api/process.html#process_process_stdin" target="_blank" rel="external">https://nodejs.org/api/process.html#process_process_stdin</a></li>
 </ul>
 <hr>
 <blockquote>
@@ -239,15 +237,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -255,7 +249,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -263,11 +257,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -275,11 +265,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -291,7 +289,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

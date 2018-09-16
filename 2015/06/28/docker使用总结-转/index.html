@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="docker使用总结(转)">
-<meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker使用总结(转)">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2015/06/28/docker使用总结-转/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="docker使用总结(转)">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker使用总结(转)">
@@ -102,7 +100,7 @@
 		
 		</div>
 		
-		<p><strong><a href="http://weibo.com/p/1001603855970483702516" target="_blank" rel="noopener">转载自http://weibo.com/p/1001603855970483702516</a></strong></p>
+		<p><strong><a href="http://weibo.com/p/1001603855970483702516" target="_blank" rel="external">转载自http://weibo.com/p/1001603855970483702516</a></strong></p>
 <h2 id="安装注意"><a href="#安装注意" class="headerlink" title="安装注意"></a>安装注意</h2><ol>
 <li>不要直接用apt-get安装docker,apt-get安装的版本有些低.<br>安装用<code>curl -sSL https://get.docker.com/ubuntu/ | sudo sh</code> 可以安装最新版</li>
 <li><p>docker对linux内核版本有要求,内核版本不能太低, 如果太低会导致docker的一些功能不能使用, 比如docker exec 命令在低版本的linux内核下不能用.</p>
@@ -116,7 +114,7 @@
 <h2 id="封装原则"><a href="#封装原则" class="headerlink" title="封装原则"></a>封装原则</h2><ol>
 <li>容器要有专职, 尽量一个容器只有一个服务,原则上说一个进程就一个容器,不要让一个容器里面有多个进程,进程越大,耦合性越大.</li>
 <li>容器内可以用supervisiod管理进程,防止进程异常退出.</li>
-<li>环境变量作为容器配置项, <code>Dockerfile</code>中可以用 <code>ENV</code> 设置环境变量, <code>docker run</code> 命令可以用 <code>-e</code> 设置环境变量.<br><strong>注意:设置的环境命令都是root用户的</strong>. 如果想让Apache 用户也使用这些环境变量, 执行下面shell命令 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">env | grep JD_  | sed  <span class="string">"s/^/export /g"</span> &gt;&gt; <span class="regexp">/etc/</span>apache2/envvars</span><br></pre></td></tr></table></figure>
+<li>环境变量作为容器配置项, <code>Dockerfile</code>中可以用 <code>ENV</code> 设置环境变量, <code>docker run</code> 命令可以用 <code>-e</code> 设置环境变量.<br><strong>注意:设置的环境命令都是root用户的</strong>. 如果想让Apache 用户也使用这些环境变量, 执行下面shell命令 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">env | grep JD_  | sed  <span class="string">"s/^/export /g"</span> &gt;&gt; <span class="regexp">/etc/</span>apache2/envvars</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>表示以<code>JD_</code>开头的环境变量都设置为Apache的环境变量.<br>如果是一个纯前端的网站项目,你可以获得环境变量, 可以在index.html 中加载一个php文件: 在json.php 中获得环境变量输出.   </p>
@@ -134,7 +132,7 @@
 <li><p>pid的问题(2)</p>
 <blockquote>
 <p>还可能会出现在docker run时设置<code>--restart=always</code> 参数的时候, 设置了此参数容器退出了会自动重启, 宿主机重启了容器也能自动重启. 但是容器在重启的时候很容易pid文件存在.pid文件存在时进程会自动退出, 但又因为设置了<code>--restart=always</code> 进程退出的那一瞬间 容器又自动重启, 所以容器就在那里不断的退出再自动重启退出再自动重启. 此时 运行命令 docker ps 是能看见容器是运行中的状态.<br>但是用 <code>docker exec -it container_name bash</code> 始终进不了容器, 会报如下错误:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cannot run exec command <span class="number">0</span>eb8e17609dd78c9137c62d94cfaa62795de161d643fc3cb00387b60f11090be <span class="keyword">in</span> container <span class="number">8837</span>b983fe2f08f5f3b9999259d5f255a83774b19282b6f9c21a9d688f7f7f2a: No active container exists <span class="keyword">with</span> ID <span class="number">8837</span>b983fe2f08f5f3b9999259d5f255a83774b19282b6f9c21a9d688f7f7f2a</span><br><span class="line">No active container exists <span class="keyword">with</span> ID</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Cannot run exec command <span class="number">0</span>eb8e17609dd78c9137c62d94cfaa62795de161d643fc3cb00387b60f11090be <span class="keyword">in</span> container <span class="number">8837</span>b983fe2f08f5f3b9999259d5f255a83774b19282b6f9c21a9d688f7f7f2a: No active container exists <span class="keyword">with</span> ID <span class="number">8837</span>b983fe2f08f5f3b9999259d5f255a83774b19282b6f9c21a9d688f7f7f2a</div><div class="line">No active container exists <span class="keyword">with</span> ID</div></pre></td></tr></table></figure>
 </blockquote>
 </li>
 </ul>
@@ -180,7 +178,7 @@
 <li><p>ENTRYPOINT</p>
 <blockquote>
 <p>感觉 ENTRYPOINT 会比 CMD 更省资源, ENTRYPOINT 使用时用数组形式.如:<br>entrypoint [“/init.sh”, “/usr/bin/supervisord”, “-n”, “-c”, “/etc/supervisord.conf”]<br>/init.sh 是一个初始化脚本,初始化脚本内容大概为: </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">!<span class="regexp">/bin/</span>bash</span><br><span class="line">set -e</span><br><span class="line">执行一些初始化代码</span><br><span class="line">exec <span class="string">"$@"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">!<span class="regexp">/bin/</span>bash</div><div class="line">set -e</div><div class="line">执行一些初始化代码</div><div class="line">exec <span class="string">"$@"</span></div></pre></td></tr></table></figure>
 </blockquote>
 </li>
 </ul>
@@ -196,29 +194,29 @@
 </blockquote>
 </li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name nginx -d -p <span class="number">80</span>:<span class="number">80</span> -v /<span class="keyword">var</span>/run/docker.sock:<span class="regexp">/tmp/</span>docker.sock -t --restart=always jwilder/nginx-proxy</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run --name nginx -d -p <span class="number">80</span>:<span class="number">80</span> -v /<span class="keyword">var</span>/run/docker.sock:<span class="regexp">/tmp/</span>docker.sock -t --restart=always jwilder/nginx-proxy</div></pre></td></tr></table></figure>
 <blockquote>
 <p>再启动其他容器, 如: </p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -e VIRTUAL_HOST=yourdomain.com -d tutum/apache-php</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -e VIRTUAL_HOST=yourdomain.com -d tutum/apache-php</div></pre></td></tr></table></figure>
 <blockquote>
 <p>nginx的容器会监听其他容器的启动, 并根据VIRTUAL_HOST设置域名.这样可以通过 yourdomain.com 访问刚才启动的容器中的网站了.<br>tutum/apache-php 这个镜像是一个好用的apache环境.</p>
 </blockquote>
 <ul>
 <li><p>清理docker</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker info  <span class="comment">// 可以查看docker的信息, /var/lib/docker/devicemapper/devicemapper 目录下存放了docker的文件, 可以用du -h --max-depth=1 看文件的大小.</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker info  <span class="comment">// 可以查看docker的信息, /var/lib/docker/devicemapper/devicemapper 目录下存放了docker的文件, 可以用du -h --max-depth=1 看文件的大小.</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>删除为none的镜像,可以立马回收空间:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images --no-trunc| grep none | awk <span class="string">'&#123;print $3&#125;'</span> | xargs -r docker rmi</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker images --no-trunc| grep none | awk <span class="string">'&#123;print $3&#125;'</span> | xargs -r docker rmi</div></pre></td></tr></table></figure>
 </li>
 <li><p>删除退出了的容器:</p>
 </li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm <span class="string">`docker ps -a | grep Exited | awk '&#123;print $1 &#125;’</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker rm <span class="string">`docker ps -a | grep Exited | awk '&#123;print $1 &#125;’</span></div></pre></td></tr></table></figure>
 <ul>
 <li>删除没有用的镜像. （有容器运行的镜像不会被删除）:</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi <span class="string">`docker images -aq`</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker rmi <span class="string">`docker images -aq`</span></div></pre></td></tr></table></figure>
 <hr>
 <blockquote>
 <h3 id="文章若有纰漏请大家补充指正-谢谢"><a href="#文章若有纰漏请大家补充指正-谢谢" class="headerlink" title="文章若有纰漏请大家补充指正,谢谢~~"></a>文章若有纰漏请大家补充指正,谢谢~~</h3><p><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG殇</p>
@@ -322,15 +320,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -338,7 +332,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -346,11 +340,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -358,11 +348,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -374,7 +372,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

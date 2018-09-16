@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="在 pc的chrome中正常, 在 chrome 的`device mode`中触发2次, 在手机端触发2次">
-<meta name="keywords" content="AngularJS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="angularjs ng-click 触发两次事件">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2015/12/17/ngClick-fires-twice-on-button/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="在 pc的chrome中正常, 在 chrome 的`device mode`中触发2次, 在手机端触发2次">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="angularjs ng-click 触发两次事件">
@@ -108,10 +106,10 @@
 <h2 id="触发原因-同时使用了-ionic-和-angular-material"><a href="#触发原因-同时使用了-ionic-和-angular-material" class="headerlink" title="触发原因: 同时使用了 ionic 和 angular-material"></a>触发原因: 同时使用了 ionic 和 angular-material</h2><blockquote>
 <p>Note: ng-click is broken on touch devices and Chrome emulation of such. Chrome desktop is unaffected. The Codepen above: works fine using 0.6.1 or 0.7.0 – broken on 0.7.1.<br>I suspect it might be because of the hammer.js change on 0.7.1 - Ionic has a similar built-in version of hammer as well</p>
 </blockquote>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法:"></a>解决方法:</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.config(<span class="function"><span class="keyword">function</span>(<span class="params">$mdGestureProvider </span>) </span>&#123;</span><br><span class="line">  $mdGestureProvider.skipClickHijack();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法:"></a>解决方法:</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.config(<span class="function"><span class="keyword">function</span>(<span class="params">$mdGestureProvider </span>) </span>&#123;</div><div class="line">  $mdGestureProvider.skipClickHijack();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档:"></a>参考文档:</h1><ul>
-<li><a href="https://github.com/driftyco/ionic/issues/1022" target="_blank" rel="noopener">https://github.com/driftyco/ionic/issues/1022</a></li>
-<li><a href="https://github.com/angular/material/issues/1406" target="_blank" rel="noopener">https://github.com/angular/material/issues/1406</a></li>
+<li><a href="https://github.com/driftyco/ionic/issues/1022" target="_blank" rel="external">https://github.com/driftyco/ionic/issues/1022</a></li>
+<li><a href="https://github.com/angular/material/issues/1406" target="_blank" rel="external">https://github.com/angular/material/issues/1406</a></li>
 </ul>
 <hr>
 <blockquote>
@@ -216,15 +214,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -232,7 +226,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -240,11 +234,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -252,11 +242,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -268,7 +266,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

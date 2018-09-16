@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="写demo的时候需要调整页面高度,之前用jquery的时候一直是 $(document).ready() 来判断页面渲染完成但是到了angularjs之后,不起作用…………">
-<meta name="keywords" content="AngularJS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="判断AngularJS渲染页面完成">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2015/03/27/判断AngularJS渲染页面完成/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="写demo的时候需要调整页面高度,之前用jquery的时候一直是 $(document).ready() 来判断页面渲染完成但是到了angularjs之后,不起作用…………">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="判断AngularJS渲染页面完成">
@@ -107,17 +105,17 @@
 <p>使用$viewContentLoaded事件</p>
 </blockquote>
 <ul>
-<li><a href="http://plnkr.co/edit/isbTireh3w9OomDOvx87?p=preview" target="_blank" rel="noopener">完整Demo</a></li>
+<li><a href="http://plnkr.co/edit/isbTireh3w9OomDOvx87?p=preview" target="_blank" rel="external">完整Demo</a></li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div ng-controller=<span class="string">"MainCtrl"</span>&gt;</span><br><span class="line">  &lt;div ng-view&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$scope.$on(<span class="string">'$viewContentLoaded'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">$scope.$watch(<span class="string">'$viewContentLoaded'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">  </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-controller=<span class="string">"MainCtrl"</span>&gt;</div><div class="line">  <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-view</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">&lt;<span class="regexp">/div&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$scope.$on(<span class="string">'$viewContentLoaded'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    </div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 或者</span></div><div class="line">$scope.$watch(<span class="string">'$viewContentLoaded'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </div><div class="line">  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <blockquote>
-<p>利用data-ng-init<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div ng-controller=<span class="string">"test"</span>&gt;  </span><br><span class="line">     &lt;div data-ng-init=<span class="string">"load()"</span> &gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>  </span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>利用data-ng-init<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-controller=<span class="string">"test"</span>&gt;  </div><div class="line">     <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-ng-init</span>=<span class="string">"load()"</span> &gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>  </div><div class="line">&lt;<span class="regexp">/div&gt;</span></div></pre></td></tr></table></figure></p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bookControllers.controller(<span class="string">'testInit'</span>, [<span class="string">'$scope'</span>, <span class="string">'$routeParams'</span>,  <span class="function"><span class="keyword">function</span>(<span class="params">$scope, $routeParams</span>) </span>&#123;  </span><br><span class="line">    $scope.load = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">         alert(<span class="string">'code here'</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;]);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">bookControllers.controller(<span class="string">'testInit'</span>, [<span class="string">'$scope'</span>, <span class="string">'$routeParams'</span>,  <span class="function"><span class="keyword">function</span>(<span class="params">$scope, $routeParams</span>) </span>&#123;  </div><div class="line">    $scope.load = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </div><div class="line">         alert(<span class="string">'code here'</span>);  </div><div class="line">    &#125;  </div><div class="line">&#125;]);</div></pre></td></tr></table></figure>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料:"></a>参考资料:</h1><ul>
-<li><a href="http://stackoverflow.com/questions/21715256/angularjs-event-to-call-after-content-is-loaded" target="_blank" rel="noopener">http://stackoverflow.com/questions/21715256/angularjs-event-to-call-after-content-is-loaded</a></li>
-<li><a href="http://blog.51yip.com/jsjquery/1599.html" target="_blank" rel="noopener">http://blog.51yip.com/jsjquery/1599.html</a></li>
+<li><a href="http://stackoverflow.com/questions/21715256/angularjs-event-to-call-after-content-is-loaded" target="_blank" rel="external">http://stackoverflow.com/questions/21715256/angularjs-event-to-call-after-content-is-loaded</a></li>
+<li><a href="http://blog.51yip.com/jsjquery/1599.html" target="_blank" rel="external">http://blog.51yip.com/jsjquery/1599.html</a></li>
 </ul>
 <hr>
 <blockquote>
@@ -222,15 +220,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -238,7 +232,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -246,11 +240,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -258,11 +248,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -274,7 +272,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

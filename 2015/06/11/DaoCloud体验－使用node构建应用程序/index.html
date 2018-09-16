@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="DaoCloud体验－使用node构建应用程序">
-<meta name="keywords" content="docker,node">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DaoCloud体验－使用node构建应用程序">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2015/06/11/DaoCloud体验－使用node构建应用程序/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="DaoCloud体验－使用node构建应用程序">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gitcafe.com/xinshangshangxin/hexo-blog/raw/gitcafe-pages/img/daocloud/demo4.png">
 <meta property="og:image" content="https://gitcafe.com/xinshangshangxin/hexo-blog/raw/gitcafe-pages/img/daocloud/demo1.png">
 <meta property="og:image" content="https://gitcafe.com/xinshangshangxin/hexo-blog/raw/gitcafe-pages/img/daocloud/demo2.png">
@@ -110,10 +108,10 @@
 		</div>
 		
 		<blockquote>
-<p>首发于<a href="http://open.daocloud.io/using-node-to-build-applications/" target="_blank" rel="noopener">http://open.daocloud.io/using-node-to-build-applications/</a></p>
+<p>首发于<a href="http://open.daocloud.io/using-node-to-build-applications/" target="_blank" rel="external">http://open.daocloud.io/using-node-to-build-applications/</a></p>
 </blockquote>
 <h1 id="DaoCloud体验－使用node构建应用程序"><a href="#DaoCloud体验－使用node构建应用程序" class="headerlink" title="DaoCloud体验－使用node构建应用程序"></a>DaoCloud体验－使用node构建应用程序</h1><h2 id="node应用程序demo"><a href="#node应用程序demo" class="headerlink" title="node应用程序demo"></a>node应用程序demo</h2><ul>
-<li>首先 选择一个平台 <code>clone</code> 代码到你的git平台上 <a href="https://coding.net/u/xinshangshangxin/p/DaoCloudNodeDemo/git" target="_blank" rel="noopener">coding</a> / <a href="https://github.com/xinshangshangxin/DaoCloudNodeDemo" target="_blank" rel="noopener">github</a> / <a href="https://gitcafe.com/xinshangshangxin/DaoCloudNodeDemo" target="_blank" rel="noopener">gitcafe</a> </li>
+<li>首先 选择一个平台 <code>clone</code> 代码到你的git平台上 <a href="https://coding.net/u/xinshangshangxin/p/DaoCloudNodeDemo/git" target="_blank" rel="external">coding</a> / <a href="https://github.com/xinshangshangxin/DaoCloudNodeDemo" target="_blank" rel="external">github</a> / <a href="https://gitcafe.com/xinshangshangxin/DaoCloudNodeDemo" target="_blank" rel="external">gitcafe</a> </li>
 <li>在控制台点击 <code>服务集成</code><br><img src="https://gitcafe.com/xinshangshangxin/hexo-blog/raw/gitcafe-pages/img/daocloud/demo4.png" alt="">;</li>
 <li>创建 <code>mysql服务</code>和 <code>mongodb服务</code>, 名字可以随意</li>
 <li>回到控制台,点击 <code>代码构建</code>, <code>创建新项目</code>, 代码源选择你刚才 clone 的<br><img src="https://gitcafe.com/xinshangshangxin/hexo-blog/raw/gitcafe-pages/img/daocloud/demo1.png" alt="">;</li>
@@ -138,7 +136,7 @@
 </ul>
 <h3 id="持续集成中使用mysql，mongodb服务注意事项"><a href="#持续集成中使用mysql，mongodb服务注意事项" class="headerlink" title="持续集成中使用mysql，mongodb服务注意事项"></a>持续集成中使用mysql，mongodb服务注意事项</h3><ul>
 <li><p>持续集成<strong>不需要</strong>绑定任何服务;<strong>daocloud ci在运行测试的时候会自动创建</strong>, 其使用的服务来自<code>daocloud.yml</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">services:</span><br><span class="line">  - mysql</span><br><span class="line">  - mongodb</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">services:</div><div class="line">  - mysql</div><div class="line">  - mongodb</div></pre></td></tr></table></figure>
 </li>
 <li><p>在持续集成中 <code>MONGODB_USERNAME</code> <code>MONGODB_PASSWORD</code>  <code>MYSQL_USERNAME</code> <code>MYSQL_PASSWORD</code> <code>MYSQL_INSTANCE_NAME</code> 以及<code>MONGODB_INSTANCE_NAME</code>是不存在的, 所以为了兼容 容器和持续集成,代码中的连接需要进行判断,修改如下:</p>
 </li>
@@ -146,19 +144,19 @@
 <blockquote>
 <p>Mongodb</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 链接格式:    mongodb://user:pass@localhost:port/database</span></span><br><span class="line"><span class="keyword">var</span> mongodbUri = <span class="string">'mongodb://'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 持续集成时, MONGODB_USERNAME 和 MONGODB_PASSWORD 不存在</span></span><br><span class="line"><span class="comment">// 需要进行判断</span></span><br><span class="line"><span class="keyword">if</span> (process.env.MONGODB_USERNAME) &#123;</span><br><span class="line">    <span class="comment">// 在容器中则存在,在持续集成中则不存在</span></span><br><span class="line">    mongodbUri += process.env.MONGODB_USERNAME;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (process.env.MONGODB_PASSWORD) &#123;</span><br><span class="line">        mongodbUri += <span class="string">":"</span> + process.env.MONGODB_PASSWORD</span><br><span class="line">    &#125;</span><br><span class="line">    mongodbUri += <span class="string">"@"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mongodbUri += (process.env.MONGODB_PORT_27017_TCP_ADDR || <span class="string">'localhost'</span>)</span><br><span class="line">    + <span class="string">":"</span> + (process.env.MONGODB_PORT_27017_TCP_PORT || <span class="number">27017</span>)</span><br><span class="line">    + <span class="string">'/'</span> + (process.env.MONGODB_INSTANCE_NAME || <span class="string">'test'</span>);<span class="comment">// 持续集成中MONGODB_INSTANCE_NAME 也不存在, 使用 test 代替</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</div><div class="line"></div><div class="line"><span class="comment">// 链接格式:    mongodb://user:pass@localhost:port/database</span></div><div class="line"><span class="keyword">var</span> mongodbUri = <span class="string">'mongodb://'</span>;</div><div class="line"></div><div class="line"><span class="comment">// 持续集成时, MONGODB_USERNAME 和 MONGODB_PASSWORD 不存在</span></div><div class="line"><span class="comment">// 需要进行判断</span></div><div class="line"><span class="keyword">if</span> (process.env.MONGODB_USERNAME) &#123;</div><div class="line">    <span class="comment">// 在容器中则存在,在持续集成中则不存在</span></div><div class="line">    mongodbUri += process.env.MONGODB_USERNAME;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (process.env.MONGODB_PASSWORD) &#123;</div><div class="line">        mongodbUri += <span class="string">":"</span> + process.env.MONGODB_PASSWORD</div><div class="line">    &#125;</div><div class="line">    mongodbUri += <span class="string">"@"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">mongodbUri += (process.env.MONGODB_PORT_27017_TCP_ADDR || <span class="string">'localhost'</span>)</div><div class="line">    + <span class="string">":"</span> + (process.env.MONGODB_PORT_27017_TCP_PORT || <span class="number">27017</span>)</div><div class="line">    + <span class="string">'/'</span> + (process.env.MONGODB_INSTANCE_NAME || <span class="string">'test'</span>);<span class="comment">// 持续集成中MONGODB_INSTANCE_NAME 也不存在, 使用 test 代替</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>Mysql</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node_modules</span></span><br><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 持续集成中MYSQL_USERNAME默认为root,并且没有MYSQL_PASSWORD</span></span><br><span class="line"><span class="comment">// MYSQL_INSTANCE_NAME默认为test</span></span><br><span class="line"><span class="keyword">var</span> connection = mysql.createConnection(&#123;</span><br><span class="line">    user:  process.env.MYSQL_USERNAME || <span class="string">'root'</span>,</span><br><span class="line">    password:  process.env.MYSQL_PASSWORD || <span class="string">''</span>,</span><br><span class="line">    database: process.env.MYSQL_INSTANCE_NAME || <span class="string">'test'</span>,</span><br><span class="line">    host: process.env.MYSQL_PORT_3306_TCP_ADDR || <span class="string">'localhost'</span>,</span><br><span class="line">    port: process.env.MYSQL_PORT_3306_TCP_PORT || <span class="string">'3306'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建连接</span></span><br><span class="line">connection.connect(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(<span class="string">'error connecting: '</span> + err.stack);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'connected as id '</span> + connection.threadId);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// node_modules</span></div><div class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>);</div><div class="line"></div><div class="line"><span class="comment">// 持续集成中MYSQL_USERNAME默认为root,并且没有MYSQL_PASSWORD</span></div><div class="line"><span class="comment">// MYSQL_INSTANCE_NAME默认为test</span></div><div class="line"><span class="keyword">var</span> connection = mysql.createConnection(&#123;</div><div class="line">    <span class="attr">user</span>:  process.env.MYSQL_USERNAME || <span class="string">'root'</span>,</div><div class="line">    <span class="attr">password</span>:  process.env.MYSQL_PASSWORD || <span class="string">''</span>,</div><div class="line">    <span class="attr">database</span>: process.env.MYSQL_INSTANCE_NAME || <span class="string">'test'</span>,</div><div class="line">    <span class="attr">host</span>: process.env.MYSQL_PORT_3306_TCP_ADDR || <span class="string">'localhost'</span>,</div><div class="line">    <span class="attr">port</span>: process.env.MYSQL_PORT_3306_TCP_PORT || <span class="string">'3306'</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 创建连接</span></div><div class="line">connection.connect(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (err) &#123;</div><div class="line">        <span class="built_in">console</span>.error(<span class="string">'error connecting: '</span> + err.stack);</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'connected as id '</span> + connection.threadId);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
 <li>容器运行时需要绑定mysql，mongodb服务</li>
 <li>持续集成不需要绑定,由 <code>daocloud.yml</code>指定, daocloud ci在运行测试的时候会自动创建一个mysql实例</li>
 <li>持续集成中的mysql，mongodb服务和用户申请的mysql，mongodb实例<strong>没有任何关系</strong></li>
 </ul>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
-<li><a href="https://github.com/DaoCloud/python-mysql-sample" target="_blank" rel="noopener">https://github.com/DaoCloud/python-mysql-sample</a></li>
-<li><a href="https://github.com/DaoCloud/golang-mongo-sample" target="_blank" rel="noopener">https://github.com/DaoCloud/golang-mongo-sample</a></li>
+<li><a href="https://github.com/DaoCloud/python-mysql-sample" target="_blank" rel="external">https://github.com/DaoCloud/python-mysql-sample</a></li>
+<li><a href="https://github.com/DaoCloud/golang-mongo-sample" target="_blank" rel="external">https://github.com/DaoCloud/golang-mongo-sample</a></li>
 </ul>
 <hr>
 <blockquote>
@@ -263,15 +261,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -279,7 +273,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -287,11 +281,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -299,11 +289,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -315,7 +313,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

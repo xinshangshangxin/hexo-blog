@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="Android和桌面chrome代开网址没有问题,但是iphone和桌面safari却出现: 「 无法打开页面https://XXXXX，因为网络连接被重设。如果服务器或网络连接忙碌，此问题可能发生。请等待几分钟，然后再试一次。」">
-<meta name="keywords" content="nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="safari无法打开https网页">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2017/01/09/safari-https-fail-to-connect/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="Android和桌面chrome代开网址没有问题,但是iphone和桌面safari却出现: 「 无法打开页面https://XXXXX，因为网络连接被重设。如果服务器或网络连接忙碌，此问题可能发生。请等待几分钟，然后再试一次。」">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.xinshangshangxin.com/img/safari-https/1.jpg">
 <meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
 <meta name="twitter:card" content="summary">
@@ -114,11 +112,11 @@
 <p>「 Safari cannot open the page because the network connection was reset. The server may be busy 」</p>
 </blockquote>
 <p> <img src="/img/safari-https/1.jpg" alt=""></p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>在 nginx的 server 配置中添加<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssl_session_cache shared:SSL:10m;</span><br></pre></td></tr></table></figure></p>
-<p>这个可能和<a href="https://trac.nginx.org/nginx/ticket/235" target="_blank" rel="noopener">nginx的一个ticket相关</a>, 在nginx1.10中没有发现, 在1.8中出现了, 其它版本未知.</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>在 nginx的 server 配置中添加<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssl_session_cache shared:SSL:10m;</div></pre></td></tr></table></figure></p>
+<p>这个可能和<a href="https://trac.nginx.org/nginx/ticket/235" target="_blank" rel="external">nginx的一个ticket相关</a>, 在nginx1.10中没有发现, 在1.8中出现了, 其它版本未知.</p>
 <h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
-<li><a href="http://serverfault.com/questions/646142/ssl-proxying-on-nginx-different-behavior-in-different-clients" target="_blank" rel="noopener">http://serverfault.com/questions/646142/ssl-proxying-on-nginx-different-behavior-in-different-clients</a></li>
-<li><a href="https://community.letsencrypt.org/t/apple-safari-browsers-fail-to-connect/3731/4" target="_blank" rel="noopener">https://community.letsencrypt.org/t/apple-safari-browsers-fail-to-connect/3731/4</a></li>
+<li><a href="http://serverfault.com/questions/646142/ssl-proxying-on-nginx-different-behavior-in-different-clients" target="_blank" rel="external">http://serverfault.com/questions/646142/ssl-proxying-on-nginx-different-behavior-in-different-clients</a></li>
+<li><a href="https://community.letsencrypt.org/t/apple-safari-browsers-fail-to-connect/3731/4" target="_blank" rel="external">https://community.letsencrypt.org/t/apple-safari-browsers-fail-to-connect/3731/4</a></li>
 </ul>
 <p><br></p>
 <hr>
@@ -224,15 +222,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -240,7 +234,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -248,11 +242,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -260,11 +250,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -276,7 +274,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

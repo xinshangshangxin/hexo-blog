@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="js关闭浏览器事件注意点!">
-<meta name="keywords" content="js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js关闭浏览器事件">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2015/03/10/js关闭浏览器事件/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="js关闭浏览器事件注意点!">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js关闭浏览器事件">
@@ -102,12 +100,12 @@
 		
 		</div>
 		
-		<h1 id="js关闭浏览器事件"><a href="#js关闭浏览器事件" class="headerlink" title="js关闭浏览器事件"></a>js关闭浏览器事件</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onbeforeunload = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  e = e || <span class="built_in">window</span>.event;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 兼容IE8和Firefox 4之前的版本</span></span><br><span class="line">  <span class="keyword">if</span> (e) &#123;</span><br><span class="line">    e.returnValue = <span class="string">'关闭提示'</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Chrome, Safari, Firefox 4+, Opera 12+ , IE 9+</span></span><br><span class="line">  <span class="keyword">return</span> <span class="string">'关闭提示'</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+		<h1 id="js关闭浏览器事件"><a href="#js关闭浏览器事件" class="headerlink" title="js关闭浏览器事件"></a>js关闭浏览器事件</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onbeforeunload = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">  e = e || <span class="built_in">window</span>.event;</div><div class="line"></div><div class="line">  <span class="comment">// 兼容IE8和Firefox 4之前的版本</span></div><div class="line">  <span class="keyword">if</span> (e) &#123;</div><div class="line">    e.returnValue = <span class="string">'关闭提示'</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// Chrome, Safari, Firefox 4+, Opera 12+ , IE 9+</span></div><div class="line">  <span class="keyword">return</span> <span class="string">'关闭提示'</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h2 id="自定义的关闭提示无法完成"><a href="#自定义的关闭提示无法完成" class="headerlink" title="自定义的关闭提示无法完成!"></a>自定义的关闭提示无法完成!</h2><blockquote>
 <p>从2011年5月25日起,  HTML5 规范 声明:在该事件的处理函数中调用下列弹窗相关的方法时,可以忽略不执行,window.showModalDialog(), window.alert(), window.confirm() window.prompt().</p>
 </blockquote>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料:"></a>参考资料:</h2><ul>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/onbeforeunload" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/Window/onbeforeunload</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/onbeforeunload" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/API/Window/onbeforeunload</a></li>
 </ul>
 <blockquote>
 <h3 id="文章若有纰漏请大家补充指正-谢谢"><a href="#文章若有纰漏请大家补充指正-谢谢" class="headerlink" title="文章若有纰漏请大家补充指正,谢谢~~"></a>文章若有纰漏请大家补充指正,谢谢~~</h3><p><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG殇</p>
@@ -211,15 +209,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -227,7 +221,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -235,11 +229,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -247,11 +237,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -263,7 +261,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

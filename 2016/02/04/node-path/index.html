@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="NodeJs的几种文件路径">
-<meta name="keywords" content="node">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NodeJs的几种文件路径">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2016/02/04/node-path/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="NodeJs的几种文件路径">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NodeJs的几种文件路径">
@@ -104,9 +102,9 @@
 		
 		<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p><code>__dirname</code> : 总是返回被执行的 js 所在文件夹的绝对路径<br><code>__filename</code>: 总是返回被执行的 js 的绝对路径<br><code>process.cwd()</code>: 总是返回运行 node 命令时所在的文件夹的绝对路径<br><code>./</code>: 在 <code>require()</code> 中使用是跟 <code>__dirname</code>的效果相同，不会因为启动脚本的目录不一样而改变，在其他情况下跟 <code>process.cwd()</code> 效果相同，是相对于启动脚本所在目录的路径。</p>
 <h2 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h2><p>只有在 <code>require()</code> 时才使用相对路径(<code>./, ../</code>) 的写法，其他地方一律使用绝对路径</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当前目录下</span></span><br><span class="line">path.dirname(__filename) + <span class="string">'/test.js'</span>;</span><br><span class="line"><span class="comment">// 相邻目录下</span></span><br><span class="line">path.resolve(__dirname, <span class="string">'../lib/common.js'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 当前目录下</span></div><div class="line">path.dirname(__filename) + <span class="string">'/test.js'</span>;</div><div class="line"><span class="comment">// 相邻目录下</span></div><div class="line">path.resolve(__dirname, <span class="string">'../lib/common.js'</span>);</div></pre></td></tr></table></figure>
 <h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
-<li><a href="https://github.com/imsobear/blog/issues/48" target="_blank" rel="noopener">https://github.com/imsobear/blog/issues/48</a></li>
+<li><a href="https://github.com/imsobear/blog/issues/48" target="_blank" rel="external">https://github.com/imsobear/blog/issues/48</a></li>
 </ul>
 <hr>
 <blockquote>
@@ -211,15 +209,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -227,7 +221,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -235,11 +229,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -247,11 +237,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -263,7 +261,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

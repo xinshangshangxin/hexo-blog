@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="在sails中使用mongodb的mapReduce, 出现错误 ReferenceError: root is not defined">
-<meta name="keywords" content="sails,lodash">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sails中使用mongodb的mapReduce出现lodash中定义的root">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2017/01/13/sails-lodash-mongodb-mapReduce/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="在sails中使用mongodb的mapReduce, 出现错误 ReferenceError: root is not defined">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.xinshangshangxin.com/img/sails-lodash-mongodb-mapReduce/1.png">
 <meta property="og:image" content="http://blog.xinshangshangxin.com/img/sails-lodash-mongodb-mapReduce/2.png">
 <meta property="og:image" content="http://blog.xinshangshangxin.com/img/sails-lodash-mongodb-mapReduce/3.png">
@@ -108,11 +106,11 @@
 		</div>
 		
 		<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>在 <code>sails</code> 中的 <code>collection.mapReduce</code>, <code>scope</code>定义为  </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scope = &#123;</span><br><span class="line">  <span class="string">'其它方法'</span>: <span class="string">'其它方法'</span>,</span><br><span class="line">  getZeroDay: UtilitiesService.getZeroDay,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">scope = &#123;</div><div class="line">  <span class="string">'其它方法'</span>: <span class="string">'其它方法'</span>,</div><div class="line">  <span class="attr">getZeroDay</span>: UtilitiesService.getZeroDay,</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>其中调用了 <code>service</code> 中定义的方法 <code>getZeroDay</code><br>在 sails0.10 中使用没有问题, 但是更新到sails0.12后出现了 <code>ReferenceError: root is not defined</code></p>
 <p><img src="/img/sails-lodash-mongodb-mapReduce/1.png" alt=""></p>
-<h2 id="探索"><a href="#探索" class="headerlink" title="探索"></a>探索</h2><p>在 UtilitiesService 定义了<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getZeroDay</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global.getZeroDay = getZeroDay;</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  getZeroDay: getZeroDay,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>在其它地方调用如下内容<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(global.getZeroDay === UtilitiesService.getZeroDay); </span><br><span class="line"><span class="built_in">console</span>.log(UtilitiesService.getZeroDay.toString());</span><br></pre></td></tr></table></figure></p>
+<h2 id="探索"><a href="#探索" class="headerlink" title="探索"></a>探索</h2><p>在 UtilitiesService 定义了<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getZeroDay</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  </div><div class="line">&#125;</div><div class="line"></div><div class="line">global.getZeroDay = getZeroDay;</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">getZeroDay</span>: getZeroDay,</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>在其它地方调用如下内容<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(global.getZeroDay === UtilitiesService.getZeroDay); </div><div class="line"><span class="built_in">console</span>.log(UtilitiesService.getZeroDay.toString());</div></pre></td></tr></table></figure></p>
 <p>结果却是 <code>UtilitiesService.getZeroDay</code> 被转换了<br><img src="/img/sails-lodash-mongodb-mapReduce/2.png" alt=""></p>
 <p>从sails的源码中得知, sails0.12版本对 <code>loadService</code> 多出了 <code>bindToSails</code>, 而 <code>bindToSails</code> 调用了 <code>_.bindAll</code>, 最后输出了如上图所示的内容<br><img src="/img/sails-lodash-mongodb-mapReduce/3.png" alt=" sails0.10"></p>
 <p><img src="/img/sails-lodash-mongodb-mapReduce/4.png" alt=" sails0.12"></p>
@@ -221,15 +219,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -237,7 +231,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -245,11 +239,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -257,11 +247,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -273,7 +271,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

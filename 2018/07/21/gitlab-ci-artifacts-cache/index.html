@@ -11,18 +11,37 @@
     
 
     
-    <meta name="description" content="使用准则 如果第二个 job 的依赖不存在, job 也能继续运行, 则使用 cache 如果第二个 job 的依赖必须存在, 则 使用 artifacts  主要区别 cache 不一定命中, artifacts 肯定命中 artifacts 可以设置自动过期时间,过期自动删除,cache 不会自动清理 默认 artifacts 会自动在不同的 stage 中传输; artifacts 会先传到">
-<meta name="keywords" content="GitLab,CI">
+    <meta name="description" content="使用准则
+如果第二个 job 的依赖不存在, job 也能继续运行, 则使用 cache
+如果第二个 job 的依赖必须存在, 则 使用 artifacts
+
+主要区别
+cache 不一定命中, artifacts 肯定命中
+artifacts 可以设置自动过期时间,过期自动删除,cache 不会自动清理
+默认 artifacts 会自动在不同的 stage 中传输; artifacts 会先传到">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GitLab CI 中 cache 和 artifacts 的区别">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2018/07/21/gitlab-ci-artifacts-cache/index.html">
 <meta property="og:site_name" content="SHANG Blog">
-<meta property="og:description" content="使用准则 如果第二个 job 的依赖不存在, job 也能继续运行, 则使用 cache 如果第二个 job 的依赖必须存在, 则 使用 artifacts  主要区别 cache 不一定命中, artifacts 肯定命中 artifacts 可以设置自动过期时间,过期自动删除,cache 不会自动清理 默认 artifacts 会自动在不同的 stage 中传输; artifacts 会先传到">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:description" content="使用准则
+如果第二个 job 的依赖不存在, job 也能继续运行, 则使用 cache
+如果第二个 job 的依赖必须存在, 则 使用 artifacts
+
+主要区别
+cache 不一定命中, artifacts 肯定命中
+artifacts 可以设置自动过期时间,过期自动删除,cache 不会自动清理
+默认 artifacts 会自动在不同的 stage 中传输; artifacts 会先传到">
 <meta property="og:updated_time" content="2018-07-20T15:15:35.371Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GitLab CI 中 cache 和 artifacts 的区别">
-<meta name="twitter:description" content="使用准则 如果第二个 job 的依赖不存在, job 也能继续运行, 则使用 cache 如果第二个 job 的依赖必须存在, 则 使用 artifacts  主要区别 cache 不一定命中, artifacts 肯定命中 artifacts 可以设置自动过期时间,过期自动删除,cache 不会自动清理 默认 artifacts 会自动在不同的 stage 中传输; artifacts 会先传到">
+<meta name="twitter:description" content="使用准则
+如果第二个 job 的依赖不存在, job 也能继续运行, 则使用 cache
+如果第二个 job 的依赖必须存在, 则 使用 artifacts
+
+主要区别
+cache 不一定命中, artifacts 肯定命中
+artifacts 可以设置自动过期时间,过期自动删除,cache 不会自动清理
+默认 artifacts 会自动在不同的 stage 中传输; artifacts 会先传到">
 
     
     <link rel="alternative" href="atom.xml" title="SHANG Blog" type="application/atom+xml">
@@ -115,8 +134,8 @@
 <li>如果 第二个 <code>job</code> 依赖 第一个 <code>job</code> 生成的内容, 使用 <code>cache</code> 通常会失败(因为不保证 <code>cache</code> 存在), 这时应当使用 <code>artifacts</code>, 在第二个 <code>job</code> 使用 <code>dependencies</code> 属性, 让第二个 <code>job</code> 使用第一个 <code>job</code> 中的内容</li>
 <li>如果几个 <code>jobs</code> 都需要安装相同的依赖, 可以使用 <code>cache</code>, 可以加快依赖的安装进度, 即使 <code>cache</code> 不存在，<code>job</code> 也不会失败</li>
 </ul>
-<h2 id="artifacts-使用-demo"><a href="#artifacts-使用-demo" class="headerlink" title="artifacts 使用 demo"></a><code>artifacts</code> 使用 <code>demo</code></h2><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">image:</span> <span class="attr">docker:latest</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  - docker:</span><span class="string">dind</span></span><br><span class="line"></span><br><span class="line"><span class="attr">variables:</span></span><br><span class="line"><span class="attr">  CONTAINER_IMAGE:</span> <span class="string">registry.gitlab.com/$CI_PROJECT_PATH</span></span><br><span class="line"></span><br><span class="line"><span class="attr">stages:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">build</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">test</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">deploy</span></span><br><span class="line">  <span class="comment"># personal jobs</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">build_code</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">use_artifacts</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">disable_artifacts</span></span><br><span class="line"></span><br><span class="line"><span class="attr">build_code:</span></span><br><span class="line"><span class="attr">  stage:</span> <span class="string">build_code</span></span><br><span class="line"><span class="attr">  artifacts:</span></span><br><span class="line">    <span class="comment"># 保存压缩包的名称</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">"$&#123;CI_COMMIT_SHA&#125;"</span></span><br><span class="line">    <span class="comment"># 要保存的文件的路径</span></span><br><span class="line"><span class="attr">    paths:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">dist/</span></span><br><span class="line"><span class="attr">  script:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line"></span><br><span class="line"><span class="attr">use_artifacts:</span></span><br><span class="line"><span class="attr">  stage:</span> <span class="string">use_artifacts</span></span><br><span class="line"><span class="attr">  script:</span></span><br><span class="line">    <span class="comment"># 默认会自动在不同的 `stage` 中传输, 所以这里的 dist 目录是存在的</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">ls</span> <span class="string">./</span></span><br><span class="line"></span><br><span class="line"><span class="attr">disable_artifacts:</span></span><br><span class="line"><span class="attr">  stage:</span> <span class="string">disable_artifacts</span></span><br><span class="line">  <span class="comment"># 将 dependencies 设置为 [], 从而禁用artifacts</span></span><br><span class="line"><span class="attr">  dependencies:</span> <span class="string">[]</span></span><br><span class="line"><span class="attr">  script:</span></span><br><span class="line">    <span class="comment"># 无法 看到 dist 目录</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">ls</span> <span class="string">./</span></span><br></pre></td></tr></table></figure>
-<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a href="https://gitlab.com/gitlab-com/support-forum/issues/2946#note_59414694" target="_blank" rel="noopener">Pipeline - Failed to extract cache</a><br><a href="https://zacksleo.github.io/2017/04/18/GitLab-CI%E4%B8%AD%E7%9A%84artifacts%E4%BD%BF%E7%94%A8%E7%A0%94%E7%A9%B6/" target="_blank" rel="noopener">GitLab-CI中的artifacts使用研究</a><br><br></p>
+<h2 id="artifacts-使用-demo"><a href="#artifacts-使用-demo" class="headerlink" title="artifacts 使用 demo"></a><code>artifacts</code> 使用 <code>demo</code></h2><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="attr">image:</span> docker:latest</div><div class="line"></div><div class="line"><span class="attr">services:</span></div><div class="line"><span class="attr">  - docker:</span>dind</div><div class="line"></div><div class="line"><span class="attr">variables:</span></div><div class="line"><span class="attr">  CONTAINER_IMAGE:</span> registry.gitlab.com/$CI_PROJECT_PATH</div><div class="line"></div><div class="line"><span class="attr">stages:</span></div><div class="line"><span class="bullet">  -</span> build</div><div class="line"><span class="bullet">  -</span> test</div><div class="line"><span class="bullet">  -</span> deploy</div><div class="line">  <span class="comment"># personal jobs</span></div><div class="line"><span class="bullet">  -</span> build_code</div><div class="line"><span class="bullet">  -</span> use_artifacts</div><div class="line"><span class="bullet">  -</span> disable_artifacts</div><div class="line"></div><div class="line"><span class="attr">build_code:</span></div><div class="line"><span class="attr">  stage:</span> build_code</div><div class="line"><span class="attr">  artifacts:</span></div><div class="line">    <span class="comment"># 保存压缩包的名称</span></div><div class="line"><span class="attr">    name:</span> <span class="string">"$&#123;CI_COMMIT_SHA&#125;"</span></div><div class="line">    <span class="comment"># 要保存的文件的路径</span></div><div class="line"><span class="attr">    paths:</span></div><div class="line"><span class="bullet">      -</span> dist/</div><div class="line"><span class="attr">  script:</span></div><div class="line"><span class="bullet">    -</span> npm run build</div><div class="line"></div><div class="line"><span class="attr">use_artifacts:</span></div><div class="line"><span class="attr">  stage:</span> use_artifacts</div><div class="line"><span class="attr">  script:</span></div><div class="line">    <span class="comment"># 默认会自动在不同的 `stage` 中传输, 所以这里的 dist 目录是存在的</span></div><div class="line"><span class="bullet">    -</span> ls ./</div><div class="line"></div><div class="line"><span class="attr">disable_artifacts:</span></div><div class="line"><span class="attr">  stage:</span> disable_artifacts</div><div class="line">  <span class="comment"># 将 dependencies 设置为 [], 从而禁用artifacts</span></div><div class="line"><span class="attr">  dependencies:</span> []</div><div class="line"><span class="attr">  script:</span></div><div class="line">    <span class="comment"># 无法 看到 dist 目录</span></div><div class="line"><span class="bullet">    -</span> ls ./</div></pre></td></tr></table></figure>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a href="https://gitlab.com/gitlab-com/support-forum/issues/2946#note_59414694" target="_blank" rel="external">Pipeline - Failed to extract cache</a><br><a href="https://zacksleo.github.io/2017/04/18/GitLab-CI%E4%B8%AD%E7%9A%84artifacts%E4%BD%BF%E7%94%A8%E7%A0%94%E7%A9%B6/" target="_blank" rel="external">GitLab-CI中的artifacts使用研究</a><br><br></p>
 <hr>
 <blockquote>
 <p><strong>文章若有纰漏请大家补充指正,谢谢~~</strong></p>
@@ -221,15 +240,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -237,7 +252,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -245,11 +260,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -257,11 +268,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -273,7 +292,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

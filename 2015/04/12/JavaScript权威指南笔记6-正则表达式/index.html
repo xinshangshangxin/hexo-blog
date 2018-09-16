@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="正则表达式150412">
-<meta name="keywords" content="js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript权威指南笔记6_正则表达式">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2015/04/12/JavaScript权威指南笔记6-正则表达式/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="正则表达式150412">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript权威指南笔记6_正则表达式">
@@ -105,17 +103,17 @@
 		<blockquote>
 <p>具有特殊含义的标点符号</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^ $ . * + ? = ! : | \ / ( ) [ ] &#123; &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">^ $ . * + ? = ! : | \ / ( ) [ ] &#123; &#125;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>选择项尝试匹配次序是从左到右,直到发现匹配项</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'ab'</span>.match(<span class="regexp">/a|ab/g</span>));  <span class="comment">// [ 'a' ]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'ab'</span>.match(<span class="regexp">/a|ab/g</span>));  <span class="comment">// [ 'a' ]</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>引用 \n, n由参与计数的左括号位置决定</p>
 <p>\b 字符边界  [\b] 退格符</p>
 <p>m 多行匹配模式, ^和$ 匹配行的开始处和结束处</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'str\nstr'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.match(<span class="regexp">/^\w+$/m</span>));   <span class="comment">// [ 'str', index: 0, input: 'str\nstr' ]</span></span><br><span class="line"><span class="built_in">console</span>.log(str.match(<span class="regexp">/^\w+$/</span>));    <span class="comment">// null</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'str\nstr'</span>;</div><div class="line"><span class="built_in">console</span>.log(str.match(<span class="regexp">/^\w+$/m</span>));   <span class="comment">// [ 'str', index: 0, input: 'str\nstr' ]</span></div><div class="line"><span class="built_in">console</span>.log(str.match(<span class="regexp">/^\w+$/</span>));    <span class="comment">// null</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>search(regexp)  </p>
 <blockquote>
@@ -127,7 +125,7 @@
 </blockquote>
 <p>match</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(a(\w))/</span>;</span><br><span class="line"><span class="keyword">var</span> reg2 = <span class="regexp">/(a(\w))/g</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'abac'</span>.match(reg));     <span class="comment">// [ 'ab', 'ab', 'b', index: 0, input: 'abac' ]</span></span><br><span class="line">                        <span class="comment">//[ 没有括号的匹配, 第一个左括号的匹配, 第二个左括号的匹配 , index: 0, input: 'abac']</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'abae'</span>.match(reg2));    <span class="comment">//[ 'ab', 'ae' ]</span></span><br><span class="line">                                    <span class="comment">// [第一次匹配,  第二次匹配]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/(a(\w))/</span>;</div><div class="line"><span class="keyword">var</span> reg2 = <span class="regexp">/(a(\w))/g</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'abac'</span>.match(reg));     <span class="comment">// [ 'ab', 'ab', 'b', index: 0, input: 'abac' ]</span></div><div class="line">                        <span class="comment">//[ 没有括号的匹配, 第一个左括号的匹配, 第二个左括号的匹配 , index: 0, input: 'abac']</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'abae'</span>.match(reg2));    <span class="comment">//[ 'ab', 'ae' ]</span></div><div class="line">                                    <span class="comment">// [第一次匹配,  第二次匹配]</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>给RegExp()传入一个字符串表述的正则表达式,必须将’\’ 替换为 ‘\\‘</p>
 <p>Regexp.exec() 总是返回一个匹配结果,并提供关于本次匹配的完整信息</p>
@@ -235,15 +233,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -251,7 +245,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -259,11 +253,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -271,11 +261,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -287,7 +285,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

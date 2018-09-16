@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="rename出错Error EXDEV由于跨磁盘分区移动或操作文件会有权限问题(默认路径是window临时目录C:\Users\ADMINI~1\AppData\Local\Temp\）">
-<meta name="keywords" content="node">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Node.js中fs.rename出错Error EXDEV">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2015/02/24/Node-js中fs-rename出错Error-EXDEV/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="rename出错Error EXDEV由于跨磁盘分区移动或操作文件会有权限问题(默认路径是window临时目录C:\Users\ADMINI~1\AppData\Local\Temp\）">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node.js中fs.rename出错Error EXDEV">
@@ -105,19 +103,19 @@
 		<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><blockquote>
 <p>方法一<br>在项目入口的文件（<code>app.js</code>）的顶部， 加以下这行代码</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">process.env.TMPDIR = <span class="string">'./temp'</span>;</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="comment">// process.env.TMPDIR = '/path/to/directory';</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">process.env.TMPDIR = <span class="string">'./temp'</span>;</div><div class="line"><span class="comment">// 或者</span></div><div class="line"><span class="comment">// process.env.TMPDIR = '/path/to/directory';</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>方法二<br>在项目根目录路径，在<code>命令行</code>下 输入</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">env TMPDIR=<span class="regexp">/path/</span>to/directory node app.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">env TMPDIR=<span class="regexp">/path/</span>to/directory node app.js</div></pre></td></tr></table></figure>
 <blockquote>
 <p>方法三<br>利用fs的<code>createReadStream</code>、<code>createWriteSream</code>和<code>unlinkSync</code>方法</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>),</span><br><span class="line">    util = <span class="built_in">require</span>(<span class="string">'util'</span>);</span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line"><span class="keyword">var</span> readStream = fs.createReadStream(files.upload.path)</span><br><span class="line"><span class="keyword">var</span> writeStream = fs.createWriteStream(<span class="string">"/tmp/test.png"</span>);</span><br><span class="line"></span><br><span class="line">util.pump(readStream, writeStream, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    fs.unlinkSync(files.upload.path);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>),</div><div class="line">    util = <span class="built_in">require</span>(<span class="string">'util'</span>);</div><div class="line">    ...</div><div class="line">    </div><div class="line">var readStream = fs.createReadStream(files.upload.path)</div><div class="line"><span class="keyword">var</span> writeStream = fs.createWriteStream(<span class="string">"/tmp/test.png"</span>);</div><div class="line"></div><div class="line">util.pump(readStream, writeStream, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    fs.unlinkSync(files.upload.path);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <blockquote>
-<p>方法四<br>如果使用 <a href="https://github.com/felixge/node-formidable" target="_blank" rel="noopener">formidable</a></p>
+<p>方法四<br>如果使用 <a href="https://github.com/felixge/node-formidable" target="_blank" rel="external">formidable</a></p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> form = <span class="keyword">new</span> formidable.IncomingForm();</span><br><span class="line">form.uploadDir = dir;<span class="comment">// 直接设置路径即可</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> form = <span class="keyword">new</span> formidable.IncomingForm();</div><div class="line">form.uploadDir = dir;<span class="comment">// 直接设置路径即可</span></div></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -217,15 +215,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -233,7 +227,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -241,11 +235,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -253,11 +243,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -269,7 +267,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

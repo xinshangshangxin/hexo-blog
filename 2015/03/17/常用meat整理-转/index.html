@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="前两天看到 “使用meta实现页面的定时刷新或跳转”">
-<meta name="keywords" content="html5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常用meat整理[转]">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2015/03/17/常用meat整理-转/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="前两天看到 “使用meta实现页面的定时刷新或跳转”">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blog.xinshangshangxin.com/img/meta/articlex.jpg">
 <meta property="og:image" content="http://blog.xinshangshangxin.com/img/meta/banner.jpg">
 <meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
@@ -101,19 +99,19 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lt-meta-gt-元素"><span class="toc-number">1.</span> <span class="toc-text">&lt;meta&gt;元素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概要"><span class="toc-number">1.1.</span> <span class="toc-text">概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SEO优化"><span class="toc-number">1.2.</span> <span class="toc-text">SEO优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#移动设备"><span class="toc-number">1.3.</span> <span class="toc-text">移动设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网页相关"><span class="toc-number">1.4.</span> <span class="toc-text">网页相关</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考资料"><span class="toc-number">2.</span> <span class="toc-text">参考资料:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文章若有纰漏请大家补充指正-谢谢"><span class="toc-number">2.0.1.</span> <span class="toc-text">文章若有纰漏请大家补充指正,谢谢~~</span></a></li></ol></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lt-meta-gt-元素"><span class="toc-number">1.</span> <span class="toc-text"><meta>元素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概要"><span class="toc-number">1.1.</span> <span class="toc-text">概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SEO优化"><span class="toc-number">1.2.</span> <span class="toc-text">SEO优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#移动设备"><span class="toc-number">1.3.</span> <span class="toc-text">移动设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网页相关"><span class="toc-number">1.4.</span> <span class="toc-text">网页相关</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考资料"><span class="toc-number">2.</span> <span class="toc-text">参考资料:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文章若有纰漏请大家补充指正-谢谢"><span class="toc-number">2.0.1.</span> <span class="toc-text">文章若有纰漏请大家补充指正,谢谢~~</span></a></li></ol></li></ol></li></ol>
 		
 		</div>
 		
 		<blockquote>
 <p>前两天看到 “使用meta实现页面的定时刷新或跳转”<br><a id="more"></a></p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">使用&lt;meta&gt;实现，下面几个典型代码示例：</span><br><span class="line">&lt;meta http-equiv=<span class="string">"refresh"</span> content=<span class="string">"5"</span>&gt;</span><br><span class="line">这个表示当前页面每<span class="number">5</span>秒钟刷一下，刷一下~</span><br><span class="line">&lt;meta http-equiv=<span class="string">"refresh"</span> content=<span class="string">"2; url='/'"</span>&gt;</span><br><span class="line">这个表示当前页面<span class="number">2</span>秒后跳到首页~</span><br><span class="line">&lt;meta http-equiv=<span class="string">"refresh"</span> content=<span class="string">"0; url='http://www.qq.com/'"</span>&gt;</span><br><span class="line">页面直接跳转到腾讯网~</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">使用&lt;meta&gt;实现，下面几个典型代码示例：</div><div class="line">&lt;meta http-equiv=<span class="string">"refresh"</span> content=<span class="string">"5"</span>&gt;</div><div class="line">这个表示当前页面每<span class="number">5</span>秒钟刷一下，刷一下~</div><div class="line">&lt;meta http-equiv="refresh" content="2; url='/'"&gt;</div><div class="line">这个表示当前页面2秒后跳到首页~</div><div class="line">&lt;meta http-equiv="refresh" content="0; url='http://www.qq.com/'"&gt;</div><div class="line">页面直接跳转到腾讯网~</div></pre></td></tr></table></figure>
 <blockquote>
 <p>今天看到 “常用meta整理”; 转载记录下~~</p>
 </blockquote>
 <h1 id="lt-meta-gt-元素"><a href="#lt-meta-gt-元素" class="headerlink" title="&lt;meta&gt;元素"></a>&lt;meta&gt;元素</h1><h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><blockquote>
-<p>标签提供关于HTML文档的元数据。元数据不会显示在页面上，但是对于机器是可读的。它可用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他 web 服务。 —— <a href="http://www.w3school.com.cn/" target="_blank" rel="noopener">W3School</a></p>
+<p>标签提供关于HTML文档的元数据。元数据不会显示在页面上，但是对于机器是可读的。它可用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他 web 服务。 —— <a href="http://www.w3school.com.cn/" target="_blank" rel="external">W3School</a></p>
 </blockquote>
 <p><strong>必要属性</strong></p>
 <table>
@@ -159,31 +157,31 @@
 </tr>
 </tbody>
 </table>
-<h2 id="SEO优化"><a href="#SEO优化" class="headerlink" title="SEO优化"></a>SEO优化</h2><p><a href="http://msdn.microsoft.com/zh-cn/library/ff724016" target="_blank" rel="noopener">参考链接</a></p>
+<h2 id="SEO优化"><a href="#SEO优化" class="headerlink" title="SEO优化"></a>SEO优化</h2><p><a href="http://msdn.microsoft.com/zh-cn/library/ff724016" target="_blank" rel="external">参考链接</a></p>
 <ul>
 <li><strong>页面关键词</strong>，每个网页应具有描述该网页内容的一组唯一的关键字。<br>使用人们可能会搜索，并准确描述网页上所提供信息的描述性和代表性关键字及短语。标记内容太短，则搜索引擎可能不会认为这些内容相关。另外标记不应超过 874 个字符。</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"keywords"</span> content=<span class="string">"your tags"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"keywords"</span> content=<span class="string">"your tags"</span> /&gt;</div></pre></td></tr></table></figure>
 <ul>
 <li><strong>页面描述</strong>，每个网页都应有一个不超过 150 个字符且能准确反映网页内容的描述标签。</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"description"</span> content=<span class="string">"150 words"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"description"</span> content=<span class="string">"150 words"</span> /&gt;</div></pre></td></tr></table></figure>
 <ul>
 <li><p><strong>搜索引擎索引方式</strong>，robotterms是一组使用逗号(,)分割的值，通常有如下几种取值：none，noindex，nofollow，all，index和follow。确保正确使用nofollow和noindex属性值。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"robots"</span> content=<span class="string">"index,follow"</span> /&gt;</span><br><span class="line">&lt;!--</span><br><span class="line">    all：文件将被检索，且页面上的链接可以被查询；</span><br><span class="line">    none：文件将不被检索，且页面上的链接不可以被查询；</span><br><span class="line">    index：文件将被检索；</span><br><span class="line">    follow：页面上的链接可以被查询；</span><br><span class="line">    noindex：文件将不被检索；</span><br><span class="line">    nofollow：页面上的链接不可以被查询。</span><br><span class="line"> --&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"robots"</span> content=<span class="string">"index,follow"</span> /&gt;</div><div class="line"><span class="xml"><span class="comment">&lt;!--</span></span></div><div class="line">    all：文件将被检索，且页面上的链接可以被查询；</div><div class="line">    none：文件将不被检索，且页面上的链接不可以被查询；</div><div class="line">    index：文件将被检索；</div><div class="line">    follow：页面上的链接可以被查询；</div><div class="line">    noindex：文件将不被检索；</div><div class="line">    nofollow：页面上的链接不可以被查询。</div><div class="line"> --&gt;</div></pre></td></tr></table></figure>
 </li>
 <li><p><strong>页面重定向和刷新</strong>：content内的数字代表时间（秒），既多少时间后刷新。如果加url,则会重定向到指定网页（搜索引擎能够自动检测，也很容易被引擎视作误导而受到惩罚）。</p>
 </li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">"refresh"</span> content=<span class="string">"0;url="</span> /&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta http-equiv=<span class="string">"refresh"</span> content=<span class="string">"0;url="</span> /&gt;</div></pre></td></tr></table></figure>
 <ul>
 <li><strong>其他</strong></li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"author"</span> content=<span class="string">"author name"</span> /&gt; <span class="xml"><span class="comment">&lt;!-- 定义网页作者 --&gt;</span></span></span><br><span class="line">&lt;meta name="google" content="index,follow" /&gt;</span><br><span class="line">&lt;meta name="googlebot" content="index,follow" /&gt;</span><br><span class="line">&lt;meta name="verify" content="index,follow" /&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"author"</span> content=<span class="string">"author name"</span> /&gt; &lt;!-- 定义网页作者 --&gt;</div><div class="line">&lt;meta name="google" content="index,follow" /&gt;</div><div class="line">&lt;meta name="googlebot" content="index,follow" /&gt;</div><div class="line">&lt;meta name="verify" content="index,follow" /&gt;</div></pre></td></tr></table></figure>
 <h2 id="移动设备"><a href="#移动设备" class="headerlink" title="移动设备"></a>移动设备</h2><ul>
 <li><strong>viewport：</strong>能优化移动浏览器的显示。如果不是响应式网站，不要使用initial-scale或者禁用缩放。<br>大部分4.7-5寸设备的viewport宽设为360px；5.5寸设备设为400px；iphone6设为375px；ipone6 plus设为414px。</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"</span>/&gt;</span><br><span class="line">&lt;!-- <span class="string">`width=device-width`</span> 会导致 iPhone <span class="number">5</span> 添加到主屏后以 WebApp 全屏模式打开页面时出现黑边  --&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"</span>/&gt;</div><div class="line"><span class="xml"><span class="comment">&lt;!-- `width=device-width` 会导致 iPhone 5 添加到主屏后以 WebApp 全屏模式打开页面时出现黑边  --&gt;</span></span></div></pre></td></tr></table></figure>
 <blockquote>
 <ol>
 <li>width：宽度（数值 / device-width）（范围从200 到10,000，默认为980 像素）</li>
@@ -198,24 +196,24 @@
 <p><em>注意，很多人使用initial-scale=1到非响应式网站上，这会让网站以100%宽度渲染，用户需要手动移动页面或者缩放。如果和initial-scale=1同时使用user-scalable=no或maximum-scale=1，则用户将不能放大/缩小网页来看到全部的内容。</em></p>
 <ul>
 <li><p><strong>WebApp全屏模式：</strong>伪装app，离线应用。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"apple-mobile-web-app-capable"</span> content=<span class="string">"yes"</span> /&gt; <span class="xml"><span class="comment">&lt;!-- 启用 WebApp 全屏模式 --&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"apple-mobile-web-app-capable"</span> content=<span class="string">"yes"</span> /&gt; <span class="xml"><span class="comment">&lt;!-- 启用 WebApp 全屏模式 --&gt;</span></span></div></pre></td></tr></table></figure>
 </li>
 <li><p><strong>隐藏状态栏/设置状态栏颜色：</strong>只有在开启WebApp全屏模式时才生效。content的值为default | black | black-translucent 。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"apple-mobile-web-app-status-bar-style"</span> content=<span class="string">"black-translucent"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"apple-mobile-web-app-status-bar-style"</span> content=<span class="string">"black-translucent"</span> /&gt;</div></pre></td></tr></table></figure>
 </li>
 <li><p><strong>添加到主屏后的标题</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"apple-mobile-web-app-title"</span> content=<span class="string">"标题"</span>&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"apple-mobile-web-app-title"</span> content=<span class="string">"标题"</span>&gt;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p><img src="/img/meta/articlex.jpg" alt="meta"></p>
-<p><strong>忽略数字自动识别为电话号码</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta content=<span class="string">"telephone=no"</span> name=<span class="string">"format-detection"</span> /&gt;</span><br></pre></td></tr></table></figure></p>
-<p><strong>忽略识别邮箱</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta content=<span class="string">"email=no"</span> name=<span class="string">"format-detection"</span> /&gt;</span><br></pre></td></tr></table></figure></p>
-<p><strong>添加智能 App 广告条 Smart App Banner：</strong>告诉浏览器这个网站对应的app，并在页面上显示下载banner(如下图)。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"apple-itunes-app"</span> content=<span class="string">"app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>忽略数字自动识别为电话号码</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta content=<span class="string">"telephone=no"</span> name=<span class="string">"format-detection"</span> /&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>忽略识别邮箱</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta content=<span class="string">"email=no"</span> name=<span class="string">"format-detection"</span> /&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>添加智能 App 广告条 Smart App Banner：</strong>告诉浏览器这个网站对应的app，并在页面上显示下载banner(如下图)。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"apple-itunes-app"</span> content=<span class="string">"app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL"</span>&gt;</div></pre></td></tr></table></figure></p>
 <p><img src="/img/meta/banner.jpg" alt="Alt text"></p>
-<p><strong>其他</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"HandheldFriendly"</span> content=<span class="string">"true"</span>&gt;</span><br><span class="line">&lt;!-- 微软的老式浏览器 --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"MobileOptimized"</span> content=<span class="string">"320"</span>&gt;</span><br><span class="line">&lt;!-- uc强制竖屏 --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"screen-orientation"</span> content=<span class="string">"portrait"</span>&gt;</span><br><span class="line">&lt;!-- QQ强制竖屏 --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"x5-orientation"</span> content=<span class="string">"portrait"</span>&gt;</span><br><span class="line">&lt;!-- UC强制全屏 --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"full-screen"</span> content=<span class="string">"yes"</span>&gt;</span><br><span class="line">&lt;!-- QQ强制全屏 --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"x5-fullscreen"</span> content=<span class="string">"true"</span>&gt;</span><br><span class="line">&lt;!-- UC应用模式 --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"browsermode"</span> content=<span class="string">"application"</span>&gt;</span><br><span class="line">&lt;!-- QQ应用模式 --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"x5-page-mode"</span> content=<span class="string">"app"</span>&gt;</span><br><span class="line">&lt;!-- windows phone 点击无高光 --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"msapplication-tap-highlight"</span> content=<span class="string">"no"</span>&gt;</span><br></pre></td></tr></table></figure></p>
-<h2 id="网页相关"><a href="#网页相关" class="headerlink" title="网页相关"></a>网页相关</h2><p><strong>申明编码</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta charset=<span class="string">'utf-8'</span> /&gt;</span><br></pre></td></tr></table></figure></p>
-<p><strong>优先使用 IE 最新版本和 Chrome</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"IE=edge,chrome=1"</span> /&gt;</span><br><span class="line">&lt;!-- 关于X-UA-Compatible --&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"IE=6"</span> &gt;<span class="xml"><span class="comment">&lt;!-- 使用IE6 --&gt;</span></span></span><br><span class="line">&lt;meta http-equiv="X-UA-Compatible" content="IE=7" &gt;&lt;!-- 使用IE7 --&gt;</span><br><span class="line">&lt;meta http-equiv="X-UA-Compatible" content="IE=8" &gt;&lt;!-- 使用IE8 --&gt;</span><br></pre></td></tr></table></figure></p>
-<p><strong>浏览器内核控制：</strong> 国内浏览器很多都是双内核（webkit和Trident），webkit内核高速浏览，IE内核兼容网页和旧版网站。而添加meta标签的网站可以控制浏览器选择何种内核渲染。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"renderer"</span> content=<span class="string">"webkit|ie-comp|ie-stand"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>其他</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 --&gt;</div><div class="line">&lt;meta name="HandheldFriendly" content="true"&gt;</div><div class="line">&lt;!-- 微软的老式浏览器 --&gt;</div><div class="line">&lt;meta name="MobileOptimized" content="320"&gt;</div><div class="line">&lt;!-- uc强制竖屏 --&gt;</div><div class="line">&lt;meta name="screen-orientation" content="portrait"&gt;</div><div class="line">&lt;!-- QQ强制竖屏 --&gt;</div><div class="line">&lt;meta name="x5-orientation" content="portrait"&gt;</div><div class="line">&lt;!-- UC强制全屏 --&gt;</div><div class="line">&lt;meta name="full-screen" content="yes"&gt;</div><div class="line">&lt;!-- QQ强制全屏 --&gt;</div><div class="line">&lt;meta name="x5-fullscreen" content="true"&gt;</div><div class="line">&lt;!-- UC应用模式 --&gt;</div><div class="line">&lt;meta name="browsermode" content="application"&gt;</div><div class="line">&lt;!-- QQ应用模式 --&gt;</div><div class="line">&lt;meta name="x5-page-mode" content="app"&gt;</div><div class="line">&lt;!-- windows phone 点击无高光 --&gt;</div><div class="line">&lt;meta name="msapplication-tap-highlight" content="no"&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="网页相关"><a href="#网页相关" class="headerlink" title="网页相关"></a>网页相关</h2><p><strong>申明编码</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta charset=<span class="string">'utf-8'</span> /&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>优先使用 IE 最新版本和 Chrome</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"IE=edge,chrome=1"</span> /&gt;</div><div class="line">&lt;!-- 关于X-UA-Compatible --&gt;</div><div class="line">&lt;meta http-equiv="X-UA-Compatible" content="IE=6" &gt;&lt;!-- 使用IE6 --&gt;</div><div class="line">&lt;meta http-equiv="X-UA-Compatible" content="IE=7" &gt;&lt;!-- 使用IE7 --&gt;</div><div class="line">&lt;meta http-equiv="X-UA-Compatible" content="IE=8" &gt;&lt;!-- 使用IE8 --&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>浏览器内核控制：</strong> 国内浏览器很多都是双内核（webkit和Trident），webkit内核高速浏览，IE内核兼容网页和旧版网站。而添加meta标签的网站可以控制浏览器选择何种内核渲染。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"renderer"</span> content=<span class="string">"webkit|ie-comp|ie-stand"</span>&gt;</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>国内双核浏览器默认内核模式如下：</p>
 <ol>
@@ -223,13 +221,13 @@
 <li>360极速浏览器、遨游浏览器：Webkit内核（极速模式）</li>
 </ol>
 </blockquote>
-<p><strong>禁止浏览器从本地计算机的缓存中访问页面内容：</strong>这样设定，访问者将无法脱机浏览。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">"Pragma"</span> content=<span class="string">"no-cache"</span>&gt;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Windows 8</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"msapplication-TileColor"</span> content=<span class="string">"#000"</span>/&gt; <span class="xml"><span class="comment">&lt;!-- Windows 8 磁贴颜色 --&gt;</span></span></span><br><span class="line">&lt;meta name="msapplication-TileImage" content="icon.png"/&gt; &lt;!-- Windows 8 磁贴图标 --&gt;</span><br></pre></td></tr></table></figure></p>
-<p><strong>站点适配：</strong>主要用于PC-手机页的对应关系。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"mobile-agent"</span>content=<span class="string">"format=[wml|xhtml|html5]; url=url"</span>&gt;</span><br><span class="line">&lt;!--</span><br><span class="line">[wml|xhtml|html5]根据手机页的协议语言，选择其中一种；</span><br><span class="line">url=<span class="string">"url"</span> 后者代表当前PC页所对应的手机页URL，两者必须是一一对应关系。</span><br><span class="line"> --&gt;</span><br></pre></td></tr></table></figure></p>
-<p><strong>转码申明：</strong>用百度打开网页可能会对其进行转码（比如贴广告），避免转码可添加如下meta<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">"Cache-Control"</span> content=<span class="string">"no-siteapp"</span> /&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>禁止浏览器从本地计算机的缓存中访问页面内容：</strong>这样设定，访问者将无法脱机浏览。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta http-equiv=<span class="string">"Pragma"</span> content=<span class="string">"no-cache"</span>&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>Windows 8</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"msapplication-TileColor"</span> content=<span class="string">"#000"</span>/&gt; &lt;!-- Windows 8 磁贴颜色 --&gt;</div><div class="line">&lt;meta name="msapplication-TileImage" content="icon.png"/&gt; &lt;!-- Windows 8 磁贴图标 --&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>站点适配：</strong>主要用于PC-手机页的对应关系。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"mobile-agent"</span>content=<span class="string">"format=[wml|xhtml|html5]; url=url"</span>&gt;</div><div class="line"><span class="xml"><span class="comment">&lt;!--</span></span></div><div class="line">[wml|xhtml|html5]根据手机页的协议语言，选择其中一种；</div><div class="line">url="url" 后者代表当前PC页所对应的手机页URL，两者必须是一一对应关系。</div><div class="line"> --&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>转码申明：</strong>用百度打开网页可能会对其进行转码（比如贴广告），避免转码可添加如下meta<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta http-equiv=<span class="string">"Cache-Control"</span> content=<span class="string">"no-siteapp"</span> /&gt;</div></pre></td></tr></table></figure></p>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料:"></a>参考资料:</h1><ul>
-<li><a href="http://www.zhangxinxu.com/wordpress/2015/03/meta-http-equiv-refresh-content/" target="_blank" rel="noopener">http://www.zhangxinxu.com/wordpress/2015/03/meta-http-equiv-refresh-content/</a></li>
-<li><a href="http://segmentfault.com/blog/ciaocc/1190000002407912" target="_blank" rel="noopener">http://segmentfault.com/blog/ciaocc/1190000002407912</a></li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2015/03/meta-http-equiv-refresh-content/" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/2015/03/meta-http-equiv-refresh-content/</a></li>
+<li><a href="http://segmentfault.com/blog/ciaocc/1190000002407912" target="_blank" rel="external">http://segmentfault.com/blog/ciaocc/1190000002407912</a></li>
 </ul>
 <hr>
 <blockquote>
@@ -298,7 +296,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lt-meta-gt-元素"><span class="toc-number">1.</span> <span class="toc-text">&lt;meta&gt;元素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概要"><span class="toc-number">1.1.</span> <span class="toc-text">概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SEO优化"><span class="toc-number">1.2.</span> <span class="toc-text">SEO优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#移动设备"><span class="toc-number">1.3.</span> <span class="toc-text">移动设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网页相关"><span class="toc-number">1.4.</span> <span class="toc-text">网页相关</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考资料"><span class="toc-number">2.</span> <span class="toc-text">参考资料:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文章若有纰漏请大家补充指正-谢谢"><span class="toc-number">2.0.1.</span> <span class="toc-text">文章若有纰漏请大家补充指正,谢谢~~</span></a></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lt-meta-gt-元素"><span class="toc-number">1.</span> <span class="toc-text"><meta>元素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概要"><span class="toc-number">1.1.</span> <span class="toc-text">概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SEO优化"><span class="toc-number">1.2.</span> <span class="toc-text">SEO优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#移动设备"><span class="toc-number">1.3.</span> <span class="toc-text">移动设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网页相关"><span class="toc-number">1.4.</span> <span class="toc-text">网页相关</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考资料"><span class="toc-number">2.</span> <span class="toc-text">参考资料:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文章若有纰漏请大家补充指正-谢谢"><span class="toc-number">2.0.1.</span> <span class="toc-text">文章若有纰漏请大家补充指正,谢谢~~</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
@@ -334,15 +332,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -350,7 +344,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -358,11 +352,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -370,11 +360,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -386,7 +384,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="在cygwin中安装是出现路径不正确,安装失败">
-<meta name="keywords" content="cygwin,npm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在cygwin中npm安装git packages 失败">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2016/01/07/cygwin-npm-error/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="在cygwin中安装是出现路径不正确,安装失败">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在cygwin中npm安装git packages 失败">
@@ -106,9 +104,9 @@
 <p>npm 官方不支持在cygwin中安装</p>
 </blockquote>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>替换 <code>node_modules\npm\lib\utils\git.js</code> 为下面内容</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// handle some git configuration for windows</span></span><br><span class="line"></span><br><span class="line">exports.spawn = spawnGit</span><br><span class="line">exports.chainableExec = chainableExec</span><br><span class="line">exports.whichAndExec = whichAndExec</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> exec = <span class="built_in">require</span>(<span class="string">"child_process"</span>).execFile</span><br><span class="line">  , spawn = <span class="built_in">require</span>(<span class="string">"./spawn"</span>)</span><br><span class="line">  , npm = <span class="built_in">require</span>(<span class="string">"../npm.js"</span>)</span><br><span class="line">  , which = <span class="built_in">require</span>(<span class="string">"which"</span>)</span><br><span class="line">  , git = npm.config.get(<span class="string">"git"</span>)</span><br><span class="line">  , assert = <span class="built_in">require</span>(<span class="string">"assert"</span>)</span><br><span class="line">  , log = <span class="built_in">require</span>(<span class="string">"npmlog"</span>)</span><br><span class="line">  , win32 = process.platform === <span class="string">"win32"</span></span><br><span class="line">  , cygwin = win32 &amp;&amp; (process.env.ORIGINAL_PATH || <span class="string">''</span>).indexOf(<span class="string">'/cygdrive/'</span>) != <span class="number">-1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">prefixGitArgs</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> win32 ? [<span class="string">"-c"</span>, <span class="string">"core.longpaths=true"</span>] : []</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">execGit</span> (<span class="params">args, options, cb</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(cygwin &amp;&amp; args) &#123;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;args.length; i++) &#123;</span><br><span class="line">          <span class="keyword">if</span>(<span class="string">':\\'</span>.indexOf(args[i]) != <span class="number">1</span>) &#123;</span><br><span class="line">              args[i] = args[i].replace(<span class="regexp">/\\/g</span>, <span class="string">'/'</span>).replace(<span class="regexp">/^([A-Za-z])\:\//</span>, <span class="string">'/cygdrive/$1/'</span>);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> fullArgs = prefixGitArgs().concat(args || [])</span><br><span class="line">  log.info(<span class="string">'git'</span>, fullArgs)</span><br><span class="line">  <span class="keyword">return</span> exec(git, fullArgs, options, cb)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">spawnGit</span> (<span class="params">args, options</span>) </span>&#123;</span><br><span class="line">  log.info(<span class="string">"git"</span>, args)</span><br><span class="line">  <span class="keyword">return</span> spawn(git, prefixGitArgs().concat(args || []), options)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">chainableExec</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>)</span><br><span class="line">  <span class="keyword">return</span> [execGit].concat(args)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">whichGit</span> (<span class="params">cb</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> which(git, cb)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">whichAndExec</span> (<span class="params">args, options, cb</span>) </span>&#123;</span><br><span class="line">  assert.equal(<span class="keyword">typeof</span> cb, <span class="string">"function"</span>, <span class="string">"no callback provided"</span>)</span><br><span class="line">  <span class="comment">// check for git</span></span><br><span class="line">  whichGit(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      err.code = <span class="string">"ENOGIT"</span></span><br><span class="line">      <span class="keyword">return</span> cb(err)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    execGit(args, options, cb)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// handle some git configuration for windows</span></div><div class="line"></div><div class="line">exports.spawn = spawnGit</div><div class="line">exports.chainableExec = chainableExec</div><div class="line">exports.whichAndExec = whichAndExec</div><div class="line"></div><div class="line"><span class="keyword">var</span> exec = <span class="built_in">require</span>(<span class="string">"child_process"</span>).execFile</div><div class="line">  , spawn = <span class="built_in">require</span>(<span class="string">"./spawn"</span>)</div><div class="line">  , npm = <span class="built_in">require</span>(<span class="string">"../npm.js"</span>)</div><div class="line">  , which = <span class="built_in">require</span>(<span class="string">"which"</span>)</div><div class="line">  , git = npm.config.get(<span class="string">"git"</span>)</div><div class="line">  , assert = <span class="built_in">require</span>(<span class="string">"assert"</span>)</div><div class="line">  , log = <span class="built_in">require</span>(<span class="string">"npmlog"</span>)</div><div class="line">  , win32 = process.platform === <span class="string">"win32"</span></div><div class="line">  , cygwin = win32 &amp;&amp; (process.env.ORIGINAL_PATH || <span class="string">''</span>).indexOf(<span class="string">'/cygdrive/'</span>) != <span class="number">-1</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">prefixGitArgs</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> win32 ? [<span class="string">"-c"</span>, <span class="string">"core.longpaths=true"</span>] : []</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">execGit</span> (<span class="params">args, options, cb</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>(cygwin &amp;&amp; args) &#123;</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;args.length; i++) &#123;</div><div class="line">          <span class="keyword">if</span>(<span class="string">':\\'</span>.indexOf(args[i]) != <span class="number">1</span>) &#123;</div><div class="line">              args[i] = args[i].replace(<span class="regexp">/\\/g</span>, <span class="string">'/'</span>).replace(<span class="regexp">/^([A-Za-z])\:\//</span>, <span class="string">'/cygdrive/$1/'</span>);</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> fullArgs = prefixGitArgs().concat(args || [])</div><div class="line">  log.info(<span class="string">'git'</span>, fullArgs)</div><div class="line">  <span class="keyword">return</span> exec(git, fullArgs, options, cb)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">spawnGit</span> (<span class="params">args, options</span>) </span>&#123;</div><div class="line">  log.info(<span class="string">"git"</span>, args)</div><div class="line">  <span class="keyword">return</span> spawn(git, prefixGitArgs().concat(args || []), options)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">chainableExec</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>)</div><div class="line">  <span class="keyword">return</span> [execGit].concat(args)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">whichGit</span> (<span class="params">cb</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> which(git, cb)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">whichAndExec</span> (<span class="params">args, options, cb</span>) </span>&#123;</div><div class="line">  assert.equal(<span class="keyword">typeof</span> cb, <span class="string">"function"</span>, <span class="string">"no callback provided"</span>)</div><div class="line">  <span class="comment">// check for git</span></div><div class="line">  whichGit(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (err) &#123;</div><div class="line">      err.code = <span class="string">"ENOGIT"</span></div><div class="line">      <span class="keyword">return</span> cb(err)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    execGit(args, options, cb)</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档:"></a>参考文档:</h1><ul>
-<li><a href="https://github.com/npm/npm/issues/7357" target="_blank" rel="noopener">https://github.com/npm/npm/issues/7357</a></li>
+<li><a href="https://github.com/npm/npm/issues/7357" target="_blank" rel="external">https://github.com/npm/npm/issues/7357</a></li>
 </ul>
 <hr>
 <blockquote>
@@ -213,15 +211,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -229,7 +223,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -237,11 +231,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -249,11 +239,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -265,7 +263,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			

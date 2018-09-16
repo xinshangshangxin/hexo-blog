@@ -12,13 +12,11 @@
 
     
     <meta name="description" content="linux终端翻墙">
-<meta name="keywords" content="shadowsocks">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux终端翻墙">
 <meta property="og:url" content="http://blog.xinshangshangxin.com/2015/06/21/linux终端翻墙/index.html">
 <meta property="og:site_name" content="SHANG Blog">
 <meta property="og:description" content="linux终端翻墙">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-27T08:24:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux终端翻墙">
@@ -102,7 +100,7 @@
 		
 		</div>
 		
-		<h2 id="shadowsocks本地版"><a href="#shadowsocks本地版" class="headerlink" title="shadowsocks本地版"></a>shadowsocks本地版</h2><p><a href="http://dl.chenyufei.info/shadowsocks/latest/" target="_blank" rel="noopener">http://dl.chenyufei.info/shadowsocks/latest/</a><br>下载你服务器对应的版本<code>shadowsocks-local-linux64-1.1.4.gz</code><br><strong>解压</strong></p>
+		<h2 id="shadowsocks本地版"><a href="#shadowsocks本地版" class="headerlink" title="shadowsocks本地版"></a>shadowsocks本地版</h2><p><a href="http://dl.chenyufei.info/shadowsocks/latest/" target="_blank" rel="external">http://dl.chenyufei.info/shadowsocks/latest/</a><br>下载你服务器对应的版本<code>shadowsocks-local-linux64-1.1.4.gz</code><br><strong>解压</strong></p>
 <blockquote>
 <p><code>gunzip shadowsocks-local-linux64-1.1.4.gz</code></p>
 </blockquote>
@@ -114,21 +112,21 @@
 <blockquote>
 <p><code>./shadowsocks-local-linux64-1.1.4 -d=true -k=&quot;服务器的密码&quot; -m=&quot;aes-256-cfb&quot; -l=1080 -p=服务器的端口 -s=&quot;服务器的ip&quot;</code></p>
 </blockquote>
-<h2 id="安装代理-二选一"><a href="#安装代理-二选一" class="headerlink" title="安装代理(二选一)"></a>安装代理(二选一)</h2><h3 id="安装proxychains"><a href="#安装proxychains" class="headerlink" title="安装proxychains."></a>安装proxychains.</h3><p><a href="https://github.com/shadowsocks/shadowsocks/wiki/Using-Shadowsocks-with-Command-Line-Tools" target="_blank" rel="noopener">原文地址</a></p>
-<p>安装:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install proxychains</span><br></pre></td></tr></table></figure></p>
-<p>新建文件 <code>~/.proxychains/proxychains.conf</code>,<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">strict_chain</span><br><span class="line">proxy_dns </span><br><span class="line">remote_dns_subnet <span class="number">224</span></span><br><span class="line">tcp_read_time_out <span class="number">15000</span></span><br><span class="line">tcp_connect_time_out <span class="number">8000</span></span><br><span class="line">localnet <span class="number">127.0</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">255.0</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line">quiet_mode</span><br><span class="line"></span><br><span class="line">[ProxyList]</span><br><span class="line">socks5  <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">1080</span></span><br></pre></td></tr></table></figure></p>
-<p>使用方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 curl https:<span class="comment">//www.twitter.com/</span></span><br><span class="line">proxychains4 git push origin master</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装代理-二选一"><a href="#安装代理-二选一" class="headerlink" title="安装代理(二选一)"></a>安装代理(二选一)</h2><h3 id="安装proxychains"><a href="#安装proxychains" class="headerlink" title="安装proxychains."></a>安装proxychains.</h3><p><a href="https://github.com/shadowsocks/shadowsocks/wiki/Using-Shadowsocks-with-Command-Line-Tools" target="_blank" rel="external">原文地址</a></p>
+<p>安装:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install proxychains</div></pre></td></tr></table></figure></p>
+<p>新建文件 <code>~/.proxychains/proxychains.conf</code>,<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">strict_chain</div><div class="line">proxy_dns </div><div class="line">remote_dns_subnet <span class="number">224</span></div><div class="line">tcp_read_time_out <span class="number">15000</span></div><div class="line">tcp_connect_time_out <span class="number">8000</span></div><div class="line">localnet <span class="number">127.0</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">255.0</span><span class="number">.0</span><span class="number">.0</span></div><div class="line">quiet_mode</div><div class="line"></div><div class="line">[ProxyList]</div><div class="line">socks5  <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">1080</span></div></pre></td></tr></table></figure></p>
+<p>使用方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">proxychains4 curl https:<span class="comment">//www.twitter.com/</span></div><div class="line">proxychains4 git push origin master</div></pre></td></tr></table></figure></p>
 <h3 id="安装tsocks"><a href="#安装tsocks" class="headerlink" title="安装tsocks"></a>安装tsocks</h3><blockquote>
 <p><code>apt-get install tsocks</code><br><code>vi /etc/tsocks.conf</code></p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">local = 192.168.1.0/255.255.255.0  #local表示本地的网络，也就是不使用socks代理的网络</span><br><span class="line">local = <span class="number">127.0</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">255.0</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line">server = 127.0.0.1   #socks服务器的IP</span><br><span class="line">server_type = 5  #socks服务版本</span><br><span class="line">server_port = <span class="number">1080</span>  ＃socks服务使用的端口</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">local = 192.168.1.0/255.255.255.0  #local表示本地的网络，也就是不使用socks代理的网络</div><div class="line">local = 127.0.0.0/255.0.0.0</div><div class="line">server = 127.0.0.1   #socks服务器的IP</div><div class="line">server_type = 5  #socks服务版本</div><div class="line">server_port = 1080  ＃socks服务使用的端口</div></pre></td></tr></table></figure>
 <blockquote>
 <p>在要使用的命令前加上 <code>tsocks</code> 即可<br>例如: <code>tsocks apt-get update</code></p>
 </blockquote>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
-<li><a href="http://www.joecen.com/2008/02/17/config-apt-get-use-socks-proxy/" target="_blank" rel="noopener">配置apt-get使用socks代理</a></li>
-<li><a href="http://www.ahlinux.com/start/base/21679.html" target="_blank" rel="noopener">Linux下配置ShadowSocks(Server&amp;Client)</a></li>
-<li><a href="http://www.51testing.com/html/38/225738-246084.html" target="_blank" rel="noopener">tsocks简介、安装、配置及遇到的问题</a></li>
+<li><a href="http://www.joecen.com/2008/02/17/config-apt-get-use-socks-proxy/" target="_blank" rel="external">配置apt-get使用socks代理</a></li>
+<li><a href="http://www.ahlinux.com/start/base/21679.html" target="_blank" rel="external">Linux下配置ShadowSocks(Server&amp;Client)</a></li>
+<li><a href="http://www.51testing.com/html/38/225738-246084.html" target="_blank" rel="external">tsocks简介、安装、配置及遇到的问题</a></li>
 </ul>
 <hr>
 <blockquote>
@@ -233,15 +231,11 @@
 			
 		
 			
-				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/npm/" title="npm">npm<sup>5</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
+				<li><a href="/tags/wechat/" title="wechat">wechat<sup>5</sup></a></li>
 			
 		
 			
@@ -249,7 +243,7 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
+				<li><a href="/tags/sails/" title="sails">sails<sup>4</sup></a></li>
 			
 		
 			
@@ -257,11 +251,7 @@
 			
 		
 			
-				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>3</sup></a></li>
 			
 		
 			
@@ -269,11 +259,19 @@
 			
 		
 			
+				<li><a href="/tags/html5/" title="html5">html5<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/gulp/" title="gulp">gulp<sup>3</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/rxjs/" title="rxjs">rxjs<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
+				<li><a href="/tags/RxJS/" title="RxJS">RxJS<sup>2</sup></a></li>
 			
 		
 			
@@ -285,7 +283,7 @@
 			
 		
 			
-				<li><a href="/tags/小程序/" title="小程序">小程序<sup>2</sup></a></li>
+				<li><a href="/tags/lodash/" title="lodash">lodash<sup>2</sup></a></li>
 			
 		
 			
