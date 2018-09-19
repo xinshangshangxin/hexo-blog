@@ -42,11 +42,11 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
-highlight:
-  enable: true
-  line_number: true
-  auto_detect: false
-  tab_replace:
+# highlight:
+#   enable: true
+#   line_number: true
+#   auto_detect: false
+#   tab_replace:
 
 
 #clean_css:
@@ -65,6 +65,7 @@ default_category: uncategorized
 category_map:
 tag_map:
 
+
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
@@ -79,8 +80,23 @@ pagination_dir: page
 
 # Extensions
 ## Plugins: http://hexo.io/plugins/
+
+search:
+  path: search.json
+  zipPath: search.flv
+  versionPath: searchVersion.txt
+  field: post
+
 ## Themes: http://hexo.io/themes/
-theme: jacman
+theme: TKL
+
+# Archives
+## 2: Enable pagination
+## 1: Disable pagination
+## 0: Fully Disable
+archive: 1
+category: 2
+tag: 2
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
