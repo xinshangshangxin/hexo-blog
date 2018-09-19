@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.xinshangshangxin.com/2018/06/18/frp/</loc>
+    
+    <lastmod>2018-09-19T01:44:06.839Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.xinshangshangxin.com/categories/index.html</loc>
     
     <lastmod>2018-09-18T12:11:40.304Z</lastmod>
@@ -68,13 +75,6 @@
     <loc>http://blog.xinshangshangxin.com/2018/06/15/ngrok/</loc>
     
     <lastmod>2018-06-18T06:16:24.295Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.xinshangshangxin.com/2018/06/18/frp/</loc>
-    
-    <lastmod>2018-06-18T06:15:37.720Z</lastmod>
     
   </url>
   
