@@ -43,9 +43,12 @@
         <!-- Lists in Slidebars -->
         <ul class="sb-menu secondary">
             <% if (theme.local_search.enable) { %>
-            <li><a href="javascript:;" class="popup-trigger" title="Search"><span class="search-icon"></span>Search</a></li>
+            <li><a href="javascript:;" class="popup-trigger" title="Search"><span class="search-icon"></span>SEARCH</a></li>
             <% } %>
-            <li><a href="<%- config.root %>about.html" class="animsition-link" title="about">About</a></li>
+
+            <li><a href="<%- config.root %><%- config.tag_dir %>" class="animsition-link" title="archive">TAGS</a></li>
+
+            <!-- <li><a href="<%- config.root %>about.html" class="animsition-link" title="about">About</a></li> -->
             <li><a href="<%- config.root %>atom.xml" class="animsition-link" title="rss">RSS</a></li>
         </ul>
     </div>
@@ -77,6 +80,9 @@
                             <% if (theme.local_search.enable) { %>
                                 <li><a href="javascript:;" class="popup-trigger" title="Search"><span class="search-icon"></span>Search</a></li>
                             <% } %>
+
+                            <li><a href="<%- config.root %><%- config.tag_dir %>" class="animsition-link" title="archive">tags</a></li>
+
                             <!-- <li><a href="<%- config.root %>about.html" class="animsition-link" title="about">About</a></li> -->
             <li><a href="<%- config.root %>atom.xml" class="animsition-link" title="rss">RSS</a></li>
                             <% if(theme.github){ %>
