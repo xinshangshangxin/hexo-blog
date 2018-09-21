@@ -177,21 +177,21 @@
       		<blockquote>
 <p>DaoCloud 有go和python 的 example;<br>却没有Node的example, 把我踩的坑记录分享</p>
 </blockquote>
-<h1 id="注册DaoCloud"><a href="#注册DaoCloud" class="headerlink" title="注册DaoCloud"></a>注册DaoCloud</h1><p>注册地址: <a href="https://account.daocloud.io/signup" target="_blank" rel="external">https://account.daocloud.io/signup</a></p>
+<h1 id="注册DaoCloud"><a href="#注册DaoCloud" class="headerlink" title="注册DaoCloud"></a>注册DaoCloud</h1><p>注册地址: <a href="https://account.daocloud.io/signup" target="_blank" rel="noopener">https://account.daocloud.io/signup</a></p>
 <blockquote>
 <p>整个构建和部署所需要的资源，DaoCloud都免费提供，为所有的注册用户免费提供以下资源：<br>3个项目，同时可以在DaoCloud关联和构建您的3个软件项目<br>2个容器，每个容器内存上限是256M内存空间<br>2个服务，可从MongoDB、Redis、MySQL和InfluxDB中任意选择</p>
 </blockquote>
 <h1 id="部署Node-的-Dockerfile-详解"><a href="#部署Node-的-Dockerfile-详解" class="headerlink" title="部署Node 的 Dockerfile 详解"></a>部署Node 的 Dockerfile 详解</h1><blockquote>
 <p>总的</p>
 </blockquote>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">FROM node</div><div class="line"></div><div class="line"># Build app</div><div class="line">RUN mkdir -p /usr/src/app</div><div class="line">WORKDIR /usr/src/app</div><div class="line">COPY . /usr/src/app</div><div class="line"></div><div class="line">RUN npm install --production</div><div class="line"></div><div class="line">EXPOSE 1340</div><div class="line"></div><div class="line">CMD [ "node","dist/server.js"]</div></pre></td></tr></table></figure>
-<p><code>FROM node</code> 是指基于 <a href="https://registry.hub.docker.com/_/node" target="_blank" rel="external">node最新版</a> 镜像 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">FROM node</span><br><span class="line"></span><br><span class="line"># Build app</span><br><span class="line">RUN mkdir -p /usr/src/app</span><br><span class="line">WORKDIR /usr/src/app</span><br><span class="line">COPY . /usr/src/app</span><br><span class="line"></span><br><span class="line">RUN npm install --production</span><br><span class="line"></span><br><span class="line">EXPOSE <span class="number">1340</span></span><br><span class="line"></span><br><span class="line">CMD [ <span class="string">"node"</span>,<span class="string">"dist/server.js"</span>]</span><br></pre></td></tr></table></figure>
+<p><code>FROM node</code> 是指基于 <a href="https://registry.hub.docker.com/_/node" target="_blank" rel="noopener">node最新版</a> 镜像 </p>
 <p><code>RUN mkdir -p /usr/src/app</code> 中 <code>RUN</code> 是安装环境, 整句话是指创建了一个<code>app</code>文件夹供后续使用<br><code>WORKDIR /usr/src/app</code>  中 <code>WORKDIR</code> 是切换目录, 整句话是指切换到 <code>/usr/src/app</code> 目录下<br><code>COPY . /usr/src/app</code> 整句话是指将当前文件夹下文件复制到 <code>app</code>目录下</p>
 <p><code>RUN npm install --production</code> 执行 <code>npm install</code> 命令,安装node程序的依赖包</p>
 <p><code>EXPOSE 1340</code>  中 <code>EXPOSE</code> 是端口映射; 1340 是你的 node程序跑的端口</p>
 <p><code>CMD [&quot;node&quot;,&quot;dist/server.js&quot;]</code> 中 <code>CMD</code>是 <code>container</code>(容器)启动时执行的命令;也就是平常我们使用的 <code>node dist/server.js</code></p>
 <h1 id="上传github和绑定github"><a href="#上传github和绑定github" class="headerlink" title="上传github和绑定github"></a>上传github和绑定github</h1><ul>
-<li><p>在你原来node程序的基础上,添加修改上面的Dockfile; 上传至github;<br><em>如果你没有现成的程序,可以直接 clone 我的项目 <a href="https://github.com/xinshangshangxin/ngMusic.git" target="_blank" rel="external">ngMusic项目地址</a></em> 到你的github中</p>
+<li><p>在你原来node程序的基础上,添加修改上面的Dockfile; 上传至github;<br><em>如果你没有现成的程序,可以直接 clone 我的项目 <a href="https://github.com/xinshangshangxin/ngMusic.git" target="_blank" rel="noopener">ngMusic项目地址</a></em> 到你的github中</p>
 </li>
 <li><p>在DaoCloud中选择 <em>代码构建</em><br><img src="/img/daocloud/dc1.png" alt="dc"></p>
 </li>
@@ -206,8 +206,8 @@
 <li>部署成功, 可以访问看看你的程序; 如果失败,回头看看那里出错了~~<br><img src="/img/daocloud/dc5.png" alt="dc"></li>
 </ul>
 <h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
-<li><a href="https://github.com/DaoCloud/python-redis-sample/blob/master/application.py" target="_blank" rel="external">https://github.com/DaoCloud/python-redis-sample/blob/master/application.py</a></li>
-<li><a href="http://blog.csdn.net/wsscy2004/article/details/25878223" target="_blank" rel="external">http://blog.csdn.net/wsscy2004/article/details/25878223</a></li>
+<li><a href="https://github.com/DaoCloud/python-redis-sample/blob/master/application.py" target="_blank" rel="noopener">https://github.com/DaoCloud/python-redis-sample/blob/master/application.py</a></li>
+<li><a href="http://blog.csdn.net/wsscy2004/article/details/25878223" target="_blank" rel="noopener">http://blog.csdn.net/wsscy2004/article/details/25878223</a></li>
 </ul>
 <hr>
 <blockquote>

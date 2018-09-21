@@ -173,8 +173,8 @@
             
 
       		<h2 id="git默认"><a href="#git默认" class="headerlink" title="git默认"></a>git默认</h2><p>git默认是不区分文件名的大小写,即:<br>第一次文件名为 A.js,<br>修改文件名为  a.js<br>git默认为未修改文件</p>
-<h2 id="配置git识别大小写"><a href="#配置git识别大小写" class="headerlink" title="配置git识别大小写"></a>配置git识别大小写</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config core.ignorecase false</div></pre></td></tr></table></figure>
-<h2 id="注意问题"><a href="#注意问题" class="headerlink" title="注意问题"></a>注意问题</h2><p>在上面设置并commit文件之后, 使用 <code>git rebase -i HEAD~2</code>会提示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">the following untracked working tree files would be overwritten by checkout:</div></pre></td></tr></table></figure></p>
+<h2 id="配置git识别大小写"><a href="#配置git识别大小写" class="headerlink" title="配置git识别大小写"></a>配置git识别大小写</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config core.ignorecase false</span><br></pre></td></tr></table></figure>
+<h2 id="注意问题"><a href="#注意问题" class="headerlink" title="注意问题"></a>注意问题</h2><p>在上面设置并commit文件之后, 使用 <code>git rebase -i HEAD~2</code>会提示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">the following untracked working tree files would be overwritten by checkout:</span><br></pre></td></tr></table></figure></p>
 <p>解决办法:</p>
 <ul>
 <li>重新设置大小写<strong>不</strong>敏感,</li>
@@ -182,7 +182,7 @@
 <li>设置大小写敏感</li>
 </ul>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
-<li><a href="http://yijiebuyi.com/blog/e96eccc4e6f7168e0ce92fa9c79f0d23.html" target="_blank" rel="external">http://yijiebuyi.com/blog/e96eccc4e6f7168e0ce92fa9c79f0d23.html</a></li>
+<li><a href="http://yijiebuyi.com/blog/e96eccc4e6f7168e0ce92fa9c79f0d23.html" target="_blank" rel="noopener">http://yijiebuyi.com/blog/e96eccc4e6f7168e0ce92fa9c79f0d23.html</a></li>
 </ul>
 <hr>
 <blockquote>

@@ -177,16 +177,18 @@
 <li><code>local_file_path</code> 必须存在, 并且类型为文件</li>
 <li><code>docker_file_path</code> 必须存在, 绝对路径, 并且类型为文件</li>
 </ol>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因:"></a>原因:</h2><p>从 <a href="https://docs.docker.com/storage/bind-mounts/#differences-between--v-and---mount-behavior" target="_blank" rel="external">docker 文档 <code>Differences between -v and --mount behavior</code></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">If you use -v or --volume to bind-mount a file or directory that does not yet exist on the Docker host, -v creates the endpoint for you. </div><div class="line">It is always created as a directory.</div></pre></td></tr></table></figure>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因:"></a>原因:</h2><p>从 <a href="https://docs.docker.com/storage/bind-mounts/#differences-between--v-and---mount-behavior" target="_blank" rel="noopener">docker 文档 <code>Differences between -v and --mount behavior</code></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">If you use -v or --volume to bind-mount a file or directory that does not yet exist on the Docker host, -v creates the endpoint for you. </span><br><span class="line">It is always created as a directory.</span><br></pre></td></tr></table></figure>
 <p><strong>如果文件不存在, docker总会创建一个目录</strong></p>
 <h2 id="排查方法"><a href="#排查方法" class="headerlink" title="排查方法"></a>排查方法</h2><p>添加 <code>-it --entrypoint bash</code> 进入容器查看文件是否存在</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -v local_file_path:docker_file_path -it --entrypoint bash docker_image</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v local_file_path:docker_file_path -it --entrypoint bash docker_image</span><br></pre></td></tr></table></figure>
 <h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
-<li><a href="https://stackoverflow.com/questions/42248198/how-to-mount-a-single-file-in-a-volume#47099098" target="_blank" rel="external">How to mount a single file in a volume</a><br><br></li>
+<li><a href="https://stackoverflow.com/questions/42248198/how-to-mount-a-single-file-in-a-volume#47099098" target="_blank" rel="noopener">How to mount a single file in a volume</a><br><br></li>
 </ul>
 <blockquote>
 <p><strong>文章若有纰漏请大家补充指正,谢谢!</strong></p>
+</blockquote>
+<blockquote>
 <p><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG殇</p>
 </blockquote>
 

@@ -172,13 +172,13 @@
                 <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">问题:</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解决办法"><span class="post-toc-number">2.</span> <span class="post-toc-text">解决办法:</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考文档"><span class="post-toc-number"></span> <span class="post-toc-text">参考文档</span></a>
             
 
-      		<h2 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">make <span class="built_in">test</span></div><div class="line">=&gt; make: `<span class="built_in">test</span><span class="string">' is up to date.</span></div></pre></td></tr></table></figure>
+      		<h2 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make <span class="built_in">test</span></span><br><span class="line">=&gt; make: `<span class="built_in">test</span><span class="string">' is up to date.</span></span><br></pre></td></tr></table></figure>
 <h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法:"></a>解决办法:</h2><blockquote>
 <p>在Makefile中添加 </p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.PHONY: all <span class="built_in">test</span> clean</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.PHONY: all <span class="built_in">test</span> clean</span><br></pre></td></tr></table></figure>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
-<li><a href="http://stackoverflow.com/questions/3931741/why-does-make-think-the-target-is-up-to-date" target="_blank" rel="external">http://stackoverflow.com/questions/3931741/why-does-make-think-the-target-is-up-to-date</a></li>
+<li><a href="http://stackoverflow.com/questions/3931741/why-does-make-think-the-target-is-up-to-date" target="_blank" rel="noopener">http://stackoverflow.com/questions/3931741/why-does-make-think-the-target-is-up-to-date</a></li>
 </ul>
 <hr>
 <blockquote>

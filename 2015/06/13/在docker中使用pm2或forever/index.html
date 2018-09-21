@@ -177,15 +177,15 @@
       		<blockquote>
 <p>使用命令 <code>pm2 start app.js</code> 之后, <code>pm2</code> 默认在后台运行,<br>如果使用了docker后,容器运行并立即退出,需要手动指定参数<code>--no-daemon</code></p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">--no-daemon                          </div><div class="line"><span class="comment">// run pm2 daemon in the foreground if it doesn't exist already</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pm2 start app.js --no-daemon <span class="comment">// 设置启动方式</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--no-daemon                          </span><br><span class="line"><span class="comment">// run pm2 daemon in the foreground if it doesn't exist already</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 start app.js --no-daemon <span class="comment">// 设置启动方式</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>同理forever也是<br>Forever start script.js runs in the background. To run forever in the foreground, try forever script.js.</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">forever -c <span class="string">'node --harmony'</span> app.js <span class="comment">// 设置启动方式</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">forever -c <span class="string">'node --harmony'</span> app.js <span class="comment">// 设置启动方式</span></span><br></pre></td></tr></table></figure>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
-<li><a href="https://github.com/Unitech/PM2/blob/master/ADVANCED_README.md" target="_blank" rel="external">https://github.com/Unitech/PM2/blob/master/ADVANCED_README.md</a></li>
-<li><a href="http://stackoverflow.com/questions/26237044/error-starting-node-with-forever-in-docker-container" target="_blank" rel="external">http://stackoverflow.com/questions/26237044/error-starting-node-with-forever-in-docker-container</a></li>
+<li><a href="https://github.com/Unitech/PM2/blob/master/ADVANCED_README.md" target="_blank" rel="noopener">https://github.com/Unitech/PM2/blob/master/ADVANCED_README.md</a></li>
+<li><a href="http://stackoverflow.com/questions/26237044/error-starting-node-with-forever-in-docker-container" target="_blank" rel="noopener">http://stackoverflow.com/questions/26237044/error-starting-node-with-forever-in-docker-container</a></li>
 </ul>
 <hr>
 <blockquote>

@@ -175,21 +175,21 @@
       		<ul>
 <li>需要设置权限写文件</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown -R <span class="string">`whoami`</span> ~<span class="regexp">/.npm</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R <span class="string">`whoami`</span> ~<span class="regexp">/.npm</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>尝试安装插件, 如果出错,继续执行</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown -R <span class="string">`whoami`</span> /usr/local/lib/node_modules</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R <span class="string">`whoami`</span> /usr/local/lib/node_modules</span><br></pre></td></tr></table></figure>
 <ul>
 <li>如果依然有错, 可能需要</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown -R <span class="string">`whoami`</span> /usr/local</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R <span class="string">`whoami`</span> /usr/local</span><br></pre></td></tr></table></figure>
 <ul>
 <li>还是报错,请 <code>sudo</code> 执行命令</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install ...</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install ...</span><br></pre></td></tr></table></figure>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
-<li><a href="http://stackoverflow.com/questions/16151018/npm-throws-error-without-sudo" target="_blank" rel="external">http://stackoverflow.com/questions/16151018/npm-throws-error-without-sudo</a></li>
+<li><a href="http://stackoverflow.com/questions/16151018/npm-throws-error-without-sudo" target="_blank" rel="noopener">http://stackoverflow.com/questions/16151018/npm-throws-error-without-sudo</a></li>
 </ul>
 <hr>
 <blockquote>

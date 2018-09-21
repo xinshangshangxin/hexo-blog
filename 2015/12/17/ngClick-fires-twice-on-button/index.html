@@ -178,10 +178,10 @@
 <h2 id="触发原因-同时使用了-ionic-和-angular-material"><a href="#触发原因-同时使用了-ionic-和-angular-material" class="headerlink" title="触发原因: 同时使用了 ionic 和 angular-material"></a>触发原因: 同时使用了 ionic 和 angular-material</h2><blockquote>
 <p>Note: ng-click is broken on touch devices and Chrome emulation of such. Chrome desktop is unaffected. The Codepen above: works fine using 0.6.1 or 0.7.0 – broken on 0.7.1.<br>I suspect it might be because of the hammer.js change on 0.7.1 - Ionic has a similar built-in version of hammer as well</p>
 </blockquote>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法:"></a>解决方法:</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.config(<span class="function"><span class="keyword">function</span>(<span class="params">$mdGestureProvider </span>) </span>&#123;</div><div class="line">  $mdGestureProvider.skipClickHijack();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法:"></a>解决方法:</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.config(<span class="function"><span class="keyword">function</span>(<span class="params">$mdGestureProvider </span>) </span>&#123;</span><br><span class="line">  $mdGestureProvider.skipClickHijack();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档:"></a>参考文档:</h1><ul>
-<li><a href="https://github.com/driftyco/ionic/issues/1022" target="_blank" rel="external">https://github.com/driftyco/ionic/issues/1022</a></li>
-<li><a href="https://github.com/angular/material/issues/1406" target="_blank" rel="external">https://github.com/angular/material/issues/1406</a></li>
+<li><a href="https://github.com/driftyco/ionic/issues/1022" target="_blank" rel="noopener">https://github.com/driftyco/ionic/issues/1022</a></li>
+<li><a href="https://github.com/angular/material/issues/1406" target="_blank" rel="noopener">https://github.com/angular/material/issues/1406</a></li>
 </ul>
 <hr>
 <blockquote>

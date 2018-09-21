@@ -174,20 +174,32 @@
 
       		<blockquote>
 <p>proxy_pass后的url最后的/<br>当加上了/，相当于是绝对根路径，则nginx不会把location中匹配的路径部分代理走<br>如果没有/，则会把匹配的路径部分也给代理走</p>
+</blockquote>
+<blockquote>
 <p>假设请求url: <code>http://servername/node/index.html</code></p>
-<p>配置:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">location /node/  &#123;</div><div class="line">    proxy_pass http:<span class="comment">//127.0.0.1:1339/;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>配置:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location /node/  &#123;</span><br><span class="line">    proxy_pass http:<span class="comment">//127.0.0.1:1339/;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
 <p>代理url(实际url)<code>http://servername/node/index.html</code></p>
-<p>配置:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">location /node  &#123;</div><div class="line">    proxy_pass http:<span class="comment">//127.0.0.1:1339/;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>配置:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location /node  &#123;</span><br><span class="line">    proxy_pass http:<span class="comment">//127.0.0.1:1339/;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
 <p>代理url(实际url)<code>http://servername/index.html</code></p>
 </blockquote>
 <p>可以通过rewrite来实现/的功能</p>
 <blockquote>
-<p>配置:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">location /node  &#123;</div><div class="line">    rewrite /node/(.+)$ /$<span class="number">1</span> <span class="keyword">break</span>;</div><div class="line">    proxy_pass http:<span class="comment">//127.0.0.1:1339/;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>配置:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location /node  &#123;</span><br><span class="line">    rewrite /node/(.+)$ /$<span class="number">1</span> <span class="keyword">break</span>;</span><br><span class="line">    proxy_pass http:<span class="comment">//127.0.0.1:1339/;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
 <p>代理url(实际url)<code>http://servername/node/index.html</code></p>
 </blockquote>
 <p>此外 <code>http://127.0.0.1:1339/</code> 的最后一个 <code>/</code> 如果不写;会导致 <code>404 Not Found</code></p>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="http://www.tech126.com/nginx-proxy-pass/" target="_blank" rel="external">http://www.tech126.com/nginx-proxy-pass/</a></p>
-<p><a href="http://cssor.com/nginx-location-configuration.html" target="_blank" rel="external">http://cssor.com/nginx-location-configuration.html</a></p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="http://www.tech126.com/nginx-proxy-pass/" target="_blank" rel="noopener">http://www.tech126.com/nginx-proxy-pass/</a></p>
+<p><a href="http://cssor.com/nginx-location-configuration.html" target="_blank" rel="noopener">http://cssor.com/nginx-location-configuration.html</a></p>
 <hr>
 <blockquote>
 <h3 id="文章若有纰漏请大家补充指正-谢谢"><a href="#文章若有纰漏请大家补充指正-谢谢" class="headerlink" title="文章若有纰漏请大家补充指正,谢谢~~"></a>文章若有纰漏请大家补充指正,谢谢~~</h3><p><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG殇</p>

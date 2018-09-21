@@ -172,27 +172,27 @@
                 <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#问题出现"><span class="post-toc-number">2.</span> <span class="post-toc-text">问题出现</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#尝试过程"><span class="post-toc-number">3.</span> <span class="post-toc-text">尝试过程</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解决"><span class="post-toc-number">4.</span> <span class="post-toc-text">解决</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#结论"><span class="post-toc-number">5.</span> <span class="post-toc-text">结论</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考文档"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">参考文档</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文章若有纰漏请大家补充指正-谢谢"><span class="post-toc-number">5.1.1.</span> <span class="post-toc-text">文章若有纰漏请大家补充指正,谢谢~~</span></a></li></ol></li></ol></li></ol>
             
 
-      		<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>学习Angular时写了一个音乐播放器<br><a href="http://git.oschina.net/xinshangshangxin/ngMusic" target="_blank" rel="external">oschina地址</a><br><a href="https://github.com/xinshangshangxin/ngMusic" target="_blank" rel="external">github地址</a><br>为了兼容android chrome,<a href="http://hi.baidu.com/hf_zd/item/f65a68b8868a377e254b09a5" target="_blank" rel="external">参考了这篇文章</a>;</p>
+      		<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>学习Angular时写了一个音乐播放器<br><a href="http://git.oschina.net/xinshangshangxin/ngMusic" target="_blank" rel="noopener">oschina地址</a><br><a href="https://github.com/xinshangshangxin/ngMusic" target="_blank" rel="noopener">github地址</a><br>为了兼容android chrome,<a href="http://hi.baidu.com/hf_zd/item/f65a68b8868a377e254b09a5" target="_blank" rel="noopener">参考了这篇文章</a>;</p>
 <blockquote>
 <p>在数据读取中要中断的时候，可以把audio.src设为null，并显式调用audio.load()，<br>此时对于Android会中断数据读取，并且canplay也不会发生</p>
 </blockquote>
 <p>所以在我的代码中也如此使用了</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">_audio.src = <span class="literal">null</span>;</div><div class="line">_audio.load();</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_audio.src = <span class="literal">null</span>;</span><br><span class="line">_audio.load();</span><br></pre></td></tr></table></figure>
 <p>但是由于百度有些音乐无法直接播放;需要服务器转发,所以音乐链接带上了服务器转发地址</p>
 <h1 id="问题出现"><a href="#问题出现" class="headerlink" title="问题出现"></a>问题出现</h1><p>在前面几首歌上带上转发没有问题;但是当列表循环后;就出现了无法从服务器上获取音乐内容了;<br>查看chrome控制台,链接上显示 <code>Provisional headers are shown</code></p>
 <p><img src="/img/chrome/error.png" alt="error"></p>
 <p>关闭标签;重新打开网址;音乐有又可以加载了!!!</p>
-<h1 id="尝试过程"><a href="#尝试过程" class="headerlink" title="尝试过程"></a>尝试过程</h1><p>刚开始以为是因为本地环境的问题;将代码挂在到服务器上,依然有问题<br>开始谷歌搜索 <code>Provisional headers are shown</code>, 在这篇文章中<a href="http://segmentfault.com/q/1010000000364871" target="_blank" rel="external">http://segmentfault.com/q/1010000000364871</a>  </p>
+<h1 id="尝试过程"><a href="#尝试过程" class="headerlink" title="尝试过程"></a>尝试过程</h1><p>刚开始以为是因为本地环境的问题;将代码挂在到服务器上,依然有问题<br>开始谷歌搜索 <code>Provisional headers are shown</code>, 在这篇文章中<a href="http://segmentfault.com/q/1010000000364871" target="_blank" rel="noopener">http://segmentfault.com/q/1010000000364871</a>  </p>
 <blockquote>
 <p>之所以会出现这个警告，是因为去获取该资源的请求其实并（还）没有真的发生，所以 Header 里显示的是伪信息，直到服务器真的有响应返回，这里的 Header 信息才会被更新为真实的。不过这一切也可能不会发生，因为该请求可能会被屏蔽。比如说 AdBlock 什么的，当然了不全是浏览器扩展，具体情况具体分析了</p>
 </blockquote>
 <p>但是我测试的浏览器只有开发工具,没有 AdBlock之类的;所以pass</p>
-<p>接着 有找到这篇文章<a href="https://code.google.com/p/chromium/issues/detail?id=327581" target="_blank" rel="external">https://code.google.com/p/chromium/issues/detail?id=327581</a></p>
+<p>接着 有找到这篇文章<a href="https://code.google.com/p/chromium/issues/detail?id=327581" target="_blank" rel="noopener">https://code.google.com/p/chromium/issues/detail?id=327581</a></p>
 <blockquote>
 <p>That is because websockets never report their requestHeadersText.<br>Fixed for the new implementation.</p>
 </blockquote>
 <p>在新版本中修复… 我的chrome是42;所以 pass</p>
-<p>接着在<a href="http://stackoverflow.com/questions/21177387/caution-provisional-headers-are-shown-in-chrome-debugger" target="_blank" rel="external">http://stackoverflow.com/questions/21177387/caution-provisional-headers-are-shown-in-chrome-debugger</a><br>发现推荐答案依然是 AdBlock等之类的拦截, 继续看回答, 说使用 <code>chrome://net-internals</code>; 玩了下,根本就不知道怎么玩,pass</p>
+<p>接着在<a href="http://stackoverflow.com/questions/21177387/caution-provisional-headers-are-shown-in-chrome-debugger" target="_blank" rel="noopener">http://stackoverflow.com/questions/21177387/caution-provisional-headers-are-shown-in-chrome-debugger</a><br>发现推荐答案依然是 AdBlock等之类的拦截, 继续看回答, 说使用 <code>chrome://net-internals</code>; 玩了下,根本就不知道怎么玩,pass</p>
 <h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><p>接着往下查看 发现有个回答</p>
 <blockquote>
 <p>I believe it happens when the actual request is not sent. Usually happens when you are loading a cached resource.</p>
@@ -201,18 +201,18 @@
 <blockquote>
 <p>Another possible scenario I’ve seen - the exact same request is being sent again just after few milliseconds (most likely due to a bug in the client side).<br>In that case you’ll also see that the status of the first request is “canceled” and that the latency is only several milliseconds.</p>
 </blockquote>
-<p>大概是说 完全相同的请求间隔数毫秒(太短),导致加载失败,查看了chrome控制台发现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">http://ngmusic.coding.io/null</div><div class="line">http://ngmusic.coding.io/serverget?url=http%3A%2F%2Ffile.qianqian.com.....</div><div class="line">都有 Provisional headers are shown</div></pre></td></tr></table></figure></p>
+<p>大概是说 完全相同的请求间隔数毫秒(太短),导致加载失败,查看了chrome控制台发现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http://ngmusic.coding.io/null</span><br><span class="line">http://ngmusic.coding.io/serverget?url=http%3A%2F%2Ffile.qianqian.com.....</span><br><span class="line">都有 Provisional headers are shown</span><br></pre></td></tr></table></figure></p>
 <p><img src="/img/chrome/3.png" alt="error"><br><img src="/img/chrome/4.png" alt="error"></p>
 <p>猜想是因为 <code>http://...../null</code> 加载失败 导致 <code>http://..../serverget?url=http%3A%2F%2Ffile.qianqian.com.....</code>的缓存请求也失败(阻塞)</p>
-<p>故将上面 <code>null</code> 加载去掉<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// _audio.src = null;</span></div><div class="line"><span class="comment">// _audio.load();</span></div></pre></td></tr></table></figure></p>
+<p>故将上面 <code>null</code> 加载去掉<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// _audio.src = null;</span></span><br><span class="line"><span class="comment">// _audio.load();</span></span><br></pre></td></tr></table></figure></p>
 <p>经过测试,发现的确从缓存中获取了~~~<br><img src="/img/chrome/2.png" alt="error"></p>
 <h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p><code>Provisional headers are shown</code><br>出现在 载入缓存资源,请求没有被发送, 而如果上一个资源加载失败,可能导致从缓存加载的资源失败,<br>即缓存资源请求之前的请求不能失败,不然就有可能出现问题</p>
 <p>至此,终于搞定了这个渣问题!!!!!!!!!!!!!!!!!!!!!!</p>
 <h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
-<li><a href="http://stackoverflow.com/questions/21177387/caution-provisional-headers-are-shown-in-chrome-debugger" target="_blank" rel="external">http://stackoverflow.com/questions/21177387/caution-provisional-headers-are-shown-in-chrome-debugger</a></li>
-<li><a href="https://code.google.com/p/chromium/issues/detail?id=327581" target="_blank" rel="external">https://code.google.com/p/chromium/issues/detail?id=327581</a></li>
-<li><a href="http://stackoverflow.com/questions/21177387/caution-provisional-headers-are-shown-in-chrome-debugger" target="_blank" rel="external">http://stackoverflow.com/questions/21177387/caution-provisional-headers-are-shown-in-chrome-debugger</a>  </li>
-<li><a href="http://segmentfault.com/q/1010000000364871" target="_blank" rel="external">http://segmentfault.com/q/1010000000364871</a>  </li>
+<li><a href="http://stackoverflow.com/questions/21177387/caution-provisional-headers-are-shown-in-chrome-debugger" target="_blank" rel="noopener">http://stackoverflow.com/questions/21177387/caution-provisional-headers-are-shown-in-chrome-debugger</a></li>
+<li><a href="https://code.google.com/p/chromium/issues/detail?id=327581" target="_blank" rel="noopener">https://code.google.com/p/chromium/issues/detail?id=327581</a></li>
+<li><a href="http://stackoverflow.com/questions/21177387/caution-provisional-headers-are-shown-in-chrome-debugger" target="_blank" rel="noopener">http://stackoverflow.com/questions/21177387/caution-provisional-headers-are-shown-in-chrome-debugger</a>  </li>
+<li><a href="http://segmentfault.com/q/1010000000364871" target="_blank" rel="noopener">http://segmentfault.com/q/1010000000364871</a>  </li>
 </ul>
 <hr>
 <blockquote>
