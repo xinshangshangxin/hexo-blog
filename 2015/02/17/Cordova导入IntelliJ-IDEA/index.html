@@ -316,7 +316,6 @@
         labels = labels.split(",");
 
         var config = {
-            id: window.location.pathname,
             owner: 'xinshangshangxin',
             repo: 'blog-gitment',
             oauth: {
@@ -325,6 +324,9 @@
             },
             labels: labels
         };
+
+        var arr = window.location.pathname.spilt('/');
+        config.id = arr[arr.length - 1];
 
         console.info('config: ', config);
 
