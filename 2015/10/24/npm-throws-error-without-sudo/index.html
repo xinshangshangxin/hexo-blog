@@ -269,19 +269,28 @@
     </div>
 
 
+    
+
     <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
     <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
     <script>
+        var labels = "blog,gitment";
+        labels = labels.split(",");
+
         var gitment = new Gitment({
+            id: window.location.pathname,
             owner: 'xinshangshangxin',
             repo: 'blog-gitment',
             oauth: {
                 client_id: 'd2f53ee531b054a74c54',
-                client_secret: '7647cfe98b79b4e7d13dff9cb857ed481f4aeecf',
+                client_secret: '7647cfe98b79b4e7d13dff9cb857ed481f4aeecf'
             },
+            labels: labels
         })
         gitment.render('blog-gitment')
     </script>
+
+    
 </section>
 
 
