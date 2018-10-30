@@ -1593,7 +1593,7 @@
         };
 
         var arr = window.location.pathname.split('/');
-        config.id = arr[arr.length - 1];
+        config.id = arr.slice(-2).join('');
 
         console.info('config: ', config);
 
