@@ -187,6 +187,49 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
+                    <h3><a href="/2015/06/06/Docker学习笔记-1/">Docker学习笔记(1)</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2015-06-06T08:07:23.000Z" itemprop="datePublished">
+          2015年06月6日
+      </time>
+    
+    
+    | 
+    <a href='/tags/docker/'>docker</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        FROM 基础镜像MAINTAINER 维护者ENV 环境变量
+
+docker 复制文件 ADD COPY
+
+ADD 可以获取网络地址以及解压功能COPY 本地文件
+RUN 运行指令,每运行一条指令增加一层
+EXPOSE 22   container暴露22端口
+ENTRYPOINT 镜像启动后自动执行的命令
+build  使用docker file生成docker镜像// -t 起名字// dockerfile_path如果为当前目录
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2015/06/06/Docker学习笔记-1/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
                     <h3><a href="/2015/06/01/DaoCloud部署Node/">DaoCloud部署Node</a></h3>
                     <span>
                         <span class="post-meta">
@@ -554,51 +597,6 @@ JS-SDK 说明文档http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd61
                     
                     <p class="pull-right readMore">
                         <a href="/2015/04/20/解决provisional-headers-are-shown的过程/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/04/16/Nginx配置proxy-pass路径问题/">Nginx配置proxy_pass路径问题</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-04-16T10:15:21.000Z" itemprop="datePublished">
-          2015年04月16日
-      </time>
-    
-    
-    | 
-    <a href='/tags/nginx/'>nginx</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        
-proxy_pass后的url最后的/当加上了/，相当于是绝对根路径，则nginx不会把location中匹配的路径部分代理走如果没有/，则会把匹配的路径部分也给代理走
-
-
-假设请求url: http://servername/node/index.html
-
-
-配置:123location /node/  &#123;    proxy_pass http://127.0.0.1:1339/;&#125;
-
-
-代理url(实际url
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/04/16/Nginx配置proxy-pass路径问题/">Read More...</a>
                     </p>
                     
                 </div>

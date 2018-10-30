@@ -187,6 +187,47 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
+                    <h3><a href="/2016/01/07/cygwin-npm-error/">在cygwin中npm安装git packages 失败</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-01-07T01:17:22.000Z" itemprop="datePublished">
+          2016年01月7日
+      </time>
+    
+    
+    | 
+    <a href='/tags/cygwin/'>cygwin</a>,
+    
+    <a href='/tags/npm/'>npm</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        原因
+npm 官方不支持在cygwin中安装
+
+解决方案替换 node_modules\npm\lib\utils\git.js 为下面内容
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859// handle some git configuration for win
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/01/07/cygwin-npm-error/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
                     <h3><a href="/2015/12/17/angular-form/">angular 使用 multipart/form-data 上传文件, sails.js 接收文件</a></h3>
                     <span>
                         <span class="post-meta">
@@ -588,44 +629,6 @@ http://blog.csdn.net/yabusai/article/details/37690783
                     
                     <p class="pull-right readMore">
                         <a href="/2015/10/03/Agreeing-to-the-Xcode-iOS-license-requires-admin-privileges/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/09/29/promise-problem/">[转]promises 很酷，但很多人并没有理解就在用了</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-09-29T05:55:30.000Z" itemprop="datePublished">
-          2015年09月29日
-      </time>
-    
-    
-    | 
-    <a href='/tags/js/'>js</a>,
-    
-    <a href='/tags/promise/'>promise</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        JavaScript 开发者们，是时候承认了，我们在使用promises的时候，会写出许多有问题的promises代码.但并不是 promises本身有问题，被A+ 标准,定义的promises 是极好的  
- 在过去的几年中，笔者看到了很多程序员在调用PouchDB或者其他promise化的API时遇到了很多困难。这让笔者认识到，在JavaScript程序员之中，只有少数人是真正理解了promise规范的。如果你觉得这不可思议，那么考
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/09/29/promise-problem/">Read More...</a>
                     </p>
                     
                 </div>

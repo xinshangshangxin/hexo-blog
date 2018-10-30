@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>[转] typescript 2.7 编译选项详解 | SHANG Blog</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="SHANG Blog">
+    <meta name="author" content="xinshangshangxin">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="SHANG Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/tomorrow-night-eighties.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="javascript:;" class="popup-trigger" title="Search"><span class="search-icon"></span>SEARCH</a></li>
+            
+
+            <li><a href="/tags" class="animsition-link" title="archive">TAGS</a></li>
+
+            <!-- <li><a href="/about.html" class="animsition-link" title="about">About</a></li> -->
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.jpeg" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+                            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+                            
+                                <li><a href="javascript:;" class="popup-trigger" title="Search"><span class="search-icon"></span>Search</a></li>
+                            
+
+                            <li><a href="/tags" class="animsition-link" title="archive">tags</a></li>
+
+                            <!-- <li><a href="/about.html" class="animsition-link" title="about">About</a></li> -->
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+                            
+                            <li><a href="https://github.com/xinshangshangxin" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2018-10-30T06:50:36.000Z" itemprop="datePublished">
+          2018年10月30日
+      </time>
+    
+    
+    | 
+    <a href='/tags/typescript/'>typescript</a>,
+    
+    <a href='/tags/转/'>转</a>
+    
+    
+</span>
+                <h1 style="margin-top: 0!important">[转] typescript 2.7 编译选项详解</h1>
+            </div>
+        </div>
+        <div class="col-md-12">
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#allowJs"><span class="post-toc-number">1.</span> <span class="post-toc-text">allowJs</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#allowSyntheticDefaultImports"><span class="post-toc-number">2.</span> <span class="post-toc-text">allowSyntheticDefaultImports</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#allowUnreachableCode"><span class="post-toc-number">3.</span> <span class="post-toc-text">allowUnreachableCode</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#allowUnusedLabels"><span class="post-toc-number">4.</span> <span class="post-toc-text">allowUnusedLabels</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#alwaysStrict"><span class="post-toc-number">5.</span> <span class="post-toc-text">alwaysStrict</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#baseUrl"><span class="post-toc-number">6.</span> <span class="post-toc-text">baseUrl</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#charset"><span class="post-toc-number">7.</span> <span class="post-toc-text">charset</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#checkJs"><span class="post-toc-number">8.</span> <span class="post-toc-text">checkJs</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#declaration-和-declarationDir"><span class="post-toc-number">9.</span> <span class="post-toc-text">declaration 和 declarationDir</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#diagnostics"><span class="post-toc-number">10.</span> <span class="post-toc-text">diagnostics</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#disableSizeLimit"><span class="post-toc-number">11.</span> <span class="post-toc-text">disableSizeLimit</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#downlevelIteration"><span class="post-toc-number">12.</span> <span class="post-toc-text">downlevelIteration</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#emitBOM"><span class="post-toc-number">13.</span> <span class="post-toc-text">emitBOM</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#esModuleInterop"><span class="post-toc-number">14.</span> <span class="post-toc-text">esModuleInterop</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#forceConsistentCasingInFileNames"><span class="post-toc-number">15.</span> <span class="post-toc-text">forceConsistentCasingInFileNames</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#experimentalDecorators"><span class="post-toc-number">16.</span> <span class="post-toc-text">experimentalDecorators</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#importHelpers"><span class="post-toc-number">17.</span> <span class="post-toc-text">importHelpers</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#inlineSourceMap"><span class="post-toc-number">18.</span> <span class="post-toc-text">inlineSourceMap</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#inlineSources"><span class="post-toc-number">19.</span> <span class="post-toc-text">inlineSources</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#isolatedModules"><span class="post-toc-number">20.</span> <span class="post-toc-text">isolatedModules</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#jsx"><span class="post-toc-number">21.</span> <span class="post-toc-text">jsx</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#jsxFactory"><span class="post-toc-number">22.</span> <span class="post-toc-text">jsxFactory</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#lib"><span class="post-toc-number">23.</span> <span class="post-toc-text">lib</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#listEmittedFiles"><span class="post-toc-number">24.</span> <span class="post-toc-text">listEmittedFiles</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#locale"><span class="post-toc-number">25.</span> <span class="post-toc-text">locale</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sourceMap-mapRoot-和-sourceRoot"><span class="post-toc-number">26.</span> <span class="post-toc-text">sourceMap, mapRoot 和 sourceRoot</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#maxNodeModuleJsDepth"><span class="post-toc-number">27.</span> <span class="post-toc-text">maxNodeModuleJsDepth</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#module"><span class="post-toc-number">28.</span> <span class="post-toc-text">module</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#target"><span class="post-toc-number">29.</span> <span class="post-toc-text">target</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#moduleResolution"><span class="post-toc-number">30.</span> <span class="post-toc-text">moduleResolution</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#newLine"><span class="post-toc-number">31.</span> <span class="post-toc-text">newLine</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#noEmit"><span class="post-toc-number">32.</span> <span class="post-toc-text">noEmit</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#noEmitOnError"><span class="post-toc-number">33.</span> <span class="post-toc-text">noEmitOnError</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#noErrorTruncation"><span class="post-toc-number">34.</span> <span class="post-toc-text">noErrorTruncation</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#noFallthroughCasesInSwitch"><span class="post-toc-number">35.</span> <span class="post-toc-text">noFallthroughCasesInSwitch</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#noImplicitAny-noImplicitReturns-noImplicitThis-and-noImplicitUseStrict"><span class="post-toc-number">36.</span> <span class="post-toc-text">noImplicitAny, noImplicitReturns, noImplicitThis and noImplicitUseStrict</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#noLib"><span class="post-toc-number">37.</span> <span class="post-toc-text">noLib</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#noResolve"><span class="post-toc-number">38.</span> <span class="post-toc-text">noResolve</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#noStrictGenericChecks"><span class="post-toc-number">39.</span> <span class="post-toc-text">noStrictGenericChecks</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#noUnusedLocals-noUnusedParameters"><span class="post-toc-number">40.</span> <span class="post-toc-text">noUnusedLocals, noUnusedParameters</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#outDir-outFile"><span class="post-toc-number">41.</span> <span class="post-toc-text">outDir, outFile</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#paths"><span class="post-toc-number">42.</span> <span class="post-toc-text">paths</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#preserveConstEnums"><span class="post-toc-number">43.</span> <span class="post-toc-text">preserveConstEnums</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#preserveSymlinks"><span class="post-toc-number">44.</span> <span class="post-toc-text">preserveSymlinks</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pretty"><span class="post-toc-number">45.</span> <span class="post-toc-text">pretty</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#project"><span class="post-toc-number">46.</span> <span class="post-toc-text">project</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#removeComments"><span class="post-toc-number">47.</span> <span class="post-toc-text">removeComments</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rootDir"><span class="post-toc-number">48.</span> <span class="post-toc-text">rootDir</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rootDirs"><span class="post-toc-number">49.</span> <span class="post-toc-text">rootDirs</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#skipLibCheck"><span class="post-toc-number">50.</span> <span class="post-toc-text">skipLibCheck</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#strict"><span class="post-toc-number">51.</span> <span class="post-toc-text">strict</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#strictFunctionTypes-strictPropertyInitialization-strictNullChecks"><span class="post-toc-number">52.</span> <span class="post-toc-text">strictFunctionTypes, strictPropertyInitialization, strictNullChecks</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#stripInternal"><span class="post-toc-number">53.</span> <span class="post-toc-text">stripInternal</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#suppressExcessPropertyErrors"><span class="post-toc-number">54.</span> <span class="post-toc-text">suppressExcessPropertyErrors</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#suppressImplicitAnyIndexErrors"><span class="post-toc-number">55.</span> <span class="post-toc-text">suppressImplicitAnyIndexErrors</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#traceResolution"><span class="post-toc-number">56.</span> <span class="post-toc-text">traceResolution</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#types-typeRoots"><span class="post-toc-number">57.</span> <span class="post-toc-text">types, typeRoots</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#emitDecoratorMetadata"><span class="post-toc-number">58.</span> <span class="post-toc-text">emitDecoratorMetadata</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#转载"><span class="post-toc-number">59.</span> <span class="post-toc-text">转载</span></a></li></ol>
+            
+
+      		<p>typescript的编译选项一堆，微软爸爸写文档又马马虎虎 😂,  所以官方文档本身就不清不楚，似乎还有错误的地方。本文对各个选项进行实测，以期理解其含义以及每个选项会对编译或生成代码的影响。</p>
+<p>typescript版本 2.7.2, 参考<a href="https://www.typescriptlang.org/docs/handbook/compiler-options.html" target="_blank" rel="noopener">官方文档</a>。</p>
+<p>test code: <a href="https://github.com/njleonzhang/typescript-options" target="_blank" rel="noopener">https://github.com/njleonzhang/typescript-options</a></p>
+<h2 id="allowJs"><a href="#allowJs" class="headerlink" title="allowJs"></a>allowJs</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–allowJs</td>
+<td>boolean</td>
+<td>false</td>
+<td>Allow JavaScript files to be compiled.</td>
+</tr>
+</tbody>
+</table>
+<p>是否会去编译<code>js</code>文件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// leon.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> author = <span class="string">'leon'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; author &#125; <span class="keyword">from</span> <span class="string">'./leon'</span></span><br><span class="line"><span class="built_in">console</span>.log(author);</span><br></pre></td></tr></table></figure>
+<p>allowJs设置为true的时候，生成的文件里会包含<code>leon.js</code>编译之后的版本，否则不会。</p>
+<h2 id="allowSyntheticDefaultImports"><a href="#allowSyntheticDefaultImports" class="headerlink" title="allowSyntheticDefaultImports"></a>allowSyntheticDefaultImports</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–allowSyntheticDefaultImports</td>
+<td>boolean</td>
+<td>module === “system” or –esModuleInterop</td>
+<td>Allow default imports from modules with no default export. This does not affect code emit, just typechecking.</td>
+</tr>
+</tbody>
+</table>
+<p>直接翻译过来是：是否允许从没有default导出的模块中导入default。不影响代码的编译结果，只影响typechecking。</p>
+<p>实际测试，似乎没什么作用. 可能我理解不对</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// leon.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> author = <span class="string">'leon'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.ts</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> leon <span class="keyword">from</span> <span class="string">'./leon'</span> <span class="comment">// 这句选项怎么变都对</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(leon.author);</span><br></pre></td></tr></table></figure>
+<h2 id="allowUnreachableCode"><a href="#allowUnreachableCode" class="headerlink" title="allowUnreachableCode"></a>allowUnreachableCode</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–allowUnreachableCode</td>
+<td>boolean</td>
+<td>false</td>
+<td>Do not report errors on unreachable code.</td>
+</tr>
+</tbody>
+</table>
+<p>无法到达的代码，是否报错。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">1000</span>  <span class="comment">// error TS7027: Unreachable code detected.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="allowUnusedLabels"><a href="#allowUnusedLabels" class="headerlink" title="allowUnusedLabels"></a>allowUnusedLabels</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–allowUnusedLabels</td>
+<td>boolean</td>
+<td>false</td>
+<td>Do not report errors on unused labels.</td>
+</tr>
+</tbody>
+</table>
+<p>无用的标签，是否报错</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">loop1:</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">   loop2:         <span class="comment">// error TS7028: Unused label</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (i == <span class="number">1</span> &amp;&amp; j == <span class="number">1</span>) &#123;</span><br><span class="line">         <span class="keyword">continue</span> loop1;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"i = "</span> + i + <span class="string">", j = "</span> + j);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="alwaysStrict"><a href="#alwaysStrict" class="headerlink" title="alwaysStrict"></a>alwaysStrict</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–alwaysStrict</td>
+<td>boolean</td>
+<td>false</td>
+<td>Parse in strict mode and emit “use strict” for each source file</td>
+</tr>
+</tbody>
+</table>
+<p>用严格模式来解析ts代码，并生成严格模式的js代码<br>关于严格模式参考<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Strict_mode" target="_blank" rel="noopener">MDN的文档</a><br>官方文档说默认值是false, 实测默认值是<code>true</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tsc index.ts</span></span><br><span class="line"><span class="keyword">var</span> sum = <span class="number">015</span>  <span class="comment">// error TS1121: Octal literals are not allowed in strict mode.</span></span><br><span class="line">+ <span class="number">197</span></span><br><span class="line">+ <span class="number">142</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="baseUrl"><a href="#baseUrl" class="headerlink" title="baseUrl"></a>baseUrl</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–baseUrl</td>
+<td>string</td>
+<td></td>
+<td>Base directory to resolve non-relative module names. See Module Resolution documentation for more details.</td>
+</tr>
+</tbody>
+</table>
+<p>解析非相对模块名的基准目录。查看模块解析文档了解详情。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.ts</span></span><br><span class="line"><span class="keyword">import</span> test <span class="keyword">from</span> <span class="string">'test'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test.ts</span></span><br><span class="line"><span class="keyword">let</span> test = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> test</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="attr">"baseUrl"</span>: <span class="string">"."</span> // 没有这句，则 error TS2307: Cannot find module 'test'.</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="charset"><a href="#charset" class="headerlink" title="charset"></a>charset</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–charset</td>
+<td>string</td>
+<td>“utf8”</td>
+<td>The character set of the input files.</td>
+</tr>
+</tbody>
+</table>
+<p>指定输入文件的编码方式。（一般指ts文件）</p>
+<h2 id="checkJs"><a href="#checkJs" class="headerlink" title="checkJs"></a>checkJs</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–checkJs</td>
+<td>boolean</td>
+<td>false</td>
+<td>Report errors in .js files. Use in conjunction with –allowJs.</td>
+</tr>
+</tbody>
+</table>
+<p>和allowjs一起使用，js文件里有错误的时候，是否报错。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// -- checkJs true</span></span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; a &#125; <span class="keyword">from</span> <span class="string">'test'</span></span><br><span class="line"></span><br><span class="line">a(<span class="string">'1324'</span>) <span class="comment">// error TS2345: Argument of type '"1324"' is not assignable to parameter of type 'number'.</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">i: number</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> i</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="declaration-和-declarationDir"><a href="#declaration-和-declarationDir" class="headerlink" title="declaration 和 declarationDir"></a>declaration 和 declarationDir</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–declaration <br> -d</td>
+<td>boolean</td>
+<td>false</td>
+<td>Generates corresponding .d.ts file.</td>
+</tr>
+<tr>
+<td>–declarationDir</td>
+<td>string</td>
+<td></td>
+<td>Output directory for generated declaration files.</td>
+</tr>
+</tbody>
+</table>
+<p><code>declaration</code>指是否生成<code>.d.ts</code>文件.<br><code>declarationDir</code>指定生成的<code>.d.ts</code>文件的目录</p>
+<h2 id="diagnostics"><a href="#diagnostics" class="headerlink" title="diagnostics"></a>diagnostics</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–diagnostics</td>
+<td>boolean</td>
+<td>false</td>
+<td>Show diagnostic information.</td>
+</tr>
+</tbody>
+</table>
+<p>显示诊断信息</p>
+<p>设置为true的时候，会生成类似下面的诊断报告：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Files:            <span class="number">2</span></span><br><span class="line">Lines:        <span class="number">19890</span></span><br><span class="line">Nodes:        <span class="number">91623</span></span><br><span class="line">Identifiers:  <span class="number">31621</span></span><br><span class="line">Symbols:      <span class="number">24094</span></span><br><span class="line">Types:         <span class="number">6581</span></span><br><span class="line">Memory used: <span class="number">60631</span>K</span><br><span class="line">I/O read:     <span class="number">0.00</span>s</span><br><span class="line">I/O write:    <span class="number">0.00</span>s</span><br><span class="line">Parse time:   <span class="number">0.29</span>s</span><br><span class="line">Bind time:    <span class="number">0.12</span>s</span><br><span class="line">Check time:   <span class="number">0.80</span>s</span><br><span class="line">Emit time:    <span class="number">0.02</span>s</span><br><span class="line">Total time:   <span class="number">1.23</span>s</span><br></pre></td></tr></table></figure>
+<h2 id="disableSizeLimit"><a href="#disableSizeLimit" class="headerlink" title="disableSizeLimit"></a>disableSizeLimit</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–disableSizeLimit</td>
+<td>boolean</td>
+<td>false</td>
+<td>Disable size limitation on JavaScript project.</td>
+</tr>
+</tbody>
+</table>
+<p>禁用JavaScript工程体积大小的限制。</p>
+<blockquote>
+<p>不懂啥意思，也不知道有啥用 :-(</p>
+</blockquote>
+<h2 id="downlevelIteration"><a href="#downlevelIteration" class="headerlink" title="downlevelIteration"></a>downlevelIteration</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–downlevelIteration</td>
+<td>boolean</td>
+<td>false</td>
+<td>Provide full support for iterables in for..of, spread and destructuring when targeting ES5 or ES3.</td>
+</tr>
+</tbody>
+</table>
+<p>在生成目标代码为es5或者es3的时候，提供对 for..of, spread and destructuring语法的支持。</p>
+<blockquote>
+<p>相当于提供polyfill</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = [<span class="number">4</span>, ...a]</span><br></pre></td></tr></table></figure>
+<p>此选项为false时，转换为<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> b = [<span class="number">4</span>].concat(a);</span><br></pre></td></tr></table></figure></p>
+<p>此选项为true时，转换成:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> __read = (<span class="keyword">this</span> &amp;&amp; <span class="keyword">this</span>.__read) || <span class="function"><span class="keyword">function</span> (<span class="params">o, n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> m = <span class="keyword">typeof</span> <span class="built_in">Symbol</span> === <span class="string">"function"</span> &amp;&amp; o[<span class="built_in">Symbol</span>.iterator];</span><br><span class="line">    <span class="keyword">if</span> (!m) <span class="keyword">return</span> o;</span><br><span class="line">    <span class="keyword">var</span> i = m.call(o), r, ar = [], e;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> ((n === <span class="keyword">void</span> <span class="number">0</span> || n-- &gt; <span class="number">0</span>) &amp;&amp; !(r = i.next()).done) ar.push(r.value);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (error) &#123; e = &#123; <span class="attr">error</span>: error &#125;; &#125;</span><br><span class="line">    <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (r &amp;&amp; !r.done &amp;&amp; (m = i[<span class="string">"return"</span>])) m.call(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">finally</span> &#123; <span class="keyword">if</span> (e) <span class="keyword">throw</span> e.error; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ar;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> __spread = (<span class="keyword">this</span> &amp;&amp; <span class="keyword">this</span>.__spread) || <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> ar = [], i = <span class="number">0</span>; i &lt; <span class="built_in">arguments</span>.length; i++) ar = ar.concat(__read(<span class="built_in">arguments</span>[i]));</span><br><span class="line">    <span class="keyword">return</span> ar;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> b = __spread([<span class="number">4</span>], a);</span><br></pre></td></tr></table></figure></p>
+<h2 id="emitBOM"><a href="#emitBOM" class="headerlink" title="emitBOM"></a>emitBOM</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–emitBOM</td>
+<td>boolean</td>
+<td>false</td>
+<td>Emit a UTF-8 Byte Order Mark (BOM) in the beginning of output files.</td>
+</tr>
+</tbody>
+</table>
+<p>生成的文件是否要带BOM头</p>
+<h2 id="esModuleInterop"><a href="#esModuleInterop" class="headerlink" title="esModuleInterop"></a>esModuleInterop</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–esModuleInterop</td>
+<td>boolean</td>
+<td>false</td>
+<td>Emit <strong>importStar and </strong>importDefault helpers for runtime babel ecosystem compatibility and enable –allowSyntheticDefaultImports for typesystem compatibility.</td>
+</tr>
+</tbody>
+</table>
+<p>生成的文件会为兼容babel而添加<code>__importStar</code>和<code>__importDefault</code>的helper.<br>这个选项会把<code>allowSyntheticDefaultImports</code>设置成true.</p>
+<blockquote>
+<p>类似<code>allowSyntheticDefaultImports</code>选项，实测这个选项为true和false并不影响生成的代码。具体什么情况会影响不太清楚。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> a = <span class="number">100</span></span><br><span class="line"><span class="keyword">let</span> b = <span class="number">200</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> a</span><br></pre></td></tr></table></figure>
+<p>加不加这个选项，都生成如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line">exports.__esModule = <span class="literal">true</span>;</span><br><span class="line">exports.a = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">200</span>;</span><br><span class="line">exports[<span class="string">"default"</span>] = exports.a;</span><br></pre></td></tr></table></figure>
+<h2 id="forceConsistentCasingInFileNames"><a href="#forceConsistentCasingInFileNames" class="headerlink" title="forceConsistentCasingInFileNames"></a>forceConsistentCasingInFileNames</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–forceConsistentCasingInFileNames</td>
+<td>boolean</td>
+<td>false</td>
+<td>Disallow inconsistently-cased references to the same file.</td>
+</tr>
+</tbody>
+</table>
+<p>是否在导入文件的时候需要保证大小写一致。</p>
+<blockquote>
+<p>和文件名是否一致不重要，但多次导入的时候大小写一定要一致。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Test.ts</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> a</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> a <span class="keyword">from</span> <span class="string">'./test'</span> <span class="comment">// 导入小写，没问题</span></span><br><span class="line"><span class="keyword">import</span> b <span class="keyword">from</span> <span class="string">'./Test'</span> <span class="comment">// 再导入大写，报错。 error TS1149: File name '/Users/leon/Documents/git/typescript-options/forceConsistentCasingInFileNames/Test.ts' differs from already included file name '/Users/leon/Documents/git/typescript-options/forceConsistentCasingInFileNames/test.ts' only in casing.</span></span><br></pre></td></tr></table></figure>
+<h2 id="experimentalDecorators"><a href="#experimentalDecorators" class="headerlink" title="experimentalDecorators"></a>experimentalDecorators</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–experimentalDecorators</td>
+<td>boolean</td>
+<td>false</td>
+<td>Enables experimental support for ES decorators.</td>
+</tr>
+</tbody>
+</table>
+<p>启动实验的装饰器功能。</p>
+<h2 id="importHelpers"><a href="#importHelpers" class="headerlink" title="importHelpers"></a>importHelpers</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–importHelpers</td>
+<td>boolean</td>
+<td>false</td>
+<td>Import emit helpers (e.g. <strong>extends, </strong>rest, etc..) from tslib</td>
+</tr>
+</tbody>
+</table>
+<p>是否从tslib里导入<strong>extends, </strong>rest等helper函数</p>
+<blockquote>
+<p>这个选项似乎已经没有什么用了。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> b = &#123;</span><br><span class="line">  name: <span class="string">'leon'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">  age: <span class="number">10</span>,</span><br><span class="line">  ...b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>无论此项如何设置，始终会转换成：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> __assign = (<span class="keyword">this</span> &amp;&amp; <span class="keyword">this</span>.__assign) || <span class="built_in">Object</span>.assign || <span class="function"><span class="keyword">function</span>(<span class="params">t</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> s, i = <span class="number">1</span>, n = <span class="built_in">arguments</span>.length; i &lt; n; i++) &#123;</span><br><span class="line">        s = <span class="built_in">arguments</span>[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> p <span class="keyword">in</span> s) <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(s, p))</span><br><span class="line">            t[p] = s[p];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> b = &#123;</span><br><span class="line">    name: <span class="string">'leon'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> a = __assign(&#123; <span class="attr">age</span>: <span class="number">10</span> &#125;, b);</span><br></pre></td></tr></table></figure></p>
+<h2 id="inlineSourceMap"><a href="#inlineSourceMap" class="headerlink" title="inlineSourceMap"></a>inlineSourceMap</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–inlineSourceMap</td>
+<td>boolean</td>
+<td>false</td>
+<td>Emit a single file with source maps instead of having a separate file.</td>
+</tr>
+</tbody>
+</table>
+<p>是否生成inline的source map</p>
+<p>上栗中的代码，加本选项编译，文件末尾会多出sourcemap:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//# sourceMappingURL= xxxxxxx</span></span><br></pre></td></tr></table></figure>
+<h2 id="inlineSources"><a href="#inlineSources" class="headerlink" title="inlineSources"></a>inlineSources</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–inlineSourceMap</td>
+<td>boolean</td>
+<td>false</td>
+<td>Emit the source alongside the sourcemaps within a single file; requires –inlineSourceMap or –sourceMap to be set.</td>
+</tr>
+</tbody>
+</table>
+<p>将代码与sourcemaps生成到一个文件中。</p>
+<p>上栗中的代码，在加上此项进行编译，同样会在文件结尾加上sourceMappingURL，但生成的内容不同。暂时不太明白有什么实际上的区别。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sourceMappingURL = xxxxx</span><br></pre></td></tr></table></figure>
+<h2 id="isolatedModules"><a href="#isolatedModules" class="headerlink" title="isolatedModules"></a>isolatedModules</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–isolatedModules</td>
+<td>boolean</td>
+<td>false</td>
+<td>Transpile each file as a separate module (similar to “ts.transpileModule”).</td>
+</tr>
+</tbody>
+</table>
+<p>将每个文件当做一个独立的模块来转义<br>每个文件都需要是一个模块</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.ts</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// error TS1208: Cannot compile namespaces when the '--isolatedModules' flag is provided.</span></span><br></pre></td></tr></table></figure>
+<p>另外次选项不能和<code>declaration</code>一起使用, 不太想的明白为什么 😂</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error TS5053: Option <span class="string">'declaration'</span> cannot be specified <span class="keyword">with</span> option <span class="string">'isolatedModules'</span>.</span><br></pre></td></tr></table></figure>
+<h2 id="jsx"><a href="#jsx" class="headerlink" title="jsx"></a>jsx</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–jsx</td>
+<td>string</td>
+<td>“Preserve”</td>
+<td>Support JSX in .tsx files: “React” or “Preserve”. See JSX.</td>
+</tr>
+</tbody>
+</table>
+<p>是否对jsx进行转换。一般不转译，把这个工作推迟给babel.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;text&gt;a&lt;<span class="regexp">/text&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>编译：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// --jsx "React"</span></span><br><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line">exports.__esModule = <span class="literal">true</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (React.createElement(<span class="string">"text"</span>, <span class="literal">null</span>, <span class="string">"a"</span>));</span><br><span class="line">&#125;</span><br><span class="line">exports.a = a;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// --jsx "Preserve"</span></span><br><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line">exports.__esModule = <span class="literal">true</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (&lt;text&gt;a&lt;/text&gt;);</span><br><span class="line">&#125;</span><br><span class="line">exports.a = a;</span><br></pre></td></tr></table></figure>
+<h2 id="jsxFactory"><a href="#jsxFactory" class="headerlink" title="jsxFactory"></a>jsxFactory</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–jsxFactory</td>
+<td>string</td>
+<td>“React.createElement”</td>
+<td>Specify the JSX factory function to use when targeting react JSX emit, e.g. React.createElement or h.</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;text&gt;a&lt;<span class="regexp">/text&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>编译：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// --jsx "React" --jsxFactory h</span></span><br><span class="line"><span class="comment">// 请与上个例子对比。</span></span><br><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line">exports.__esModule = <span class="literal">true</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (h(<span class="string">"text"</span>, <span class="literal">null</span>, <span class="string">"a"</span>));</span><br><span class="line">&#125;</span><br><span class="line">exports.a = a;</span><br></pre></td></tr></table></figure>
+<h2 id="lib"><a href="#lib" class="headerlink" title="lib"></a>lib</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–lib</td>
+<td>string[]</td>
+<td></td>
+<td>List of library files to be included in the compilation.<br>Possible values are:  <br>► <code>ES5</code> <br>► <code>ES6</code> <br>► <code>ES2015</code> <br>► <code>ES7</code> <br>► <code>ES2016</code> <br>► <code>ES2017</code> <br>► <code>ESNext</code> <br>► <code>DOM</code> <br>► <code>DOM.Iterable</code> <br>► <code>WebWorker</code> <br>► <code>ScriptHost</code> <br>► <code>ES2015.Core</code> <br>► <code>ES2015.Collection</code> <br>► <code>ES2015.Generator</code> <br>► <code>ES2015.Iterable</code> <br>► <code>ES2015.Promise</code> <br>► <code>ES2015.Proxy</code> <br>► <code>ES2015.Reflect</code> <br>► <code>ES2015.Symbol</code> <br>► <code>ES2015.Symbol.WellKnown</code> <br>► <code>ES2016.Array.Include</code> <br>► <code>ES2017.object</code> <br>► <code>ES2017.SharedMemory</code> <br>► <code>ES2017.TypedArrays</code> <br>► <code>esnext.asynciterable</code> <br>► <code>esnext.array</code> <br>► <code>esnext.promise</code> <br><br> Note: If <code>–lib</code> is not specified a default list of librares are injected. The default libraries injected are:  <br> ► For <code>–target ES5</code>: <code>DOM,ES5,ScriptHost</code><br>  ► For <code>–target ES6</code>: <code>DOM,ES6,DOM.Iterable,ScriptHost</code></td>
+</tr>
+</tbody>
+</table>
+<p>编译时，可以包括的库文件的列表。默认会inject一些库的定义。<br>会严重实际上是影响编译是否能成功。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> b = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="number">1</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tsc lib/index.ts --lib ES5</span></span><br><span class="line"><span class="comment">// error TS2693: 'Promise' only refers to a type, but is being used as a value here.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// tsc lib/index.ts --lib ES6</span></span><br><span class="line"><span class="comment">// build pass</span></span><br></pre></td></tr></table></figure>
+<h2 id="listEmittedFiles"><a href="#listEmittedFiles" class="headerlink" title="listEmittedFiles"></a>listEmittedFiles</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–listEmittedFiles</td>
+<td>boolean</td>
+<td>false</td>
+<td>Print names of generated files part of the compilation.</td>
+</tr>
+<tr>
+<td>–listFiles</td>
+<td>boolean</td>
+<td>false</td>
+<td>Print names of files part of the compilation.</td>
+</tr>
+</tbody>
+</table>
+<p>listEmittedFiles：列出编译生成文件<br>listFiles：列出参与编译的源文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// tsc lib/index.ts --lib ES6 --listEmittedFiles --listFiles</span><br><span class="line"></span><br><span class="line">// 生成的文件</span><br><span class="line">TSFILE: /Users/leon/Documents/git/typescript-options/lib/index.js</span><br><span class="line"></span><br><span class="line">// 参与编译的文件</span><br><span class="line">/Users/leon/.nvm/versions/node/v8.7.0/lib/node_modules/typescript/lib/lib.es2015.d.ts</span><br><span class="line">/Users/leon/.nvm/versions/node/v8.7.0/lib/node_modules/typescript/lib/lib.es5.d.ts</span><br><span class="line">/Users/leon/.nvm/versions/node/v8.7.0/lib/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts</span><br><span class="line">/Users/leon/.nvm/versions/node/v8.7.0/lib/node_modules/typescript/lib/lib.es2015.reflect.d.ts</span><br><span class="line">/Users/leon/.nvm/versions/node/v8.7.0/lib/node_modules/typescript/lib/lib.es2015.proxy.d.ts</span><br><span class="line">/Users/leon/.nvm/versions/node/v8.7.0/lib/node_modules/typescript/lib/lib.es2015.iterable.d.ts</span><br><span class="line">/Users/leon/.nvm/versions/node/v8.7.0/lib/node_modules/typescript/lib/lib.es2015.symbol.d.ts</span><br><span class="line">/Users/leon/.nvm/versions/node/v8.7.0/lib/node_modules/typescript/lib/lib.es2015.promise.d.ts</span><br><span class="line">/Users/leon/.nvm/versions/node/v8.7.0/lib/node_modules/typescript/lib/lib.es2015.generator.d.ts</span><br><span class="line">/Users/leon/.nvm/versions/node/v8.7.0/lib/node_modules/typescript/lib/lib.es2015.collection.d.ts</span><br><span class="line">/Users/leon/.nvm/versions/node/v8.7.0/lib/node_modules/typescript/lib/lib.es2015.core.d.ts</span><br><span class="line">lib/index.ts</span><br></pre></td></tr></table></figure>
+<p>从例子我们也能看出<code>--lib</code>的作用</p>
+<h2 id="locale"><a href="#locale" class="headerlink" title="locale"></a>locale</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–locale</td>
+<td>string</td>
+<td></td>
+<td>The locale to use to show error messages, e.g. en-us. <br>Possible values are:  <br>► English (US): <code>en</code> <br>► Czech: <code>cs</code> <br>► German: <code>de</code> <br>► Spanish: <code>es</code> <br>► French: <code>fr</code> <br>► Italian: <code>it</code> <br>► Japanese: <code>ja</code> <br>► Korean: <code>ko</code> <br>► Polish: <code>pl</code> <br>► Portuguese(Brazil): <code>pt-BR</code> <br>► Russian: <code>ru</code> <br>► Turkish: <code>tr</code> <br>► Simplified Chinese: <code>zh-CN</code>  <br>► Traditional Chinese: <code>zh-TW</code></td>
+</tr>
+</tbody>
+</table>
+<p>定义报错的message语言。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// --locale zh-CN</span><br><span class="line">error TS2693: “Promise”仅表示类型，但在此处却作为值使用。</span><br></pre></td></tr></table></figure>
+<h2 id="sourceMap-mapRoot-和-sourceRoot"><a href="#sourceMap-mapRoot-和-sourceRoot" class="headerlink" title="sourceMap, mapRoot 和 sourceRoot"></a>sourceMap, mapRoot 和 sourceRoot</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–sourceMap</td>
+<td>boolean</td>
+<td>false</td>
+<td>Generates corresponding .map file.</td>
+</tr>
+<tr>
+<td>–mapRoot</td>
+<td>string</td>
+<td></td>
+<td>Specifies the location where debugger should locate map files instead of generated locations. Use this flag if the .map files will be located at run-time in a different location than the .js files. The location specified will be embedded in the sourceMap to direct the debugger where the map files will be located.</td>
+</tr>
+<tr>
+<td>–sourceRoot</td>
+<td>string</td>
+<td></td>
+<td>Specifies the location where debugger should locate TypeScript files instead of source locations. Use this flag if the sources will be located at run-time in a different location than that at design-time. The location specified will be embedded in the sourceMap to direct the debugger where the source files will be located.</td>
+</tr>
+</tbody>
+</table>
+<p><code>sourceMap</code>: 生成sourceMap</p>
+<p><code>mapRoot</code>: 指定调试器去什么位置寻找 <code>map</code> 文件. 当运行时<code>.map</code> 文件和对应的 <code>.js</code> 文件不在同一位置时，需要使用本参数指定 <code>map</code> 的位置. 指定的位置会被内嵌到 <code>sourceMap</code> 中告诉调试器 <code>map</code> 文件所在的位置.<br><code>sourceRoot</code>: 指定调试器去什么位置寻找 <code>ts</code> 文件. 当运行时 <code>.map</code> 文件和对应的 <code>.js</code> 文件不在同一位置时，需要使用本参数指定 <code>map</code> 的位置. 指定的位置会被内嵌到 <code>sourceMap</code> 中告诉调试器 <code>ts</code> 文件所在的位置.</p>
+<blockquote>
+<p>用法猜测：对于商业代码，一般以会把map文件直接放出去，而会放到内网的某个地方，通过这个选项，可以帮助开发人员在内网去调试代码。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tsc lib/index.ts --sourceMap --mapRoot <span class="string">'\\10.32.0.1\map\1'</span></span><br><span class="line"></span><br><span class="line">xxx code xxxx</span><br><span class="line">//<span class="comment"># sourceMappingURL=//10.32.0.1/map/1/index.js.map</span></span><br></pre></td></tr></table></figure>
+<h2 id="maxNodeModuleJsDepth"><a href="#maxNodeModuleJsDepth" class="headerlink" title="maxNodeModuleJsDepth"></a>maxNodeModuleJsDepth</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–maxNodeModuleJsDepth</td>
+<td>number</td>
+<td>0</td>
+<td>The maximum dependency depth to search under node_modules and load JavaScript files. Only applicable with –allowJs.</td>
+</tr>
+</tbody>
+</table>
+<p>去 <code>node_modules</code> 里搜索代码的层级, 默认是0.</p>
+<p>按照这个说法，似乎默认情况下不应该应许去加载<code>node_modules</code>目录下的文件。但是事实上，默认情况下，<code>node_modules</code>下的模块是会被加载的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- maxNodeModuleJsDepth</span><br><span class="line">  - index.ts</span><br><span class="line">  - node_modules</span><br><span class="line">    - test1</span><br><span class="line">      - index.js</span><br><span class="line">      - node_modules</span><br><span class="line">        - test2</span><br><span class="line">          - index.js</span><br><span class="line"></span><br><span class="line"><span class="comment">// maxNodeModuleJsDepth/index.ts</span></span><br><span class="line"><span class="keyword">import</span> a <span class="keyword">from</span> <span class="string">'test1'</span> <span class="comment">// maxNodeModuleJsDepth设置成什么，这句总是对的</span></span><br><span class="line"><span class="keyword">import</span> b <span class="keyword">from</span> <span class="string">'test2'</span> <span class="comment">// 这句总是错的。</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>可能我的理解有误。</p>
+</blockquote>
+<h2 id="module"><a href="#module" class="headerlink" title="module"></a>module</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–module<br> -m</td>
+<td>string</td>
+<td>target === “ES3” or “ES5” ? “CommonJS” : “ES6”</td>
+<td>Specify module code generation: <code>“None”</code>, <code>“CommonJS”</code>, <code>“AMD”</code>, <code>“System”</code>, <code>“UMD”</code>, <code>“ES6”</code>, <code>“ES2015”</code> or <code>“ESNext”</code>.<br>► Only <code>“AMD”</code> and <code>“System”</code> can be used in conjunction with <code>–outFile</code>.<br>► <code>“ES6”</code> and <code>“ES2015”</code> values may be used when targeting <code>“ES5”</code> or lower.</td>
+</tr>
+</tbody>
+</table>
+<p>指定生成代码的模块格式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'hello'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// --module CommonJs</span></span><br><span class="line"></span><br><span class="line">exports.__esModule = <span class="literal">true</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'hello'</span>;</span><br><span class="line">&#125;</span><br><span class="line">exports.test = test;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// --module AMD</span></span><br><span class="line"></span><br><span class="line">define([<span class="string">"require"</span>, <span class="string">"exports"</span>], <span class="function"><span class="keyword">function</span> (<span class="params">require, exports</span>) </span>&#123;</span><br><span class="line"><span class="meta">    "use strict"</span>;</span><br><span class="line">    exports.__esModule = <span class="literal">true</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'hello'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    exports.test = test;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// -module system</span></span><br><span class="line">System.register([], <span class="function"><span class="keyword">function</span> (<span class="params">exports_1, context_1</span>) </span>&#123;</span><br><span class="line"><span class="meta">    "use strict"</span>;</span><br><span class="line">    <span class="keyword">var</span> __moduleName = context_1 &amp;&amp; context_1.id;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'hello'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    exports_1(<span class="string">"test"</span>, test);</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        setters: [],</span><br><span class="line">        execute: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// -module UMD</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">factory</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">module</span> === <span class="string">"object"</span> &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">module</span>.exports === <span class="string">"object"</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> v = factory(<span class="built_in">require</span>, exports);</span><br><span class="line">        <span class="keyword">if</span> (v !== <span class="literal">undefined</span>) <span class="built_in">module</span>.exports = v;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> define === <span class="string">"function"</span> &amp;&amp; define.amd) &#123;</span><br><span class="line">        define([<span class="string">"require"</span>, <span class="string">"exports"</span>], factory);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)(<span class="function"><span class="keyword">function</span> (<span class="params">require, exports</span>) </span>&#123;</span><br><span class="line"><span class="meta">    "use strict"</span>;</span><br><span class="line">    exports.__esModule = <span class="literal">true</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'hello'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    exports.test = test;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// -module es6 or es2015 or esnext</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'hello'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="target"><a href="#target" class="headerlink" title="target"></a>target</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–target <br> -t</td>
+<td>string</td>
+<td>“es3”</td>
+<td>Specify ECMAScript target version: “ES3” (default), “ES5”, “ES6”/“ES2015”, “ES2016”, “ES2017” or “ESNext”. <br> Note: “ESNext” targets latest supported ES proposed features.</td>
+</tr>
+</tbody>
+</table>
+<p>指定目标代码的版本。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="number">1</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// --target es3</span></span><br><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line"><span class="keyword">var</span> __assign = (<span class="keyword">this</span> &amp;&amp; <span class="keyword">this</span>.__assign) || <span class="built_in">Object</span>.assign || <span class="function"><span class="keyword">function</span>(<span class="params">t</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> s, i = <span class="number">1</span>, n = <span class="built_in">arguments</span>.length; i &lt; n; i++) &#123;</span><br><span class="line">        s = <span class="built_in">arguments</span>[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> p <span class="keyword">in</span> s) <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(s, p))</span><br><span class="line">            t[p] = s[p];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;;</span><br><span class="line">exports.__esModule = <span class="literal">true</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> a = &#123;</span><br><span class="line">            a: <span class="number">1</span>,</span><br><span class="line">            b: <span class="number">2</span></span><br><span class="line">        &#125;;</span><br><span class="line">        resolve(__assign(&#123; <span class="attr">c</span>: <span class="number">3</span> &#125;, a));</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">exports.test = test;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// --target es5</span></span><br><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line"><span class="keyword">var</span> __assign = (<span class="keyword">this</span> &amp;&amp; <span class="keyword">this</span>.__assign) || <span class="built_in">Object</span>.assign || <span class="function"><span class="keyword">function</span>(<span class="params">t</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> s, i = <span class="number">1</span>, n = <span class="built_in">arguments</span>.length; i &lt; n; i++) &#123;</span><br><span class="line">        s = <span class="built_in">arguments</span>[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> p <span class="keyword">in</span> s) <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(s, p))</span><br><span class="line">            t[p] = s[p];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(exports, <span class="string">"__esModule"</span>, &#123; <span class="attr">value</span>: <span class="literal">true</span> &#125;);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> a = &#123;</span><br><span class="line">            a: <span class="number">1</span>,</span><br><span class="line">            b: <span class="number">2</span></span><br><span class="line">        &#125;;</span><br><span class="line">        resolve(__assign(&#123; <span class="attr">c</span>: <span class="number">3</span> &#125;, a));</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">exports.test = test;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// --target es6</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> a = &#123;</span><br><span class="line">            a: <span class="number">1</span>,</span><br><span class="line">            b: <span class="number">2</span></span><br><span class="line">        &#125;;</span><br><span class="line">        resolve(<span class="built_in">Object</span>.assign(&#123; <span class="attr">c</span>: <span class="number">3</span> &#125;, a));</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// --target esnext</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> a = &#123;</span><br><span class="line">            a: <span class="number">1</span>,</span><br><span class="line">            b: <span class="number">2</span></span><br><span class="line">        &#125;;</span><br><span class="line">        resolve(&#123;</span><br><span class="line">            c: <span class="number">3</span>,</span><br><span class="line">            ...a</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="moduleResolution"><a href="#moduleResolution" class="headerlink" title="moduleResolution"></a>moduleResolution</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–moduleResolution</td>
+<td>string</td>
+<td>module === “AMD” or “System” or “ES6” ? “Classic” : “Node”</td>
+<td>Determine how modules get resolved. Either “Node” for Node.js/io.js style resolution, or “Classic”. See Module Resolution documentation for more details.</td>
+</tr>
+</tbody>
+</table>
+<p>定义typescript如何去查找module，详情查看<a href="https://www.typescriptlang.org/docs/handbook/module-resolution.html" target="_blank" rel="noopener">官方说法</a></p>
+<blockquote>
+<p>如果遇到node_modules里的模块找不到的情况，可以尝试把此项设置为node</p>
+</blockquote>
+<h2 id="newLine"><a href="#newLine" class="headerlink" title="newLine"></a>newLine</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–newLine</td>
+<td>string</td>
+<td></td>
+<td>Use the specified end of line sequence to be used when emitting files: “crlf” (windows) or “lf” (unix).”</td>
+</tr>
+</tbody>
+</table>
+<p>生成的代码里使用什么样的换行符</p>
+<h2 id="noEmit"><a href="#noEmit" class="headerlink" title="noEmit"></a>noEmit</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–noEmit</td>
+<td>boolean</td>
+<td>false</td>
+<td>Do not emit outputs.</td>
+</tr>
+<tr>
+<td>–noEmitHelpers</td>
+<td>boolean</td>
+<td>false</td>
+<td>Do not generate custom helper functions like __extends in compiled output.</td>
+</tr>
+</tbody>
+</table>
+<p>noEmit: 不生成编译结果。</p>
+<blockquote>
+<p>😂 那还编译个毛。。。。</p>
+</blockquote>
+<p>noEmitHelpers: 不生成helper函数. 设置为true，则<code>__assign</code>，<code>__extends</code>等helper函数的实现，不会出现在生成的文件中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> a = &#123;</span><br><span class="line">    a: <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    b: <span class="number">2</span>,</span><br><span class="line">    ...a</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// --noEmitHelpers true</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = &#123;</span><br><span class="line">        a: <span class="number">1</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> __assign(&#123; <span class="attr">b</span>: <span class="number">2</span> &#125;, a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// --noEmitHelpers false</span></span><br><span class="line"><span class="keyword">var</span> __assign = (<span class="keyword">this</span> &amp;&amp; <span class="keyword">this</span>.__assign) || <span class="built_in">Object</span>.assign || <span class="function"><span class="keyword">function</span>(<span class="params">t</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> s, i = <span class="number">1</span>, n = <span class="built_in">arguments</span>.length; i &lt; n; i++) &#123;</span><br><span class="line">        s = <span class="built_in">arguments</span>[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> p <span class="keyword">in</span> s) <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(s, p))</span><br><span class="line">            t[p] = s[p];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = &#123;</span><br><span class="line">        a: <span class="number">1</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> __assign(&#123; <span class="attr">b</span>: <span class="number">2</span> &#125;, a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="noEmitOnError"><a href="#noEmitOnError" class="headerlink" title="noEmitOnError"></a>noEmitOnError</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–noEmitOnError</td>
+<td>boolean</td>
+<td>false</td>
+<td>Do not emit outputs if any errors were reported.</td>
+</tr>
+</tbody>
+</table>
+<p>编译有错误的时候，是否还生成文件。</p>
+<h2 id="noErrorTruncation"><a href="#noErrorTruncation" class="headerlink" title="noErrorTruncation"></a>noErrorTruncation</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–noEmitOnError</td>
+<td>boolean</td>
+<td>false</td>
+<td>Do not truncate error messages.</td>
+</tr>
+</tbody>
+</table>
+<p>不截断错误消息</p>
+<h2 id="noFallthroughCasesInSwitch"><a href="#noFallthroughCasesInSwitch" class="headerlink" title="noFallthroughCasesInSwitch"></a>noFallthroughCasesInSwitch</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—-noFallthroughCasesInSwitch</td>
+<td>boolean</td>
+<td>false</td>
+<td>Report errors for fallthrough cases in switch statement.</td>
+</tr>
+</tbody>
+</table>
+<p>不允许swith中存在有内容的但没有break的case.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> a = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span>(a) &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">    <span class="built_in">console</span>.log(a)  <span class="comment">// error TS7029: Fallthrough case in switch.</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="noImplicitAny-noImplicitReturns-noImplicitThis-and-noImplicitUseStrict"><a href="#noImplicitAny-noImplicitReturns-noImplicitThis-and-noImplicitUseStrict" class="headerlink" title="noImplicitAny, noImplicitReturns, noImplicitThis and noImplicitUseStrict"></a>noImplicitAny, noImplicitReturns, noImplicitThis and noImplicitUseStrict</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–noImplicitAny</td>
+<td>boolean</td>
+<td>false</td>
+<td>Raise error on expressions and declarations with an implied any type.</td>
+</tr>
+<tr>
+<td>–noImplicitReturns</td>
+<td>boolean</td>
+<td>false</td>
+<td>Report error when not all code paths in function return a value.</td>
+</tr>
+<tr>
+<td>–noImplicitThis</td>
+<td>boolean</td>
+<td>false</td>
+<td>Raise error on this expressions with an implied any type.</td>
+</tr>
+<tr>
+<td>–noImplicitUseStrict</td>
+<td>boolean</td>
+<td>false</td>
+<td>Do not emit “use strict” directives in module output.</td>
+</tr>
+</tbody>
+</table>
+<p>noImplicitAny 不允许使用隐式的使用<code>any</code><br>noImplicitReturns 不允许有隐式的return, 即所有分支都要显示的return。实测似乎无效。<br>noImplicitThis 不允许使用隐式的this，需要明确this的类型<br>noImplicitUseStrict 生成的文件中是否使用”use strict”。这TM和这选项的名字完全不是一个意思啊。为true的时候，生成的代码不会添加”use strict”</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// --noImplicitAny true</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a1</span>(<span class="params">b</span>) </span>&#123;  <span class="comment">// error TS7006: Parameter 'b' implicitly has an 'any' type.</span></span><br><span class="line">  <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// --noImplicitReturns true</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a2</span>(<span class="params">b</span>) </span>&#123;  <span class="comment">// 编译通过，与文档似乎不符</span></span><br><span class="line">  <span class="keyword">if</span> (b) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(b)</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// --noImplicitThis true</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a1</span>(<span class="params">b: any</span>) </span>&#123; <span class="comment">// error TS2683: 'this' implicitly has type 'any' because it does not have a type annotation.</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="noLib"><a href="#noLib" class="headerlink" title="noLib"></a>noLib</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–noLib</td>
+<td>boolean</td>
+<td>false</td>
+<td>Do not include the default library file (lib.d.ts).</td>
+</tr>
+</tbody>
+</table>
+<p>编译的时候不加载<code>lib.d.ts</code>.</p>
+<blockquote>
+<p>那你还能编译？😂</p>
+</blockquote>
+<h2 id="noResolve"><a href="#noResolve" class="headerlink" title="noResolve"></a>noResolve</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–noResolve</td>
+<td>boolean</td>
+<td>false</td>
+<td>Do not add triple-slash references or module import targets to the list of compiled files.</td>
+</tr>
+</tbody>
+</table>
+<p>编译时，忽略<code>///&lt;reference path&gt;</code>和<code>import</code>引入的文件。</p>
+<blockquote>
+<p>😂这种选项到底有啥用</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.ts</span></span><br><span class="line"><span class="comment">/// &lt;reference path="./my.d.ts" /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; a &#125; <span class="keyword">from</span> <span class="string">'./Test'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// my.d.ts</span></span><br><span class="line">declare <span class="built_in">module</span> A &#123;</span><br><span class="line">  <span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">number, string</span>): <span class="title">any</span></span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> a = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tsc noResolve/index.ts  --listFiles</span></span><br><span class="line"></span><br><span class="line">/Users/leon/.nvm/versions/node/v8<span class="number">.7</span><span class="number">.0</span>/lib/node_modules/typescript/lib/lib.d.ts</span><br><span class="line">noResolve/my.d.ts</span><br><span class="line">/Users/leon/Documents/git/typescript-options/noResolve/Test.ts</span><br><span class="line">noResolve/index.ts</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tsc noResolve/index.ts --noResolve --listFiles</span></span><br><span class="line">noResolve/index.ts(<span class="number">3</span>,<span class="number">19</span>): error TS2307: Cannot find <span class="built_in">module</span> <span class="string">'./Test'</span>.</span><br><span class="line">/Users/leon/.nvm/versions/node/v8<span class="number">.7</span><span class="number">.0</span>/lib/node_modules/typescript/lib/lib.d.ts</span><br><span class="line">noResolve/index.ts</span><br></pre></td></tr></table></figure>
+<h2 id="noStrictGenericChecks"><a href="#noStrictGenericChecks" class="headerlink" title="noStrictGenericChecks"></a>noStrictGenericChecks</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–noStrictGenericChecks</td>
+<td>boolean</td>
+<td>false</td>
+<td>Disable strict checking of generic signatures in function types.</td>
+</tr>
+</tbody>
+</table>
+<p>禁用严格的函数泛型检查。</p>
+<blockquote>
+<p>不清楚具体指什么。有知道的朋友请指教</p>
+</blockquote>
+<h2 id="noUnusedLocals-noUnusedParameters"><a href="#noUnusedLocals-noUnusedParameters" class="headerlink" title="noUnusedLocals, noUnusedParameters"></a>noUnusedLocals, noUnusedParameters</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–noUnusedLocals</td>
+<td>boolean</td>
+<td>false</td>
+<td>Report errors on unused locals.</td>
+</tr>
+<tr>
+<td>–noUnusedParameters</td>
+<td>boolean</td>
+<td>false</td>
+<td>Report errors on unused parameters.</td>
+</tr>
+</tbody>
+</table>
+<p>noUnusedLocals: 不允许无用的临时变量<br>noUnusedParameters: 不允许未使用的参数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123; <span class="comment">// error TS6133: 'b' is declared but its value is never read.</span></span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">0</span>  <span class="comment">// error TS6133: 'a' is declared but its value is never read.</span></span><br><span class="line">  <span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="outDir-outFile"><a href="#outDir-outFile" class="headerlink" title="outDir, outFile"></a>outDir, outFile</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–outDir</td>
+<td>string</td>
+<td></td>
+<td>Redirect output structure to the directory.</td>
+</tr>
+<tr>
+<td>–outFile</td>
+<td>string</td>
+<td></td>
+<td>Concatenate and emit output to single file. The order of concatenation is determined by the list of files passed to the compiler on the command line along with triple-slash references and imports. See output file order documentation for more details.</td>
+</tr>
+</tbody>
+</table>
+<p>outDir: 把导出文件重定向到某个目录<br>outFile: 把所有的文件拼接并生成到单个文件中。</p>
+<h2 id="paths"><a href="#paths" class="headerlink" title="paths"></a>paths</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path</td>
+<td>string</td>
+<td></td>
+<td>Redirect output structure to the directory.</td>
+</tr>
+</tbody>
+</table>
+<p>只能用于tsconfig中，解析模块的时候的路径，地址是相对于baseUrl的。详情查看<a href="https://www.typescriptlang.org/docs/handbook/module-resolution.html" target="_blank" rel="noopener">官方说法</a></p>
+<h2 id="preserveConstEnums"><a href="#preserveConstEnums" class="headerlink" title="preserveConstEnums"></a>preserveConstEnums</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>preserveConstEnums</td>
+<td>boolean</td>
+<td>false</td>
+<td>Do not erase const enum declarations in generated code. See const enums documentation for more details.</td>
+</tr>
+</tbody>
+</table>
+<p>从生成的代码中擦除静态枚举的声明。</p>
+<blockquote>
+<p>实测怎么设置似乎都不起作用。😂</p>
+</blockquote>
+<h2 id="preserveSymlinks"><a href="#preserveSymlinks" class="headerlink" title="preserveSymlinks"></a>preserveSymlinks</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>preserveSymlinks</td>
+<td>boolean</td>
+<td>false</td>
+<td>Do not resolve symlinks to their real path; treat a symlinked file like a real one.</td>
+</tr>
+</tbody>
+</table>
+<p>不把符号链接解析为其真实路径；将符号链接文件视为真正的文件。</p>
+<blockquote>
+<p>不太明白啥意思。测试了<code>import</code>一个<code>linux</code>软连接，但是这个选项并没有什么区别。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// realIndex.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> a = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.ts --&gt; realIndex.ts</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 此选项并不影响 tesc index.ts 的编译</span></span><br></pre></td></tr></table></figure>
+<h2 id="pretty"><a href="#pretty" class="headerlink" title="pretty"></a>pretty</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–pretty</td>
+<td>boolean</td>
+<td>false</td>
+<td>Stylize errors and messages using color and context.</td>
+</tr>
+</tbody>
+</table>
+<p>对console上错误和消息做颜色和样式的美化处理。</p>
+<h2 id="project"><a href="#project" class="headerlink" title="project"></a>project</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–project <br> -p</td>
+<td>string</td>
+<td></td>
+<td>Compile a project given a valid configuration file. The argument can be a file path to a valid JSON configuration file, or a directory path to a directory containing a tsconfig.json file. See tsconfig.json documentation for more details.</td>
+</tr>
+</tbody>
+</table>
+<p>指定一个<code>tsconfig.json</code>文件</p>
+<h2 id="removeComments"><a href="#removeComments" class="headerlink" title="removeComments"></a>removeComments</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–removeComments</td>
+<td>boolean</td>
+<td>false</td>
+<td>Remove all comments except copy-right header comments beginning with /*!</td>
+</tr>
+</tbody>
+</table>
+<p>删除注释</p>
+<h2 id="rootDir"><a href="#rootDir" class="headerlink" title="rootDir"></a>rootDir</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–rootDir</td>
+<td>string</td>
+<td></td>
+<td>Specifies the root directory of input files. Only use to control the output directory structure with –outDir.</td>
+</tr>
+</tbody>
+</table>
+<p>指定输入文件的根目录，仅和outDir一起用于管理输出目录的结构。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ./test/index.ts</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tsc test/index.ts --outDir ./test/dist/ --rootDir .</span></span><br><span class="line">生成 ./test/dist/test/index.js</span><br><span class="line"></span><br><span class="line"><span class="comment">// tsc test/index.ts --outDir ./test/dist/</span></span><br><span class="line">生成 ./test/dist/index.js</span><br></pre></td></tr></table></figure>
+<h2 id="rootDirs"><a href="#rootDirs" class="headerlink" title="rootDirs"></a>rootDirs</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rootDirs</td>
+<td>string[]</td>
+<td></td>
+<td>List of root folders whose combined content represent the structure of the project at runtime. See Module Resolution documentation for more details.</td>
+</tr>
+</tbody>
+</table>
+<p>指定多个根目录，并以此确定运行时的项目结构。<br><a href="https://www.typescriptlang.org/docs/handbook/module-resolution.html#virtual-directories-with-rootdirs" target="_blank" rel="noopener">详见文档</a>.</p>
+<blockquote>
+<p>说人话：允许将不同的目录，通过这个选项都指定为根目录，从而使导入文件的时候比较方便。</p>
+</blockquote>
+<h2 id="skipLibCheck"><a href="#skipLibCheck" class="headerlink" title="skipLibCheck"></a>skipLibCheck</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–skipLibCheck</td>
+<td>boolean</td>
+<td>false</td>
+<td>Skip type checking of all declaration files (*.d.ts).</td>
+</tr>
+</tbody>
+</table>
+<p>忽略所有的声明文件（ *.d.ts）的类型检查。</p>
+<blockquote>
+<p>暂时不知道怎么用，尝试了几种方法似乎都不起作用。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> a = [<span class="number">1</span>, ,<span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test.d.ts</span></span><br><span class="line"><span class="keyword">export</span> declare <span class="keyword">let</span> a: number[];</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; a &#125; <span class="keyword">from</span> <span class="string">'./test'</span></span><br><span class="line">a[<span class="number">0</span>] = <span class="string">'12'</span></span><br></pre></td></tr></table></figure>
+<p>加不加这个选项都会报错：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error TS2322: Type <span class="string">'"12"'</span> is not assignable to type <span class="string">'number'</span>.</span><br></pre></td></tr></table></figure></p>
+<h2 id="strict"><a href="#strict" class="headerlink" title="strict"></a>strict</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–strict</td>
+<td>boolean</td>
+<td>false</td>
+<td>Enable all strict type checking options. <br>Enabling <code>–strict</code> enables <code>–noImplicitAny</code>, <code>–noImplicitThis</code>, <code>–alwaysStrict</code>, <code>–strictNullChecks</code>, <code>–strictFunctionTypes</code> and <code>–strictPropertyInitialization</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>开启一系列的强制检测。</p>
+<h2 id="strictFunctionTypes-strictPropertyInitialization-strictNullChecks"><a href="#strictFunctionTypes-strictPropertyInitialization-strictNullChecks" class="headerlink" title="strictFunctionTypes, strictPropertyInitialization, strictNullChecks"></a>strictFunctionTypes, strictPropertyInitialization, strictNullChecks</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–strictFunctionTypes</td>
+<td>boolean</td>
+<td>false</td>
+<td>Disable bivariant parameter checking for function types.</td>
+</tr>
+<tr>
+<td>–strictPropertyInitialization</td>
+<td>boolean</td>
+<td>false</td>
+<td>Enusre non-undefined class properties are initialized in the constructor.</td>
+</tr>
+<tr>
+<td>–strictNullChecks</td>
+<td>boolean</td>
+<td>false</td>
+<td>In strict null checking mode, the null and undefined values are not in the domain of every type and are only assignable to themselves and any (the one exception being that undefined is also assignable to void).</td>
+</tr>
+</tbody>
+</table>
+<p><code>strictFunctionTypes</code>: 启用函数类型的严格检查。详见： <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-6.html" target="_blank" rel="noopener">https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-6.html</a></p>
+<p><code>strictPropertyInitialization</code>: 要求未定义的class成员变量，一定要在构造函数里进行初始化。</p>
+<p><code>strictNullChecks</code>: <code>null</code> 和 <code>undefined</code>, 不属于包含在其他任何类型，所以他们只能 <code>null</code> 只能赋值给 <code>null</code> 类型或 <code>any</code> <code>类型，undefined</code> 只能赋值给 <code>undefined</code> 类型或者 <code>any</code> 类型。但有一个例外: <code>undefined</code> 可以被赋值给 <code>void</code> 类型</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">  name: string</span><br><span class="line">  age = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>(age: number) &#123; <span class="comment">// error TS2564: Property 'name' has no initializer and is not definitely assigned in the constructor.</span></span><br><span class="line">    <span class="keyword">this</span>.age = age</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a1: number = <span class="literal">null</span>       <span class="comment">// error TS2322: Type 'null' is not assignable to type 'number'.</span></span><br><span class="line"><span class="keyword">let</span> a2: string = <span class="literal">undefined</span>  <span class="comment">// error TS2322: Type 'undefined' is not assignable to type 'string'.</span></span><br></pre></td></tr></table></figure>
+<h2 id="stripInternal"><a href="#stripInternal" class="headerlink" title="stripInternal"></a>stripInternal</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–stripInternal</td>
+<td>boolean</td>
+<td>false</td>
+<td>Do not emit declarations for code that has an /*<em> @internal </em>/ JSDoc annotation.</td>
+</tr>
+</tbody>
+</table>
+<p>实验属性。不为有<code>/** @internal */</code>标记的代码生成declaration</p>
+<h2 id="suppressExcessPropertyErrors"><a href="#suppressExcessPropertyErrors" class="headerlink" title="suppressExcessPropertyErrors"></a>suppressExcessPropertyErrors</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–suppressExcessPropertyErrors</td>
+<td>boolean</td>
+<td>false</td>
+<td>Suppress excess property checks for object literals.</td>
+</tr>
+</tbody>
+</table>
+<p>不对对象自变量的额外属性进行类型检测</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">  name: string</span><br><span class="line">  age = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>(age: number) &#123;</span><br><span class="line">    <span class="keyword">this</span>.age = age</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a: A = &#123;</span><br><span class="line">  name: <span class="string">'leon'</span>,</span><br><span class="line">  age: <span class="number">30</span>,</span><br><span class="line">  gender: <span class="string">'male'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// --suppressExcessPropertyErrors false</span></span><br><span class="line">error TS2322: Type <span class="string">'&#123; name: string; age: number; gender: string; &#125;'</span> is not assignable to type <span class="string">'A'</span>.</span><br><span class="line"><span class="built_in">Object</span> literal may only specify known properties, and <span class="string">'gender'</span> does not exist <span class="keyword">in</span> type <span class="string">'A'</span>.</span><br><span class="line"></span><br><span class="line"><span class="comment">//  --suppressExcessPropertyErrors true</span></span><br><span class="line">pass</span><br></pre></td></tr></table></figure>
+<h2 id="suppressImplicitAnyIndexErrors"><a href="#suppressImplicitAnyIndexErrors" class="headerlink" title="suppressImplicitAnyIndexErrors"></a>suppressImplicitAnyIndexErrors</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–suppressImplicitAnyIndexErrors</td>
+<td>boolean</td>
+<td>false</td>
+<td>Suppress –noImplicitAny errors for indexing objects lacking index signatures. See issue #1232 for more details.</td>
+</tr>
+</tbody>
+</table>
+<p>修复<a href="https://github.com/Microsoft/TypeScript/issues/1232#issuecomment-64510362" target="_blank" rel="noopener">#1232</a>的一个问题。</p>
+<h2 id="traceResolution"><a href="#traceResolution" class="headerlink" title="traceResolution"></a>traceResolution</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–traceResolution</td>
+<td>boolean</td>
+<td>false</td>
+<td>Report module resolution log messages.</td>
+</tr>
+</tbody>
+</table>
+<p>打印出module resolve过程的log。当moudle找不到的时候，可以打出log进行排查。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Module resolution kind is not specified, using <span class="string">'NodeJs'</span>.</span><br><span class="line">Loading <span class="built_in">module</span> <span class="keyword">as</span> file / folder, candidate <span class="built_in">module</span> location <span class="string">'/Users/leon/Documents/git/typescript-options/skipLibCheck/test'</span>, target file type<span class="string">'TypeScript'</span>.</span><br><span class="line">File <span class="string">'/Users/leon/Documents/git/typescript-options/skipLibCheck/test.ts'</span> does not exist.</span><br><span class="line">File <span class="string">'/Users/leon/Documents/git/typescript-options/skipLibCheck/test.tsx'</span> does not exist.</span><br><span class="line">File <span class="string">'/Users/leon/Documents/git/typescript-options/skipLibCheck/test.d.ts'</span> exist - use it <span class="keyword">as</span> a name resolution result.</span><br></pre></td></tr></table></figure>
+<h2 id="types-typeRoots"><a href="#types-typeRoots" class="headerlink" title="types, typeRoots"></a>types, typeRoots</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–types</td>
+<td>string[]</td>
+<td></td>
+<td>List of names of type definitions to include. See @types, –typeRoots and –types for more details.</td>
+</tr>
+<tr>
+<td>–typeRoots</td>
+<td>string[]</td>
+<td></td>
+<td>List of folders to include type definitions from. See @types, –typeRoots and –types for more details.</td>
+</tr>
+</tbody>
+</table>
+<p>指定tyes文件列表和目录列表。</p>
+<blockquote>
+<p>当你import一个第三方库的时候，ts会根据这个库的package.json里的<code>types</code> 或者 <code>typings</code>属性指定的目录去加载type. 可以参照<a href="https://unpkg.com/vue/package.json" target="_blank" rel="noopener">vue的package.json</a>和<a href="https://unpkg.com/antd/package.json" target="_blank" rel="noopener">antd的package.json</a></p>
+</blockquote>
+<h2 id="emitDecoratorMetadata"><a href="#emitDecoratorMetadata" class="headerlink" title="emitDecoratorMetadata"></a>emitDecoratorMetadata</h2><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–emitDecoratorMetadata</td>
+<td>boolean</td>
+<td>false</td>
+<td>Emit design-type metadata for decorated declarations in source. See issue #2577 for details.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>关于ts的装饰器，暂未研究，有空再看。 😂</p>
+</blockquote>
+<h2 id="转载"><a href="#转载" class="headerlink" title="转载"></a>转载</h2><ul>
+<li><a href="https://www.njleonzhang.com/2018/03/24/typescript-compiler-options.html" target="_blank" rel="noopener">typescript 2.7 编译选项详解
+</a><br><br></li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>文章若有纰漏请大家补充指正,谢谢~~</strong></p>
+</blockquote>
+<blockquote>
+<p><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG 殇</p>
+</blockquote>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    
+    <a class="pull-right" href="/2018/09/16/learn-angular/">
+        angular学习笔记 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-10 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By xinshangshangxin. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/xinshangshangxin" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+            <style>
+.local-search-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background: rgba(255, 255, 255, .9);
+  color: #333;
+  z-index: 9999;
+  border-radius: 5px;
+  overflow: scroll;
+}
+#local-search-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #151515;
+  background-color: initial;
+}
+.search-result-list {
+  list-style: none;
+  padding-left: 0;
+}
+.search-result-list > li {
+  margin-top: 15px;
+  border-bottom: 1px solid #ddd;
+  transition: all ease .3s;
+}
+.search-result-list > li:hover {
+  border-bottom: 1px solid gray;
+}
+.search-result-title {
+  font-size: 16px;
+}
+.search-result {
+  line-height: 20px;
+}
+.search-keyword {
+  font-weight: normal;
+  color: #c00;
+}
+
+@media (min-width: 890px) {
+  .popup-btn-close {
+    position: absolute;
+    top: 15px;
+    left: 35px;
+    border: 1px solid #151515;
+    padding: 0px 10px;
+    border-top-left-radius: 8px;
+    cursor: pointer;
+    transition: all ease .3s;
+  }
+  .popup-btn-close:hover {
+    background: #151515;
+    opacity: .9;
+    color: #fff;
+  }
+}
+@media (max-width: 890px) {
+  .popup-btn-close {
+    font-size: 0;
+    position: fixed;
+    right: 20px;
+    bottom: 50px;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 1px 1px 5px #888;
+    cursor: pointer;
+  }
+  .popup-btn-close::after {
+    content: '←';
+    color: #151515;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+    line-height: 50px;
+    text-align: center;
+  }
+}
+</style>
+
+<div class="popup search-popup local-search-popup">
+  <span class="popup-btn-close">
+    ESC
+  </span>
+  <div class="container">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="local-search-header clearfix">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+          <input autocomplete="off" placeholder="Search..." type="text" id="local-search-input">
+        </div>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/ziploader.js"></script>
+
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.json";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').fadeOut(300);
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $('.popup').fadeIn(300);
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // get search zip version
+    $.get('/searchVersion.txt?t=' + (+new Date()), function(res) {
+      if (localStorage.getItem('searchVersion') !== res) {
+        localStorage.setItem('searchVersion', res);
+        initSearchJson();
+      }
+    });
+
+    function initSearchJson () {
+      initLoad(['/search.flv'], {
+        loadOptions: {
+          success: function(obj) {
+            localStorage.setItem('searchJson', obj['search.json'])
+          },
+          error: function(e) {
+            return console.log(e)
+          }
+        },
+        returnOptions: {
+          'json': TYPE_TEXT
+        },
+        mimeOptions:{
+          'json':'application/json'
+        }
+      })
+    }
+
+
+    // search function;
+    var searchFunc = function(search_id, content_id) {
+      'use strict';
+
+      isfetched = true;
+      var datas = JSON.parse(localStorage.getItem('searchJson'));
+      console.log(search_id)
+      var input = document.getElementById(search_id);
+      var resultContent = document.getElementById(content_id);
+      var inputEventFunction = function() {
+        var searchText = input.value.trim().toLowerCase();
+        var keywords = searchText.split(/[\s\-]+/);
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        var resultItems = [];
+        if (searchText.length > 0) {
+          // perform local searching
+          datas.forEach(function(data) {
+            var isMatch = false;
+            var hitCount = 0;
+            var searchTextCount = 0;
+            var title = data.title ? data.title.trim() : '';
+            var titleInLowerCase = title.toLowerCase();
+            var content = data.content ? data.content.trim().replace(/<[^>]+>/g,"") : '';
+            var contentInLowerCase = content.toLowerCase();
+            var articleUrl = decodeURIComponent(data.url);
+            var indexOfTitle = [];
+            var indexOfContent = [];
+            // only match articles with not empty titles
+            keywords.forEach(function(keyword) {
+              function getIndexByWord(word, text, caseSensitive) {
+                var wordLen = word.length;
+                if (wordLen === 0) {
+                  return [];
+                }
+                var startPosition = 0, position = [], index = [];
+                if (!caseSensitive) {
+                  text = text.toLowerCase();
+                  word = word.toLowerCase();
+                }
+                while ((position = text.indexOf(word, startPosition)) > -1) {
+                  index.push({position: position, word: word});
+                  startPosition = position + wordLen;
+                }
+                return index;
+              }
+
+              indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+              indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+            });
+            if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+              isMatch = true;
+              hitCount = indexOfTitle.length + indexOfContent.length;
+            }
+
+            // show search results
+
+            if (isMatch) {
+              // sort index by position of keyword
+
+              [indexOfTitle, indexOfContent].forEach(function (index) {
+                index.sort(function (itemLeft, itemRight) {
+                  if (itemRight.position !== itemLeft.position) {
+                    return itemRight.position - itemLeft.position;
+                  } else {
+                    return itemLeft.word.length - itemRight.word.length;
+                  }
+                });
+              });
+
+              // merge hits into slices
+
+              function mergeIntoSlice(text, start, end, index) {
+                var item = index[index.length - 1];
+                var position = item.position;
+                var word = item.word;
+                var hits = [];
+                var searchTextCountInSlice = 0;
+                while (position + word.length <= end && index.length != 0) {
+                  if (word === searchText) {
+                    searchTextCountInSlice++;
+                  }
+                  hits.push({position: position, length: word.length});
+                  var wordEnd = position + word.length;
+
+                  // move to next position of hit
+
+                  index.pop();
+                  while (index.length != 0) {
+                    item = index[index.length - 1];
+                    position = item.position;
+                    word = item.word;
+                    if (wordEnd > position) {
+                      index.pop();
+                    } else {
+                      break;
+                    }
+                  }
+                }
+                searchTextCount += searchTextCountInSlice;
+                return {
+                  hits: hits,
+                  start: start,
+                  end: end,
+                  searchTextCount: searchTextCountInSlice
+                };
+              }
+
+              var slicesOfTitle = [];
+              if (indexOfTitle.length != 0) {
+                slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+              }
+
+              var slicesOfContent = [];
+              while (indexOfContent.length != 0) {
+                var item = indexOfContent[indexOfContent.length - 1];
+                var position = item.position;
+                var word = item.word;
+                // cut out 100 characters
+                var start = position - 20;
+                var end = position + 80;
+                if(start < 0){
+                  start = 0;
+                }
+                if (end < position + word.length) {
+                  end = position + word.length;
+                }
+                if(end > content.length){
+                  end = content.length;
+                }
+                slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+              }
+
+              // sort slices in content by search text's count and hits' count
+
+              slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                  return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                  return sliceRight.hits.length - sliceLeft.hits.length;
+                } else {
+                  return sliceLeft.start - sliceRight.start;
+                }
+              });
+
+              // select top N slices in content
+
+              var upperBound = parseInt('2');
+              if (upperBound >= 0) {
+                slicesOfContent = slicesOfContent.slice(0, upperBound);
+              }
+
+              // highlight title and content
+
+              function highlightKeyword(text, slice) {
+                var result = '';
+                var prevEnd = slice.start;
+                slice.hits.forEach(function (hit) {
+                  result += text.substring(prevEnd, hit.position);
+                  var end = hit.position + hit.length;
+                  result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                  prevEnd = end;
+                });
+                result += text.substring(prevEnd, slice.end);
+                return result;
+              }
+
+              var resultItem = '';
+
+              if (slicesOfTitle.length != 0) {
+                resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+              } else {
+                resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+              }
+
+              slicesOfContent.forEach(function (slice) {
+                resultItem += "<a target='_blank' href='" + articleUrl + "'>" +
+                  "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                  "...</p>" + "</a>";
+              });
+
+              resultItem += "</li>";
+              resultItems.push({
+                item: resultItem,
+                searchTextCount: searchTextCount,
+                hitCount: hitCount,
+                id: resultItems.length
+              });
+            }
+          })
+        };
+        if (keywords.length === 1 && keywords[0] === "") {
+          resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+        } else if (resultItems.length === 0) {
+          resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+        } else {
+          resultItems.sort(function (resultLeft, resultRight) {
+            if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+              return resultRight.searchTextCount - resultLeft.searchTextCount;
+            } else if (resultLeft.hitCount !== resultRight.hitCount) {
+              return resultRight.hitCount - resultLeft.hitCount;
+            } else {
+              return resultRight.id - resultLeft.id;
+            }
+          });
+          var searchResultList = '<ul class=\"search-result-list\">';
+          resultItems.forEach(function (result) {
+            searchResultList += result.item;
+          })
+          searchResultList += "</ul>";
+          resultContent.innerHTML = searchResultList;
+        }
+      }
+
+      if ('auto' === 'auto') {
+        input.addEventListener('input', inputEventFunction);
+      } else {
+        $('.search-icon').click(inputEventFunction);
+        input.addEventListener('keypress', function (event) {
+          if (event.keyCode === 13) {
+            inputEventFunction();
+          }
+        });
+      }
+
+      // remove loading animation
+      $('body').css('overflow', '');
+
+      proceedsearch();
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        $('.sb-close').click();
+        searchFunc('local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+      
+</body>
+</html>
