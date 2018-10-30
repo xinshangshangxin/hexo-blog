@@ -324,7 +324,7 @@
         var labels = "blog,gitment";
         labels = labels.split(",");
 
-        var gitment = new Gitment({
+        var config = {
             id: window.location.pathname,
             owner: 'xinshangshangxin',
             repo: 'blog-gitment',
@@ -333,7 +333,11 @@
                 client_secret: '7647cfe98b79b4e7d13dff9cb857ed481f4aeecf'
             },
             labels: labels
-        })
+        };
+
+        console.info('config: ', config);
+
+        var gitment = new Gitment(config);
         gitment.render('blog-gitment')
     </script>
 
