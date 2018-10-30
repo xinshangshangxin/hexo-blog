@@ -632,7 +632,7 @@
 <p>是否对jsx进行转换。一般不转译，把这个工作推迟给babel.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;text&gt;a&lt;<span class="regexp">/text&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
 <p>编译：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// --jsx "React"</span></span><br><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line">exports.__esModule = <span class="literal">true</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (React.createElement(<span class="string">"text"</span>, <span class="literal">null</span>, <span class="string">"a"</span>));</span><br><span class="line">&#125;</span><br><span class="line">exports.a = a;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// --jsx "Preserve"</span></span><br><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line">exports.__esModule = <span class="literal">true</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (&lt;text&gt;a&lt;/text&gt;);</span><br><span class="line">&#125;</span><br><span class="line">exports.a = a;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// --jsx "Preserve"</span></span><br><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line">exports.__esModule = <span class="literal">true</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">text</span>&gt;</span>a<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span>);</span><br><span class="line">&#125;</span><br><span class="line">exports.a = a;</span><br></pre></td></tr></table></figure>
 <h2 id="jsxFactory"><a href="#jsxFactory" class="headerlink" title="jsxFactory"></a>jsxFactory</h2><table>
 <thead>
 <tr>
@@ -1567,7 +1567,26 @@
 
 </script>
 </div>
+
+        <div class="col-md-10">
+            <div id="blog-gitment"></div>
+        </div>
     </div>
+
+
+    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: 'xinshangshangxin',
+            repo: 'blog-gitment',
+            oauth: {
+                client_id: 'd2f53ee531b054a74c54',
+                client_secret: '7647cfe98b79b4e7d13dff9cb857ed481f4aeecf',
+            },
+        })
+        gitment.render('blog-gitment')
+    </script>
 </section>
 
 
