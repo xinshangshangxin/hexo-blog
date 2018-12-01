@@ -187,6 +187,47 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
+                    <h3><a href="/2018/06/07/docker-volume-file/">docker 使用 -v 或 --volume 映射文件报错</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-06-07T03:18:47.000Z" itemprop="datePublished">
+          2018年06月7日
+      </time>
+    
+    
+    | 
+    <a href='/tags/docker/'>docker</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        解决方案:假设 docker run -v local_file_path:docker_file_path docker_image
+
+local_file_path 必须存在, 并且类型为文件
+docker_file_path 必须存在, 绝对路径, 并且类型为文件
+
+原因:从 docker 文档 Differences between -v and --mount behavior
+12If you use -v or --vol
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/06/07/docker-volume-file/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
                     <h3><a href="/2018/05/16/travis-npm/">github project use travis npm publish</a></h3>
                     <span>
                         <span class="post-meta">
@@ -546,45 +587,6 @@ Xcode( App Store 更新/下载)
                     
                     <p class="pull-right readMore">
                         <a href="/2017/01/09/safari-https-fail-to-connect/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2016/12/23/assign-vs-extend-vs-merge-in-lodash/">[转]Lodash 中 assign，extend 和 merge 的区别</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2016-12-23T03:03:02.000Z" itemprop="datePublished">
-          2016年12月23日
-      </time>
-    
-    
-    | 
-    <a href='/tags/js/'>js</a>,
-    
-    <a href='/tags/lodash/'>lodash</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        assign(object, [sources])我们先看看官方网站上面的定义：
-
-Assigns own enumerable string keyed properties of source objects to the destination object. Source objects are applied from left to right. Subsequent sources overwrite property a
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2016/12/23/assign-vs-extend-vs-merge-in-lodash/">Read More...</a>
                     </p>
                     
                 </div>
