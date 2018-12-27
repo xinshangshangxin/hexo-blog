@@ -88,7 +88,7 @@ search:
   field: post
 
 ## Themes: http://hexo.io/themes/
-theme: TKL
+theme: theme-bmw
 
 # Archives
 ## 2: Enable pagination
