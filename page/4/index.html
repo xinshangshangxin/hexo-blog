@@ -1,1154 +1,843 @@
 <!DOCTYPE html>
-<!--[if lte IE 8 ]>
-<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
-<![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<!--
-***************  *      *     *
-      8          *    *       *
-      8          *  *         *
-      8          **           *
-      8          *  *         *
-      8          *    *       *
-      8          *      *     *
-      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
--->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
-<!--<![endif]-->
+<html lang="zh-CN">
 
-<head>
+  
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="author" content="董沅鑫, yuanxin.me@gmail.com">
+  
+    <meta name="robots" content="noindex">
+  
+  
+  
   <title>SHANG Blog</title>
-  <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content="SHANG Blog">
-    <meta name="author" content="xinshangshangxin">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
 
-    <!-- Favicon, (keep icon in root folder) -->
-    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
-
-    <link rel="alternate" href="/atom.xml" title="SHANG Blog" type="application/atom+xml">
-    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
-    
-    <link rel="stylesheet" href="/highlightjs/tomorrow-night-eighties.css" type="text/css">
-    
-
-    <!--[if IE 8]>
-    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
-    <![endif]-->
-
-    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
-    <script src="/js/jquery-1.11.1.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
-
-    <!-- Load these in the <head> for quicker IE8+ load times -->
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="/js/html5shiv.min.js"></script>
-    <script src="/js/respond.min.js"></script>
-    <![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
+    <meta name="keywords" content="Hexo, theme-bmw">
   
-  
 
-  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
-</head>
-
-<!--
-<body class="home-template">
--->
-<body id="index" class="lightnav animsition">
-
-      <!-- ============================ Off-canvas navigation =========================== -->
-
-    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
-        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
-        </div>
-        <!-- Lists in Slidebars -->
-        <ul class="sb-menu">
-            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
-            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
-            <!-- Dropdown Menu -->
-			 
-            
-            
-        </ul>
-        <!-- Lists in Slidebars -->
-        <ul class="sb-menu secondary">
-            
-            <li><a href="javascript:;" class="popup-trigger" title="Search"><span class="search-icon"></span>SEARCH</a></li>
-            
-
-            <li><a href="/tags" class="animsition-link" title="archive">TAGS</a></li>
-
-            <!-- <li><a href="/about.html" class="animsition-link" title="about">About</a></li> -->
-            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
-        </ul>
-    </div>
-    
-    <!-- ============================ END Off-canvas navigation =========================== -->
-
-    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
-
-    <div id="sb-site">
-        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
-
-        <!-- ============================ Header & Logo bar =========================== -->
-
-        <div id="navigation" class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <!-- Nav logo -->
-                    <div class="logo">
-                        <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.jpeg" alt="Logo" width="35px;"/> 
-                        </a>
-                    </div>
-                    <!-- // Nav logo -->
-                    <!-- Info-bar -->
-                    <nav>
-                        <ul class="nav">
-                            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
-                            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
-                            
-                                <li><a href="javascript:;" class="popup-trigger" title="Search"><span class="search-icon"></span>Search</a></li>
-                            
-
-                            <li><a href="/tags" class="animsition-link" title="archive">tags</a></li>
-
-                            <!-- <li><a href="/about.html" class="animsition-link" title="about">About</a></li> -->
-            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
-                            
-                            <li><a href="https://github.com/xinshangshangxin" title="Github" target="_blank"><i class="icon-github"></i></a></li>
-                            
-                            
-                            
-                            
-                            
-                        </ul>
-                    </nav>
-                    <!--// Info-bar -->
-                </div>
-                <!-- // .container -->
-                <div class="learnmore sb-toggle-right">More</div>
-                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar before"></span>
-                <span class="icon-bar main"></span>
-                <span class="icon-bar after"></span>
-                </button>
-            </div>
-            <!-- // .navbar-inner -->
-        </div>
-
-        <!-- ============================ Header & Logo bar =========================== -->
-
-
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url() no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-<!-- ============================ Content =========================== -->
-
-<section id="intro">
-    <div class="container">
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2016/01/09/windows-node-gyp-error/">windows下安装插件出现node-gyp error</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2016-01-09T10:38:35.000Z" itemprop="datePublished">
-          2016年01月9日
-      </time>
-    
-    
-    | 
-    <a href='/tags/npm/'>npm</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        问题在windows下使用cygwin安装插件出现ImportError: No module named gyp
-原因
-使用了cygwin安装的python
-Visual Studio2015未安装
-
-解决方案
-安装 VS2015   
-
-在msdn.itellyou上选择开发人员工具下的Visual Studio 2015 Update 1安装  
-
-
-安装Python 2.7  
-
-Python 2.7必须为安装包安装,在cygw
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2016/01/09/windows-node-gyp-error/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2016/01/07/cygwin-npm-error/">在cygwin中npm安装git packages 失败</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2016-01-07T01:17:22.000Z" itemprop="datePublished">
-          2016年01月7日
-      </time>
-    
-    
-    | 
-    <a href='/tags/cygwin/'>cygwin</a>,
-    
-    <a href='/tags/npm/'>npm</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        原因
-npm 官方不支持在cygwin中安装
-
-解决方案替换 node_modules\npm\lib\utils\git.js 为下面内容
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859// handle some git configuration for win
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2016/01/07/cygwin-npm-error/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/12/17/angular-form/">angular 使用 multipart/form-data 上传文件, sails.js 接收文件</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-12-17T02:00:28.000Z" itemprop="datePublished">
-          2015年12月17日
-      </time>
-    
-    
-    | 
-    <a href='/tags/AngularJS/'>AngularJS</a>,
-    
-    <a href='/tags/sails/'>sails</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        angular 上传文件123456789101112131415161718$http(&#123;  method: 'POST',  url: 'url',  headers: &#123;    'Content-Type': undefined  &#125;,  transformRequest: function(data) &#123;    var formData = new FormData();    angul
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/12/17/angular-form/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/12/17/ngClick-fires-twice-on-button/">angularjs ng-click 触发两次事件</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-12-17T01:21:24.000Z" itemprop="datePublished">
-          2015年12月17日
-      </time>
-    
-    
-    | 
-    <a href='/tags/AngularJS/'>AngularJS</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        描述
-在 pc的chrome中正常, 在 chrome 的device mode中触发2次, 在手机端触发2次
-
-触发原因: 同时使用了 ionic 和 angular-material
-Note: ng-click is broken on touch devices and Chrome emulation of such. Chrome desktop is unaffected. The Codepen above: works
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/12/17/ngClick-fires-twice-on-button/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/12/06/http-status-codes/">[转]HTTP Status Codes</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-12-06T06:40:11.000Z" itemprop="datePublished">
-          2015年12月6日
-      </time>
-    
-    
-    | 
-    <a href='/tags/http/'>http</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        1xx（临时响应）
-表示临时响应并需要请求者继续执行操作的状态代码。
-
-
-
-
-代码
-说明 
-
-
-
-
-100   （继续）
-请求者应当继续提出请求。 服务器返回此代码表示已收到请求的第一部分，正在等待其余部分。  
-
-
-101   （切换协议）
-请求者已要求服务器切换协议，服务器已确认并准备切换。
-
-
-
-2xx  （成功）
-表示成功处理了请求的状态代码。
-
-
-
-
-代码
-说明 
-
-
-
-
-200   （成功）
-服务器已成功处理了请求。 通常，
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/12/06/http-status-codes/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/11/29/flvcd-no-ad/">硕鼠解析自动跳过广告</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-11-28T16:30:24.000Z" itemprop="datePublished">
-          2015年11月29日
-      </time>
-    
-    
-    | 
-    <a href='/tags/youkuvod/'>youkuvod</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        早期的硕鼠广告
-早期的硕鼠广告只是通过URL中带有 go=1 即可跳过广告, 最近发现已失效
-
-目前的硕鼠广告
-通过设置cookie判断是否已经观看广告
-
-解决过程
-postman抓取页面 http://www.flvcd.com/parse.php?flag=&amp;go=1&amp;format=&amp;kw=http%3A%2F%2Fv.youku.com%2Fv_show%2Fid_XMTI4OTgxNTE2NA%3D%3D
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/11/29/flvcd-no-ad/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/11/17/make-show-up-to-date/">make: 'test' is up to date</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-11-17T02:07:23.000Z" itemprop="datePublished">
-          2015年11月17日
-      </time>
-    
-    
-    | 
-    <a href='/tags/make/'>make</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        问题:12make test=&gt; make: `test' is up to date.
-解决办法:
-在Makefile中添加 
-
-1.PHONY: all test clean
-参考文档
-http://stackoverflow.com/questions/3931741/why-does-make-think-the-target-is-up-to-date
-
-
-
-文章若有纰漏请大家补充指正,谢谢~~http://blog.x
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/11/17/make-show-up-to-date/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/10/30/cygwin-zsh/">cygwin下zsh安装</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-10-30T01:03:16.000Z" itemprop="datePublished">
-          2015年10月30日
-      </time>
-    
-    
-    | 
-    <a href='/tags/ConEmu/'>ConEmu</a>,
-    
-    <a href='/tags/cygwin/'>cygwin</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        相关文章ConEmu设置当前目录打开右键菜单cygwin配置记录
-安装 apt-cyg(类似linux的 apt-get)12lynx -source rawgit.com/transcode-open/apt-cyg/master/apt-cyg &gt; apt-cyginstall apt-cyg /bin
-安装zsh
-mac/linux 有 oh-my-zsh, 在cygwin有oh-my-cygwin;安装oh-my-cygw
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/10/30/cygwin-zsh/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/10/24/exclude-everything-except-a-specific-directory/">在已忽略文件夹中不忽略指定文件夹</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-10-24T14:02:06.000Z" itemprop="datePublished">
-          2015年10月24日
-      </time>
-    
-    
-    | 
-    <a href='/tags/git/'>git</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        
-在已忽略文件夹中不忽略指定文件夹忽略themes文件夹所有内容, 除了 themes/jacman/文件夹
-
-
-/*  不可省略!12themes/*!themes/jacman/
-
-
-(英文原文: ) Example to exclude everything except a specific directory foo/bar (note the /* - without the slash, the wildcard woul
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/10/24/exclude-everything-except-a-specific-directory/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/10/24/npm-throws-error-without-sudo/">npm 安装插件无权限</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-10-24T09:36:32.000Z" itemprop="datePublished">
-          2015年10月24日
-      </time>
-    
-    
-    | 
-    <a href='/tags/npm/'>npm</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        
-需要设置权限写文件
-
-1sudo chown -R `whoami` ~/.npm
-
-尝试安装插件, 如果出错,继续执行
-
-1sudo chown -R `whoami` /usr/local/lib/node_modules
-
-如果依然有错, 可能需要
-
-1sudo chown -R `whoami` /usr/local
-
-还是报错,请 sudo 执行命令
-
-1sudo npm install ...
-参考文档
-http://st
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/10/24/npm-throws-error-without-sudo/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <nav class="pagination" role="pagination">
-          <a class="pull-left" href="/page/3/">← Newer Posts</a>
-          <a class="pull-right" href="/page/5/">Older Posts →</a>
-        </nav>
-    </div>
-</section>
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>得之我幸 失之我命</p>
-        </div>
-    </div>
-</section>
-<!-- ============================ END Content =========================== -->
-
-      
-      
-<!-- ============================ Footer =========================== -->
-
-<footer>
-    <div class="container">
-            <div class="copy">
-                <p>
-                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By xinshangshangxin. All Rights Reserved.
-                </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
-            </div>
-            <div class="social">
-                <ul>
-                    
-                    <li><a href="https://github.com/xinshangshangxin" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
-                    
-                    
-                    
-                    
-                    
-                </ul>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-</footer>
-
-<!-- ============================ END Footer =========================== -->
-      <!-- Load our scripts -->
-<!-- Resizable 'on-demand' full-height hero -->
-<script type="text/javascript">
-    var resizeHero = function () {
-        var hero = $(".cover,.heightblock"),
-            window1 = $(window);
-        hero.css({
-            "height": window1.height()
-        });
-    };
-
-    resizeHero();
-
-    $(window).resize(function () {
-        resizeHero();
-    });
-</script>
-<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
-<script src="/js/scripts.js"></script><!-- Theme scripts -->
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$('#intro').find('img').each(function(){
-  var alt = this.alt;
-
-  if (alt){
-    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
-  }
-
-  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
-});
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
-
-
-      
-            <style>
-.local-search-popup {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  background: rgba(255, 255, 255, .9);
-  color: #333;
-  z-index: 9999;
-  border-radius: 5px;
-  overflow: scroll;
-}
-#local-search-input {
-  width: 100%;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid #151515;
-  background-color: initial;
-}
-.search-result-list {
-  list-style: none;
-  padding-left: 0;
-}
-.search-result-list > li {
-  margin-top: 15px;
-  border-bottom: 1px solid #ddd;
-  transition: all ease .3s;
-}
-.search-result-list > li:hover {
-  border-bottom: 1px solid gray;
-}
-.search-result-title {
-  font-size: 16px;
-}
-.search-result {
-  line-height: 20px;
-}
-.search-keyword {
-  font-weight: normal;
-  color: #c00;
-}
-
-@media (min-width: 890px) {
-  .popup-btn-close {
-    position: absolute;
-    top: 15px;
-    left: 35px;
-    border: 1px solid #151515;
-    padding: 0px 10px;
-    border-top-left-radius: 8px;
-    cursor: pointer;
-    transition: all ease .3s;
-  }
-  .popup-btn-close:hover {
-    background: #151515;
-    opacity: .9;
-    color: #fff;
-  }
-}
-@media (max-width: 890px) {
-  .popup-btn-close {
-    font-size: 0;
-    position: fixed;
-    right: 20px;
-    bottom: 50px;
-    width: 50px;
-    height: 50px;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: 1px 1px 5px #888;
-    cursor: pointer;
-  }
-  .popup-btn-close::after {
-    content: '←';
-    color: #151515;
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-size: 20px;
-    width: 100%;
-    height: 100%;
-    line-height: 50px;
-    text-align: center;
-  }
-}
-</style>
-
-<div class="popup search-popup local-search-popup">
-  <span class="popup-btn-close">
-    ESC
-  </span>
-  <div class="container">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="local-search-header clearfix">
-        <span class="search-icon">
-          <i class="fa fa-search"></i>
-        </span>
-        <div class="local-search-input-wrapper">
-          <input autocomplete="off" placeholder="Search..." type="text" id="local-search-input">
-        </div>
-      </div>
-      <div id="local-search-result"></div>
-    </div>
-  </div>
-</div>
-
-<script src="/js/ziploader.js"></script>
-
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.json";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').fadeOut(300);
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $('.popup').fadeIn(300);
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // get search zip version
-    $.get('/searchVersion.txt?t=' + (+new Date()), function(res) {
-      if (localStorage.getItem('searchVersion') !== res) {
-        localStorage.setItem('searchVersion', res);
-        initSearchJson();
-      }
-    });
-
-    function initSearchJson () {
-      initLoad(['/search.flv'], {
-        loadOptions: {
-          success: function(obj) {
-            localStorage.setItem('searchJson', obj['search.json'])
-          },
-          error: function(e) {
-            return console.log(e)
-          }
-        },
-        returnOptions: {
-          'json': TYPE_TEXT
-        },
-        mimeOptions:{
-          'json':'application/json'
-        }
-      })
-    }
-
-
-    // search function;
-    var searchFunc = function(search_id, content_id) {
-      'use strict';
-
-      isfetched = true;
-      var datas = JSON.parse(localStorage.getItem('searchJson'));
-      console.log(search_id)
-      var input = document.getElementById(search_id);
-      var resultContent = document.getElementById(content_id);
-      var inputEventFunction = function() {
-        var searchText = input.value.trim().toLowerCase();
-        var keywords = searchText.split(/[\s\-]+/);
-        if (keywords.length > 1) {
-          keywords.push(searchText);
-        }
-        var resultItems = [];
-        if (searchText.length > 0) {
-          // perform local searching
-          datas.forEach(function(data) {
-            var isMatch = false;
-            var hitCount = 0;
-            var searchTextCount = 0;
-            var title = data.title ? data.title.trim() : '';
-            var titleInLowerCase = title.toLowerCase();
-            var content = data.content ? data.content.trim().replace(/<[^>]+>/g,"") : '';
-            var contentInLowerCase = content.toLowerCase();
-            var articleUrl = decodeURIComponent(data.url);
-            var indexOfTitle = [];
-            var indexOfContent = [];
-            // only match articles with not empty titles
-            keywords.forEach(function(keyword) {
-              function getIndexByWord(word, text, caseSensitive) {
-                var wordLen = word.length;
-                if (wordLen === 0) {
-                  return [];
-                }
-                var startPosition = 0, position = [], index = [];
-                if (!caseSensitive) {
-                  text = text.toLowerCase();
-                  word = word.toLowerCase();
-                }
-                while ((position = text.indexOf(word, startPosition)) > -1) {
-                  index.push({position: position, word: word});
-                  startPosition = position + wordLen;
-                }
-                return index;
-              }
-
-              indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-              indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-            });
-            if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-              isMatch = true;
-              hitCount = indexOfTitle.length + indexOfContent.length;
-            }
-
-            // show search results
-
-            if (isMatch) {
-              // sort index by position of keyword
-
-              [indexOfTitle, indexOfContent].forEach(function (index) {
-                index.sort(function (itemLeft, itemRight) {
-                  if (itemRight.position !== itemLeft.position) {
-                    return itemRight.position - itemLeft.position;
-                  } else {
-                    return itemLeft.word.length - itemRight.word.length;
-                  }
-                });
-              });
-
-              // merge hits into slices
-
-              function mergeIntoSlice(text, start, end, index) {
-                var item = index[index.length - 1];
-                var position = item.position;
-                var word = item.word;
-                var hits = [];
-                var searchTextCountInSlice = 0;
-                while (position + word.length <= end && index.length != 0) {
-                  if (word === searchText) {
-                    searchTextCountInSlice++;
-                  }
-                  hits.push({position: position, length: word.length});
-                  var wordEnd = position + word.length;
-
-                  // move to next position of hit
-
-                  index.pop();
-                  while (index.length != 0) {
-                    item = index[index.length - 1];
-                    position = item.position;
-                    word = item.word;
-                    if (wordEnd > position) {
-                      index.pop();
-                    } else {
-                      break;
-                    }
-                  }
-                }
-                searchTextCount += searchTextCountInSlice;
-                return {
-                  hits: hits,
-                  start: start,
-                  end: end,
-                  searchTextCount: searchTextCountInSlice
-                };
-              }
-
-              var slicesOfTitle = [];
-              if (indexOfTitle.length != 0) {
-                slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-              }
-
-              var slicesOfContent = [];
-              while (indexOfContent.length != 0) {
-                var item = indexOfContent[indexOfContent.length - 1];
-                var position = item.position;
-                var word = item.word;
-                // cut out 100 characters
-                var start = position - 20;
-                var end = position + 80;
-                if(start < 0){
-                  start = 0;
-                }
-                if (end < position + word.length) {
-                  end = position + word.length;
-                }
-                if(end > content.length){
-                  end = content.length;
-                }
-                slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-              }
-
-              // sort slices in content by search text's count and hits' count
-
-              slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                  return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                  return sliceRight.hits.length - sliceLeft.hits.length;
-                } else {
-                  return sliceLeft.start - sliceRight.start;
-                }
-              });
-
-              // select top N slices in content
-
-              var upperBound = parseInt('2');
-              if (upperBound >= 0) {
-                slicesOfContent = slicesOfContent.slice(0, upperBound);
-              }
-
-              // highlight title and content
-
-              function highlightKeyword(text, slice) {
-                var result = '';
-                var prevEnd = slice.start;
-                slice.hits.forEach(function (hit) {
-                  result += text.substring(prevEnd, hit.position);
-                  var end = hit.position + hit.length;
-                  result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                  prevEnd = end;
-                });
-                result += text.substring(prevEnd, slice.end);
-                return result;
-              }
-
-              var resultItem = '';
-
-              if (slicesOfTitle.length != 0) {
-                resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-              } else {
-                resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-              }
-
-              slicesOfContent.forEach(function (slice) {
-                resultItem += "<a target='_blank' href='" + articleUrl + "'>" +
-                  "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                  "...</p>" + "</a>";
-              });
-
-              resultItem += "</li>";
-              resultItems.push({
-                item: resultItem,
-                searchTextCount: searchTextCount,
-                hitCount: hitCount,
-                id: resultItems.length
-              });
-            }
-          })
-        };
-        if (keywords.length === 1 && keywords[0] === "") {
-          resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-        } else if (resultItems.length === 0) {
-          resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-        } else {
-          resultItems.sort(function (resultLeft, resultRight) {
-            if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-              return resultRight.searchTextCount - resultLeft.searchTextCount;
-            } else if (resultLeft.hitCount !== resultRight.hitCount) {
-              return resultRight.hitCount - resultLeft.hitCount;
-            } else {
-              return resultRight.id - resultLeft.id;
-            }
-          });
-          var searchResultList = '<ul class=\"search-result-list\">';
-          resultItems.forEach(function (result) {
-            searchResultList += result.item;
-          })
-          searchResultList += "</ul>";
-          resultContent.innerHTML = searchResultList;
-        }
-      }
-
-      if ('auto' === 'auto') {
-        input.addEventListener('input', inputEventFunction);
-      } else {
-        $('.search-icon').click(inputEventFunction);
-        input.addEventListener('keypress', function (event) {
-          if (event.keyCode === 13) {
-            inputEventFunction();
-          }
-        });
-      }
-
-      // remove loading animation
-      $('body').css('overflow', '');
-
-      proceedsearch();
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        $('.sb-close').click();
-        searchFunc('local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
+  <script>
+    console.log('\n%c Hexo-theme-bmw v4.0 ' + '%c 🎉 https://github.com/dongyuanxin/theme-bmw 🎉\n' + '\n%c View demo online ' + '%c 🔍 https://godbmw.com/ 🔍  \n' , 'color: #fadfa3; background: #030307; padding:3px 0;', '', 'color: #fadfa3; background: #030307; padding:3px 0;', '');
   </script>
 
+  
+    <meta name="description" content="殇Blog">
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/icon/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+  <script src="/js/util.js"></script>
+<script src="/js/valine.min.js"></script>
+
+  
+
+  
+    <link href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js" async></script>
+  
+
+  
+    <link href="https://cdn.bootcss.com/social-share.js/1.0.16/css/share.min.css" rel="stylesheet">
+  
+  
+  <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js" async></script>
+  
+  
+
+</head>
+
+  <body>
+
+    
+
+    <div id="app">
+
+      <div class="header-wrap">
+  <header>
+    <div class="site-brand">
+      <div class="site-title">
+        <a href="/">SHANG</a>
+      </div>
+    </div>
+    <nav class="site-navigation">
+      <ul class="nav-menu">
+      
+        <li class="nav-item" data-path="/">
+          
+            <a href="/" target="_self">
+              主页
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          
+            <a href="/archives/" target="_self">
+              归档
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="https://github.com/xinshangshangxin">
+          
+            <a href="https://github.com/xinshangshangxin" target="_self">
+              Github
+            </a>
+          
+        </li>
+      
+      </ul>
+    </nav>
+    <i class="iconfont icon-menu"></i>
+  </header>
+</div>
+
+<script>
+  let links = document.querySelectorAll('.nav-item');
+  for(let link of links){
+    let childrenLink = link.querySelector('ul');
+    link.addEventListener('mouseenter', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown active";
+      }
+    })
+    link.addEventListener('mouseleave', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown";
+      }
+    })
+  }
+  let rootRealPath = getRealPath(window.location.pathname, true);
+  for(let link of links) {
+    let linkPath = link.getAttribute("data-path");
+    if(linkPath && getRealPath(linkPath, true) === rootRealPath) {
+      link.className = "nav-item hover";
+    }
+  }
+
+  let iconMenu = document.querySelector("i.iconfont.icon-menu"),
+    iconMenuClicked = false;
+  let navDOM = document.querySelector("nav.site-navigation");
+  iconMenu.addEventListener("click", () => {
+    iconMenuClicked 
+      ? navDOM.className = "site-navigation active"
+      : navDOM.className = "site-navigation";
+    iconMenuClicked = !iconMenuClicked;
+  })
+</script>
 
       
-</body>
+<div class="container home-index">
+  
+  <div class="post">
+    <h1 class="article-title">
+      <a href="/2016/01/09/windows-node-gyp-error/">
+        <span>windows下安装插件出现node-gyp error</span>
+      </a>
+    </h1>
+    <!-- PC端文章信息 -->
+    <div class="article-top-meta pc-view">
+      <span>
+        发布时间 : 2016-01-09
+      </span>
+    </div>
+    <!-- 移动端文章信息 -->
+    <div class="article-top-meta mobile-view">
+      <span>
+        发布 : 2016-01-09
+      </span>
+      
+      
+    </div>
+    
+    <!-- 文章简介 -->
+    <div class="article-content">
+      <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
+        <p>安装插件出现 ImportError: No module named gyp<br>
+      </p></div>
+    </div>
+    <div class="article-footer">
+      <div class="article-meta pull-left">
+        <!-- 分类pc端可见 -->
+        <span class="pc-view">
+          
+        <span>
+          
+            <i class="iconfont icon-06tags"></i>标签:
+            
+              <span class="span--tag">
+                <a href="/tags/npm/">
+                  #npm
+                </a>
+              </span>
+            
+                    
+        </span>
+      </span></div>
+      
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="article-title">
+      <a href="/2016/01/07/cygwin-npm-error/">
+        <span>在cygwin中npm安装git packages 失败</span>
+      </a>
+    </h1>
+    <!-- PC端文章信息 -->
+    <div class="article-top-meta pc-view">
+      <span>
+        发布时间 : 2016-01-07
+      </span>
+    </div>
+    <!-- 移动端文章信息 -->
+    <div class="article-top-meta mobile-view">
+      <span>
+        发布 : 2016-01-07
+      </span>
+      
+      
+    </div>
+    
+    <!-- 文章简介 -->
+    <div class="article-content">
+      <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
+        <p>在cygwin中安装是出现路径不正确,安装失败<br>
+      </p></div>
+    </div>
+    <div class="article-footer">
+      <div class="article-meta pull-left">
+        <!-- 分类pc端可见 -->
+        <span class="pc-view">
+          
+        <span>
+          
+            <i class="iconfont icon-06tags"></i>标签:
+            
+              <span class="span--tag">
+                <a href="/tags/cygwin/">
+                  #cygwin
+                </a>
+              </span>
+            
+              <span class="span--tag">
+                <a href="/tags/npm/">
+                  #npm
+                </a>
+              </span>
+            
+                    
+        </span>
+      </span></div>
+      
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="article-title">
+      <a href="/2015/12/17/angular-form/">
+        <span>angular 使用 multipart/form-data 上传文件, sails.js 接收文件</span>
+      </a>
+    </h1>
+    <!-- PC端文章信息 -->
+    <div class="article-top-meta pc-view">
+      <span>
+        发布时间 : 2015-12-17
+      </span>
+    </div>
+    <!-- 移动端文章信息 -->
+    <div class="article-top-meta mobile-view">
+      <span>
+        发布 : 2015-12-17
+      </span>
+      
+      
+    </div>
+    
+    <!-- 文章简介 -->
+    <div class="article-content">
+      <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
+        <p>angular multipart/form-data,  sails.js 接收文件出现取不到值<br>
+      </p></div>
+    </div>
+    <div class="article-footer">
+      <div class="article-meta pull-left">
+        <!-- 分类pc端可见 -->
+        <span class="pc-view">
+          
+        <span>
+          
+            <i class="iconfont icon-06tags"></i>标签:
+            
+              <span class="span--tag">
+                <a href="/tags/AngularJS/">
+                  #AngularJS
+                </a>
+              </span>
+            
+              <span class="span--tag">
+                <a href="/tags/sails/">
+                  #sails
+                </a>
+              </span>
+            
+                    
+        </span>
+      </span></div>
+      
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="article-title">
+      <a href="/2015/12/17/ngClick-fires-twice-on-button/">
+        <span>angularjs ng-click 触发两次事件</span>
+      </a>
+    </h1>
+    <!-- PC端文章信息 -->
+    <div class="article-top-meta pc-view">
+      <span>
+        发布时间 : 2015-12-17
+      </span>
+    </div>
+    <!-- 移动端文章信息 -->
+    <div class="article-top-meta mobile-view">
+      <span>
+        发布 : 2015-12-17
+      </span>
+      
+      
+    </div>
+    
+    <!-- 文章简介 -->
+    <div class="article-content">
+      <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
+        <p>在 pc的chrome中正常, 在 chrome 的<code>device mode</code>中触发2次, 在手机端触发2次<br>
+      </p></div>
+    </div>
+    <div class="article-footer">
+      <div class="article-meta pull-left">
+        <!-- 分类pc端可见 -->
+        <span class="pc-view">
+          
+        <span>
+          
+            <i class="iconfont icon-06tags"></i>标签:
+            
+              <span class="span--tag">
+                <a href="/tags/AngularJS/">
+                  #AngularJS
+                </a>
+              </span>
+            
+                    
+        </span>
+      </span></div>
+      
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="article-title">
+      <a href="/2015/12/06/http-status-codes/">
+        <span>[转]HTTP Status Codes</span>
+      </a>
+    </h1>
+    <!-- PC端文章信息 -->
+    <div class="article-top-meta pc-view">
+      <span>
+        发布时间 : 2015-12-06
+      </span>
+    </div>
+    <!-- 移动端文章信息 -->
+    <div class="article-top-meta mobile-view">
+      <span>
+        发布 : 2015-12-06
+      </span>
+      
+      
+    </div>
+    
+    <!-- 文章简介 -->
+    <div class="article-content">
+      <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
+        <p>HTTP Status Codes<br>
+      </p></div>
+    </div>
+    <div class="article-footer">
+      <div class="article-meta pull-left">
+        <!-- 分类pc端可见 -->
+        <span class="pc-view">
+          
+        <span>
+          
+            <i class="iconfont icon-06tags"></i>标签:
+            
+              <span class="span--tag">
+                <a href="/tags/http/">
+                  #http
+                </a>
+              </span>
+            
+                    
+        </span>
+      </span></div>
+      
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="article-title">
+      <a href="/2015/11/29/flvcd-no-ad/">
+        <span>硕鼠解析自动跳过广告</span>
+      </a>
+    </h1>
+    <!-- PC端文章信息 -->
+    <div class="article-top-meta pc-view">
+      <span>
+        发布时间 : 2015-11-29
+      </span>
+    </div>
+    <!-- 移动端文章信息 -->
+    <div class="article-top-meta mobile-view">
+      <span>
+        发布 : 2015-11-29
+      </span>
+      
+      
+    </div>
+    
+    <!-- 文章简介 -->
+    <div class="article-content">
+      <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
+        <p>硕鼠解析自动跳过广告<br>
+      </p></div>
+    </div>
+    <div class="article-footer">
+      <div class="article-meta pull-left">
+        <!-- 分类pc端可见 -->
+        <span class="pc-view">
+          
+        <span>
+          
+            <i class="iconfont icon-06tags"></i>标签:
+            
+              <span class="span--tag">
+                <a href="/tags/youkuvod/">
+                  #youkuvod
+                </a>
+              </span>
+            
+                    
+        </span>
+      </span></div>
+      
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="article-title">
+      <a href="/2015/11/17/make-show-up-to-date/">
+        <span>make: 'test' is up to date</span>
+      </a>
+    </h1>
+    <!-- PC端文章信息 -->
+    <div class="article-top-meta pc-view">
+      <span>
+        发布时间 : 2015-11-17
+      </span>
+    </div>
+    <!-- 移动端文章信息 -->
+    <div class="article-top-meta mobile-view">
+      <span>
+        发布 : 2015-11-17
+      </span>
+      
+      
+    </div>
+    
+    <!-- 文章简介 -->
+    <div class="article-content">
+      <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
+        <p>make test一直提示 up to date的解决方法<br>
+      </p></div>
+    </div>
+    <div class="article-footer">
+      <div class="article-meta pull-left">
+        <!-- 分类pc端可见 -->
+        <span class="pc-view">
+          
+        <span>
+          
+            <i class="iconfont icon-06tags"></i>标签:
+            
+              <span class="span--tag">
+                <a href="/tags/make/">
+                  #make
+                </a>
+              </span>
+            
+                    
+        </span>
+      </span></div>
+      
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="article-title">
+      <a href="/2015/10/30/cygwin-zsh/">
+        <span>cygwin下zsh安装</span>
+      </a>
+    </h1>
+    <!-- PC端文章信息 -->
+    <div class="article-top-meta pc-view">
+      <span>
+        发布时间 : 2015-10-30
+      </span>
+    </div>
+    <!-- 移动端文章信息 -->
+    <div class="article-top-meta mobile-view">
+      <span>
+        发布 : 2015-10-30
+      </span>
+      
+      
+    </div>
+    
+    <!-- 文章简介 -->
+    <div class="article-content">
+      <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
+        <p>cygwin下zsh安装<br>
+      </p></div>
+    </div>
+    <div class="article-footer">
+      <div class="article-meta pull-left">
+        <!-- 分类pc端可见 -->
+        <span class="pc-view">
+          
+        <span>
+          
+            <i class="iconfont icon-06tags"></i>标签:
+            
+              <span class="span--tag">
+                <a href="/tags/ConEmu/">
+                  #ConEmu
+                </a>
+              </span>
+            
+              <span class="span--tag">
+                <a href="/tags/cygwin/">
+                  #cygwin
+                </a>
+              </span>
+            
+                    
+        </span>
+      </span></div>
+      
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="article-title">
+      <a href="/2015/10/24/exclude-everything-except-a-specific-directory/">
+        <span>在已忽略文件夹中不忽略指定文件夹</span>
+      </a>
+    </h1>
+    <!-- PC端文章信息 -->
+    <div class="article-top-meta pc-view">
+      <span>
+        发布时间 : 2015-10-24
+      </span>
+    </div>
+    <!-- 移动端文章信息 -->
+    <div class="article-top-meta mobile-view">
+      <span>
+        发布 : 2015-10-24
+      </span>
+      
+      
+    </div>
+    
+    <!-- 文章简介 -->
+    <div class="article-content">
+      <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
+        <p>网上搜索到的答案有很多是错误的,故记录之<br>
+      </p></div>
+    </div>
+    <div class="article-footer">
+      <div class="article-meta pull-left">
+        <!-- 分类pc端可见 -->
+        <span class="pc-view">
+          
+        <span>
+          
+            <i class="iconfont icon-06tags"></i>标签:
+            
+              <span class="span--tag">
+                <a href="/tags/git/">
+                  #git
+                </a>
+              </span>
+            
+                    
+        </span>
+      </span></div>
+      
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="article-title">
+      <a href="/2015/10/24/npm-throws-error-without-sudo/">
+        <span>npm 安装插件无权限</span>
+      </a>
+    </h1>
+    <!-- PC端文章信息 -->
+    <div class="article-top-meta pc-view">
+      <span>
+        发布时间 : 2015-10-24
+      </span>
+    </div>
+    <!-- 移动端文章信息 -->
+    <div class="article-top-meta mobile-view">
+      <span>
+        发布 : 2015-10-24
+      </span>
+      
+      
+    </div>
+    
+    <!-- 文章简介 -->
+    <div class="article-content">
+      <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
+        <p>安装插件出现 Error: EACCES, open ‘….’<br>
+      </p></div>
+    </div>
+    <div class="article-footer">
+      <div class="article-meta pull-left">
+        <!-- 分类pc端可见 -->
+        <span class="pc-view">
+          
+        <span>
+          
+            <i class="iconfont icon-06tags"></i>标签:
+            
+              <span class="span--tag">
+                <a href="/tags/npm/">
+                  #npm
+                </a>
+              </span>
+            
+                    
+        </span>
+      </span></div>
+      
+    </div>
+  </div>
+  
+
+  <nav class="page-navigation">
+    
+      <a href="/page/3/">上一页</a>
+    
+    
+      <a href="/page/5/">下一页</a>
+    
+  </nav>
+
+   
+</div>
+
+
+      <footer>
+  <p class="site-info">
+    <!-- 博客已萌萌哒运行<span id="time-to-now"></span><span class="my-face">(●'◡'●)ﾉ♥</span> -->
+    
+      得之我幸,失之我命
+    
+    <br>
+    Theme - <a href="https://github.com/dongyuanxin/theme-bmw">BMW</a> | Made With 💗 | Powered by <a href="https://godbmw.com/">GodBMW</a>
+    <br>
+    
+  </p>
+</footer>
+
+
+
+<script>
+const timeToNowDOM = document.querySelector("#time-to-now");
+const startTimestamp = new Date(2018, 1, 10).getTime();
+
+const updateTimeStr = () => {
+  let offset = parseInt(
+      (new Date().getTime() - startTimestamp) / 1000,
+      10
+    ),
+    day = Math.floor(offset / 86400),
+    hour = Math.floor((offset % 86400) / 3600),
+    minute = Math.floor(((offset % 86400) % 3600) / 60),
+    second = Math.floor(((offset % 86400) % 3600) % 60);
+  timeToNowDOM.innerHTML =
+    day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
+  setTimeout(updateTimeStr, 500);
+}
+
+setTimeout(updateTimeStr, 500);
+</script>
+
+
+      <div class="back-to-top hidden">
+  <span>
+    <i class="iconfont icon-60"></i><span></span>%
+  </span>
+</div>
+
+<script>
+const updateIconToTop = percent => {
+  let dom = document.querySelector(".back-to-top span span");
+  dom.innerText = percent;
+  if(percent < 1) {
+    document.querySelector(".back-to-top").className = "back-to-top hidden";
+  } else {
+    document.querySelector(".back-to-top").className = "back-to-top";
+  }
+}
+
+const handleScoll = () => {
+  let isRunning = false;
+  return () => {
+    if (isRunning) return;
+    isRunning = true;
+    window.requestAnimationFrame(timestamp => {
+      let scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop,
+        scrollHeight =
+          document.documentElement.scrollHeight ||
+          document.body.scrollHeight,
+        clientHeight =
+          document.documentElement.clientHeight ||
+          document.body.clientHeight;
+      isRunning = false;
+      if (scrollTop <= 1) {
+        updateIconToTop(0);
+        return;
+      }
+      if (scrollTop + clientHeight >= scrollHeight) {
+        updateIconToTop(100);
+      } else {
+        updateIconToTop(parseInt(
+          100 * scrollTop / (scrollHeight - clientHeight),
+          10
+        ));
+      }
+    });
+  };
+}
+
+const backToTop = () => {
+  let scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop,
+    delay = 10,
+    time = 200;
+  if (scrollTop <= 20) {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    return;
+  }
+  let step = Math.ceil(scrollTop * delay / time);
+  let timer = setInterval(() => {
+    scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollTop - step <= 0) {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      clearInterval(timer);
+    } else {
+      document.documentElement.scrollTop = scrollTop - step;
+      document.body.scrollTop = scrollTop - step;
+    }
+  }, delay);
+}
+
+document.addEventListener("scroll", handleScoll(), false);
+
+document.querySelector(".back-to-top").addEventListener("click", backToTop, false);
+
+</script>
+
+    </div>
+
+    
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script>
+  (() => {
+    const mathjaxConfig = {
+      showProcessingMessages: false, //关闭js加载过程信息
+      messageStyle: "none", //不显示信息
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+      },
+      "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+      }
+    }
+
+    let mathjaxInterval = setInterval(() => {
+      if(!window.MathJax){
+        return;
+      }
+      window.MathJax.Hub.Config(mathjaxConfig)
+      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')])
+
+      clearInterval(mathjaxInterval)
+    }, 10)    
+  })()
+</script>
+    
+
+    <script src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script>
+<script async>
+  let fancyTimer = setInterval(function(){
+    if(!window.$){
+      return;
+    }
+    $(document).ready(function() {
+      $(".post img").each(function () {
+        if($(this).parent().get(0).tagName.toLowerCase() === "a") {
+          return;
+        }
+        // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "gallery");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      });
+      
+      clearInterval(fancyTimer);
+    });
+  }, 10);
+</script>
+
+    
+  </body>
+
 </html>

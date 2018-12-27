@@ -1,1123 +1,855 @@
 <!DOCTYPE html>
-<!--[if lte IE 8 ]>
-<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
-<![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<!--
-***************  *      *     *
-      8          *    *       *
-      8          *  *         *
-      8          **           *
-      8          *  *         *
-      8          *    *       *
-      8          *      *     *
-      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
--->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
-<!--<![endif]-->
+<html lang="zh-CN">
 
-<head>
+  
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="author" content="董沅鑫, yuanxin.me@gmail.com">
+  
+    <meta name="robots" content="noindex">
+  
+  
+  
   <title>SHANG Blog</title>
-  <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content="SHANG Blog">
-    <meta name="author" content="xinshangshangxin">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
 
-    <!-- Favicon, (keep icon in root folder) -->
-    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
-
-    <link rel="alternate" href="/atom.xml" title="SHANG Blog" type="application/atom+xml">
-    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
-    
-    <link rel="stylesheet" href="/highlightjs/tomorrow-night-eighties.css" type="text/css">
-    
-
-    <!--[if IE 8]>
-    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
-    <![endif]-->
-
-    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
-    <script src="/js/jquery-1.11.1.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
-
-    <!-- Load these in the <head> for quicker IE8+ load times -->
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="/js/html5shiv.min.js"></script>
-    <script src="/js/respond.min.js"></script>
-    <![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
+    <meta name="keywords" content="Hexo, theme-bmw">
   
-  
 
-  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
-</head>
-
-<!--
-<body class="home-template">
--->
-<body id="index" class="lightnav animsition">
-
-      <!-- ============================ Off-canvas navigation =========================== -->
-
-    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
-        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
-        </div>
-        <!-- Lists in Slidebars -->
-        <ul class="sb-menu">
-            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
-            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
-            <!-- Dropdown Menu -->
-			 
-            
-            
-        </ul>
-        <!-- Lists in Slidebars -->
-        <ul class="sb-menu secondary">
-            
-            <li><a href="javascript:;" class="popup-trigger" title="Search"><span class="search-icon"></span>SEARCH</a></li>
-            
-
-            <li><a href="/tags" class="animsition-link" title="archive">TAGS</a></li>
-
-            <!-- <li><a href="/about.html" class="animsition-link" title="about">About</a></li> -->
-            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
-        </ul>
-    </div>
-    
-    <!-- ============================ END Off-canvas navigation =========================== -->
-
-    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
-
-    <div id="sb-site">
-        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
-
-        <!-- ============================ Header & Logo bar =========================== -->
-
-        <div id="navigation" class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <!-- Nav logo -->
-                    <div class="logo">
-                        <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.jpeg" alt="Logo" width="35px;"/> 
-                        </a>
-                    </div>
-                    <!-- // Nav logo -->
-                    <!-- Info-bar -->
-                    <nav>
-                        <ul class="nav">
-                            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
-                            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
-                            
-                                <li><a href="javascript:;" class="popup-trigger" title="Search"><span class="search-icon"></span>Search</a></li>
-                            
-
-                            <li><a href="/tags" class="animsition-link" title="archive">tags</a></li>
-
-                            <!-- <li><a href="/about.html" class="animsition-link" title="about">About</a></li> -->
-            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
-                            
-                            <li><a href="https://github.com/xinshangshangxin" title="Github" target="_blank"><i class="icon-github"></i></a></li>
-                            
-                            
-                            
-                            
-                            
-                        </ul>
-                    </nav>
-                    <!--// Info-bar -->
-                </div>
-                <!-- // .container -->
-                <div class="learnmore sb-toggle-right">More</div>
-                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar before"></span>
-                <span class="icon-bar main"></span>
-                <span class="icon-bar after"></span>
-                </button>
-            </div>
-            <!-- // .navbar-inner -->
-        </div>
-
-        <!-- ============================ Header & Logo bar =========================== -->
-
-
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url() no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-<!-- ============================ Content =========================== -->
-
-<section id="intro">
-    <div class="container">
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/06/11/DaoCloud体验－使用node构建应用程序/">DaoCloud体验－使用node构建应用程序</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-06-11T04:49:10.000Z" itemprop="datePublished">
-          2015年06月11日
-      </time>
-    
-    
-    | 
-    <a href='/tags/docker/'>docker</a>,
-    
-    <a href='/tags/node/'>node</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        
-首发于http://open.daocloud.io/using-node-to-build-applications/
-
-DaoCloud体验－使用node构建应用程序node应用程序demo
-首先 选择一个平台 clone 代码到你的git平台上 coding / github / gitcafe 
-在控制台点击 服务集成;
-创建 mysql服务和 mongodb服务, 名字可以随意
-回到控制台,点击 代码构建, 创建新项目, 代
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/06/11/DaoCloud体验－使用node构建应用程序/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/06/06/Docker学习笔记-1/">Docker学习笔记(1)</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-06-06T08:07:23.000Z" itemprop="datePublished">
-          2015年06月6日
-      </time>
-    
-    
-    | 
-    <a href='/tags/docker/'>docker</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        FROM 基础镜像MAINTAINER 维护者ENV 环境变量
-
-docker 复制文件 ADD COPY
-
-ADD 可以获取网络地址以及解压功能COPY 本地文件
-RUN 运行指令,每运行一条指令增加一层
-EXPOSE 22   container暴露22端口
-ENTRYPOINT 镜像启动后自动执行的命令
-build  使用docker file生成docker镜像// -t 起名字// dockerfile_path如果为当前目录
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/06/06/Docker学习笔记-1/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/06/01/DaoCloud部署Node/">DaoCloud部署Node</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-06-01T15:06:00.000Z" itemprop="datePublished">
-          2015年06月1日
-      </time>
-    
-    
-    | 
-    <a href='/tags/docker/'>docker</a>,
-    
-    <a href='/tags/node/'>node</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        
-DaoCloud 有go和python 的 example;却没有Node的example, 把我踩的坑记录分享
-
-注册DaoCloud注册地址: https://account.daocloud.io/signup
-
-整个构建和部署所需要的资源，DaoCloud都免费提供，为所有的注册用户免费提供以下资源：3个项目，同时可以在DaoCloud关联和构建您的3个软件项目2个容器，每个容器内存上限是256M内存空间2个服务，可从Mong
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/06/01/DaoCloud部署Node/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/05/24/QQ互联踩坑记录/">QQ互联踩坑记录</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-05-24T11:10:08.000Z" itemprop="datePublished">
-          2015年05月24日
-      </time>
-    
-    
-    | 
-    <a href='/tags/js/'>js</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        页面进入地址不正确….
-错误页面open.qq.com正确页面connect.qq.com
-
-出现 redirect uri is illegal(100010) 回调地址文档未更新….
-
-官方文档website/回调地址常见问题及修改方法中
-
-
-
-全部是错误的,应当参考如下图片,回调地址填写 完整的回调地址
-
-
-
-
-文章若有纰漏请大家补充指正,谢谢~~
-
-http://blog.xinshangshangxin.com SHANG殇
-
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/05/24/QQ互联踩坑记录/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/05/10/cygwin配置记录/">cygwin配置记录</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-05-10T13:59:46.000Z" itemprop="datePublished">
-          2015年05月10日
-      </time>
-    
-    
-    | 
-    <a href='/tags/ConEmu/'>ConEmu</a>,
-    
-    <a href='/tags/cygwin/'>cygwin</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        ls/grep/dir输出彩色显示调整 ${HOME}/.bashrc文件(安装位置:\cygwin64\home\你的用户名\.bashrc)，把注释掉别名打开：
-12345678910111213141516171819# 第98行左右开始# Default to human readable figures alias df='df -h' alias du='du -h'## Misc :)# alias less='less 
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/05/10/cygwin配置记录/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/05/09/JavaScript-replace/">JavaScript-replace</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-05-09T07:47:23.000Z" itemprop="datePublished">
-          2015年05月9日
-      </time>
-    
-    
-    | 
-    <a href='/tags/js/'>js</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        String.replace(searchValue,replaceValue)
-
-String:字符串
-searchValue：字符串或正则表达式
-replaceValue:字符串或者函数
-
-字符串替换字符串12'I am loser!'.replace('loser','hero')//I am hero!
-直接使用字符串能让自己从loser变成hero,但是如果有2个loser就不能一起变成hero了.
-12'I am loser
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/05/09/JavaScript-replace/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/05/06/JavaScript权威指南笔记9-客户端存储/">JavaScript权威指南笔记9_客户端存储</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-05-06T12:16:06.000Z" itemprop="datePublished">
-          2015年05月6日
-      </time>
-    
-    
-    | 
-    <a href='/tags/js/'>js</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        localStorage 和 sessionStorage
-localStorage 仅支持存储字符串localStorage 存储是永久的;除非web引用刻意删除,或者用户通过浏览器配置删除localStorage 作用域限定在文档源级别(协议;主机名;端口)
-
-
-sessionStorage 存储数据的脚本所在的 最顶层的窗口/浏览器标签页 的有效期sessionStorage 作用域限定在文档源级别(协议;主机名;端口)如果一个浏
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/05/06/JavaScript权威指南笔记9-客户端存储/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/05/05/JavaScript权威指南笔记8-脚本化HTTP/">JavaScript权威指南笔记8_脚本化HTTP</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-05-05T05:50:52.000Z" itemprop="datePublished">
-          2015年05月5日
-      </time>
-    
-    
-    | 
-    <a href='/tags/js/'>js</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        open()
-open() 的第一个参数指定HTTP的 方法/动作; 不区分大小写;但通常使用大写字幕  
-
-
-open() 的第二个参数是 URL; 相对于文档的URL或者绝对URL
-
-绝对URL如果跨域,通常会报错;除非服务器允许并且XHR2规范
-
-
-
-使用setRequestsHeader() 多次设置POST请求通常拥有主体,同时应该使用 setRequestsHeader 指定 Content-Type 头xhr.setReq
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/05/05/JavaScript权威指南笔记8-脚本化HTTP/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/04/23/JavaScript权威指南笔记7-脚本化文档/">JavaScript权威指南笔记7_脚本化文档</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-04-23T13:36:14.000Z" itemprop="datePublished">
-          2015年04月23日
-      </time>
-    
-    
-    | 
-    <a href='/tags/js/'>js</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        document.getElementById() 在IE7- 下匹配ID 不区分大小写
-document.getElementsByName(); 和 document.getElementsByTagName(); 返回 NodeList对象document.images和 document.forms 返回 HTMLCollection 对象它们都是实时的, 生成静态副本如下:1var snapshot = Array.proto
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/04/23/JavaScript权威指南笔记7-脚本化文档/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/04/22/使用nodejs-踩坑微信JS-SDK记录/">使用nodejs 踩坑微信JS-SDK记录</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-04-22T13:55:00.000Z" itemprop="datePublished">
-          2015年04月22日
-      </time>
-    
-    
-    | 
-    <a href='/tags/js/'>js</a>,
-    
-    <a href='/tags/node/'>node</a>,
-    
-    <a href='/tags/wechat/'>wechat</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        JS-SDK 要点
-微信测试号; 扫码登录;无需认证(只是名称统一为微信测试号)http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login
-
-JS-SDK 说明文档http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html#JSSDK.E4.BD.BF.E7.94.A8.E6.AD.A5.E9.A
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/04/22/使用nodejs-踩坑微信JS-SDK记录/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <nav class="pagination" role="pagination">
-          <a class="pull-left" href="/page/7/">← Newer Posts</a>
-          <a class="pull-right" href="/page/9/">Older Posts →</a>
-        </nav>
-    </div>
-</section>
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>得之我幸 失之我命</p>
-        </div>
-    </div>
-</section>
-<!-- ============================ END Content =========================== -->
-
-      
-      
-<!-- ============================ Footer =========================== -->
-
-<footer>
-    <div class="container">
-            <div class="copy">
-                <p>
-                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By xinshangshangxin. All Rights Reserved.
-                </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
-            </div>
-            <div class="social">
-                <ul>
-                    
-                    <li><a href="https://github.com/xinshangshangxin" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
-                    
-                    
-                    
-                    
-                    
-                </ul>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-</footer>
-
-<!-- ============================ END Footer =========================== -->
-      <!-- Load our scripts -->
-<!-- Resizable 'on-demand' full-height hero -->
-<script type="text/javascript">
-    var resizeHero = function () {
-        var hero = $(".cover,.heightblock"),
-            window1 = $(window);
-        hero.css({
-            "height": window1.height()
-        });
-    };
-
-    resizeHero();
-
-    $(window).resize(function () {
-        resizeHero();
-    });
-</script>
-<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
-<script src="/js/scripts.js"></script><!-- Theme scripts -->
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$('#intro').find('img').each(function(){
-  var alt = this.alt;
-
-  if (alt){
-    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
-  }
-
-  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
-});
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
-
-
-      
-            <style>
-.local-search-popup {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  background: rgba(255, 255, 255, .9);
-  color: #333;
-  z-index: 9999;
-  border-radius: 5px;
-  overflow: scroll;
-}
-#local-search-input {
-  width: 100%;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid #151515;
-  background-color: initial;
-}
-.search-result-list {
-  list-style: none;
-  padding-left: 0;
-}
-.search-result-list > li {
-  margin-top: 15px;
-  border-bottom: 1px solid #ddd;
-  transition: all ease .3s;
-}
-.search-result-list > li:hover {
-  border-bottom: 1px solid gray;
-}
-.search-result-title {
-  font-size: 16px;
-}
-.search-result {
-  line-height: 20px;
-}
-.search-keyword {
-  font-weight: normal;
-  color: #c00;
-}
-
-@media (min-width: 890px) {
-  .popup-btn-close {
-    position: absolute;
-    top: 15px;
-    left: 35px;
-    border: 1px solid #151515;
-    padding: 0px 10px;
-    border-top-left-radius: 8px;
-    cursor: pointer;
-    transition: all ease .3s;
-  }
-  .popup-btn-close:hover {
-    background: #151515;
-    opacity: .9;
-    color: #fff;
-  }
-}
-@media (max-width: 890px) {
-  .popup-btn-close {
-    font-size: 0;
-    position: fixed;
-    right: 20px;
-    bottom: 50px;
-    width: 50px;
-    height: 50px;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: 1px 1px 5px #888;
-    cursor: pointer;
-  }
-  .popup-btn-close::after {
-    content: '←';
-    color: #151515;
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-size: 20px;
-    width: 100%;
-    height: 100%;
-    line-height: 50px;
-    text-align: center;
-  }
-}
-</style>
-
-<div class="popup search-popup local-search-popup">
-  <span class="popup-btn-close">
-    ESC
-  </span>
-  <div class="container">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="local-search-header clearfix">
-        <span class="search-icon">
-          <i class="fa fa-search"></i>
-        </span>
-        <div class="local-search-input-wrapper">
-          <input autocomplete="off" placeholder="Search..." type="text" id="local-search-input">
-        </div>
-      </div>
-      <div id="local-search-result"></div>
-    </div>
-  </div>
-</div>
-
-<script src="/js/ziploader.js"></script>
-
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.json";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').fadeOut(300);
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $('.popup').fadeIn(300);
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // get search zip version
-    $.get('/searchVersion.txt?t=' + (+new Date()), function(res) {
-      if (localStorage.getItem('searchVersion') !== res) {
-        localStorage.setItem('searchVersion', res);
-        initSearchJson();
-      }
-    });
-
-    function initSearchJson () {
-      initLoad(['/search.flv'], {
-        loadOptions: {
-          success: function(obj) {
-            localStorage.setItem('searchJson', obj['search.json'])
-          },
-          error: function(e) {
-            return console.log(e)
-          }
-        },
-        returnOptions: {
-          'json': TYPE_TEXT
-        },
-        mimeOptions:{
-          'json':'application/json'
-        }
-      })
-    }
-
-
-    // search function;
-    var searchFunc = function(search_id, content_id) {
-      'use strict';
-
-      isfetched = true;
-      var datas = JSON.parse(localStorage.getItem('searchJson'));
-      console.log(search_id)
-      var input = document.getElementById(search_id);
-      var resultContent = document.getElementById(content_id);
-      var inputEventFunction = function() {
-        var searchText = input.value.trim().toLowerCase();
-        var keywords = searchText.split(/[\s\-]+/);
-        if (keywords.length > 1) {
-          keywords.push(searchText);
-        }
-        var resultItems = [];
-        if (searchText.length > 0) {
-          // perform local searching
-          datas.forEach(function(data) {
-            var isMatch = false;
-            var hitCount = 0;
-            var searchTextCount = 0;
-            var title = data.title ? data.title.trim() : '';
-            var titleInLowerCase = title.toLowerCase();
-            var content = data.content ? data.content.trim().replace(/<[^>]+>/g,"") : '';
-            var contentInLowerCase = content.toLowerCase();
-            var articleUrl = decodeURIComponent(data.url);
-            var indexOfTitle = [];
-            var indexOfContent = [];
-            // only match articles with not empty titles
-            keywords.forEach(function(keyword) {
-              function getIndexByWord(word, text, caseSensitive) {
-                var wordLen = word.length;
-                if (wordLen === 0) {
-                  return [];
-                }
-                var startPosition = 0, position = [], index = [];
-                if (!caseSensitive) {
-                  text = text.toLowerCase();
-                  word = word.toLowerCase();
-                }
-                while ((position = text.indexOf(word, startPosition)) > -1) {
-                  index.push({position: position, word: word});
-                  startPosition = position + wordLen;
-                }
-                return index;
-              }
-
-              indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-              indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-            });
-            if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-              isMatch = true;
-              hitCount = indexOfTitle.length + indexOfContent.length;
-            }
-
-            // show search results
-
-            if (isMatch) {
-              // sort index by position of keyword
-
-              [indexOfTitle, indexOfContent].forEach(function (index) {
-                index.sort(function (itemLeft, itemRight) {
-                  if (itemRight.position !== itemLeft.position) {
-                    return itemRight.position - itemLeft.position;
-                  } else {
-                    return itemLeft.word.length - itemRight.word.length;
-                  }
-                });
-              });
-
-              // merge hits into slices
-
-              function mergeIntoSlice(text, start, end, index) {
-                var item = index[index.length - 1];
-                var position = item.position;
-                var word = item.word;
-                var hits = [];
-                var searchTextCountInSlice = 0;
-                while (position + word.length <= end && index.length != 0) {
-                  if (word === searchText) {
-                    searchTextCountInSlice++;
-                  }
-                  hits.push({position: position, length: word.length});
-                  var wordEnd = position + word.length;
-
-                  // move to next position of hit
-
-                  index.pop();
-                  while (index.length != 0) {
-                    item = index[index.length - 1];
-                    position = item.position;
-                    word = item.word;
-                    if (wordEnd > position) {
-                      index.pop();
-                    } else {
-                      break;
-                    }
-                  }
-                }
-                searchTextCount += searchTextCountInSlice;
-                return {
-                  hits: hits,
-                  start: start,
-                  end: end,
-                  searchTextCount: searchTextCountInSlice
-                };
-              }
-
-              var slicesOfTitle = [];
-              if (indexOfTitle.length != 0) {
-                slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-              }
-
-              var slicesOfContent = [];
-              while (indexOfContent.length != 0) {
-                var item = indexOfContent[indexOfContent.length - 1];
-                var position = item.position;
-                var word = item.word;
-                // cut out 100 characters
-                var start = position - 20;
-                var end = position + 80;
-                if(start < 0){
-                  start = 0;
-                }
-                if (end < position + word.length) {
-                  end = position + word.length;
-                }
-                if(end > content.length){
-                  end = content.length;
-                }
-                slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-              }
-
-              // sort slices in content by search text's count and hits' count
-
-              slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                  return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                  return sliceRight.hits.length - sliceLeft.hits.length;
-                } else {
-                  return sliceLeft.start - sliceRight.start;
-                }
-              });
-
-              // select top N slices in content
-
-              var upperBound = parseInt('2');
-              if (upperBound >= 0) {
-                slicesOfContent = slicesOfContent.slice(0, upperBound);
-              }
-
-              // highlight title and content
-
-              function highlightKeyword(text, slice) {
-                var result = '';
-                var prevEnd = slice.start;
-                slice.hits.forEach(function (hit) {
-                  result += text.substring(prevEnd, hit.position);
-                  var end = hit.position + hit.length;
-                  result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                  prevEnd = end;
-                });
-                result += text.substring(prevEnd, slice.end);
-                return result;
-              }
-
-              var resultItem = '';
-
-              if (slicesOfTitle.length != 0) {
-                resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-              } else {
-                resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-              }
-
-              slicesOfContent.forEach(function (slice) {
-                resultItem += "<a target='_blank' href='" + articleUrl + "'>" +
-                  "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                  "...</p>" + "</a>";
-              });
-
-              resultItem += "</li>";
-              resultItems.push({
-                item: resultItem,
-                searchTextCount: searchTextCount,
-                hitCount: hitCount,
-                id: resultItems.length
-              });
-            }
-          })
-        };
-        if (keywords.length === 1 && keywords[0] === "") {
-          resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-        } else if (resultItems.length === 0) {
-          resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-        } else {
-          resultItems.sort(function (resultLeft, resultRight) {
-            if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-              return resultRight.searchTextCount - resultLeft.searchTextCount;
-            } else if (resultLeft.hitCount !== resultRight.hitCount) {
-              return resultRight.hitCount - resultLeft.hitCount;
-            } else {
-              return resultRight.id - resultLeft.id;
-            }
-          });
-          var searchResultList = '<ul class=\"search-result-list\">';
-          resultItems.forEach(function (result) {
-            searchResultList += result.item;
-          })
-          searchResultList += "</ul>";
-          resultContent.innerHTML = searchResultList;
-        }
-      }
-
-      if ('auto' === 'auto') {
-        input.addEventListener('input', inputEventFunction);
-      } else {
-        $('.search-icon').click(inputEventFunction);
-        input.addEventListener('keypress', function (event) {
-          if (event.keyCode === 13) {
-            inputEventFunction();
-          }
-        });
-      }
-
-      // remove loading animation
-      $('body').css('overflow', '');
-
-      proceedsearch();
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        $('.sb-close').click();
-        searchFunc('local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
+  <script>
+    console.log('\n%c Hexo-theme-bmw v4.0 ' + '%c 🎉 https://github.com/dongyuanxin/theme-bmw 🎉\n' + '\n%c View demo online ' + '%c 🔍 https://godbmw.com/ 🔍  \n' , 'color: #fadfa3; background: #030307; padding:3px 0;', '', 'color: #fadfa3; background: #030307; padding:3px 0;', '');
   </script>
 
+  
+    <meta name="description" content="殇Blog">
+  
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/icon/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+  <script src="/js/util.js"></script>
+<script src="/js/valine.min.js"></script>
+
+  
+
+  
+    <link href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js" async></script>
+  
+
+  
+    <link href="https://cdn.bootcss.com/social-share.js/1.0.16/css/share.min.css" rel="stylesheet">
+  
+  
+  <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js" async></script>
+  
+  
+
+</head>
+
+  <body>
+
+    
+
+    <div id="app">
+
+      <div class="header-wrap">
+  <header>
+    <div class="site-brand">
+      <div class="site-title">
+        <a href="/">SHANG</a>
+      </div>
+    </div>
+    <nav class="site-navigation">
+      <ul class="nav-menu">
+      
+        <li class="nav-item" data-path="/">
+          
+            <a href="/" target="_self">
+              主页
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          
+            <a href="/archives/" target="_self">
+              归档
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="https://github.com/xinshangshangxin">
+          
+            <a href="https://github.com/xinshangshangxin" target="_self">
+              Github
+            </a>
+          
+        </li>
+      
+      </ul>
+    </nav>
+    <i class="iconfont icon-menu"></i>
+  </header>
+</div>
+
+<script>
+  let links = document.querySelectorAll('.nav-item');
+  for(let link of links){
+    let childrenLink = link.querySelector('ul');
+    link.addEventListener('mouseenter', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown active";
+      }
+    })
+    link.addEventListener('mouseleave', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown";
+      }
+    })
+  }
+  let rootRealPath = getRealPath(window.location.pathname, true);
+  for(let link of links) {
+    let linkPath = link.getAttribute("data-path");
+    if(linkPath && getRealPath(linkPath, true) === rootRealPath) {
+      link.className = "nav-item hover";
+    }
+  }
+
+  let iconMenu = document.querySelector("i.iconfont.icon-menu"),
+    iconMenuClicked = false;
+  let navDOM = document.querySelector("nav.site-navigation");
+  iconMenu.addEventListener("click", () => {
+    iconMenuClicked 
+      ? navDOM.className = "site-navigation active"
+      : navDOM.className = "site-navigation";
+    iconMenuClicked = !iconMenuClicked;
+  })
+</script>
 
       
-</body>
+<div class="container home-index">
+  
+  <div class="post">
+    <h1 class="article-title">
+      <a href="/2015/06/11/DaoCloud体验－使用node构建应用程序/">
+        <span>DaoCloud体验－使用node构建应用程序</span>
+      </a>
+    </h1>
+    <!-- PC端文章信息 -->
+    <div class="article-top-meta pc-view">
+      <span>
+        发布时间 : 2015-06-11
+      </span>
+    </div>
+    <!-- 移动端文章信息 -->
+    <div class="article-top-meta mobile-view">
+      <span>
+        发布 : 2015-06-11
+      </span>
+      
+      
+    </div>
+    
+    <!-- 文章简介 -->
+    <div class="article-content">
+      <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
+        <p>DaoCloud体验－使用node构建应用程序<br>
+      </p></div>
+    </div>
+    <div class="article-footer">
+      <div class="article-meta pull-left">
+        <!-- 分类pc端可见 -->
+        <span class="pc-view">
+          
+        <span>
+          
+            <i class="iconfont icon-06tags"></i>标签:
+            
+              <span class="span--tag">
+                <a href="/tags/docker/">
+                  #docker
+                </a>
+              </span>
+            
+              <span class="span--tag">
+                <a href="/tags/node/">
+                  #node
+                </a>
+              </span>
+            
+                    
+        </span>
+      </span></div>
+      
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="article-title">
+      <a href="/2015/06/06/Docker学习笔记-1/">
+        <span>Docker学习笔记(1)</span>
+      </a>
+    </h1>
+    <!-- PC端文章信息 -->
+    <div class="article-top-meta pc-view">
+      <span>
+        发布时间 : 2015-06-06
+      </span>
+    </div>
+    <!-- 移动端文章信息 -->
+    <div class="article-top-meta mobile-view">
+      <span>
+        发布 : 2015-06-06
+      </span>
+      
+      
+    </div>
+    
+    <!-- 文章简介 -->
+    <div class="article-content">
+      <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
+        <p>Docker学习笔记<br>
+      </p></div>
+    </div>
+    <div class="article-footer">
+      <div class="article-meta pull-left">
+        <!-- 分类pc端可见 -->
+        <span class="pc-view">
+          
+        <span>
+          
+            <i class="iconfont icon-06tags"></i>标签:
+            
+              <span class="span--tag">
+                <a href="/tags/docker/">
+                  #docker
+                </a>
+              </span>
+            
+                    
+        </span>
+      </span></div>
+      
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="article-title">
+      <a href="/2015/06/01/DaoCloud部署Node/">
+        <span>DaoCloud部署Node</span>
+      </a>
+    </h1>
+    <!-- PC端文章信息 -->
+    <div class="article-top-meta pc-view">
+      <span>
+        发布时间 : 2015-06-01
+      </span>
+    </div>
+    <!-- 移动端文章信息 -->
+    <div class="article-top-meta mobile-view">
+      <span>
+        发布 : 2015-06-01
+      </span>
+      
+      
+    </div>
+    
+    <!-- 文章简介 -->
+    <div class="article-content">
+      <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
+        <p>官方为提供node的example, 把我踩的坑记录分享<br>
+      </p></div>
+    </div>
+    <div class="article-footer">
+      <div class="article-meta pull-left">
+        <!-- 分类pc端可见 -->
+        <span class="pc-view">
+          
+        <span>
+          
+            <i class="iconfont icon-06tags"></i>标签:
+            
+              <span class="span--tag">
+                <a href="/tags/docker/">
+                  #docker
+                </a>
+              </span>
+            
+              <span class="span--tag">
+                <a href="/tags/node/">
+                  #node
+                </a>
+              </span>
+            
+                    
+        </span>
+      </span></div>
+      
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="article-title">
+      <a href="/2015/05/24/QQ互联踩坑记录/">
+        <span>QQ互联踩坑记录</span>
+      </a>
+    </h1>
+    <!-- PC端文章信息 -->
+    <div class="article-top-meta pc-view">
+      <span>
+        发布时间 : 2015-05-24
+      </span>
+    </div>
+    <!-- 移动端文章信息 -->
+    <div class="article-top-meta mobile-view">
+      <span>
+        发布 : 2015-05-24
+      </span>
+      
+      
+    </div>
+    
+    <!-- 文章简介 -->
+    <div class="article-content">
+      <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
+        <p>QQ互联出现redirect uri is illegal(100010)的踩坑记录<br>
+      </p></div>
+    </div>
+    <div class="article-footer">
+      <div class="article-meta pull-left">
+        <!-- 分类pc端可见 -->
+        <span class="pc-view">
+          
+        <span>
+          
+            <i class="iconfont icon-06tags"></i>标签:
+            
+              <span class="span--tag">
+                <a href="/tags/js/">
+                  #js
+                </a>
+              </span>
+            
+                    
+        </span>
+      </span></div>
+      
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="article-title">
+      <a href="/2015/05/10/cygwin配置记录/">
+        <span>cygwin配置记录</span>
+      </a>
+    </h1>
+    <!-- PC端文章信息 -->
+    <div class="article-top-meta pc-view">
+      <span>
+        发布时间 : 2015-05-10
+      </span>
+    </div>
+    <!-- 移动端文章信息 -->
+    <div class="article-top-meta mobile-view">
+      <span>
+        发布 : 2015-05-10
+      </span>
+      
+      
+    </div>
+    
+    <!-- 文章简介 -->
+    <div class="article-content">
+      <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
+        <p>cygwin setting<br>
+      </p></div>
+    </div>
+    <div class="article-footer">
+      <div class="article-meta pull-left">
+        <!-- 分类pc端可见 -->
+        <span class="pc-view">
+          
+        <span>
+          
+            <i class="iconfont icon-06tags"></i>标签:
+            
+              <span class="span--tag">
+                <a href="/tags/ConEmu/">
+                  #ConEmu
+                </a>
+              </span>
+            
+              <span class="span--tag">
+                <a href="/tags/cygwin/">
+                  #cygwin
+                </a>
+              </span>
+            
+                    
+        </span>
+      </span></div>
+      
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="article-title">
+      <a href="/2015/05/09/JavaScript-replace/">
+        <span>JavaScript-replace</span>
+      </a>
+    </h1>
+    <!-- PC端文章信息 -->
+    <div class="article-top-meta pc-view">
+      <span>
+        发布时间 : 2015-05-09
+      </span>
+    </div>
+    <!-- 移动端文章信息 -->
+    <div class="article-top-meta mobile-view">
+      <span>
+        发布 : 2015-05-09
+      </span>
+      
+      
+    </div>
+    
+    <!-- 文章简介 -->
+    <div class="article-content">
+      <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
+        <p>我对JavaScript-replace理解见解<br>
+      </p></div>
+    </div>
+    <div class="article-footer">
+      <div class="article-meta pull-left">
+        <!-- 分类pc端可见 -->
+        <span class="pc-view">
+          
+        <span>
+          
+            <i class="iconfont icon-06tags"></i>标签:
+            
+              <span class="span--tag">
+                <a href="/tags/js/">
+                  #js
+                </a>
+              </span>
+            
+                    
+        </span>
+      </span></div>
+      
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="article-title">
+      <a href="/2015/05/06/JavaScript权威指南笔记9-客户端存储/">
+        <span>JavaScript权威指南笔记9_客户端存储</span>
+      </a>
+    </h1>
+    <!-- PC端文章信息 -->
+    <div class="article-top-meta pc-view">
+      <span>
+        发布时间 : 2015-05-06
+      </span>
+    </div>
+    <!-- 移动端文章信息 -->
+    <div class="article-top-meta mobile-view">
+      <span>
+        发布 : 2015-05-06
+      </span>
+      
+      
+    </div>
+    
+    <!-- 文章简介 -->
+    <div class="article-content">
+      <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
+        <p>JavaScript权威指南笔记9_客户端存储<br>
+      </p></div>
+    </div>
+    <div class="article-footer">
+      <div class="article-meta pull-left">
+        <!-- 分类pc端可见 -->
+        <span class="pc-view">
+          
+        <span>
+          
+            <i class="iconfont icon-06tags"></i>标签:
+            
+              <span class="span--tag">
+                <a href="/tags/js/">
+                  #js
+                </a>
+              </span>
+            
+                    
+        </span>
+      </span></div>
+      
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="article-title">
+      <a href="/2015/05/05/JavaScript权威指南笔记8-脚本化HTTP/">
+        <span>JavaScript权威指南笔记8_脚本化HTTP</span>
+      </a>
+    </h1>
+    <!-- PC端文章信息 -->
+    <div class="article-top-meta pc-view">
+      <span>
+        发布时间 : 2015-05-05
+      </span>
+    </div>
+    <!-- 移动端文章信息 -->
+    <div class="article-top-meta mobile-view">
+      <span>
+        发布 : 2015-05-05
+      </span>
+      
+      
+    </div>
+    
+    <!-- 文章简介 -->
+    <div class="article-content">
+      <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
+        <p>JavaScript权威指南笔记8_脚本化HTTP<br>
+      </p></div>
+    </div>
+    <div class="article-footer">
+      <div class="article-meta pull-left">
+        <!-- 分类pc端可见 -->
+        <span class="pc-view">
+          
+        <span>
+          
+            <i class="iconfont icon-06tags"></i>标签:
+            
+              <span class="span--tag">
+                <a href="/tags/js/">
+                  #js
+                </a>
+              </span>
+            
+                    
+        </span>
+      </span></div>
+      
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="article-title">
+      <a href="/2015/04/23/JavaScript权威指南笔记7-脚本化文档/">
+        <span>JavaScript权威指南笔记7_脚本化文档</span>
+      </a>
+    </h1>
+    <!-- PC端文章信息 -->
+    <div class="article-top-meta pc-view">
+      <span>
+        发布时间 : 2015-04-23
+      </span>
+    </div>
+    <!-- 移动端文章信息 -->
+    <div class="article-top-meta mobile-view">
+      <span>
+        发布 : 2015-04-23
+      </span>
+      
+      
+    </div>
+    
+    <!-- 文章简介 -->
+    <div class="article-content">
+      <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
+        <p>JavaScript权威指南笔记7_脚本化文档150423<br>
+      </p></div>
+    </div>
+    <div class="article-footer">
+      <div class="article-meta pull-left">
+        <!-- 分类pc端可见 -->
+        <span class="pc-view">
+          
+        <span>
+          
+            <i class="iconfont icon-06tags"></i>标签:
+            
+              <span class="span--tag">
+                <a href="/tags/js/">
+                  #js
+                </a>
+              </span>
+            
+                    
+        </span>
+      </span></div>
+      
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="article-title">
+      <a href="/2015/04/22/使用nodejs-踩坑微信JS-SDK记录/">
+        <span>使用nodejs 踩坑微信JS-SDK记录</span>
+      </a>
+    </h1>
+    <!-- PC端文章信息 -->
+    <div class="article-top-meta pc-view">
+      <span>
+        发布时间 : 2015-04-22
+      </span>
+    </div>
+    <!-- 移动端文章信息 -->
+    <div class="article-top-meta mobile-view">
+      <span>
+        发布 : 2015-04-22
+      </span>
+      
+      
+    </div>
+    
+    <!-- 文章简介 -->
+    <div class="article-content">
+      <div class="markdown-body article-content--inner" v-html="mdToHtml(psg.summary)">
+        <p>使用nodejs 踩坑微信JS-SDK记录<br>
+      </p></div>
+    </div>
+    <div class="article-footer">
+      <div class="article-meta pull-left">
+        <!-- 分类pc端可见 -->
+        <span class="pc-view">
+          
+        <span>
+          
+            <i class="iconfont icon-06tags"></i>标签:
+            
+              <span class="span--tag">
+                <a href="/tags/js/">
+                  #js
+                </a>
+              </span>
+            
+              <span class="span--tag">
+                <a href="/tags/node/">
+                  #node
+                </a>
+              </span>
+            
+              <span class="span--tag">
+                <a href="/tags/wechat/">
+                  #wechat
+                </a>
+              </span>
+            
+                    
+        </span>
+      </span></div>
+      
+    </div>
+  </div>
+  
+
+  <nav class="page-navigation">
+    
+      <a href="/page/7/">上一页</a>
+    
+    
+      <a href="/page/9/">下一页</a>
+    
+  </nav>
+
+   
+</div>
+
+
+      <footer>
+  <p class="site-info">
+    <!-- 博客已萌萌哒运行<span id="time-to-now"></span><span class="my-face">(●'◡'●)ﾉ♥</span> -->
+    
+      得之我幸,失之我命
+    
+    <br>
+    Theme - <a href="https://github.com/dongyuanxin/theme-bmw">BMW</a> | Made With 💗 | Powered by <a href="https://godbmw.com/">GodBMW</a>
+    <br>
+    
+  </p>
+</footer>
+
+
+
+<script>
+const timeToNowDOM = document.querySelector("#time-to-now");
+const startTimestamp = new Date(2018, 1, 10).getTime();
+
+const updateTimeStr = () => {
+  let offset = parseInt(
+      (new Date().getTime() - startTimestamp) / 1000,
+      10
+    ),
+    day = Math.floor(offset / 86400),
+    hour = Math.floor((offset % 86400) / 3600),
+    minute = Math.floor(((offset % 86400) % 3600) / 60),
+    second = Math.floor(((offset % 86400) % 3600) % 60);
+  timeToNowDOM.innerHTML =
+    day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
+  setTimeout(updateTimeStr, 500);
+}
+
+setTimeout(updateTimeStr, 500);
+</script>
+
+
+      <div class="back-to-top hidden">
+  <span>
+    <i class="iconfont icon-60"></i><span></span>%
+  </span>
+</div>
+
+<script>
+const updateIconToTop = percent => {
+  let dom = document.querySelector(".back-to-top span span");
+  dom.innerText = percent;
+  if(percent < 1) {
+    document.querySelector(".back-to-top").className = "back-to-top hidden";
+  } else {
+    document.querySelector(".back-to-top").className = "back-to-top";
+  }
+}
+
+const handleScoll = () => {
+  let isRunning = false;
+  return () => {
+    if (isRunning) return;
+    isRunning = true;
+    window.requestAnimationFrame(timestamp => {
+      let scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop,
+        scrollHeight =
+          document.documentElement.scrollHeight ||
+          document.body.scrollHeight,
+        clientHeight =
+          document.documentElement.clientHeight ||
+          document.body.clientHeight;
+      isRunning = false;
+      if (scrollTop <= 1) {
+        updateIconToTop(0);
+        return;
+      }
+      if (scrollTop + clientHeight >= scrollHeight) {
+        updateIconToTop(100);
+      } else {
+        updateIconToTop(parseInt(
+          100 * scrollTop / (scrollHeight - clientHeight),
+          10
+        ));
+      }
+    });
+  };
+}
+
+const backToTop = () => {
+  let scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop,
+    delay = 10,
+    time = 200;
+  if (scrollTop <= 20) {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    return;
+  }
+  let step = Math.ceil(scrollTop * delay / time);
+  let timer = setInterval(() => {
+    scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollTop - step <= 0) {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      clearInterval(timer);
+    } else {
+      document.documentElement.scrollTop = scrollTop - step;
+      document.body.scrollTop = scrollTop - step;
+    }
+  }, delay);
+}
+
+document.addEventListener("scroll", handleScoll(), false);
+
+document.querySelector(".back-to-top").addEventListener("click", backToTop, false);
+
+</script>
+
+    </div>
+
+    
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script>
+  (() => {
+    const mathjaxConfig = {
+      showProcessingMessages: false, //关闭js加载过程信息
+      messageStyle: "none", //不显示信息
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+      },
+      "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+      }
+    }
+
+    let mathjaxInterval = setInterval(() => {
+      if(!window.MathJax){
+        return;
+      }
+      window.MathJax.Hub.Config(mathjaxConfig)
+      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')])
+
+      clearInterval(mathjaxInterval)
+    }, 10)    
+  })()
+</script>
+    
+
+    <script src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script>
+<script async>
+  let fancyTimer = setInterval(function(){
+    if(!window.$){
+      return;
+    }
+    $(document).ready(function() {
+      $(".post img").each(function () {
+        if($(this).parent().get(0).tagName.toLowerCase() === "a") {
+          return;
+        }
+        // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "gallery");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      });
+      
+      clearInterval(fancyTimer);
+    });
+  }, 10);
+</script>
+
+    
+  </body>
+
 </html>
