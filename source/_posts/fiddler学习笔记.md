@@ -1,9 +1,16 @@
+---
 title: fiddler学习笔记
 date: 2015-03-11 15:46:48
-description: 慕课网fiddler学习以及部分补充说明
 tags:
 - fiddler
+
+
 ---
+
+慕课网fiddler学习以及部分补充说明
+<!-- more -->
+
+
 
 
 # fiddler视频教程
@@ -60,3 +67,4 @@ static function Main() {
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

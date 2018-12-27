@@ -1,9 +1,16 @@
+---
 title: "AngularJS过滤器"
 date: 2015-03-31 16:52:36
-description: AngularJS过滤器
 tags:
 - AngularJS
+
+
 ---
+
+AngularJS过滤器
+<!-- more -->
+
+
 
 > AngularJS过滤器
 
@@ -358,3 +365,4 @@ Kavlez:"Any time, Any where, Whoever or whatever you are, just bring it on"as
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

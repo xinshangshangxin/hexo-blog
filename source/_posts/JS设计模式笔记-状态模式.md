@@ -1,10 +1,17 @@
+---
 title: JS设计模式笔记(状态模式)
 date: 2015-07-03 16:12:40
-description: JS设计模式笔记(状态模式)
 tags:
 - js
 - 设计模式
+
+
 ---
+
+JS设计模式笔记(状态模式)
+<!-- more -->
+
+
 
 # 状态模式
 **定义:允许一个对象在其内部状态改变时改变它的行为,对象看起来似乎修改了它的类**
@@ -184,3 +191,4 @@ github上有对应的库实现:
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

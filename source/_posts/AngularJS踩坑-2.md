@@ -1,9 +1,16 @@
+---
 title: "AngularJS $http踩坑(2)"
 date: 2015-06-17 14:24:02
-description: AngularJS使用$http出现options请求
 tags:
 - AngularJS
+
+
 ---
+
+AngularJS使用$http出现options请求
+<!-- more -->
+
+
 
 # AngularJS中的$http自定义headers之后的配置
 ## 客户端需要设置 `withCredentials`
@@ -85,3 +92,4 @@ router
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

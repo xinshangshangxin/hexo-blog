@@ -1,10 +1,17 @@
+---
 layout: post
 title: "safari无法打开https网页"
-description: "Android和桌面chrome代开网址没有问题,但是iphone和桌面safari却出现: 「 无法打开页面https://XXXXX，因为网络连接被重设。如果服务器或网络连接忙碌，此问题可能发生。请等待几分钟，然后再试一次。」"
 date: 2017-01-09 20:37:45
 tags:
 - nginx
+
+
 ---
+
+Android和桌面chrome代开网址没有问题,但是iphone和桌面safari却出现: 「 无法打开页面https://XXXXX，因为网络连接被重设。如果服务器或网络连接忙碌，此问题可能发生。请等待几分钟，然后再试一次。」
+<!-- more -->
+
+
 
 ## 问题描述:
 

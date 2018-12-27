@@ -1,11 +1,18 @@
 ---
+
 layout: post
 title: "使用 vscode 编辑远程文件"
-description: "使用vim编辑文件不是很顺手, 利用 vscode 插件实现本地编辑远程文件"
 date: 2018-07-11 15:33:39
 tags:
   - vsc
+
+
 ---
+
+使用vim编辑文件不是很顺手, 利用 vscode 插件实现本地编辑远程文件
+<!-- more -->
+
+
 
 ## 安装 `Remote VSCode`
 1. 打开 [marketplace](https://marketplace.visualstudio.com/items?itemName=rafaelmaiolla.remote-vscode), 点击 `Install`, 安装后重启 `vsc`

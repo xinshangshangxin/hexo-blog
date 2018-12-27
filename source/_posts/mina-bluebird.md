@@ -1,12 +1,19 @@
+---
 layout: post
 title: 微信小程序中使用bluebird
 date: 2016-11-24 19:49:51
-description: 微信小程序不支持Promise, 引入bluebird的探究过程
 tags: 
 - wechat
 - 小程序
 - MINA
+
+
 ---
+
+微信小程序不支持Promise, 引入bluebird的探究过程
+<!-- more -->
+
+
 
 
 # 微信小程序中使用bluebird

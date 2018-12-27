@@ -1,9 +1,16 @@
+---
 title: node命令行和控制台参数获取
 date: 2015-09-19 14:38:05
-description: node命令行和控制台参数获取笔记
 tags: 
 - node
+
+
 ---
+
+node命令行和控制台参数获取笔记
+<!-- more -->
+
+
 
 ## 命令行参数的原始写法
 ```js
@@ -121,3 +128,4 @@ hello
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

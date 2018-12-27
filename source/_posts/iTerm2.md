@@ -1,9 +1,16 @@
+---
 title: iTerm2
 date: 2015-09-13 21:49:26
-description: iTerm2折腾笔记
 tags:
 - iTerm2
+
+
 ---
+
+iTerm2折腾笔记
+<!-- more -->
+
+
 
 ## 下载
 [https://www.iterm2.com/](https://www.iterm2.com/)
@@ -128,3 +135,4 @@ tags:
 > **文章若有纰漏请大家补充指正,谢谢~~**
 
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

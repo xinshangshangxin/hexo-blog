@@ -1,10 +1,17 @@
+---
 title: 自行搭建youkuvod服务器
 date: 2015-02-20 13:54:26
-description: 由于azure服务器到期,转至coding.net,自行搭建youkuvod服务器环境可提高速度
 tags:
 - js
 - youkuvod
+
+
 ---
+
+由于azure服务器到期,转至coding.net,自行搭建youkuvod服务器环境可提高速度
+<!-- more -->
+
+
 
 
 # 注意事项
@@ -65,6 +72,7 @@ tags:
 > 出现优酷页面设置(如图) 成功!!
 
 ![youkuvod](/img/youkuvod/10.png)
+
 
 
 

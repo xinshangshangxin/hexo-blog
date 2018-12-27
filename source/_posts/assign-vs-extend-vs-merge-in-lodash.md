@@ -1,11 +1,18 @@
+---
 layout: post
 title: "[转]Lodash 中 assign，extend 和 merge 的区别"
-description: "我们经常在别人的代码中看见 assign，extend，merge 函数，这三个函数用起来很相似，都是合并源对象的属性到目标对象中。既然都是合并对象，为什么还分三个不同的函数呢？它们之间到底有什么区别呢？"
 date: 2016-12-23 11:03:02
 tags:
 - js
 - lodash
+
+
 ---
+
+我们经常在别人的代码中看见 assign，extend，merge 函数，这三个函数用起来很相似，都是合并源对象的属性到目标对象中。既然都是合并对象，为什么还分三个不同的函数呢？它们之间到底有什么区别呢？
+<!-- more -->
+
+
 
 
 ## assign(object, [sources])
@@ -146,3 +153,4 @@ http://stackoverflow.com/questions/19965844/lodash-difference-between-extend-ass
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

@@ -1,10 +1,17 @@
+---
 title: JS设计模式笔记(适配器模式)
 date: 2015-07-05 15:21:14
-description: JS设计模式笔记(适配器模式)
 tags:
 - js
 - 设计模式
+
+
 ---
+
+JS设计模式笔记(适配器模式)
+<!-- more -->
+
+
 
 # 适配器模式
 
@@ -92,3 +99,4 @@ render(addressAdapter(getGuangdongCity));
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

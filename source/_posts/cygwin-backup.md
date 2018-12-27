@@ -1,10 +1,17 @@
+---
 layout: post
 title: 制作portable版Cygwin
 date: 2016-06-14 22:17:19
-description: 制作portable版Cygwin和完整删除Cygwin
 tags:
 - cygwin
+
+
 ---
+
+制作portable版Cygwin和完整删除Cygwin
+<!-- more -->
+
+
 
 
 ## 制作portable版Cygwin

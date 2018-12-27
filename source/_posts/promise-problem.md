@@ -1,10 +1,17 @@
+---
 title: "[转]promises 很酷，但很多人并没有理解就在用了"
 date: 2015-09-29 13:55:30
-description: promises详解
 tags: 
 - js
 - promise
+
+
 ---
+
+promises详解
+<!-- more -->
+
+
 
 
 JavaScript 开发者们，是时候承认了，我们在使用`promises`的时候，会写出许多有问题的`promises`代码.但并不是 `promises`本身有问题，被[A+ 标准](https://promisesaplus.com/),定义的`promises` 是极好的  
@@ -697,4 +704,5 @@ ES7中的async和await关键字的美妙之处在于，你代码中的错误将�
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+
 

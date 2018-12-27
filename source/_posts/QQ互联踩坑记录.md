@@ -1,9 +1,16 @@
+---
 title: "QQ互联踩坑记录"
 date: 2015-05-24 19:10:08
-description:  QQ互联出现redirect uri is illegal(100010)的踩坑记录
 tags:
 - js
+
+
 ---
+
+QQ互联出现redirect uri is illegal(100010)的踩坑记录
+<!-- more -->
+
+
 
 ## 页面进入地址不正确....
 - [错误页面open.qq.com](http://op.open.qq.com/index.php)
@@ -28,3 +35,4 @@ tags:
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

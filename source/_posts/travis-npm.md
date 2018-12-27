@@ -1,11 +1,18 @@
 ---
+
 layout: post
 title: github project use travis npm publish
-description: "github的项目使用travis发布npm包"
 date: 2018-05-16 18:02:00
 tags:
     - travis
+
+
 ---
+
+github的项目使用travis发布npm包
+<!-- more -->
+
+
 
 
 
@@ -76,3 +83,4 @@ jobs:                            # 添加 job
 > **文章若有纰漏请大家补充指正,谢谢~~**
 
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

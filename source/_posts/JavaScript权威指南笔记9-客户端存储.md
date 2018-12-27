@@ -1,9 +1,16 @@
+---
 title: "JavaScript权威指南笔记9_客户端存储"
 date: 2015-05-06 20:16:06
-description:  JavaScript权威指南笔记9_客户端存储
 tags:
 - js
+
+
 ---
+
+JavaScript权威指南笔记9_客户端存储
+<!-- more -->
+
+
 
 ## localStorage 和 sessionStorage
 > `localStorage` 仅支持存储字符串
@@ -334,3 +341,4 @@ function sync() {
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

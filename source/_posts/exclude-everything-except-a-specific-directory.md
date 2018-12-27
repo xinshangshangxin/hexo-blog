@@ -1,9 +1,16 @@
+---
 title: "在已忽略文件夹中不忽略指定文件夹"
 date: 2015-10-24 22:02:06
-description: 网上搜索到的答案有很多是错误的,故记录之
 tags: 
 - git
+
+
 ---
+
+网上搜索到的答案有很多是错误的,故记录之
+<!-- more -->
+
+
 
 
 -  在已忽略文件夹中不忽略指定文件夹`忽略themes文件夹所有内容, 除了 themes/jacman/文件夹`
@@ -44,4 +51,5 @@ themes/*
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+
 

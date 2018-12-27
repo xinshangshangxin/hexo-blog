@@ -1,12 +1,19 @@
 ---
+
 layout: post
 title: "使用nvm导致zsh启动慢"
-description: "解决nvm启动慢, 自动检测 `.nvmrc` 慢"
 date: 2017-06-07 21:42:21
 tags:
 - nvm
 - zsh
+
+
 ---
+
+解决nvm启动慢, 自动检测 `.nvmrc` 慢
+<!-- more -->
+
+
 
 ## 问题
 新建终端时, 由于载入nvm, 导致终端载入超过1秒.

@@ -1,9 +1,16 @@
+---
 title: "Docker学习笔记(2)"
 date: 2015-06-19 19:58:28
-description: Docker学习笔记[私有registry, 配置多台容器, Jenkins]
 tags:
 - docker
+
+
 ---
+
+Docker学习笔记[私有registry, 配置多台容器, Jenkins]
+<!-- more -->
+
+
 
 ## docker 私有registry
 
@@ -126,3 +133,4 @@ docker run -d -p 80:8080 --name hello $REGSITRY_URL/csphere/hello:1.0
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

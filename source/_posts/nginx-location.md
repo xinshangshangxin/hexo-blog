@@ -1,10 +1,17 @@
+---
 title: "nginx location 设置"
 date: 2016-01-20 18:22:18
-description: "nginx location 设置"
 tags: 
 - nginx
 
-----------
+
+
+---
+
+nginx location 设置
+<!-- more -->
+
+-------
 
 ## 匹配顺序(和 location 的编辑顺序无关)
 
@@ -76,6 +83,7 @@ $    | 匹配字符串的结束
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+
 
 
 

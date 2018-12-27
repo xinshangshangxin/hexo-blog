@@ -1,10 +1,17 @@
+---
 title: "[转]HTTP Status Codes"
 date: 2015-12-06 14:40:11
-description: HTTP Status Codes
 tags:
 - http
 
+
+
 ---
+
+HTTP Status Codes
+<!-- more -->
+
+
 
 ## 1xx（临时响应）
 > 表示临时响应并需要请求者继续执行操作的状态代码。

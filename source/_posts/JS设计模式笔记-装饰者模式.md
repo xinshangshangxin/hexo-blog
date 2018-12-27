@@ -1,10 +1,17 @@
+---
 title: "JS设计模式笔记(装饰者模式)"
 date: 2015-07-02 21:07:50
-description: JS设计模式笔记(装饰者模式)
 tags:
 - js
 - 设计模式
+
+
 ---
+
+JS设计模式笔记(装饰者模式)
+<!-- more -->
+
+
 
 # 装饰者模式
 **在不改变对象自身的基础上,在程序运行期间给对象动态的添加职责**
@@ -209,3 +216,4 @@ alert(func.a); // undefined
 > **文章若有纰漏请大家补充指正,谢谢~~**
 
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

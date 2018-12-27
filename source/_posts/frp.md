@@ -1,12 +1,19 @@
 ---
+
 layout: post
 title: "[内网穿透] ubuntu上搭建frp"
-description: "frp服务器端和客户端,unbutu开机启动以及作为socket5代理"
 date: 2018-06-18 13:34:32
 tags:
     - frp
     - 内网穿透
+
+
 ---
+
+frp服务器端和客户端,unbutu开机启动以及作为socket5代理
+<!-- more -->
+
+
 
 ## 服务器端
 **[官方中文文档, 很清晰](https://github.com/fatedier/frp/blob/master/README_zh.md)**
@@ -336,3 +343,4 @@ start_service
 > **文章若有纰漏请大家补充指正,谢谢~~**
 
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

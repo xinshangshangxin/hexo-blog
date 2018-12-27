@@ -1,9 +1,16 @@
+---
 title: "Docker学习笔记(1)"
 date: 2015-06-06 16:07:23
-description:  Docker学习笔记
 tags:
 - docker
+
+
 ---
+
+Docker学习笔记
+<!-- more -->
+
+
 
 
 `FROM` 基础镜像
@@ -91,6 +98,7 @@ ENTRYPOINT 覆盖指令需要通过 --entrypoint=来替换，方便调试错误�
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+
 
 
 

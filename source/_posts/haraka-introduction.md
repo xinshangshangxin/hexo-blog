@@ -1,11 +1,18 @@
 ---
+
 layout: post
 title: haraka收发邮件初级教程
-description: "haraka没有开箱即用, 需要一番配置, 本文简单介绍了如何使用haraka和qq邮箱通讯"
 date: 2018-02-04 13:47:16
 tags:
 - haraka
+
+
 ---
+
+haraka没有开箱即用, 需要一番配置, 本文简单介绍了如何使用haraka和qq邮箱通讯
+<!-- more -->
+
+
 
 # 安装并初始化
 ## 需要有自定义域名和修改域名解析的权限
@@ -196,3 +203,4 @@ swaks -f from@example.com -t to@qq.com -au username -ap password -s example.com
 > **文章若有纰漏请大家补充指正,谢谢~~**
 
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

@@ -1,10 +1,17 @@
+---
 title: npm安装modules失败
 date: 2015-02-18 16:09:42
-description: npm安装modules失败解决方法,以及windows下无法删除modules解决办法
 tags:
 - npm
 - node
+
+
 ---
+
+npm安装modules失败解决方法,以及windows下无法删除modules解决办法
+<!-- more -->
+
+
 
 
 # npm安装modules失败
@@ -86,3 +93,4 @@ RD /S /Q \\?\%1
 1. [stackoverflow.com](stackoverflow.com)
 2. [Npm的配置管理及设置代理](http://www.cnblogs.com/huang0925/archive/2013/05/07.html)
 3. [国内优秀npm镜像推荐及使用](http://riny.net/2014/cnpm/)
+

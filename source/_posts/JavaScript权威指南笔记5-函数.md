@@ -1,9 +1,16 @@
+---
 title: JavaScript权威指南笔记5_函数
 date: 2015-04-08 21:18:01
-description: 函数 150408
 tags:
 - js
+
+
 ---
+
+函数 150408
+<!-- more -->
+
+
 
 # 方法调用
 > `this` 是一个关键字; 不允许给 `this` 赋值
@@ -339,3 +346,4 @@ console.log(factorial(5));  // 120   1~4的值有缓存
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

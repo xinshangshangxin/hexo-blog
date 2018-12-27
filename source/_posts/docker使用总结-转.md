@@ -1,9 +1,16 @@
+---
 title: "docker使用总结(转)"
 date: 2015-06-28 13:51:56
-description:  docker使用总结(转)
 tags:
 - docker
+
+
 ---
+
+docker使用总结(转)
+<!-- more -->
+
+
 
 **[转载自http://weibo.com/p/1001603855970483702516](http://weibo.com/p/1001603855970483702516)**
 
@@ -138,3 +145,4 @@ docker rmi `docker images -aq`
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

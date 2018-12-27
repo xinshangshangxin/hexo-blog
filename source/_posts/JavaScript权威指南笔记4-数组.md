@@ -1,9 +1,16 @@
+---
 title: JavaScript权威指南笔记4_数组
 date: 2015-04-07 20:03:36
-description: JavaScript权威指南笔记4_数组150407
 tags:
 - js
+
+
 ---
+
+JavaScript权威指南笔记4_数组150407
+<!-- more -->
+
+
 
 > 如果省略数组直接量的某个值,省略的元素被赋予 `undefined`
 
@@ -335,3 +342,4 @@ console.log(Array.prototype.map.call(a, function(x) {   // [ 'A', 'B', 'C' ]
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

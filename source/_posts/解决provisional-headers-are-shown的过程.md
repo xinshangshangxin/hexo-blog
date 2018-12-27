@@ -1,9 +1,16 @@
+---
 title: 解决provisional headers are shown的过程
 date: 2015-04-20 22:31:45
-description:  解决provisional headers are shown的过程
 tags:
 - js
+
+
 ---
+
+解决provisional headers are shown的过程
+<!-- more -->
+
+
 
 # 前言
 
@@ -105,3 +112,4 @@ http://ngmusic.coding.io/serverget?url=http%3A%2F%2Ffile.qianqian.com.....
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

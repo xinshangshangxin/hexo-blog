@@ -1,10 +1,17 @@
+---
 title: "cygwin配置记录"
 date: 2015-05-10 21:59:46
-description:  cygwin setting
 tags:
 - cygwin
 - ConEmu
+
+
 ---
+
+cygwin setting
+<!-- more -->
+
+
 
 ## ls/grep/dir输出彩色显示
 调整 `${HOME}/.bashrc`文件(`安装位置:\cygwin64\home\你的用户名\.bashrc`)，把注释掉别名打开：
@@ -107,3 +114,4 @@ SET CHERE_INVOKING=1 & "D:\cygwin64\bin\bash --login -ii" -cur_console:t:"cygwin
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

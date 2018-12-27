@@ -1,9 +1,16 @@
+---
 title: blur踩坑
 date: 2015-03-08 13:43:21
-description: 一直以为blur可以直接设置在任何元素上,然后悲剧的发现并不是....
 tags:
 - js
+
+
 ---
+
+一直以为blur可以直接设置在任何元素上,然后悲剧的发现并不是....
+<!-- more -->
+
+
 
 # div无法使用blur判断失去焦点
 
@@ -24,3 +31,4 @@ tabIndex值是负数的对象会被忽略
 
 ## 参考文档
 [Slider 滑动条效果](http://www.cnblogs.com/cloudgamer/archive/2008/12/24/Slider.html)
+

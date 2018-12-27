@@ -1,9 +1,16 @@
+---
 title: "JavaScript-replace"
 date: 2015-05-09 15:47:23
-description:  我对JavaScript-replace理解见解
 tags:
 - js
+
+
 ---
+
+我对JavaScript-replace理解见解
+<!-- more -->
+
+
 
 
 
@@ -118,3 +125,4 @@ console.log('my love hebe'.match(/(\w+)\s\w+\s(\w+)/ ));
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

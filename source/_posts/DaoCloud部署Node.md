@@ -1,10 +1,17 @@
+---
 title: "DaoCloud部署Node"
 date: 2015-06-01 23:06:00
-description:  官方为提供node的example, 把我踩的坑记录分享
 tags:
 - docker
 - node
+
+
 ---
+
+官方为提供node的example, 把我踩的坑记录分享
+<!-- more -->
+
+
 
 > DaoCloud 有go和python 的 example;
 > 却没有Node的example, 把我踩的坑记录分享
@@ -82,3 +89,4 @@ CMD [ "node","dist/server.js"]
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

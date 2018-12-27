@@ -1,9 +1,16 @@
+---
 title: 7月angular使用笔记
 date: 2015-08-02 17:44:14
-description: 7月使用angular总结,包括一些库/规范/代码记录
 tags:
 - AngularJS
+
+
 ---
+
+7月使用angular总结,包括一些库/规范/代码记录
+<!-- more -->
+
+
 
 
 
@@ -188,3 +195,4 @@ angular.module('XXXXX')
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

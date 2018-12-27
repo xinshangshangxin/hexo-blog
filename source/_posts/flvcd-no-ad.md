@@ -1,10 +1,17 @@
+---
 title: "硕鼠解析自动跳过广告"
 date: 2015-11-29 00:30:24
-description: 硕鼠解析自动跳过广告
 tags:
 - youkuvod
 
+
+
 ---
+
+硕鼠解析自动跳过广告
+<!-- more -->
+
+
 
 ## 早期的硕鼠广告
 
@@ -90,3 +97,4 @@ function parseCookie(key, time) {
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

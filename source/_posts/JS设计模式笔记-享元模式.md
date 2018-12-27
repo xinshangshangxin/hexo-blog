@@ -1,10 +1,17 @@
+---
 title: "JS设计模式笔记(享元模式)"
 date: 2015-06-29 12:28:38
-description: JS设计模式笔记(享元模式)
 tags:
 - js
 - 设计模式
+
+
 ---
+
+JS设计模式笔记(享元模式)
+<!-- more -->
+
+
 
 # 享元模式
 **享元模式是一种用于性能优化的模式**
@@ -178,3 +185,4 @@ setTimeout(function() {
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

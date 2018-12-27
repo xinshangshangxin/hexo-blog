@@ -1,9 +1,16 @@
+---
 title: gulp移动/复制文件
 date: 2015-02-27 21:48:21
-description: gulp直接dest 默认直接复制文件,不会设置文件的文件目录,在gulp >= 3.2.2后可以设置base来达到文件含目录
 tags:
 - gulp
+
+
 ---
+
+gulp直接dest 默认直接复制文件,不会设置文件的文件目录,在gulp >= 3.2.2后可以设置base来达到文件含目录
+<!-- more -->
+
+
 
 
 ## 有以下文件/文件夹
@@ -65,6 +72,7 @@ gulp.src(src, opt);
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+
 
 
 

@@ -1,10 +1,17 @@
+---
 title: "JS设计模式笔记(命令模式)"
 date: 2015-06-25 21:03:04
-description: JS设计模式笔记(命令模式)
 tags:
 - js
 - 设计模式
+
+
 ---
+
+JS设计模式笔记(命令模式)
+<!-- more -->
+
+
 
 # 命令模式
 > - 命令模式中的命令(command)指的是一个执行某些特定事情的指令
@@ -117,3 +124,4 @@ var closeDoorCommand = {
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

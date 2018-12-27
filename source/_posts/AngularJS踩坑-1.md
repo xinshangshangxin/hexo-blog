@@ -1,9 +1,16 @@
+---
 title: "AngularJS $http踩坑(1)"
 date: 2015-06-16 15:57:16
-description: AngularJS使用$http.post之后后台无法收到数据
 tags:
 - AngularJS
+
+
 ---
+
+AngularJS使用$http.post之后后台无法收到数据
+<!-- more -->
+
+
 
 **AngularJS中的post与jQuery中post的区别**
 
@@ -117,3 +124,4 @@ angular.module('http-post-fix', [], function($httpProvider) {
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

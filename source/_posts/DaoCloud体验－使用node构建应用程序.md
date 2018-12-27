@@ -1,10 +1,17 @@
+---
 title: "DaoCloud体验－使用node构建应用程序"
 date: 2015-06-11 12:49:10
-description: DaoCloud体验－使用node构建应用程序
 tags:
 - docker
 - node
+
+
 ---
+
+DaoCloud体验－使用node构建应用程序
+<!-- more -->
+
+
 
 > 首发于[http://open.daocloud.io/using-node-to-build-applications/](http://open.daocloud.io/using-node-to-build-applications/)
 
@@ -131,3 +138,4 @@ connection.connect(function(err) {
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

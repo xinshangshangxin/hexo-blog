@@ -1,11 +1,18 @@
+---
 layout: post
 title: openshift使用记录
 date: 2016-03-27 16:01:09
-description: coding演示平台开始收费,转战openshift, 在上面安装zsh等软件
 tags:
 - node
 - openshift
+
+
 ---
+
+coding演示平台开始收费,转战openshift, 在上面安装zsh等软件
+<!-- more -->
+
+
 
 # 利用openshift自带的Node.js
 

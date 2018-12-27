@@ -1,10 +1,17 @@
+---
 title: "make: 'test' is up to date"
 date: 2015-11-17 10:07:23
-description: make test一直提示 up to date的解决方法
 tags:
 - make
 
+
+
 ---
+
+make test一直提示 up to date的解决方法
+<!-- more -->
+
+
 
 ## 问题:
 

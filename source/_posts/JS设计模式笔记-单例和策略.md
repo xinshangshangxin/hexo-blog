@@ -1,10 +1,17 @@
+---
 title: "JS设计模式笔记(单例和策略)"
 date: 2015-06-22 17:13:26
-description: JS设计模式笔记(单例和策略)
 tags:
 - js
 - 设计模式
+
+
 ---
+
+JS设计模式笔记(单例和策略)
+<!-- more -->
+
+
 
 ## 单例模式
 > 单例模式的核心是确保只有一个实例,并提供全局访问
@@ -149,3 +156,4 @@ checkreg('aa');     // 最小长度为3
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

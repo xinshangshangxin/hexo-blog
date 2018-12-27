@@ -1,10 +1,17 @@
+---
 title: "JS设计模式笔记(发布-订阅模式)"
 date: 2015-06-24 23:00:04
-description: JS设计模式笔记(发布-订阅模式)
 tags:
 - js
 - 设计模式
+
+
 ---
+
+JS设计模式笔记(发布-订阅模式)
+<!-- more -->
+
+
 
 # 发布-订阅模式
 **定义对象间一种一对多的依赖关系,当一个对象的状态发生改变时,所有依赖它的对象都将得到通知.在js中,用事件模型代替传统的发布-订阅模式**
@@ -384,3 +391,4 @@ Event.trigger('squareMeter88', 20000);   // fn2: 20000
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

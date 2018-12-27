@@ -1,9 +1,16 @@
+---
 title: JavaScript权威指南笔记2
 date: 2015-04-02 21:22:12
-description: JavaScript权威指南笔记150402
 tags:
 - js
+
+
 ---
+
+JavaScript权威指南笔记150402
+<!-- more -->
+
+
 
 ## 结合性 `P69`
 > 一元操作符,赋值和三元条件运算符具有从左到右的结合性
@@ -124,3 +131,4 @@ true/false | 'boolean'
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

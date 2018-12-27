@@ -1,10 +1,17 @@
+---
 title: "JS设计模式笔记(组合模式)"
 date: 2015-06-26 15:02:46
-description: JS设计模式笔记(组合模式)
 tags:
 - js
 - 设计模式
+
+
 ---
+
+JS设计模式笔记(组合模式)
+<!-- more -->
+
+
 
 # 组合模式
 > - 命令模式只负责传递请求给叶对象,它的目的不在于控制对叶对象的访问
@@ -175,3 +182,4 @@ folder.scan();
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

@@ -1,9 +1,16 @@
+---
 title: Node.js中fs.rename出错Error EXDEV
 date: 2015-02-24 15:19:18
-description: rename出错Error EXDEV由于跨磁盘分区移动或操作文件会有权限问题(默认路径是window临时目录C:\Users\ADMINI~1\AppData\Local\Temp\）
 tags:
 - node
+
+
 ---
+
+rename出错Error EXDEV由于跨磁盘分区移动或操作文件会有权限问题(默认路径是window临时目录C:\Users\ADMINI~1\AppData\Local\Temp\）
+<!-- more -->
+
+
 
 
 # 解决办法
@@ -48,3 +55,4 @@ util.pump(readStream, writeStream, function() {
 var form = new formidable.IncomingForm();
 form.uploadDir = dir;// 直接设置路径即可
 ```
+

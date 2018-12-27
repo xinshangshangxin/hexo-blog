@@ -1,9 +1,16 @@
+---
 title: JavaScript权威指南笔记5_类和模块
 date: 2015-04-12 15:35:38
-description: 类和模块150412
 tags:
 - js
+
+
 ---
+
+类和模块150412
+<!-- more -->
+
+
 
 # 类和原型
 ```js
@@ -450,3 +457,4 @@ console.log(hand);
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

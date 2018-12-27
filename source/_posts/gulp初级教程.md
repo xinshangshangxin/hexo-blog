@@ -1,9 +1,16 @@
+---
 title: gulp初级教程
 date: 2015-03-01 11:05:04
-description: 我的gulp学习笔记及总结
 tags:
 - gulp
+
+
 ---
+
+我的gulp学习笔记及总结
+<!-- more -->
+
+
 
 ## 本文略有过时,建议阅读: 
 ## [https://github.com/Platform-CUF/use-gulp](https://github.com/Platform-CUF/use-gulp)
@@ -367,3 +374,4 @@ gulp.task('watch', function() {
 # 参考文档
 [gulp-plugins-introduction/](http://colobu.com/2014/11/17/gulp-plugins-introduction/)
 [grunt与gulp比较](https://gist.github.com/markgoodyear/8497946#file-gulpfile-js)
+

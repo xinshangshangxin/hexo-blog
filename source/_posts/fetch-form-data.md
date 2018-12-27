@@ -1,12 +1,19 @@
 ---
+
 layout: post
 title: 使用 fetch 上传 FormData 踩坑
 date: 2018-11-31 21:30:32
-description: '使用 fetch 上传文件, 使用 FormData 服务器无法识别'
 tags:
   - fetch
   - FormData
+
+
 ---
+
+使用 fetch 上传文件, 使用 FormData 服务器无法识别
+<!-- more -->
+
+
 
 
 # 结论
@@ -65,3 +72,4 @@ Content-Type: multipart/form-data; boundary=X-INSOMNIA-BOUNDARY
 > **文章若有纰漏请大家补充指正,谢谢~~**
 
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG 殇
+

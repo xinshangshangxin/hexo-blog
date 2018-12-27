@@ -1,12 +1,19 @@
 ---
+
 layout: post
 title: "[内网穿透] ubuntu上搭建ngrok 1.x"
-description: "ngrok的搭建和使用 包括客户端和服务器端"
 date: 2018-06-15 16:12:12
 tags:
     - ngrok
     - 内网穿透
+
+
 ---
+
+ngrok的搭建和使用 包括客户端和服务器端
+<!-- more -->
+
+
 
 ## 服务器端
 ### 下载安装
@@ -183,3 +190,4 @@ ngrok 2.x is the successor to 1.x and the focus of all current development effor
 > **文章若有纰漏请大家补充指正,谢谢~~**
 
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

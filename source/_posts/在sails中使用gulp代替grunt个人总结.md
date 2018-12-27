@@ -1,10 +1,17 @@
+---
 title: 在sails中使用gulp代替grunt个人总结
 date: 2015-08-16 21:45:44
-description: grunt的速度太慢,尝试使用gulp替换grunt的使用记录
 tags:
 - sails
 - gulp
+
+
 ---
+
+grunt的速度太慢,尝试使用gulp替换grunt的使用记录
+<!-- more -->
+
+
 
 # 在sails中使用gulp代替grunt
 
@@ -300,3 +307,4 @@ module.exports = {
 > **文章若有纰漏请大家补充指正,谢谢~~**
 
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

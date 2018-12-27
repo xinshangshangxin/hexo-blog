@@ -1,9 +1,16 @@
+---
 title: "微信调试方法"
 date: 2016-01-10 17:16:45
-description: "搜索总结的微信调试方法"
 tags: 
 - wechat
-----------
+
+
+---
+
+搜索总结的微信调试方法
+<!-- more -->
+
+-------
 
 
 ## 微信官方提供了 `微信web开发者工具` 本文章仅作备份
@@ -119,6 +126,7 @@ ssh yourname@yourip -R 10000:127.0.0.1:8000
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+
 
 
 

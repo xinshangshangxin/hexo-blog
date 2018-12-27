@@ -1,10 +1,17 @@
+---
 title: "JS设计模式笔记(模板方法模式)"
 date: 2015-06-27 13:51:18
-description: JS设计模式笔记(模板方法模式)
 tags:
 - js
 - 设计模式
+
+
 ---
+
+JS设计模式笔记(模板方法模式)
+<!-- more -->
+
+
 
 # 模板方法模式
 > - 模版方法模式是一种只需要集成就可以实现的非常简单的模式
@@ -170,3 +177,4 @@ tea.init();
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

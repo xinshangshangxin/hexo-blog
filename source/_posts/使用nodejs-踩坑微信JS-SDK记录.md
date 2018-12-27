@@ -1,11 +1,18 @@
+---
 title: 使用nodejs 踩坑微信JS-SDK记录
 date: 2015-04-22 21:55:00
-description:  使用nodejs 踩坑微信JS-SDK记录
 tags:
 - js
 - node
 - wechat
+
+
 ---
+
+使用nodejs 踩坑微信JS-SDK记录
+<!-- more -->
+
+
 
 
 # JS-SDK 要点
@@ -109,3 +116,4 @@ cb(null, {
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

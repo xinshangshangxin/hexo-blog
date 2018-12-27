@@ -1,13 +1,20 @@
 ---
+
 layout: post
 title: 'RxJS 学习笔记'
-description: '`30 天精通 RxJS` 的读书笔记'
 date: 2018-08-30 20:38:46
 tags:
   - rxjs
   - RxJS
   - js
+
+
 ---
+
+`30 天精通 RxJS` 的读书笔记
+<!-- more -->
+
+
 
 # 注意
 
@@ -276,3 +283,4 @@ asap 很像但是使用 setInterval 来运作，通常是跟时间相关的 oper
 > **文章若有纰漏请大家补充指正,谢谢~~**
 
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG 殇
+

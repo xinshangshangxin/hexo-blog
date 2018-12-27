@@ -23,6 +23,7 @@
     "hexo-uglify": "0.0.5"
   },
   "devDependencies": {
+    "fs-extra": "^7.0.1",
     "gulp": "^4.0.0",
     "gulp-gzip": "^1.4.2",
     "gulp-htmlclean": "^2.7.16",

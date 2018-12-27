@@ -1,10 +1,17 @@
+---
 title: sails初学笔记
 date: 2015-07-25 16:55:09
-description: 初次sails使用的一些笔记
 tags:
 - sails
 - node
+
+
 ---
+
+初次sails使用的一些笔记
+<!-- more -->
+
+
 
 
 ## 全局下安装Sails
@@ -128,3 +135,4 @@ Action routes
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

@@ -1,12 +1,19 @@
+---
 layout: post
 title: 微信小程序中使用lodash
 date: 2016-11-30 13:48:34
-description: 微信小程序引入lodash出错解决方案
 tags: 
 - wechat
 - 小程序
 - MINA
+
+
 ---
+
+微信小程序引入lodash出错解决方案
+<!-- more -->
+
+
 
 # 微信小程序中使用lodash
 
@@ -116,4 +123,5 @@ Uncaught TypeError: Cannot read property 'prototype' of undefined
 
 > **文章若有纰漏请大家补充指正,谢谢~~**  
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+
 

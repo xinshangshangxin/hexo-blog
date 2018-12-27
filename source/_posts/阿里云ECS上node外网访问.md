@@ -1,10 +1,17 @@
+---
 title: 阿里云ECS上node外网访问
 date: 2015-03-03 18:32:59
-description: 借了个阿里云的账号,外网访问nodejs遇到问题,做下记录...
 tags:
 - ECS
 - node
+
+
 ---
+
+借了个阿里云的账号,外网访问nodejs遇到问题,做下记录...
+<!-- more -->
+
+
 
 
 > 原来是这么写的: 
@@ -53,4 +60,5 @@ console.log('NodeJS Server running at http://0.0.0.0:8888');
 # 参考文档
 1. [http://www.aboutit.cn/post/598](http://www.aboutit.cn/post/598)
 2. [http://www.haodaima.net/art/2657330](http://www.haodaima.net/art/2657330)
+
 

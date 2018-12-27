@@ -1,10 +1,17 @@
+---
 layout: post
 title: "mac运行hadoop出现 Error: Java heap space"
-description: "mac 运行hadoop出现 Error: Java heap space"
 date: 2017-04-27 16:51:38
 tags:
  - Hadoop
+
+
 ---
+
+mac 运行hadoop出现 Error: Java heap space
+<!-- more -->
+
+
 
 ## 问题:
 
@@ -38,3 +45,4 @@ tags:
  > **文章若有纰漏请大家补充指正,谢谢~~**
  
  > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

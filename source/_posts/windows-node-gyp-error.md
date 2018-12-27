@@ -1,10 +1,17 @@
+---
 title: "windows下安装插件出现node-gyp error"
 date: 2016-01-09 18:38:35
-description: "安装插件出现 ImportError: No module named gyp"
 tags: 
 - npm
 
-----------
+
+
+---
+
+安装插件出现 ImportError: No module named gyp
+<!-- more -->
+
+-------
 
 ## 问题  
 
@@ -52,6 +59,7 @@ tags:
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+
 
 
 

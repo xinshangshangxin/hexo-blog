@@ -1,10 +1,17 @@
+---
 title: 阿里云ECS安装node
 date: 2015-03-03 17:54:39
-description: 借了个阿里云的账号尝试安装nodejs,其实和linux一样....
 tags:
 - ECS
 - node
+
+
 ---
+
+借了个阿里云的账号尝试安装nodejs,其实和linux一样....
+<!-- more -->
+
+
 
 # 安装过程
 
@@ -60,3 +67,4 @@ source /etc/profile
 node -v && npm -v
 ```
 > 出现 版本号正确~~~
+

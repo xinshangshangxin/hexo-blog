@@ -1,9 +1,16 @@
+---
 title: Nginx配置proxy_pass路径问题
 date: 2015-04-16 18:15:21
-description:  初次尝试nginx遇到的问题
 tags:
 - nginx
+
+
 ---
+
+初次尝试nginx遇到的问题
+<!-- more -->
+
+
 
 
 > proxy_pass后的url最后的/
@@ -60,3 +67,4 @@ location /node  {
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

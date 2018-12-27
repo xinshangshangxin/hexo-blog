@@ -1,9 +1,16 @@
+---
 title: JavaScript权威指南笔记7_脚本化文档
 date: 2015-04-23 21:36:14
-description:  JavaScript权威指南笔记7_脚本化文档150423
 tags:
 - js
+
+
 ---
+
+JavaScript权威指南笔记7_脚本化文档150423
+<!-- more -->
+
+
 
 `document.getElementById()` 在IE7- 下匹配ID 不区分大小写
 
@@ -277,3 +284,4 @@ el.value.substring(el.selectionStart, el.selectionEnd);
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

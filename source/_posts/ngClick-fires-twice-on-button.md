@@ -1,10 +1,17 @@
+---
 title: "angularjs ng-click 触发两次事件"
 date: 2015-12-17 09:21:24
-description:  在 pc的chrome中正常, 在 chrome 的`device mode`中触发2次, 在手机端触发2次
 tags:
 - AngularJS
 
+
+
 ---
+
+在 pc的chrome中正常, 在 chrome 的`device mode`中触发2次, 在手机端触发2次
+<!-- more -->
+
+
 
 ## 描述
 
@@ -36,3 +43,4 @@ app.config(function($mdGestureProvider ) {
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

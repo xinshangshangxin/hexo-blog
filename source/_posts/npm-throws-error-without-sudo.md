@@ -1,10 +1,17 @@
+---
 title: "npm 安装插件无权限"
 date: 2015-10-24 17:36:32
-description: "安装插件出现 Error: EACCES, open '....'"
 tags:
 - npm
 
+
+
 ---
+
+安装插件出现 Error: EACCES, open '....'
+<!-- more -->
+
+
 
 -  需要设置权限写文件
 
@@ -36,5 +43,6 @@ sudo npm install ...
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+
 
 

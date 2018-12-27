@@ -1,11 +1,18 @@
+---
 title: "NodeJs的几种文件路径"
 date: 2016-02-04 09:30:08
-description: "NodeJs的几种文件路径"
 tags: 
 - node
 
 
-----------
+
+
+---
+
+NodeJs的几种文件路径
+<!-- more -->
+
+-------
 
 
 ## 结论
@@ -36,4 +43,5 @@ path.resolve(__dirname, '../lib/common.js');
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+
 

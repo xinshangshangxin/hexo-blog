@@ -1,10 +1,17 @@
+---
 title: "JS设计模式笔记(中介者模式)"
 date: 2015-07-01 16:13:19
-description: JS设计模式笔记(中介者模式)
 tags:
 - js
 - 设计模式
+
+
 ---
+
+JS设计模式笔记(中介者模式)
+<!-- more -->
+
+
 
 # 中介者模式
 **中介者模式的作用是解除对象和对象之间的紧耦合关系.**
@@ -151,3 +158,4 @@ player4.die();
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

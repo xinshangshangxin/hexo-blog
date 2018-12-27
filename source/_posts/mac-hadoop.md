@@ -1,10 +1,17 @@
+---
 layout: post
 title: "[转]Mac OS X EI Capitan 下安装及配置伪分布式 Hadoop 环境"
 date: 2017-04-26 12:30:23
-description: 转载并进行适当修改
 tags:
   - Hadoop
+
+
 ---
+
+转载并进行适当修改
+<!-- more -->
+
+
 
 ## 预装环境变量
 
@@ -211,3 +218,4 @@ hadoop jar /usr/local/Cellar/hadoop/2.7.3/libexec/share/hadoop/mapreduce/hadoop-
 > **文章若有纰漏请大家补充指正,谢谢~~**
 
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

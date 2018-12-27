@@ -1,9 +1,16 @@
+---
 title: JavaScript权威指南笔记6_正则表达式
 date: 2015-04-12 21:19:30
-description:  正则表达式150412
 tags:
 - js
+
+
 ---
+
+正则表达式150412
+<!-- more -->
+
+
 
 > 具有特殊含义的标点符号
 
@@ -59,3 +66,4 @@ console.log('abae'.match(reg2));    //[ 'ab', 'ae' ]
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

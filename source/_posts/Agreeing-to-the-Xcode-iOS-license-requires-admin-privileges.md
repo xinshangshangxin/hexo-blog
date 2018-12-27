@@ -1,9 +1,16 @@
+---
 title: Agreeing to the Xcode/iOS license requires admin privileges
 date: 2015-10-03 18:54:53
-description: 解决升级了xcode后出现的问题
 tags: 
 - osx
+
+
 ---
+
+解决升级了xcode后出现的问题
+<!-- more -->
+
+
 
 
 1. 打开终端，输入  `sudo xcodebuild -license`
@@ -21,4 +28,5 @@ tags:
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+
 

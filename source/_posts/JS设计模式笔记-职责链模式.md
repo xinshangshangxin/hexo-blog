@@ -1,10 +1,17 @@
+---
 title: "JS设计模式笔记(职责链模式)"
 date: 2015-06-30 20:56:30
-description: JS设计模式笔记(职责链模式)
 tags:
 - js
 - 设计模式
+
+
 ---
+
+JS设计模式笔记(职责链模式)
+<!-- more -->
+
+
 
 # 职责链模式
 **定义: 使多个对象都有机会处理请求,从而避免请求发送这和接受这之间的耦合关系,将这些对象练成一条链,并沿着这条链传递该请求,直到有一个对象处理它为止**
@@ -210,3 +217,4 @@ console.log(getUploadObj());
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

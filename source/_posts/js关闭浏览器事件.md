@@ -1,9 +1,16 @@
+---
 title: js关闭浏览器事件
 date: 2015-03-10 21:52:04
-description: js关闭浏览器事件注意点!
 tags:
 - js
+
+
 ---
+
+js关闭浏览器事件注意点!
+<!-- more -->
+
+
 
 # js关闭浏览器事件
 
@@ -31,3 +38,4 @@ window.onbeforeunload = function (e) {
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

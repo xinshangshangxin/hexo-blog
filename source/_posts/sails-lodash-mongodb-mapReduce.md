@@ -1,11 +1,18 @@
+---
 layout: post
 title: "sails中使用mongodb的mapReduce出现lodash中定义的root"
 date: 2017-01-13 15:12:12
-description: "在sails中使用mongodb的mapReduce, 出现错误 ReferenceError: root is not defined"
 tags:
 - sails
 - lodash
+
+
 ---
+
+在sails中使用mongodb的mapReduce, 出现错误 ReferenceError: root is not defined
+<!-- more -->
+
+
 
 
 ## 起因

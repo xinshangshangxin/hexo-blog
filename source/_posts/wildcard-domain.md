@@ -1,11 +1,18 @@
 ---
+
 layout: post
 title: 申请letsencrypt安装泛域名
-description: "在VPS上申请letsencrypt泛域名, 利用阿里云dns自动申请证书并且加入nginx"
 date: 2018-03-22 18:33:28
 tags:
 - letsencrypt
+
+
 ---
+
+在VPS上申请letsencrypt泛域名, 利用阿里云dns自动申请证书并且加入nginx
+<!-- more -->
+
+
 
 ## 域名申请工具 [acme.sh](https://github.com/Neilpang/acme.sh)
 
@@ -81,5 +88,6 @@ server {
 > **文章若有纰漏请大家补充指正,谢谢~~**
 
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+
 
 

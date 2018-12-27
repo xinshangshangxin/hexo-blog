@@ -1,11 +1,18 @@
 ---
+
 layout: post
 title: 'angular学习笔记'
-description: '「 Angular 4.0从入门到实战 打造股票管理网站」学习笔记'
 date: 2018-09-16 21:53:56
 tags:
   - angular
+
+
 ---
+
+「 Angular 4.0从入门到实战 打造股票管理网站」学习笔记
+<!-- more -->
+
+
 
 # init
 
@@ -554,3 +561,4 @@ onUsernameInput(form:NgForm) {
 #                使用哪个 config          输出路径
 ng build --prod --configuration=${env} --output-path dist
 ```
+

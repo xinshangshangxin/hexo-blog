@@ -1,10 +1,17 @@
+---
 title: "JS设计模式笔记(高阶函数)"
 date: 2015-06-22 17:32:24
-description: curry,uncurry,throttle,time_chunk,lazy_load,
 tags:
 - js
 - 设计模式
+
+
 ---
+
+curry,uncurry,throttle,time_chunk,lazy_load,
+<!-- more -->
+
+
 
 ## curry
 ```js
@@ -171,3 +178,4 @@ var addEven = function(ele, type, handler) {
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

@@ -1,10 +1,17 @@
+---
 layout: post
 title: windows下全局翻墙
 date: 2016-04-09 16:00:04
-description: 在windwos下使用shadowsocks + Proxifier 全局翻墙
 tags:
 - 工具
+
+
 ---
+
+在windwos下使用shadowsocks + Proxifier 全局翻墙
+<!-- more -->
+
+
 
 ## 软件下载地址:
 

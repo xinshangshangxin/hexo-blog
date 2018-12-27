@@ -1,11 +1,18 @@
+---
 title: "cygwin下zsh安装"
 date: 2015-10-30 09:03:16
-description: cygwin下zsh安装
 tags:
 - ConEmu
 - cygwin
 
+
+
 ---
+
+cygwin下zsh安装
+<!-- more -->
+
+
 
 
 相关文章
@@ -92,4 +99,5 @@ wget --no-check-certificate https://raw.github.com/haithembelhaj/oh-my-cygwin/ma
 
 
 ![在 ConEmu下设置 只打开一个窗口](/img/conemu/13.png)
+
 

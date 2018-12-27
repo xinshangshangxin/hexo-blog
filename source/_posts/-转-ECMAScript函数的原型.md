@@ -1,9 +1,16 @@
+---
 title: "[转]ECMAScript函数的原型"
 date: 2015-03-08 15:43:33
-description: ECMAScript函数的原型
 tags:
 - js
+
+
 ---
+
+ECMAScript函数的原型
+<!-- more -->
+
+
 
 
 
@@ -113,3 +120,4 @@ person1.hasOwnProperty("name");  //false
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com)
+

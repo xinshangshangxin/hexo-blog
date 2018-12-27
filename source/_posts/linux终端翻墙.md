@@ -1,9 +1,16 @@
+---
 title: "linux终端翻墙"
 date: 2015-06-21 22:23:58
-description: linux终端翻墙
 tags:
 - shadowsocks
+
+
 ---
+
+linux终端翻墙
+<!-- more -->
+
+
 
 
 ## shadowsocks本地版
@@ -76,3 +83,4 @@ server_port = 1080  ＃socks服务使用的端口
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

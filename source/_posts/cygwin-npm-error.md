@@ -1,10 +1,17 @@
+---
 title: 在cygwin中npm安装git packages 失败
 date: 2016-01-07 09:17:22
-description:  在cygwin中安装是出现路径不正确,安装失败
 tags: 
 - npm
 - cygwin
-----------
+
+
+---
+
+在cygwin中安装是出现路径不正确,安装失败
+<!-- more -->
+
+-------
 
 ## 原因
 > npm 官方不支持在cygwin中安装
@@ -84,6 +91,7 @@ function whichAndExec (args, options, cb) {
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+
 
 
 

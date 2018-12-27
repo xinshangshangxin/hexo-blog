@@ -1,10 +1,17 @@
+---
 title: "JS设计模式笔记(代理模式,迭代器模式)"
 date: 2015-06-23 16:18:24
-description: JS设计模式笔记(代理模式,迭代器模式)
 tags:
 - js
 - 设计模式
+
+
 ---
+
+JS设计模式笔记(代理模式,迭代器模式)
+<!-- more -->
+
+
 
 # 代理模式
 **代理模式是为一个对象提供一个代替品或占位符,以便控制对它的访问**
@@ -329,3 +336,4 @@ var uploadObj = iteratorUploadObj(getActiveUploadObj, getFlashUploadObj, getForm
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

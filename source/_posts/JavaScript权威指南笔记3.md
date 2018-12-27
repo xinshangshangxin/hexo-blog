@@ -1,9 +1,16 @@
+---
 title: JavaScript权威指南笔记3
 date: 2015-04-03 22:23:37
-description: JavaScript权威指南笔记150403
 tags:
 - js
+
+
 ---
+
+JavaScript权威指南笔记150403
+<!-- more -->
+
+
 
 
 ## 对象 `P120`
@@ -329,3 +336,4 @@ function classof(o) {
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

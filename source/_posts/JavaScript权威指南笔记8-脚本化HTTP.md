@@ -1,9 +1,16 @@
+---
 title: "JavaScript权威指南笔记8_脚本化HTTP"
 date: 2015-05-05 13:50:52
-description:  JavaScript权威指南笔记8_脚本化HTTP
 tags:
 - js
+
+
 ---
+
+JavaScript权威指南笔记8_脚本化HTTP
+<!-- more -->
+
+
 
 ## open()
 
@@ -466,3 +473,4 @@ whenReady(function() {
 
 > ### 文章若有纰漏请大家补充指正,谢谢~~
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

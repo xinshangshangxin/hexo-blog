@@ -1,9 +1,16 @@
+---
 title: JavaScript权威指南笔记
 date: 2015-04-01 19:06:22
-description: JavaScript权威指南笔记150401
 tags:
 - js
+
+
 ---
+
+JavaScript权威指南笔记150401
+<!-- more -->
+
+
 
 ## 字符长度 `P39`
 
@@ -153,3 +160,4 @@ console.log(s.len); // undefined
 
 
   [1]: ./1427879165966.jpg "1427879165966.jpg"
+

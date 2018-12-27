@@ -1,9 +1,16 @@
+---
 title: '[转]MongoDB命令行操作'
 date: 2015-08-18 18:15:54
-description: MongoDB命令行操作
 tags:
 - mongodb
+
+
 ---
+
+MongoDB命令行操作
+<!-- more -->
+
+
 
 2.1 查看服务器上的数据库  
 > show dbs  
@@ -657,3 +664,4 @@ db.user.find()
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

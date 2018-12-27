@@ -1,14 +1,21 @@
 ---
+
 layout: post
 title: 'RxJS v6 dash 文档'
-description: 'Dash 只能找到版本为V5的 RxJS, 所以花了点时间自己构建了一个V6版本'
 date: 2018-08-31 22:25:13
 tags:
   - rxjs
   - RxJS
   - js
   - dash
+
+
 ---
+
+Dash 只能找到版本为V5的 RxJS, 所以花了点时间自己构建了一个V6版本
+<!-- more -->
+
+
 
 # `rxjs6.docset`成品下载地址
 
@@ -91,3 +98,4 @@ let aEleList = document.querySelectorAll('a');
 > **文章若有纰漏请大家补充指正,谢谢~~**
 
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG 殇
+

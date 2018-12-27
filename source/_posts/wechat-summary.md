@@ -1,10 +1,17 @@
+---
 layout: post
 title: "微信总结"
 date: 2016-09-22 15:42:27
-description:  遇到的坑,或者其它混淆的概念
 tags:
 - wechat
+
+
 ---
+
+遇到的坑,或者其它混淆的概念
+<!-- more -->
+
+
 
 ## 第三方平台 和 公众号自己开发
 存在 
@@ -182,3 +189,4 @@ auth: function(req, res) {
     });
   },
 ```
+

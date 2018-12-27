@@ -1,9 +1,16 @@
+---
 title: hexo3中hexo g生成速度过慢
 date: 2015-06-29 14:05:37
-description: hexo g 时间过长
 tags:
 - hexo
+
+
 ---
+
+hexo g 时间过长
+<!-- more -->
+
+
 
 ## 原因
 ```plain
@@ -287,3 +294,4 @@ function eachLine(filename, cb, separator, encoding, bufferSize) {
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

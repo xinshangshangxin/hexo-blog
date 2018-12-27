@@ -1,10 +1,17 @@
+---
 title: "angular 使用 multipart/form-data 上传文件, sails.js 接收文件"
 date: 2015-12-17 10:00:28
-description:  angular multipart/form-data,  sails.js 接收文件出现取不到值
 tags:
 - AngularJS
 - sails
+
+
 ---
+
+angular multipart/form-data,  sails.js 接收文件出现取不到值
+<!-- more -->
+
+
 
 
 ## angular 上传文件
@@ -102,3 +109,4 @@ return $http({
 
 > **文章若有纰漏请大家补充指正,谢谢~~**
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

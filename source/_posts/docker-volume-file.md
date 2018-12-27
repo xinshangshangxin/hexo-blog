@@ -1,11 +1,18 @@
 ---
+
 layout: post
 title: "docker 使用 -v 或 --volume 映射文件报错"
-description: "-v 出现 unknown: Are you trying to mount a directory onto a file (or vice-versa)"
 date: 2018-06-07 11:18:47
 tags:
 - docker
+
+
 ---
+
+-v 出现 unknown: Are you trying to mount a directory onto a file (or vice-versa)
+<!-- more -->
+
+
 
 ## 解决方案:
 假设 `docker run -v local_file_path:docker_file_path docker_image`
@@ -37,3 +44,4 @@ docker run -v local_file_path:docker_file_path -it --entrypoint bash docker_imag
 > **文章若有纰漏请大家补充指正,谢谢!**
 
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

@@ -1,9 +1,16 @@
+---
 title: "js使用正则格式化时间[转]"
 date: 2015-02-19 21:04:48
-description: JS没有提供类似 format('yyyy-MM-dd hh:mm:ss.S') 的 时间格式化,在网上找到了一段极简的代码将 Date 转化为指定格式的String
 tags:
 - js
+
+
 ---
+
+JS没有提供类似 format('yyyy-MM-dd hh:mm:ss.S') 的 时间格式化,在网上找到了一段极简的代码将 Date 转化为指定格式的String
+<!-- more -->
+
+
 
 
 > 使用正则表达式的 RegExp.$1 来判断 使用多少个占位符
@@ -39,3 +46,4 @@ Date.prototype.Format = function(fmt) {
 }
 
 ```
+

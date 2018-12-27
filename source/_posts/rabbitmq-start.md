@@ -1,11 +1,18 @@
 ---
+
 layout: post
 title: rabbitmq安装并配置
-description: "按照官方文档在ubuntu上安装rabbitmq记录"
 date: 2018-02-08 11:33:28
 tags:
 - rabbitmq
+
+
 ---
+
+按照官方文档在ubuntu上安装rabbitmq记录
+<!-- more -->
+
+
 
 ## 安装
 [官方安装文档](https://www.rabbitmq.com/install-debian.html#apt)
@@ -96,3 +103,4 @@ systemctl status rabbitmq-server.service
 > **文章若有纰漏请大家补充指正,谢谢~~**
 
 > [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG殇
+

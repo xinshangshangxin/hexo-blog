@@ -1,10 +1,17 @@
+---
 title: cordova_Intellij 配置
 date: 2015-02-17 14:46:41
 tags: 
 - cordova
 - Intellij
-description: 使用Intellij 搭建第一个cordova 混合应用程序;以 windows 和 andorid 为例
+
+
 ---
+
+使用Intellij 搭建第一个cordova 混合应用程序;以 windows 和 andorid 为例
+<!-- more -->
+
+
 
 # 环境变量配置[Android]
 
@@ -97,3 +104,4 @@ cordova build
 [http://www.it165.net/pro/html/201407/17784.html](http://www.it165.net/pro/html/201407/17784.html)
 [http://www.cnblogs.com/or2-/p/3842158.html](http://www.cnblogs.com/or2-/p/3842158.html)
 [官方插件](http://cordova.apache.org/docs/zh/edge/_index.html)
+

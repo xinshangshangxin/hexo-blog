@@ -1,9 +1,16 @@
+---
 title: ConEmu设置当前目录打开右键菜单
 date: 2015-02-22 20:26:44
-description: cmder基于ConEmu,但是ConEmu没有直接设置当前目录打开的右键菜单
 tags:
 - ConEmu
+
+
 ---
+
+cmder基于ConEmu,但是ConEmu没有直接设置当前目录打开的右键菜单
+<!-- more -->
+
+
 
 # 前言
 cmder 很好用,就是经常吞字和多字; 查了下,cmder基于ConEmu,就尝试了ConEmu
@@ -23,5 +30,6 @@ cmder 很好用,就是经常吞字和多字; 查了下,cmder基于ConEmu,就尝�
 2. 在 搜狗壁纸 等软件上 无效!  
 
 *我测试的时候就是在ConEmu目录下 和 搜狗壁纸的桌面上测试;始终无效,捣鼓了好长时间...*
+
 
 
