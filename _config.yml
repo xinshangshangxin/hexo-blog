@@ -81,11 +81,11 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 
-search:
-  path: search.json
-  zipPath: search.flv
-  versionPath: searchVersion.txt
-  field: post
+# search:
+#   path: search.json
+#   zipPath: search.flv
+#   versionPath: searchVersion.txt
+#   field: post
 
 ## Themes: http://hexo.io/themes/
 theme: theme-bmw
