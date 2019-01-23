@@ -1,186 +1,272 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-  
+<html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  
-  
-  <title>angular学习笔记 | SHANG Blog</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  
-    <meta name="keywords" content="angular,">
-  
-
-  
-    <meta name="description" content="殇Blog">
-  
-
-  
-
-  
-    <link rel="icon" href="/images/favicon.ico">
-    <link rel="apple-touch-icon" href="/images/touch-icon.png">
-  
-
-  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/base.css">
-<link rel="stylesheet" href="/icon/iconfont.css">
-<link rel="stylesheet" href="/css/github-markdown.css">
-<link rel="stylesheet" href="/css/highlight.css">
-
-  <script src="/js/util.js"></script>
-<script src="/js/valine.min.js"></script>
-
-  
-
-  
-    <link href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
-    <script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js" async></script>
-  
-
-  
-    <link href="https://cdn.bootcss.com/social-share.js/1.0.16/css/share.min.css" rel="stylesheet">
-  
-  
-  <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js" async></script>
-  
-  
-
+    <meta charset="utf-8">
+    
+    
+    <title>angular学习笔记 | SHANG Blog | I am who I am</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="angular">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.1">
+    
+        <link rel="stylesheet" href="/css/third-party/gitment.css?v=1.4.1">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":true,"lazy":false,"owner":"demoshang","repo":"gitment","oauth":{"client_id":"9e85f59f12088bde45d8","client_secret":"4724811505851866f04a6a13fb5305a56e79a8f4"},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
 </head>
 
-  <body>
 
-    
+<body>
+    <div id="loading" class="active"></div>
 
-    <div id="app">
-
-      <div class="header-wrap">
-  <header>
-    <div class="site-brand">
-      <div class="site-title">
-        <a href="/">SHANG</a>
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">xinshangshangxin</h5>
+          <!-- <a href="mailto:xinshangshangxin@gmail.com" title="xinshangshangxin@gmail.com" class="mail">
+            
+              <span>x</span>
+            
+              <span>i</span>
+            
+              <span>n</span>
+            
+              <span>s</span>
+            
+              <span>h</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>g</span>
+            
+              <span>s</span>
+            
+              <span>h</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>g</span>
+            
+              <span>x</span>
+            
+              <span>i</span>
+            
+              <span>n</span>
+            
+              <span>@</span>
+            
+              <span>g</span>
+            
+              <span>m</span>
+            
+              <span>a</span>
+            
+              <span>i</span>
+            
+              <span>l</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a> -->
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/xinshangshangxin" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
       </div>
     </div>
-    <nav class="site-navigation">
-      <ul class="nav-menu">
-      
-        <li class="nav-item" data-path="/">
-          
-            <a href="/" target="_self">
-              主页
-            </a>
-          
-        </li>
-      
-        <li class="nav-item" data-path="/archives/">
-          
-            <a href="/archives/" target="_self">
-              归档
-            </a>
-          
-        </li>
-      
-        <li class="nav-item" data-path="https://github.com/xinshangshangxin">
-          
-            <a href="https://github.com/xinshangshangxin" target="_self">
-              Github
-            </a>
-          
-        </li>
-      
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://github.com/xinshangshangxin" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
       </ul>
-    </nav>
-    <i class="iconfont icon-menu"></i>
-  </header>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>angular学习笔记</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">angular学习笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-09-16T13:53:56.000Z" itemprop="datePublished" class="page-time">
+  2018年09月16日
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
 </div>
 
-<script>
-  let links = document.querySelectorAll('.nav-item');
-  for(let link of links){
-    let childrenLink = link.querySelector('ul');
-    link.addEventListener('mouseenter', () => {
-      if(childrenLink) {
-        childrenLink.className = "nav-menu--dropdown active";
-      }
-    })
-    link.addEventListener('mouseleave', () => {
-      if(childrenLink) {
-        childrenLink.className = "nav-menu--dropdown";
-      }
-    })
-  }
-  let rootRealPath = getRealPath(window.location.pathname, true);
-  for(let link of links) {
-    let linkPath = link.getAttribute("data-path");
-    if(linkPath && getRealPath(linkPath, true) === rootRealPath) {
-      link.className = "nav-item hover";
-    }
-  }
 
-  let iconMenu = document.querySelector("i.iconfont.icon-menu"),
-    iconMenuClicked = false;
-  let navDOM = document.querySelector("nav.site-navigation");
-  iconMenu.addEventListener("click", () => {
-    iconMenuClicked 
-      ? navDOM.className = "site-navigation active"
-      : navDOM.className = "site-navigation";
-    iconMenuClicked = !iconMenuClicked;
-  })
-</script>
+<div class="container body-wrap">
+    <article id="post-learn-angular" class="post-article article-type-post" itemprop="blogPost">
+      <div class="post-card">
+          <h1 class="post-card-title">angular学习笔记</h1>
+          <div class="post-meta">
+              <time class="post-time" title="2018年09月16日 21:53:56" datetime="2018-09-16T13:53:56.000Z" itemprop="datePublished">2018年09月16日</time>
 
-      
+              
 
 
+              
+
+              
 
 
-
-
-
-
-<div class="container post-index">
-
-  
-
-<div class="post">
-  <h1 class="article-title">
-    <span>angular学习笔记</span>
-  </h1>
-  <div class="article-top-meta">
-    <span>
-      发布 : 
-      2018-09-16
+<span class="post-comments-counter" id="/2018/09/16/learn-angular/">
+    <span class="post-meta-item-icon">
+        <i class="icon icon-comment-o"></i>
     </span>
     
-    
-  </div>
+    <a href="/2018/09/16/learn-angular/#gitment" onclick="ShowGitment()">
+        <span class="post-comments-count gitment-comments-count" itemprop="commentsCount"></span>
+    </a>
+</span>
 
-  
-
-  <div class="article-content">
-    <div class="markdown-body">
-      <p></p>
+              
+          </div>
+          <div class="post-content" id="post-content" itemprop="postContent">
+              
+              <p>「 Angular 4.0从入门到实战 打造股票管理网站」学习笔记<br><a id="more"></a></p>
 <h1 id="init"><a href="#init" class="headerlink" title="init"></a>init</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 yarnpkg 只需要设置一次</span></span><br><span class="line">ng config -g cli.packageManager yarn</span><br><span class="line"><span class="comment">#  新建项目         有路由, 无测试, scss</span></span><br><span class="line">ng new <span class="variable">$project</span> --routing -S --style=scss</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加 material</span></span><br><span class="line">yarnpkg add @angular/material @angular/cdk @angular/animations</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成 component</span></span><br><span class="line">ng g c <span class="variable">$name</span></span><br></pre></td></tr></table></figure>
 <h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NgModule</span>(&#123;</span><br><span class="line">  declarations: [</span><br><span class="line">    组件,</span><br><span class="line">    指令,</span><br><span class="line">    管道</span><br><span class="line">  ],</span><br><span class="line">  imports: [</span><br><span class="line">    依赖模块</span><br><span class="line">  ],</span><br><span class="line">  providers: [</span><br><span class="line">    服务</span><br><span class="line">  ],</span><br><span class="line">  bootstrap: [</span><br><span class="line">    主组件</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><p><img src="/img/learn-angular/001.png" alt="component"></p>
-<h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1><p><img src="/img/learn-angular/002.png" alt="route"></p>
+<h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><figure class="image-box">
+                <a rel="angular学习笔记" href="/img/learn-angular/001.png" title="component" data-fancybox="images"><img src="/img/learn-angular/001.png" alt="component" title="" class=""></a>
+                <p>component</p>
+            </figure>
+<h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1><figure class="image-box">
+                <a rel="angular学习笔记" href="/img/learn-angular/002.png" title="route" data-fancybox="images"><img src="/img/learn-angular/002.png" alt="route" title="" class=""></a>
+                <p>route</p>
+            </figure>
 <h2 id="app-routing-module-ts"><a href="#app-routing-module-ts" class="headerlink" title="app-routing.module.ts"></a><code>app-routing.module.ts</code></h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes: Routes = [</span><br><span class="line">  <span class="comment">// 路由重定向</span></span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">''</span>,</span><br><span class="line">    redirectTo: <span class="string">'/home'</span>,</span><br><span class="line">    pathMath: <span class="string">'full'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 基本路由配置</span></span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">'home'</span>,</span><br><span class="line">    component: HomeComponent,</span><br><span class="line">    data: [</span><br><span class="line">      &#123;</span><br><span class="line">        isProd: <span class="literal">true</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">'children'</span>,</span><br><span class="line">    <span class="comment">// 子路由</span></span><br><span class="line">    children: [</span><br><span class="line">      &#123;</span><br><span class="line">        path: <span class="string">''</span>,</span><br><span class="line">        component: Children1Component,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        path: <span class="string">'xxx/:id'</span>,</span><br><span class="line">        component: Children2Component,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 默认路由</span></span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">'**'</span>,</span><br><span class="line">    redirectTo: <span class="string">''</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
 <h2 id="html-中"><a href="#html-中" class="headerlink" title="html 中"></a>html 中</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- routerLink数组,   queryParams 对象 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> [<span class="attr">routerLink</span>]=<span class="string">"['/product', id]"</span> [<span class="attr">queryParams</span>]=<span class="string">"&#123;debug: 1&#125;"</span>&gt;</span>XXXX<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 在标签下面展示路由内容 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-outlet</span>&gt;</span><span class="tag">&lt;/<span class="name">router-outlet</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="component-ts"><a href="#component-ts" class="headerlink" title="component.ts"></a>component.ts</h2><h3 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> router: Router</span>)&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.router.navigate([<span class="string">"/"</span>, id], &#123;</span><br><span class="line">  queryParams: &#123;</span><br><span class="line">    debug: <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h3 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> routeInfo: ActivatedRoute</span>) &#123;</span><br><span class="line">  routeInfo.params.subscribe(<span class="function">(<span class="params">params: Params</span>) =&gt;</span> <span class="keyword">this</span>.productId = params[<span class="string">"id"</span>]);</span><br><span class="line">  routeInfo.queryParams.subscribe(<span class="function">(<span class="params">params: Params</span>) =&gt;</span> <span class="keyword">this</span>.test = params[<span class="string">"test"</span>]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.id = routeInfo.snapshot.params[<span class="string">'id'</span>];</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 路由中配置 data: [&#123;isprod: true&#125;]</span></span><br><span class="line">  <span class="keyword">this</span>.isProd = routeInfo.snapshot.data[<span class="number">0</span>][<span class="string">'isProd'</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="辅助路由"><a href="#辅助路由" class="headerlink" title="辅助路由"></a>辅助路由</h2><p><img src="/img/learn-angular/003.png" alt="aux"></p>
+<h2 id="辅助路由"><a href="#辅助路由" class="headerlink" title="辅助路由"></a>辅助路由</h2><figure class="image-box">
+                <a rel="angular学习笔记" href="/img/learn-angular/003.png" title="aux" data-fancybox="images"><img src="/img/learn-angular/003.png" alt="aux" title="" class=""></a>
+                <p>aux</p>
+            </figure>
 <h2 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h2><h3 id="routes"><a href="#routes" class="headerlink" title="routes"></a>routes</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: <span class="string">'product/:id'</span>,</span><br><span class="line">  component: ProductComponent,</span><br><span class="line">  <span class="comment">// 在路由激活之前获取数据</span></span><br><span class="line">  resolve: &#123;</span><br><span class="line">    product: ProductResolveGuard</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 处理导航到某个路由</span></span><br><span class="line">  canActivate: [LoginGuard],</span><br><span class="line">  <span class="comment">// 处理从当前路由离开</span></span><br><span class="line">  canDeactivate: [UnsavedGuard],</span><br><span class="line">  data: [&#123;</span><br><span class="line">    isProd: <span class="literal">true</span></span><br><span class="line">  &#125;],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="canActivate"><a href="#canActivate" class="headerlink" title="canActivate"></a>canActivate</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> LoginGuard <span class="keyword">implements</span> CanActivate &#123;</span><br><span class="line">  canActivate(</span><br><span class="line">    route: ActivatedRouteSnapshot,</span><br><span class="line">    state: RouterStateSnapshot</span><br><span class="line">  ): Observable&lt;<span class="built_in">boolean</span>&gt; | <span class="built_in">Promise</span>&lt;<span class="built_in">boolean</span>&gt; | <span class="built_in">boolean</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> loggedIn: <span class="built_in">boolean</span> = <span class="built_in">Math</span>.random() &lt; <span class="number">0.5</span>;</span><br><span class="line">    <span class="keyword">if</span> (!loggedIn) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'LoginGuard:用户未登录'</span> + <span class="keyword">new</span> <span class="built_in">Date</span>());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> loggedIn;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="CanDeactivate"><a href="#CanDeactivate" class="headerlink" title="CanDeactivate"></a>CanDeactivate</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> UnsavedGuard <span class="keyword">implements</span> CanDeactivate&lt;ProductComponent&gt; &#123;</span><br><span class="line">  canDeactivate() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">window</span>.confirm(<span class="string">'你还没有保存.确定要离开么?'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Resolve"><a href="#Resolve" class="headerlink" title="Resolve"></a>Resolve</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Injectable</span>()</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> ProductResolveGuard <span class="keyword">implements</span> Resolve&lt;ProductComponent&gt; &#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> router: Router</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  resolve(</span><br><span class="line">    route: ActivatedRouteSnapshot,</span><br><span class="line">    state: RouterStateSnapshot</span><br><span class="line">  ): Observable&lt;ProductComponent&gt; | <span class="built_in">Promise</span>&lt;ProductComponent&gt; | ProductComponent &#123;</span><br><span class="line">    <span class="keyword">let</span> productId: <span class="built_in">number</span> = route.params[<span class="string">'id'</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (productId == <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.router.navigate([<span class="string">'/home'</span>]);</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h1><p><img src="/img/learn-angular/004.png" alt="DI"></p>
+<h1 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h1><figure class="image-box">
+                <a rel="angular学习笔记" href="/img/learn-angular/004.png" title="DI" data-fancybox="images"><img src="/img/learn-angular/004.png" alt="DI" title="" class=""></a>
+                <p>DI</p>
+            </figure>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">providers: [</span><br><span class="line">  LoggerService,</span><br><span class="line">  &#123;</span><br><span class="line">    provide: ProductService,</span><br><span class="line">    <span class="comment">// 单例, 只在第一次需要的时候初始化</span></span><br><span class="line">    useFactory: <span class="function">(<span class="params">logger: LoggerService, appConfig</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (appConfig.isDev) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ProductService(logger);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AnotherProductService(logger);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 提供参数</span></span><br><span class="line">    deps: [LoggerService, <span class="string">'APP_CONFIG'</span>],</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// 变量</span></span><br><span class="line">    provide: <span class="string">'APP_CONFIG'</span>,</span><br><span class="line">    useValue: &#123;</span><br><span class="line">      isDev: <span class="literal">false</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
 <h1 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h1><h2 id="插值表达式"><a href="#插值表达式" class="headerlink" title="插值表达式"></a>插值表达式</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;title&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="属性表达式"><a href="#属性表达式" class="headerlink" title="属性表达式"></a>属性表达式</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> [<span class="attr">src</span>]=<span class="string">"imgUrl"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h2><p><img src="/img/learn-angular/005.png" alt="bind"></p>
+<h2 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h2><figure class="image-box">
+                <a rel="angular学习笔记" href="/img/learn-angular/005.png" title="bind" data-fancybox="images"><img src="/img/learn-angular/005.png" alt="bind" title="" class=""></a>
+                <p>bind</p>
+            </figure>
 <h1 id="响应式编程"><a href="#响应式编程" class="headerlink" title="响应式编程"></a>响应式编程</h1><p><a href="/2018/08/30/lean-rxjs/">RxJS 学习笔记</a></p>
 <h1 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h1><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Pipe</span>(&#123;</span><br><span class="line">  name: <span class="string">'multiple'</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> MultiplePipe <span class="keyword">implements</span> PipeTransform &#123;</span><br><span class="line">  transform(value: <span class="built_in">number</span>, args?: <span class="built_in">number</span>): <span class="built_in">any</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!args) &#123;</span><br><span class="line">      args = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> value * args;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="组件间通信"><a href="#组件间通信" class="headerlink" title="组件间通信"></a>组件间通信</h1><h2 id="路由属性"><a href="#路由属性" class="headerlink" title="路由属性"></a>路由属性</h2><p><a href="#获取">获取路由属性</a></p>
@@ -191,7 +277,10 @@
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父组件中</span></span><br><span class="line">priceHandle(event: <span class="built_in">number</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'price: '</span>, event)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="中间人模式-有共同的父组件"><a href="#中间人模式-有共同的父组件" class="headerlink" title="中间人模式(有共同的父组件)"></a>中间人模式(有共同的父组件)</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// child1 组件</span></span><br><span class="line"><span class="meta">@Output</span>(<span class="string">'priceChange'</span>)</span><br><span class="line">lastPrice:EventEmitter&lt;<span class="built_in">number</span>&gt; = <span class="keyword">new</span> EventEmitter();</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.lastPrice.emit(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 父组件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">child1-component</span> (<span class="attr">lastPrice</span>)=<span class="string">"priceHandle($event)"</span>&gt;</span><span class="tag">&lt;/<span class="name">child1-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">child2-component</span> [<span class="attr">lastPrice</span>]=<span class="string">"lastPrice"</span>&gt;</span><span class="tag">&lt;/<span class="name">child2-component</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="组件生命周期"><a href="#组件生命周期" class="headerlink" title="组件生命周期"></a>组件生命周期</h1><p><img src="/img/learn-angular/006.png" alt="life"></p>
+<h1 id="组件生命周期"><a href="#组件生命周期" class="headerlink" title="组件生命周期"></a>组件生命周期</h1><figure class="image-box">
+                <a rel="angular学习笔记" href="/img/learn-angular/006.png" title="life" data-fancybox="images"><img src="/img/learn-angular/006.png" alt="life" title="" class=""></a>
+                <p>life</p>
+            </figure>
 <h1 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h1><h2 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h2><p>由 <code>angular/form</code>模块中特定的类(<code>FormControl</code>, <code>FormGroup</code>, <code>FormArray</code>)组成</p>
 <h2 id="两种表单比较"><a href="#两种表单比较" class="headerlink" title="两种表单比较"></a>两种表单比较</h2><table>
 <thead>
@@ -298,245 +387,245 @@
 </li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#                使用哪个 config          输出路径</span></span><br><span class="line">ng build --prod --configuration=<span class="variable">$&#123;env&#125;</span> --output-path dist</span><br></pre></td></tr></table></figure>
-    </div>
-  </div>
-  
-  
-  
-    <div class="social-share" style="margin-top: -2rem" data-wechat-qrcode-title="<p>微信扫一扫</p>" data-wechat-qrcode-helper="<p>微信右上角, 扫一扫分享</p>" data-sites="google, facebook, twitter, wechat, qzone, qq, weibo, douban">
-  <span style="color: #6b7487; font-size: 1.4rem;">分享到: </span>
-</div>
-<script src="https://cdn.bootcss.com/social-share.js/1.0.16/js/social-share.min.js" async></script>
-  
 
-  
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-      <span>
-        
-          <i class="iconfont icon-06tags"></i>标签: 
+          </div>
           
-          <span class="span--tag">
-            <a href="/tags/angular/">
-              #angular
-            </a>
-          </span>
           
-        
-      </span>
-    </div>
-    <div class="article-meta pull-right">
-    </div>
-  </div>
+          <div class="post-footer">
+              
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li></ul>
+
+              <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.xinshangshangxin.com/2018/09/16/learn-angular/&title=《angular学习笔记》 — SHANG Blog&pic=http://blog.xinshangshangxin.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.xinshangshangxin.com/2018/09/16/learn-angular/&title=《angular学习笔记》 — SHANG Blog&source=「 Angular 4.0从入门到实战 打造股票管理网站」学习笔记" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.xinshangshangxin.com/2018/09/16/learn-angular/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《angular学习笔记》 — SHANG Blog&url=http://blog.xinshangshangxin.com/2018/09/16/learn-angular/&via=http://blog.xinshangshangxin.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.xinshangshangxin.com/2018/09/16/learn-angular/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
 </div>
 
-
-  <aside id="sidebar">
-    <p id="sidebar-header"></p>
-    <ol id="sidebar-toc"></ol>
-  </aside>
-  <script async>setTimeout(generateToc, 10);</script>
+          </div>
+          
+              
 
 
-  <nav class="post-navigation">
-    
-      <div class="nav-pre">
-        <i class="iconfont icon-prev"></i>
-        上一篇:
-        <a href="/2018/08/31/dash-rxjs-6/" target="_self">RxJS v6 dash 文档</a>
+      
+    <div id="gitment"></div>
+
+
+
+          
       </div>
-    
-    
-      <div class="nav-next">
-        下一篇:
-        <a href="/2018/10/30/typescript-compiler-options/" target="_self">[转] typescript 2.7 编译选项详解</a>
-        <i class="iconfont icon-next"></i>
-      </div>
-    
-  </nav>
+      
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2018/10/30/typescript-compiler-options/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[转] typescript 2.7 编译选项详解</h4>
+      </a>
+    </div>
+  
 
-   
+  
+    <div class="next">
+      <a href="/2018/08/31/dash-rxjs-6/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">RxJS v6 dash 文档</h4>
+      </a>
+    </div>
+  
+</nav>
 
-   
 
+      
+      
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#init"><span class="post-toc-number">1.</span> <span class="post-toc-text">init</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#模块"><span class="post-toc-number">2.</span> <span class="post-toc-text">模块</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#组件"><span class="post-toc-number">3.</span> <span class="post-toc-text">组件</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#路由"><span class="post-toc-number">4.</span> <span class="post-toc-text">路由</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#app-routing-module-ts"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">app-routing.module.ts</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#html-中"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">html 中</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#component-ts"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">component.ts</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#跳转"><span class="post-toc-number">4.3.1.</span> <span class="post-toc-text">跳转</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取"><span class="post-toc-number">4.3.2.</span> <span class="post-toc-text">获取</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#辅助路由"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">辅助路由</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#路由守卫"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">路由守卫</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#routes"><span class="post-toc-number">4.5.1.</span> <span class="post-toc-text">routes</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#canActivate"><span class="post-toc-number">4.5.2.</span> <span class="post-toc-text">canActivate</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CanDeactivate"><span class="post-toc-number">4.5.3.</span> <span class="post-toc-text">CanDeactivate</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Resolve"><span class="post-toc-number">4.5.4.</span> <span class="post-toc-text">Resolve</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#依赖注入"><span class="post-toc-number">5.</span> <span class="post-toc-text">依赖注入</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#数据绑定"><span class="post-toc-number">6.</span> <span class="post-toc-text">数据绑定</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#插值表达式"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">插值表达式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#属性表达式"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">属性表达式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#事件绑定"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">事件绑定</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#响应式编程"><span class="post-toc-number">7.</span> <span class="post-toc-text">响应式编程</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#管道"><span class="post-toc-number">8.</span> <span class="post-toc-text">管道</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#组件间通信"><span class="post-toc-number">9.</span> <span class="post-toc-text">组件间通信</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#路由属性"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">路由属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#输入属性"><span class="post-toc-number">9.2.</span> <span class="post-toc-text">输入属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#输出属性"><span class="post-toc-number">9.3.</span> <span class="post-toc-text">输出属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#中间人模式-有共同的父组件"><span class="post-toc-number">9.4.</span> <span class="post-toc-text">中间人模式(有共同的父组件)</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#组件生命周期"><span class="post-toc-number">10.</span> <span class="post-toc-text">组件生命周期</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#表单"><span class="post-toc-number">11.</span> <span class="post-toc-text">表单</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据模型"><span class="post-toc-number">11.1.</span> <span class="post-toc-text">数据模型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#两种表单比较"><span class="post-toc-number">11.2.</span> <span class="post-toc-text">两种表单比较</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#模板式表单"><span class="post-toc-number">11.3.</span> <span class="post-toc-text">模板式表单</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#响应式表单"><span class="post-toc-number">11.4.</span> <span class="post-toc-text">响应式表单</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#指令对照表"><span class="post-toc-number">11.5.</span> <span class="post-toc-text">指令对照表</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#校验"><span class="post-toc-number">11.6.</span> <span class="post-toc-text">校验</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#和服务器通讯"><span class="post-toc-number">12.</span> <span class="post-toc-text">和服务器通讯</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#build"><span class="post-toc-number">13.</span> <span class="post-toc-text">build</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+  </article>
+  
+  
 </div>
 
+        <footer class="footer">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                xinshangshangxin &copy; 2015 - 2019
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">hexo-theme-mellow</a>
+            </span>
+            
+            
+            
 
-      <footer>
-  <p class="site-info">
-    <!-- 博客已萌萌哒运行<span id="time-to-now"></span><span class="my-face">(●'◡'●)ﾉ♥</span> -->
-    
-      得之我幸,失之我命
-    
-    <br>
-    Theme - <a href="https://github.com/dongyuanxin/theme-bmw">BMW</a> | Made With 💗 | Powered by <a href="https://godbmw.com/">GodBMW</a>
-    <br>
-    
-  </p>
+            
+                
+
+            
+        </p>
+    </div>
 </footer>
 
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-<script>
-const timeToNowDOM = document.querySelector("#time-to-now");
-const startTimestamp = new Date(2018, 1, 10).getTime();
 
-const updateTimeStr = () => {
-  let offset = parseInt(
-      (new Date().getTime() - startTimestamp) / 1000,
-      10
-    ),
-    day = Math.floor(offset / 86400),
-    hour = Math.floor((offset % 86400) / 3600),
-    minute = Math.floor(((offset % 86400) % 3600) / 60),
-    second = Math.floor(((offset % 86400) % 3600) % 60);
-  timeToNowDOM.innerHTML =
-    day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
-  setTimeout(updateTimeStr, 500);
-}
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.xinshangshangxin.com/2018/09/16/learn-angular/&title=《angular学习笔记》 — SHANG Blog&pic=http://blog.xinshangshangxin.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.xinshangshangxin.com/2018/09/16/learn-angular/&title=《angular学习笔记》 — SHANG Blog&source=「 Angular 4.0从入门到实战 打造股票管理网站」学习笔记" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.xinshangshangxin.com/2018/09/16/learn-angular/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《angular学习笔记》 — SHANG Blog&url=http://blog.xinshangshangxin.com/2018/09/16/learn-angular/&via=http://blog.xinshangshangxin.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.xinshangshangxin.com/2018/09/16/learn-angular/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
 
-setTimeout(updateTimeStr, 500);
-</script>
 
-
-      <div class="back-to-top hidden">
-  <span>
-    <i class="iconfont icon-60"></i><span></span>%
-  </span>
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://blog.xinshangshangxin.com/2018/09/16/learn-angular/" alt="微信分享二维码">
 </div>
 
-<script>
-const updateIconToTop = percent => {
-  let dom = document.querySelector(".back-to-top span span");
-  dom.innerText = percent;
-  if(percent < 1) {
-    document.querySelector(".back-to-top").className = "back-to-top hidden";
-  } else {
-    document.querySelector(".back-to-top").className = "back-to-top";
-  }
-}
-
-const handleScoll = () => {
-  let isRunning = false;
-  return () => {
-    if (isRunning) return;
-    isRunning = true;
-    window.requestAnimationFrame(timestamp => {
-      let scrollTop =
-          document.documentElement.scrollTop || document.body.scrollTop,
-        scrollHeight =
-          document.documentElement.scrollHeight ||
-          document.body.scrollHeight,
-        clientHeight =
-          document.documentElement.clientHeight ||
-          document.body.clientHeight;
-      isRunning = false;
-      if (scrollTop <= 1) {
-        updateIconToTop(0);
-        return;
-      }
-      if (scrollTop + clientHeight >= scrollHeight) {
-        updateIconToTop(100);
-      } else {
-        updateIconToTop(parseInt(
-          100 * scrollTop / (scrollHeight - clientHeight),
-          10
-        ));
-      }
-    });
-  };
-}
-
-const backToTop = () => {
-  let scrollTop =
-      document.documentElement.scrollTop || document.body.scrollTop,
-    delay = 10,
-    time = 200;
-  if (scrollTop <= 20) {
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    return;
-  }
-  let step = Math.ceil(scrollTop * delay / time);
-  let timer = setInterval(() => {
-    scrollTop =
-      document.documentElement.scrollTop || document.body.scrollTop;
-    if (scrollTop - step <= 0) {
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-      clearInterval(timer);
-    } else {
-      document.documentElement.scrollTop = scrollTop - step;
-      document.body.scrollTop = scrollTop - step;
-    }
-  }, delay);
-}
-
-document.addEventListener("scroll", handleScoll(), false);
-
-document.querySelector(".back-to-top").addEventListener("click", backToTop, false);
-
-</script>
-
-    </div>
 
     
-      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
-<script>
-  (() => {
-    const mathjaxConfig = {
-      showProcessingMessages: false, //关闭js加载过程信息
-      messageStyle: "none", //不显示信息
-      jax: ["input/TeX", "output/HTML-CSS"],
-      tex2jax: {
-        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
-        displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
-        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
-      },
-      "HTML-CSS": {
-        availableFonts: ["STIX", "TeX"], //可选字体
-        showMathMenu: false //关闭右击菜单显示
-      }
-    }
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.1"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
 
-    let mathjaxInterval = setInterval(() => {
-      if(!window.MathJax){
-        return;
-      }
-      window.MathJax.Hub.Config(mathjaxConfig)
-      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')])
+<script type="text/javascript" src="/js/method.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.1"></script>
 
-      clearInterval(mathjaxInterval)
-    }, 10)    
-  })()
-</script>
-    
+<!-- third-party -->
 
-    <script src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script>
-<script async>
-  let fancyTimer = setInterval(function(){
-    if(!window.$){
-      return;
-    }
-    $(document).ready(function() {
-      $(".post img").each(function () {
-        if($(this).parent().get(0).tagName.toLowerCase() === "a") {
-          return;
-        }
-        // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "gallery");
-        $(element).attr("href", $(this).attr("src"));
-        $(this).wrap(element);
-      });
-      
-      clearInterval(fancyTimer);
-    });
-  }, 10);
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.1"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
 </script>
 
-    
-  </body>
 
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+        <script type="text/javascript" src="/js/plugins/gitmint.browser.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/gitment.js?v=1.4.1"></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+</body>
 </html>

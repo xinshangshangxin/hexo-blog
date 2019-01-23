@@ -1,365 +1,582 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-  
+<html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  
-  
-  <title>标签: CI | SHANG Blog</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  
-    <meta name="keywords" content="Hexo, theme-bmw">
-  
-
-  
-    <meta name="description" content="殇Blog">
-  
-
-  
-
-  
-    <link rel="icon" href="/images/favicon.ico">
-    <link rel="apple-touch-icon" href="/images/touch-icon.png">
-  
-
-  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/base.css">
-<link rel="stylesheet" href="/icon/iconfont.css">
-<link rel="stylesheet" href="/css/github-markdown.css">
-<link rel="stylesheet" href="/css/highlight.css">
-
-  <script src="/js/util.js"></script>
-<script src="/js/valine.min.js"></script>
-
-  
-
-  
-    <link href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
-    <script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js" async></script>
-  
-
-  
-    <link href="https://cdn.bootcss.com/social-share.js/1.0.16/css/share.min.css" rel="stylesheet">
-  
-  
-  <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js" async></script>
-  
-  
-
+    <meta charset="utf-8">
+    
+    
+    <title>Tags: CI | SHANG Blog | I am who I am</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.1">
+    
+        <link rel="stylesheet" href="/css/third-party/gitment.css?v=1.4.1">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":true,"lazy":false,"owner":"demoshang","repo":"gitment","oauth":{"client_id":"9e85f59f12088bde45d8","client_secret":"4724811505851866f04a6a13fb5305a56e79a8f4"},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
 </head>
 
-  <body>
 
-    
+<body>
+    <div id="loading" class="active"></div>
 
-    <div id="app">
-
-      <div class="header-wrap">
-  <header>
-    <div class="site-brand">
-      <div class="site-title">
-        <a href="/">SHANG</a>
+    <aside id="menu">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">xinshangshangxin</h5>
+          <!-- <a href="mailto:xinshangshangxin@gmail.com" title="xinshangshangxin@gmail.com" class="mail">
+            
+              <span>x</span>
+            
+              <span>i</span>
+            
+              <span>n</span>
+            
+              <span>s</span>
+            
+              <span>h</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>g</span>
+            
+              <span>s</span>
+            
+              <span>h</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>g</span>
+            
+              <span>x</span>
+            
+              <span>i</span>
+            
+              <span>n</span>
+            
+              <span>@</span>
+            
+              <span>g</span>
+            
+              <span>m</span>
+            
+              <span>a</span>
+            
+              <span>i</span>
+            
+              <span>l</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a> -->
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/xinshangshangxin" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
       </div>
     </div>
-    <nav class="site-navigation">
-      <ul class="nav-menu">
-      
-        <li class="nav-item" data-path="/">
-          
-            <a href="/" target="_self">
-              主页
-            </a>
-          
-        </li>
-      
-        <li class="nav-item" data-path="/archives/">
-          
-            <a href="/archives/" target="_self">
-              归档
-            </a>
-          
-        </li>
-      
-        <li class="nav-item" data-path="https://github.com/xinshangshangxin">
-          
-            <a href="https://github.com/xinshangshangxin" target="_self">
-              Github
-            </a>
-          
-        </li>
-      
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class=" active">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://github.com/xinshangshangxin" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
       </ul>
-    </nav>
-    <i class="iconfont icon-menu"></i>
-  </header>
-</div>
-
-<script>
-  let links = document.querySelectorAll('.nav-item');
-  for(let link of links){
-    let childrenLink = link.querySelector('ul');
-    link.addEventListener('mouseenter', () => {
-      if(childrenLink) {
-        childrenLink.className = "nav-menu--dropdown active";
-      }
-    })
-    link.addEventListener('mouseleave', () => {
-      if(childrenLink) {
-        childrenLink.className = "nav-menu--dropdown";
-      }
-    })
-  }
-  let rootRealPath = getRealPath(window.location.pathname, true);
-  for(let link of links) {
-    let linkPath = link.getAttribute("data-path");
-    if(linkPath && getRealPath(linkPath, true) === rootRealPath) {
-      link.className = "nav-item hover";
-    }
-  }
-
-  let iconMenu = document.querySelector("i.iconfont.icon-menu"),
-    iconMenuClicked = false;
-  let navDOM = document.querySelector("nav.site-navigation");
-  iconMenu.addEventListener("click", () => {
-    iconMenuClicked 
-      ? navDOM.className = "site-navigation active"
-      : navDOM.className = "site-navigation";
-    iconMenuClicked = !iconMenuClicked;
-  })
-</script>
-
-      <div class="container">
-  <div class="timeline">
-  <span class="archive-move-on"></span>
-  <span class="archive-page-counter">
-    
-      <span>当前位于 1/1 页</span>
-    
-  </span>
-  
-  
-    <div class="collection-title">
-      <h2>
-        
-          <span>标签 : CI</span>
-        
-      </h2>
     </div>
-  
-  
-  
-  <article class="posts-collapse">
-    <header>
-      <h2>
-        <a href="/2018/07/21/gitlab-ci-artifacts-cache/">
-          <span>GitLab CI 中 cache 和 artifacts 的区别</span>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
         </a>
-      </h2>
-      <div class="post-meta">
-        07-21
-      </div>
-    </header>
-  </article>
-  
-  
-  <article class="posts-collapse">
-    <header>
-      <h2>
-        <a href="/2018/07/20/use-gitlab-ci-for-continuous-integration/">
-          <span>[转] 用 GitLab CI 进行持续集成</span>
+        <div class="flex-col header-title ellipsis">
+            <span>Tags: CI</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
         </a>
-      </h2>
-      <div class="post-meta">
-        07-20
-      </div>
-    </header>
-  </article>
-  
-</div>
-  <nav class="page-navigation">
+        
+    </div>
+</header>
+<header class="content-header tags-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">Tags: CI</h1>
+        <h5 class="subtitle">
+            
+        </h5>
+        
+    </div>
     
-    
-  </nav>
+<div class="tabs-bar container">
+    <nav class="tags-list">
+        <a href="/tags" style="-webkit-order:-1;order:-1" class="tags-list-item waves-effect waves-button waves-light
+            ">全部</a>
+        
+            <a href="/tags/AngularJS/" backup-style="-webkit-order:32;order:32" class="tags-list-item waves-effect waves-button waves-light">AngularJS</a>
+            
+        
+            <a href="/tags/js/" backup-style="-webkit-order:33;order:33" class="tags-list-item waves-effect waves-button waves-light">js</a>
+            
+        
+            <a href="/tags/osx/" backup-style="-webkit-order:34;order:34" class="tags-list-item waves-effect waves-button waves-light">osx</a>
+            
+        
+            <a href="/tags/ConEmu/" backup-style="-webkit-order:35;order:35" class="tags-list-item waves-effect waves-button waves-light">ConEmu</a>
+            
+        
+            <a href="/tags/cordova/" backup-style="-webkit-order:36;order:36" class="tags-list-item waves-effect waves-button waves-light">cordova</a>
+            
+        
+            <a href="/tags/Intellij/" backup-style="-webkit-order:37;order:37" class="tags-list-item waves-effect waves-button waves-light">Intellij</a>
+            
+        
+            <a href="/tags/docker/" backup-style="-webkit-order:38;order:38" class="tags-list-item waves-effect waves-button waves-light">docker</a>
+            
+        
+            <a href="/tags/node/" backup-style="-webkit-order:39;order:39" class="tags-list-item waves-effect waves-button waves-light">node</a>
+            
+        
+            <a href="/tags/设计模式/" backup-style="-webkit-order:40;order:40" class="tags-list-item waves-effect waves-button waves-light">设计模式</a>
+            
+        
+            <a href="/tags/nginx/" backup-style="-webkit-order:41;order:41" class="tags-list-item waves-effect waves-button waves-light">nginx</a>
+            
+        
+            <a href="/tags/sails/" backup-style="-webkit-order:42;order:42" class="tags-list-item waves-effect waves-button waves-light">sails</a>
+            
+        
+            <a href="/tags/lodash/" backup-style="-webkit-order:43;order:43" class="tags-list-item waves-effect waves-button waves-light">lodash</a>
+            
+        
+            <a href="/tags/cygwin/" backup-style="-webkit-order:44;order:44" class="tags-list-item waves-effect waves-button waves-light">cygwin</a>
+            
+        
+            <a href="/tags/npm/" backup-style="-webkit-order:45;order:45" class="tags-list-item waves-effect waves-button waves-light">npm</a>
+            
+        
+            <a href="/tags/rxjs/" backup-style="-webkit-order:46;order:46" class="tags-list-item waves-effect waves-button waves-light">rxjs</a>
+            
+        
+            <a href="/tags/RxJS/" backup-style="-webkit-order:47;order:47" class="tags-list-item waves-effect waves-button waves-light">RxJS</a>
+            
+        
+            <a href="/tags/dash/" backup-style="-webkit-order:48;order:48" class="tags-list-item waves-effect waves-button waves-light">dash</a>
+            
+        
+            <a href="/tags/git/" backup-style="-webkit-order:49;order:49" class="tags-list-item waves-effect waves-button waves-light">git</a>
+            
+        
+            <a href="/tags/fetch/" backup-style="-webkit-order:50;order:50" class="tags-list-item waves-effect waves-button waves-light">fetch</a>
+            
+        
+            <a href="/tags/FormData/" backup-style="-webkit-order:51;order:51" class="tags-list-item waves-effect waves-button waves-light">FormData</a>
+            
+        
+            <a href="/tags/fiddler/" backup-style="-webkit-order:52;order:52" class="tags-list-item waves-effect waves-button waves-light">fiddler</a>
+            
+        
+            <a href="/tags/youkuvod/" backup-style="-webkit-order:53;order:53" class="tags-list-item waves-effect waves-button waves-light">youkuvod</a>
+            
+        
+            <a href="/tags/frp/" backup-style="-webkit-order:54;order:54" class="tags-list-item waves-effect waves-button waves-light">frp</a>
+            
+        
+            <a href="/tags/内网穿透/" backup-style="-webkit-order:55;order:55" class="tags-list-item waves-effect waves-button waves-light">内网穿透</a>
+            
+        
+            <a href="/tags/GitLab/" backup-style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">GitLab</a>
+            
+        
+            <a href="/tags/CI/" backup-style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light active">CI</a>
+            
+        
+            <a href="/tags/gulp/" backup-style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">gulp</a>
+            
+        
+            <a href="/tags/Hadoop/" backup-style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">Hadoop</a>
+            
+        
+            <a href="/tags/haraka/" backup-style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">haraka</a>
+            
+        
+            <a href="/tags/headless/" backup-style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">headless</a>
+            
+        
+            <a href="/tags/hexo/" backup-style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">hexo</a>
+            
+        
+            <a href="/tags/html5/" backup-style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">html5</a>
+            
+        
+            <a href="/tags/http/" backup-style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">http</a>
+            
+        
+            <a href="/tags/iTerm2/" backup-style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">iTerm2</a>
+            
+        
+            <a href="/tags/karma/" backup-style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">karma</a>
+            
+        
+            <a href="/tags/shadowsocks/" backup-style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">shadowsocks</a>
+            
+        
+            <a href="/tags/angular/" backup-style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">angular</a>
+            
+        
+            <a href="/tags/make/" backup-style="-webkit-order:13;order:13" class="tags-list-item waves-effect waves-button waves-light">make</a>
+            
+        
+            <a href="/tags/wechat/" backup-style="-webkit-order:14;order:14" class="tags-list-item waves-effect waves-button waves-light">wechat</a>
+            
+        
+            <a href="/tags/小程序/" backup-style="-webkit-order:15;order:15" class="tags-list-item waves-effect waves-button waves-light">小程序</a>
+            
+        
+            <a href="/tags/MINA/" backup-style="-webkit-order:16;order:16" class="tags-list-item waves-effect waves-button waves-light">MINA</a>
+            
+        
+            <a href="/tags/ngrok/" backup-style="-webkit-order:17;order:17" class="tags-list-item waves-effect waves-button waves-light">ngrok</a>
+            
+        
+            <a href="/tags/node-webkit/" backup-style="-webkit-order:18;order:18" class="tags-list-item waves-effect waves-button waves-light">node-webkit</a>
+            
+        
+            <a href="/tags/rabbitmq/" backup-style="-webkit-order:19;order:19" class="tags-list-item waves-effect waves-button waves-light">rabbitmq</a>
+            
+        
+            <a href="/tags/vsc/" backup-style="-webkit-order:20;order:20" class="tags-list-item waves-effect waves-button waves-light">vsc</a>
+            
+        
+            <a href="/tags/promise/" backup-style="-webkit-order:21;order:21" class="tags-list-item waves-effect waves-button waves-light">promise</a>
+            
+        
+            <a href="/tags/travis/" backup-style="-webkit-order:22;order:22" class="tags-list-item waves-effect waves-button waves-light">travis</a>
+            
+        
+            <a href="/tags/typescript/" backup-style="-webkit-order:23;order:23" class="tags-list-item waves-effect waves-button waves-light">typescript</a>
+            
+        
+            <a href="/tags/转/" backup-style="-webkit-order:24;order:24" class="tags-list-item waves-effect waves-button waves-light">转</a>
+            
+        
+            <a href="/tags/openshift/" backup-style="-webkit-order:25;order:25" class="tags-list-item waves-effect waves-button waves-light">openshift</a>
+            
+        
+            <a href="/tags/letsencrypt/" backup-style="-webkit-order:26;order:26" class="tags-list-item waves-effect waves-button waves-light">letsencrypt</a>
+            
+        
+            <a href="/tags/工具/" backup-style="-webkit-order:27;order:27" class="tags-list-item waves-effect waves-button waves-light">工具</a>
+            
+        
+            <a href="/tags/nvm/" backup-style="-webkit-order:28;order:28" class="tags-list-item waves-effect waves-button waves-light">nvm</a>
+            
+        
+            <a href="/tags/zsh/" backup-style="-webkit-order:29;order:29" class="tags-list-item waves-effect waves-button waves-light">zsh</a>
+            
+        
+            <a href="/tags/ECS/" backup-style="-webkit-order:30;order:30" class="tags-list-item waves-effect waves-button waves-light">ECS</a>
+            
+        
+            <a href="/tags/mongodb/" backup-style="-webkit-order:31;order:31" class="tags-list-item waves-effect waves-button waves-light">mongodb</a>
+            
+        
+    </nav>
+    <!-- PC show more-->
+    <div class="tags-list-more">
+        <a href="javascript:;" class="action tags-list-item waves-effect waves-circle waves-light"><i class="icon icon-ellipsis-h"></i></a>
+    </div>
 </div>
 
-      <footer>
-  <p class="site-info">
-    <!-- 博客已萌萌哒运行<span id="time-to-now"></span><span class="my-face">(●'◡'●)ﾉ♥</span> -->
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+<div class="container body-wrap fade">
     
-      得之我幸,失之我命
+            <div class="waterfall">
+                
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2018年07月21日 16:51:41" datetime="2018-07-21T08:51:41.000Z" itemprop="datePublished">2018年07月21日</time>
+
+      
+
+
+    </div>
     
-    <br>
-    Theme - <a href="https://github.com/dongyuanxin/theme-bmw">BMW</a> | Made With 💗 | Powered by <a href="https://godbmw.com/">GodBMW</a>
-    <br>
+
+
+  
+    <h3 class="post-title " itemprop="name">
+      <a class="post-title-link" href="/2018/07/21/gitlab-ci-artifacts-cache/">GitLab CI 中 cache 和 artifacts 的区别</a>
+    </h3>
+  
+
+
+
     
-  </p>
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CI/">CI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitLab/">GitLab</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+        
+                <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2018年07月20日 23:14:51" datetime="2018-07-20T15:14:51.000Z" itemprop="datePublished">2018年07月20日</time>
+
+      
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title " itemprop="name">
+      <a class="post-title-link" href="/2018/07/20/use-gitlab-ci-for-continuous-integration/">[转] 用 GitLab CI 进行持续集成</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CI/">CI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitLab/">GitLab</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+        
+            </div>
+        
+    
+</div>
+
+
+        <footer class="footer">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                xinshangshangxin &copy; 2015 - 2019
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">hexo-theme-mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+
+            
+        </p>
+    </div>
 </footer>
 
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-<script>
-const timeToNowDOM = document.querySelector("#time-to-now");
-const startTimestamp = new Date(2018, 1, 10).getTime();
 
-const updateTimeStr = () => {
-  let offset = parseInt(
-      (new Date().getTime() - startTimestamp) / 1000,
-      10
-    ),
-    day = Math.floor(offset / 86400),
-    hour = Math.floor((offset % 86400) / 3600),
-    minute = Math.floor(((offset % 86400) % 3600) / 60),
-    second = Math.floor(((offset % 86400) % 3600) % 60);
-  timeToNowDOM.innerHTML =
-    day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
-  setTimeout(updateTimeStr, 500);
-}
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.xinshangshangxin.com/tags/CI/&title=SHANG Blog&pic=http://blog.xinshangshangxin.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.xinshangshangxin.com/tags/CI/&title=SHANG Blog&source=殇Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.xinshangshangxin.com/tags/CI/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=SHANG Blog&url=http://blog.xinshangshangxin.com/tags/CI/&via=http://blog.xinshangshangxin.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.xinshangshangxin.com/tags/CI/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
 
-setTimeout(updateTimeStr, 500);
-</script>
 
-
-      <div class="back-to-top hidden">
-  <span>
-    <i class="iconfont icon-60"></i><span></span>%
-  </span>
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://blog.xinshangshangxin.com/tags/CI/" alt="微信分享二维码">
 </div>
 
-<script>
-const updateIconToTop = percent => {
-  let dom = document.querySelector(".back-to-top span span");
-  dom.innerText = percent;
-  if(percent < 1) {
-    document.querySelector(".back-to-top").className = "back-to-top hidden";
-  } else {
-    document.querySelector(".back-to-top").className = "back-to-top";
-  }
-}
-
-const handleScoll = () => {
-  let isRunning = false;
-  return () => {
-    if (isRunning) return;
-    isRunning = true;
-    window.requestAnimationFrame(timestamp => {
-      let scrollTop =
-          document.documentElement.scrollTop || document.body.scrollTop,
-        scrollHeight =
-          document.documentElement.scrollHeight ||
-          document.body.scrollHeight,
-        clientHeight =
-          document.documentElement.clientHeight ||
-          document.body.clientHeight;
-      isRunning = false;
-      if (scrollTop <= 1) {
-        updateIconToTop(0);
-        return;
-      }
-      if (scrollTop + clientHeight >= scrollHeight) {
-        updateIconToTop(100);
-      } else {
-        updateIconToTop(parseInt(
-          100 * scrollTop / (scrollHeight - clientHeight),
-          10
-        ));
-      }
-    });
-  };
-}
-
-const backToTop = () => {
-  let scrollTop =
-      document.documentElement.scrollTop || document.body.scrollTop,
-    delay = 10,
-    time = 200;
-  if (scrollTop <= 20) {
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    return;
-  }
-  let step = Math.ceil(scrollTop * delay / time);
-  let timer = setInterval(() => {
-    scrollTop =
-      document.documentElement.scrollTop || document.body.scrollTop;
-    if (scrollTop - step <= 0) {
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-      clearInterval(timer);
-    } else {
-      document.documentElement.scrollTop = scrollTop - step;
-      document.body.scrollTop = scrollTop - step;
-    }
-  }, delay);
-}
-
-document.addEventListener("scroll", handleScoll(), false);
-
-document.querySelector(".back-to-top").addEventListener("click", backToTop, false);
-
-</script>
-
-    </div>
 
     
-      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
-<script>
-  (() => {
-    const mathjaxConfig = {
-      showProcessingMessages: false, //关闭js加载过程信息
-      messageStyle: "none", //不显示信息
-      jax: ["input/TeX", "output/HTML-CSS"],
-      tex2jax: {
-        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
-        displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
-        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
-      },
-      "HTML-CSS": {
-        availableFonts: ["STIX", "TeX"], //可选字体
-        showMathMenu: false //关闭右击菜单显示
-      }
-    }
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.1"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
 
-    let mathjaxInterval = setInterval(() => {
-      if(!window.MathJax){
-        return;
-      }
-      window.MathJax.Hub.Config(mathjaxConfig)
-      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')])
+<script type="text/javascript" src="/js/method.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.1"></script>
 
-      clearInterval(mathjaxInterval)
-    }, 10)    
-  })()
-</script>
-    
+<!-- third-party -->
 
-    <script src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script>
-<script async>
-  let fancyTimer = setInterval(function(){
-    if(!window.$){
-      return;
-    }
-    $(document).ready(function() {
-      $(".post img").each(function () {
-        if($(this).parent().get(0).tagName.toLowerCase() === "a") {
-          return;
-        }
-        // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "gallery");
-        $(element).attr("href", $(this).attr("src"));
-        $(this).wrap(element);
-      });
-      
-      clearInterval(fancyTimer);
-    });
-  }, 10);
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.1"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
 </script>
 
-    
-  </body>
 
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+        <script type="text/javascript" src="/js/plugins/gitmint.browser.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/gitment.js?v=1.4.1"></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+</body>
 </html>

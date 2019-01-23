@@ -1,168 +1,239 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-  
+<html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  
-  
-  <title>[转] typescript 2.7 编译选项详解 | SHANG Blog</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  
-    <meta name="keywords" content="typescript,转,">
-  
-
-  
-    <meta name="description" content="殇Blog">
-  
-
-  
-
-  
-    <link rel="icon" href="/images/favicon.ico">
-    <link rel="apple-touch-icon" href="/images/touch-icon.png">
-  
-
-  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/base.css">
-<link rel="stylesheet" href="/icon/iconfont.css">
-<link rel="stylesheet" href="/css/github-markdown.css">
-<link rel="stylesheet" href="/css/highlight.css">
-
-  <script src="/js/util.js"></script>
-<script src="/js/valine.min.js"></script>
-
-  
-
-  
-    <link href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
-    <script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js" async></script>
-  
-
-  
-    <link href="https://cdn.bootcss.com/social-share.js/1.0.16/css/share.min.css" rel="stylesheet">
-  
-  
-  <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js" async></script>
-  
-  
-
+    <meta charset="utf-8">
+    
+    
+    <title>[转] typescript 2.7 编译选项详解 | SHANG Blog | I am who I am</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="typescript,转">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.1">
+    
+        <link rel="stylesheet" href="/css/third-party/gitment.css?v=1.4.1">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":true,"lazy":false,"owner":"demoshang","repo":"gitment","oauth":{"client_id":"9e85f59f12088bde45d8","client_secret":"4724811505851866f04a6a13fb5305a56e79a8f4"},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
 </head>
 
-  <body>
 
-    
+<body>
+    <div id="loading" class="active"></div>
 
-    <div id="app">
-
-      <div class="header-wrap">
-  <header>
-    <div class="site-brand">
-      <div class="site-title">
-        <a href="/">SHANG</a>
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">xinshangshangxin</h5>
+          <!-- <a href="mailto:xinshangshangxin@gmail.com" title="xinshangshangxin@gmail.com" class="mail">
+            
+              <span>x</span>
+            
+              <span>i</span>
+            
+              <span>n</span>
+            
+              <span>s</span>
+            
+              <span>h</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>g</span>
+            
+              <span>s</span>
+            
+              <span>h</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>g</span>
+            
+              <span>x</span>
+            
+              <span>i</span>
+            
+              <span>n</span>
+            
+              <span>@</span>
+            
+              <span>g</span>
+            
+              <span>m</span>
+            
+              <span>a</span>
+            
+              <span>i</span>
+            
+              <span>l</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a> -->
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/xinshangshangxin" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
       </div>
     </div>
-    <nav class="site-navigation">
-      <ul class="nav-menu">
-      
-        <li class="nav-item" data-path="/">
-          
-            <a href="/" target="_self">
-              主页
-            </a>
-          
-        </li>
-      
-        <li class="nav-item" data-path="/archives/">
-          
-            <a href="/archives/" target="_self">
-              归档
-            </a>
-          
-        </li>
-      
-        <li class="nav-item" data-path="https://github.com/xinshangshangxin">
-          
-            <a href="https://github.com/xinshangshangxin" target="_self">
-              Github
-            </a>
-          
-        </li>
-      
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://github.com/xinshangshangxin" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
       </ul>
-    </nav>
-    <i class="iconfont icon-menu"></i>
-  </header>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>[转] typescript 2.7 编译选项详解</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">[转] typescript 2.7 编译选项详解</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-10-30T06:50:36.000Z" itemprop="datePublished" class="page-time">
+  2018年10月30日
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
 </div>
 
-<script>
-  let links = document.querySelectorAll('.nav-item');
-  for(let link of links){
-    let childrenLink = link.querySelector('ul');
-    link.addEventListener('mouseenter', () => {
-      if(childrenLink) {
-        childrenLink.className = "nav-menu--dropdown active";
-      }
-    })
-    link.addEventListener('mouseleave', () => {
-      if(childrenLink) {
-        childrenLink.className = "nav-menu--dropdown";
-      }
-    })
-  }
-  let rootRealPath = getRealPath(window.location.pathname, true);
-  for(let link of links) {
-    let linkPath = link.getAttribute("data-path");
-    if(linkPath && getRealPath(linkPath, true) === rootRealPath) {
-      link.className = "nav-item hover";
-    }
-  }
 
-  let iconMenu = document.querySelector("i.iconfont.icon-menu"),
-    iconMenuClicked = false;
-  let navDOM = document.querySelector("nav.site-navigation");
-  iconMenu.addEventListener("click", () => {
-    iconMenuClicked 
-      ? navDOM.className = "site-navigation active"
-      : navDOM.className = "site-navigation";
-    iconMenuClicked = !iconMenuClicked;
-  })
-</script>
+<div class="container body-wrap">
+    <article id="post-typescript-compiler-options" class="post-article article-type-post" itemprop="blogPost">
+      <div class="post-card">
+          <h1 class="post-card-title">[转] typescript 2.7 编译选项详解</h1>
+          <div class="post-meta">
+              <time class="post-time" title="2018年10月30日 14:50:36" datetime="2018-10-30T06:50:36.000Z" itemprop="datePublished">2018年10月30日</time>
 
-      
+              
 
 
+              
+
+              
 
 
-
-
-
-
-<div class="container post-index">
-
-  
-
-<div class="post">
-  <h1 class="article-title">
-    <span>[转] typescript 2.7 编译选项详解</span>
-  </h1>
-  <div class="article-top-meta">
-    <span>
-      发布 : 
-      2018-10-30
+<span class="post-comments-counter" id="/2018/10/30/typescript-compiler-options/">
+    <span class="post-meta-item-icon">
+        <i class="icon icon-comment-o"></i>
     </span>
     
-    
-  </div>
+    <a href="/2018/10/30/typescript-compiler-options/#gitment" onclick="ShowGitment()">
+        <span class="post-comments-count gitment-comments-count" itemprop="commentsCount"></span>
+    </a>
+</span>
 
-  
-
-  <div class="article-content">
-    <div class="markdown-body">
-      <p>typescript的编译选项一堆，微软爸爸写文档又马马虎虎 😂,  所以官方文档本身就不清不楚，似乎还有错误的地方。本文对各个选项进行实测，以期理解其含义以及每个选项会对编译或生成代码的影响。</p>
+              
+          </div>
+          <div class="post-content" id="post-content" itemprop="postContent">
+              
+              <p>typescript的编译选项一堆，微软爸爸写文档又马马虎虎 😂,  所以官方文档本身就不清不楚，似乎还有错误的地方。本文对各个选项进行实测，以期理解其含义以及每个选项会对编译或生成代码的影响。</p>
 <p>typescript版本 2.7.2, 参考<a href="https://www.typescriptlang.org/docs/handbook/compiler-options.html" target="_blank" rel="noopener">官方文档</a>。</p>
 <p>test code: <a href="https://github.com/njleonzhang/typescript-options" target="_blank" rel="noopener">https://github.com/njleonzhang/typescript-options</a></p>
 <h2 id="allowJs"><a href="#allowJs" class="headerlink" title="allowJs"></a>allowJs</h2><table>
@@ -1493,251 +1564,244 @@
 <p><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG 殇</p>
 </blockquote>
 
-    </div>
-  </div>
-  
-  
-  
-    <div class="social-share" style="margin-top: -2rem" data-wechat-qrcode-title="<p>微信扫一扫</p>" data-wechat-qrcode-helper="<p>微信右上角, 扫一扫分享</p>" data-sites="google, facebook, twitter, wechat, qzone, qq, weibo, douban">
-  <span style="color: #6b7487; font-size: 1.4rem;">分享到: </span>
-</div>
-<script src="https://cdn.bootcss.com/social-share.js/1.0.16/js/social-share.min.js" async></script>
-  
-
-  
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-      <span>
-        
-          <i class="iconfont icon-06tags"></i>标签: 
+          </div>
           
-          <span class="span--tag">
-            <a href="/tags/typescript/">
-              #typescript
-            </a>
-          </span>
           
-          <span class="span--tag">
-            <a href="/tags/转/">
-              #转
-            </a>
-          </span>
-          
-        
-      </span>
-    </div>
-    <div class="article-meta pull-right">
-    </div>
-  </div>
-</div>
+          <div class="post-footer">
+              
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/">typescript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转/">转</a></li></ul>
 
-
-  <aside id="sidebar">
-    <p id="sidebar-header"></p>
-    <ol id="sidebar-toc"></ol>
-  </aside>
-  <script async>setTimeout(generateToc, 10);</script>
-
-
-  <nav class="post-navigation">
+              <div class="page-share-wrap">
     
-      <div class="nav-pre">
-        <i class="iconfont icon-prev"></i>
-        上一篇:
-        <a href="/2018/09/16/learn-angular/" target="_self">angular学习笔记</a>
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.xinshangshangxin.com/2018/10/30/typescript-compiler-options/&title=《[转] typescript 2.7 编译选项详解》 — SHANG Blog&pic=http://blog.xinshangshangxin.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.xinshangshangxin.com/2018/10/30/typescript-compiler-options/&title=《[转] typescript 2.7 编译选项详解》 — SHANG Blog&source=殇Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.xinshangshangxin.com/2018/10/30/typescript-compiler-options/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[转] typescript 2.7 编译选项详解》 — SHANG Blog&url=http://blog.xinshangshangxin.com/2018/10/30/typescript-compiler-options/&via=http://blog.xinshangshangxin.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.xinshangshangxin.com/2018/10/30/typescript-compiler-options/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+          </div>
+          
+              
+
+
+      
+    <div id="gitment"></div>
+
+
+
+          
       </div>
-    
-    
-      <div class="nav-next">
-        下一篇:
-        <a href="/2018/12/01/fetch-form-data/" target="_self">使用 fetch 上传 FormData 踩坑</a>
-        <i class="iconfont icon-next"></i>
-      </div>
-    
-  </nav>
+      
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2018/12/01/fetch-form-data/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">使用 fetch 上传 FormData 踩坑</h4>
+      </a>
+    </div>
+  
 
-   
+  
+    <div class="next">
+      <a href="/2018/09/16/learn-angular/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">angular学习笔记</h4>
+      </a>
+    </div>
+  
+</nav>
 
-   
 
+      
+      
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#allowJs"><span class="post-toc-number">1.</span> <span class="post-toc-text">allowJs</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#allowSyntheticDefaultImports"><span class="post-toc-number">2.</span> <span class="post-toc-text">allowSyntheticDefaultImports</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#allowUnreachableCode"><span class="post-toc-number">3.</span> <span class="post-toc-text">allowUnreachableCode</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#allowUnusedLabels"><span class="post-toc-number">4.</span> <span class="post-toc-text">allowUnusedLabels</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#alwaysStrict"><span class="post-toc-number">5.</span> <span class="post-toc-text">alwaysStrict</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#baseUrl"><span class="post-toc-number">6.</span> <span class="post-toc-text">baseUrl</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#charset"><span class="post-toc-number">7.</span> <span class="post-toc-text">charset</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#checkJs"><span class="post-toc-number">8.</span> <span class="post-toc-text">checkJs</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#declaration-和-declarationDir"><span class="post-toc-number">9.</span> <span class="post-toc-text">declaration 和 declarationDir</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#diagnostics"><span class="post-toc-number">10.</span> <span class="post-toc-text">diagnostics</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#disableSizeLimit"><span class="post-toc-number">11.</span> <span class="post-toc-text">disableSizeLimit</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#downlevelIteration"><span class="post-toc-number">12.</span> <span class="post-toc-text">downlevelIteration</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#emitBOM"><span class="post-toc-number">13.</span> <span class="post-toc-text">emitBOM</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#esModuleInterop"><span class="post-toc-number">14.</span> <span class="post-toc-text">esModuleInterop</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#forceConsistentCasingInFileNames"><span class="post-toc-number">15.</span> <span class="post-toc-text">forceConsistentCasingInFileNames</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#experimentalDecorators"><span class="post-toc-number">16.</span> <span class="post-toc-text">experimentalDecorators</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#importHelpers"><span class="post-toc-number">17.</span> <span class="post-toc-text">importHelpers</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#inlineSourceMap"><span class="post-toc-number">18.</span> <span class="post-toc-text">inlineSourceMap</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#inlineSources"><span class="post-toc-number">19.</span> <span class="post-toc-text">inlineSources</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#isolatedModules"><span class="post-toc-number">20.</span> <span class="post-toc-text">isolatedModules</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#jsx"><span class="post-toc-number">21.</span> <span class="post-toc-text">jsx</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#jsxFactory"><span class="post-toc-number">22.</span> <span class="post-toc-text">jsxFactory</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#lib"><span class="post-toc-number">23.</span> <span class="post-toc-text">lib</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#listEmittedFiles"><span class="post-toc-number">24.</span> <span class="post-toc-text">listEmittedFiles</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#locale"><span class="post-toc-number">25.</span> <span class="post-toc-text">locale</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sourceMap-mapRoot-和-sourceRoot"><span class="post-toc-number">26.</span> <span class="post-toc-text">sourceMap, mapRoot 和 sourceRoot</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#maxNodeModuleJsDepth"><span class="post-toc-number">27.</span> <span class="post-toc-text">maxNodeModuleJsDepth</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#module"><span class="post-toc-number">28.</span> <span class="post-toc-text">module</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#target"><span class="post-toc-number">29.</span> <span class="post-toc-text">target</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#moduleResolution"><span class="post-toc-number">30.</span> <span class="post-toc-text">moduleResolution</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#newLine"><span class="post-toc-number">31.</span> <span class="post-toc-text">newLine</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#noEmit"><span class="post-toc-number">32.</span> <span class="post-toc-text">noEmit</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#noEmitOnError"><span class="post-toc-number">33.</span> <span class="post-toc-text">noEmitOnError</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#noErrorTruncation"><span class="post-toc-number">34.</span> <span class="post-toc-text">noErrorTruncation</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#noFallthroughCasesInSwitch"><span class="post-toc-number">35.</span> <span class="post-toc-text">noFallthroughCasesInSwitch</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#noImplicitAny-noImplicitReturns-noImplicitThis-and-noImplicitUseStrict"><span class="post-toc-number">36.</span> <span class="post-toc-text">noImplicitAny, noImplicitReturns, noImplicitThis and noImplicitUseStrict</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#noLib"><span class="post-toc-number">37.</span> <span class="post-toc-text">noLib</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#noResolve"><span class="post-toc-number">38.</span> <span class="post-toc-text">noResolve</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#noStrictGenericChecks"><span class="post-toc-number">39.</span> <span class="post-toc-text">noStrictGenericChecks</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#noUnusedLocals-noUnusedParameters"><span class="post-toc-number">40.</span> <span class="post-toc-text">noUnusedLocals, noUnusedParameters</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#outDir-outFile"><span class="post-toc-number">41.</span> <span class="post-toc-text">outDir, outFile</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#paths"><span class="post-toc-number">42.</span> <span class="post-toc-text">paths</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#preserveConstEnums"><span class="post-toc-number">43.</span> <span class="post-toc-text">preserveConstEnums</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#preserveSymlinks"><span class="post-toc-number">44.</span> <span class="post-toc-text">preserveSymlinks</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pretty"><span class="post-toc-number">45.</span> <span class="post-toc-text">pretty</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#project"><span class="post-toc-number">46.</span> <span class="post-toc-text">project</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#removeComments"><span class="post-toc-number">47.</span> <span class="post-toc-text">removeComments</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rootDir"><span class="post-toc-number">48.</span> <span class="post-toc-text">rootDir</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rootDirs"><span class="post-toc-number">49.</span> <span class="post-toc-text">rootDirs</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#skipLibCheck"><span class="post-toc-number">50.</span> <span class="post-toc-text">skipLibCheck</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#strict"><span class="post-toc-number">51.</span> <span class="post-toc-text">strict</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#strictFunctionTypes-strictPropertyInitialization-strictNullChecks"><span class="post-toc-number">52.</span> <span class="post-toc-text">strictFunctionTypes, strictPropertyInitialization, strictNullChecks</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#stripInternal"><span class="post-toc-number">53.</span> <span class="post-toc-text">stripInternal</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#suppressExcessPropertyErrors"><span class="post-toc-number">54.</span> <span class="post-toc-text">suppressExcessPropertyErrors</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#suppressImplicitAnyIndexErrors"><span class="post-toc-number">55.</span> <span class="post-toc-text">suppressImplicitAnyIndexErrors</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#traceResolution"><span class="post-toc-number">56.</span> <span class="post-toc-text">traceResolution</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#types-typeRoots"><span class="post-toc-number">57.</span> <span class="post-toc-text">types, typeRoots</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#emitDecoratorMetadata"><span class="post-toc-number">58.</span> <span class="post-toc-text">emitDecoratorMetadata</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#转载"><span class="post-toc-number">59.</span> <span class="post-toc-text">转载</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+  </article>
+  
+  
 </div>
 
+        <footer class="footer">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                xinshangshangxin &copy; 2015 - 2019
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">hexo-theme-mellow</a>
+            </span>
+            
+            
+            
 
-      <footer>
-  <p class="site-info">
-    <!-- 博客已萌萌哒运行<span id="time-to-now"></span><span class="my-face">(●'◡'●)ﾉ♥</span> -->
-    
-      得之我幸,失之我命
-    
-    <br>
-    Theme - <a href="https://github.com/dongyuanxin/theme-bmw">BMW</a> | Made With 💗 | Powered by <a href="https://godbmw.com/">GodBMW</a>
-    <br>
-    
-  </p>
+            
+                
+
+            
+        </p>
+    </div>
 </footer>
 
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-<script>
-const timeToNowDOM = document.querySelector("#time-to-now");
-const startTimestamp = new Date(2018, 1, 10).getTime();
 
-const updateTimeStr = () => {
-  let offset = parseInt(
-      (new Date().getTime() - startTimestamp) / 1000,
-      10
-    ),
-    day = Math.floor(offset / 86400),
-    hour = Math.floor((offset % 86400) / 3600),
-    minute = Math.floor(((offset % 86400) % 3600) / 60),
-    second = Math.floor(((offset % 86400) % 3600) % 60);
-  timeToNowDOM.innerHTML =
-    day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
-  setTimeout(updateTimeStr, 500);
-}
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.xinshangshangxin.com/2018/10/30/typescript-compiler-options/&title=《[转] typescript 2.7 编译选项详解》 — SHANG Blog&pic=http://blog.xinshangshangxin.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.xinshangshangxin.com/2018/10/30/typescript-compiler-options/&title=《[转] typescript 2.7 编译选项详解》 — SHANG Blog&source=殇Blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.xinshangshangxin.com/2018/10/30/typescript-compiler-options/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[转] typescript 2.7 编译选项详解》 — SHANG Blog&url=http://blog.xinshangshangxin.com/2018/10/30/typescript-compiler-options/&via=http://blog.xinshangshangxin.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.xinshangshangxin.com/2018/10/30/typescript-compiler-options/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
 
-setTimeout(updateTimeStr, 500);
-</script>
 
-
-      <div class="back-to-top hidden">
-  <span>
-    <i class="iconfont icon-60"></i><span></span>%
-  </span>
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://blog.xinshangshangxin.com/2018/10/30/typescript-compiler-options/" alt="微信分享二维码">
 </div>
 
-<script>
-const updateIconToTop = percent => {
-  let dom = document.querySelector(".back-to-top span span");
-  dom.innerText = percent;
-  if(percent < 1) {
-    document.querySelector(".back-to-top").className = "back-to-top hidden";
-  } else {
-    document.querySelector(".back-to-top").className = "back-to-top";
-  }
-}
-
-const handleScoll = () => {
-  let isRunning = false;
-  return () => {
-    if (isRunning) return;
-    isRunning = true;
-    window.requestAnimationFrame(timestamp => {
-      let scrollTop =
-          document.documentElement.scrollTop || document.body.scrollTop,
-        scrollHeight =
-          document.documentElement.scrollHeight ||
-          document.body.scrollHeight,
-        clientHeight =
-          document.documentElement.clientHeight ||
-          document.body.clientHeight;
-      isRunning = false;
-      if (scrollTop <= 1) {
-        updateIconToTop(0);
-        return;
-      }
-      if (scrollTop + clientHeight >= scrollHeight) {
-        updateIconToTop(100);
-      } else {
-        updateIconToTop(parseInt(
-          100 * scrollTop / (scrollHeight - clientHeight),
-          10
-        ));
-      }
-    });
-  };
-}
-
-const backToTop = () => {
-  let scrollTop =
-      document.documentElement.scrollTop || document.body.scrollTop,
-    delay = 10,
-    time = 200;
-  if (scrollTop <= 20) {
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    return;
-  }
-  let step = Math.ceil(scrollTop * delay / time);
-  let timer = setInterval(() => {
-    scrollTop =
-      document.documentElement.scrollTop || document.body.scrollTop;
-    if (scrollTop - step <= 0) {
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-      clearInterval(timer);
-    } else {
-      document.documentElement.scrollTop = scrollTop - step;
-      document.body.scrollTop = scrollTop - step;
-    }
-  }, delay);
-}
-
-document.addEventListener("scroll", handleScoll(), false);
-
-document.querySelector(".back-to-top").addEventListener("click", backToTop, false);
-
-</script>
-
-    </div>
 
     
-      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
-<script>
-  (() => {
-    const mathjaxConfig = {
-      showProcessingMessages: false, //关闭js加载过程信息
-      messageStyle: "none", //不显示信息
-      jax: ["input/TeX", "output/HTML-CSS"],
-      tex2jax: {
-        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
-        displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
-        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
-      },
-      "HTML-CSS": {
-        availableFonts: ["STIX", "TeX"], //可选字体
-        showMathMenu: false //关闭右击菜单显示
-      }
-    }
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.1"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
 
-    let mathjaxInterval = setInterval(() => {
-      if(!window.MathJax){
-        return;
-      }
-      window.MathJax.Hub.Config(mathjaxConfig)
-      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')])
+<script type="text/javascript" src="/js/method.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.1"></script>
 
-      clearInterval(mathjaxInterval)
-    }, 10)    
-  })()
-</script>
-    
+<!-- third-party -->
 
-    <script src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script>
-<script async>
-  let fancyTimer = setInterval(function(){
-    if(!window.$){
-      return;
-    }
-    $(document).ready(function() {
-      $(".post img").each(function () {
-        if($(this).parent().get(0).tagName.toLowerCase() === "a") {
-          return;
-        }
-        // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "gallery");
-        $(element).attr("href", $(this).attr("src"));
-        $(this).wrap(element);
-      });
-      
-      clearInterval(fancyTimer);
-    });
-  }, 10);
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.1"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
 </script>
 
-    
-  </body>
 
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+        <script type="text/javascript" src="/js/plugins/gitmint.browser.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/gitment.js?v=1.4.1"></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+</body>
 </html>
