@@ -4,7 +4,7 @@
 
 # Site
 title: SHANG Blog
-subtitle:
+subtitle: I am who I am
 description: 殇Blog
 author: xinshangshangxin
 language: zh-CN
@@ -88,15 +88,15 @@ pagination_dir: page
 #   field: post
 
 ## Themes: http://hexo.io/themes/
-theme: theme-bmw
+theme: hexo-theme-mellow
 
 # Archives
 ## 2: Enable pagination
 ## 1: Disable pagination
 ## 0: Fully Disable
-archive: 1
-category: 2
-tag: 2
+# archive: 1
+# category: 2
+# tag: 2
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
