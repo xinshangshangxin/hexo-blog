@@ -13,6 +13,7 @@ scaffolds
 source/_posts/.idea
 /themes/*
 !themes/jacman/
+!themes/hexo-theme-mellow/
 !source/*
 !.gitignore
 !package.json
