@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>typescript + ava + nyc + gitlab CI/CD 实现代码覆盖率 | SHANG Blog | I am who I am</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="ava,nyc,typescript,gitlab">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.1">
+    
+        <link rel="stylesheet" href="/css/third-party/gitment.css?v=1.4.1">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":true,"lazy":false,"owner":"demoshang","repo":"gitment","oauth":{"client_id":"9e85f59f12088bde45d8","client_secret":"4724811505851866f04a6a13fb5305a56e79a8f4"},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">xinshangshangxin</h5>
+          <!-- <a href="mailto:xinshangshangxin@gmail.com" title="xinshangshangxin@gmail.com" class="mail">
+            
+              <span>x</span>
+            
+              <span>i</span>
+            
+              <span>n</span>
+            
+              <span>s</span>
+            
+              <span>h</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>g</span>
+            
+              <span>s</span>
+            
+              <span>h</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>g</span>
+            
+              <span>x</span>
+            
+              <span>i</span>
+            
+              <span>n</span>
+            
+              <span>@</span>
+            
+              <span>g</span>
+            
+              <span>m</span>
+            
+              <span>a</span>
+            
+              <span>i</span>
+            
+              <span>l</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a> -->
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/xinshangshangxin" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://github.com/xinshangshangxin" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>typescript + ava + nyc + gitlab CI/CD 实现代码覆盖率</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">typescript + ava + nyc + gitlab CI/CD 实现代码覆盖率</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-02-06T08:18:28.000Z" itemprop="datePublished" class="page-time">
+  2019年02月6日
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-test-cov" class="post-article article-type-post" itemprop="blogPost">
+      <div class="post-card">
+          <h1 class="post-card-title">typescript + ava + nyc + gitlab CI/CD 实现代码覆盖率</h1>
+          <div class="post-meta">
+              <time class="post-time" title="2019年02月6日 16:18:28" datetime="2019-02-06T08:18:28.000Z" itemprop="datePublished">2019年02月6日</time>
+
+              
+
+
+              
+
+              
+
+
+<span class="post-comments-counter" id="/2019/02/06/test-cov/">
+    <span class="post-meta-item-icon">
+        <i class="icon icon-comment-o"></i>
+    </span>
+    
+    <a href="/2019/02/06/test-cov/#gitment" onclick="ShowGitment()">
+        <span class="post-comments-count gitment-comments-count" itemprop="commentsCount"></span>
+    </a>
+</span>
+
+              
+          </div>
+          <div class="post-content" id="post-content" itemprop="postContent">
+              
+              <p><code>typescript</code> <code>ava</code> <code>nyc</code> <code>gitlab ci</code> 实现代码覆盖率自动化以及 badges 显示</p>
+<a id="more"></a>
+<h2 id="最终配置"><a href="#最终配置" class="headerlink" title="最终配置"></a>最终配置</h2><ul>
+<li>在 <code>package.json</code> 添加以下</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="attr">"coverage"</span>: <span class="string">"TS_NODE_FILES=true nyc ava --fail-fast -v"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"ava"</span>: &#123;</span><br><span class="line">    <span class="attr">"compileEnhancements"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"extensions"</span>: [<span class="string">"ts"</span>],</span><br><span class="line">    <span class="attr">"require"</span>: [<span class="string">"ts-node/register"</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"nyc"</span>: &#123;</span><br><span class="line">    <span class="attr">"include"</span>: [<span class="string">"src/**/*.ts"</span>],</span><br><span class="line">    <span class="attr">"exclude"</span>: [<span class="string">"**/*.d.ts"</span>],</span><br><span class="line">    <span class="attr">"extension"</span>: [<span class="string">".ts"</span>],</span><br><span class="line">    <span class="attr">"require"</span>: [<span class="string">"ts-node/register"</span>],</span><br><span class="line">    <span class="attr">"reporter"</span>: [<span class="string">"html"</span>, <span class="string">"text-summary"</span>],</span><br><span class="line">    <span class="attr">"sourceMap"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"instrument"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>需要安装<code>source-map-support</code>, 在 <code>package.json</code> 同目录下运行<code>yarn add -D source-map-support</code> 或者 <code>npm install --save-dev source-map-support</code></p>
+</li>
+<li><p>在 <code>gitlab-ci.yml</code> 添加一下内容</p>
+</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">test-coverage:</span></span><br><span class="line"><span class="attr">  stage:</span> <span class="string">test-coverage</span></span><br><span class="line"><span class="attr">  coverage:</span> <span class="string">'/Lines\s*:\s*(\d+(?:\.\d+)?)%/'</span></span><br><span class="line"><span class="attr">  script:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">yarn</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">yarn</span> <span class="string">run</span> <span class="string">coverage</span></span><br></pre></td></tr></table></figure>
+<h2 id="配置详解"><a href="#配置详解" class="headerlink" title="配置详解"></a>配置详解</h2><h3 id="ava-配置"><a href="#ava-配置" class="headerlink" title="ava 配置"></a>ava 配置</h3><p><code>ava</code> 的配置 直接从官方文档 <a href="https://github.com/avajs/ava/blob/master/docs/recipes/typescript.md" target="_blank" rel="noopener">typescript.md</a>  的  动态编译部分获取  配置</p>
+<p><strong>注意!!</strong></p>
+<blockquote>
+<p>如果你写的 <code>typescript</code> 代码中 含有 <code>d.ts</code> 文件<br>需要加上环境变量 <code>TS_NODE_FILES=true</code></p>
+</blockquote>
+<h3 id="nyc-配置"><a href="#nyc-配置" class="headerlink" title="nyc 配置"></a>nyc 配置</h3><p>从官方文档 <a href="https://istanbul.js.org/docs/tutorials/typescript/" target="_blank" rel="noopener"><code>tutorials/typescript</code></a>部分得知需要配置 <code>extension</code> 为 <code>.ts</code>, 从 <a href="https://azimi.me/2016/09/30/nyc-mocha-typescript.1.html" target="_blank" rel="noopener">nyc-mocha-typescript</a>这篇文章得知, 需要 <code>source-map-support</code> 来映射 <code>ts</code> 和 <code>js</code>的代码关系<br>而 <code>reporter</code> 配置, 可以在 <a href="https://istanbul.js.org/docs/advanced/alternative-reporters/" target="_blank" rel="noopener">alternative-reporters</a> 选择自己需要的 <code>reporter</code>, 由于需要配合 <code>gitlab ci</code>, 这边需要选择 <code>text-summary</code> 方便 <code>glitlab</code> 分析</p>
+<h3 id="gitlab-配置"><a href="#gitlab-配置" class="headerlink" title="gitlab 配置"></a>gitlab 配置</h3><p>从官方文档可知, 需要用正则表达式来截取最终的覆盖率, 由于用了 <code>text-summary</code> 的 <code>reporter</code>, 所以正则表达式为 <code>/Lines\s*:\s*(\d+(?:\.\d+)?)%/</code></p>
+<p>最后, 通过 URL <code>https://gitlab.com/&lt;namespace&gt;/&lt;project&gt;/badges/&lt;branch&gt;/coverage.svg</code> 来显示一个小图标, 比如 <figure class="image-box">
+                <a rel="typescript" +="" ava="" nyc="" gitlab="" ci="" cd="" 实现代码覆盖率="" href="https://gitlab.com/shang-music/music-api/badges/develop/coverage.svg" title="" data-fancybox="images"><img src="https://gitlab.com/shang-music/music-api/badges/develop/coverage.svg" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<h2 id="完整例子"><a href="#完整例子" class="headerlink" title="完整例子"></a>完整例子</h2><p><a href="https://gitlab.com/shang-music/music-api" target="_blank" rel="noopener">music-api</a><br>包含了 <code>ts</code> <code>ava</code> <code>nyc</code> <code>gitlab ci</code> <code>npm publish</code> 和 <code>badges</code>显示</p>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
+<li><a href="https://azimi.me/2016/09/30/nyc-mocha-typescript.1.html" target="_blank" rel="noopener">Setting up test coverage using Mocha, Istanbul, NYC with TypeScript</a></li>
+<li><a href="https://istanbul.js.org/docs/tutorials/ava/" target="_blank" rel="noopener">Using Istanbul With AVA</a></li>
+<li><a href="https://docs.gitlab.com/ee/user/project/pipelines/settings.html#test-coverage-parsing" target="_blank" rel="noopener">GitLab Docs test-coverage-parsing</a></li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>文章若有纰漏请大家补充指正,谢谢~~</strong><br><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG 殇</p>
+</blockquote>
+
+          </div>
+          
+          
+          <div class="post-footer">
+              
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ava/">ava</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gitlab/">gitlab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nyc/">nyc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/">typescript</a></li></ul>
+
+              <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.xinshangshangxin.com/2019/02/06/test-cov/&title=《typescript + ava + nyc + gitlab CI/CD 实现代码覆盖率》 — SHANG Blog&pic=http://blog.xinshangshangxin.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.xinshangshangxin.com/2019/02/06/test-cov/&title=《typescript + ava + nyc + gitlab CI/CD 实现代码覆盖率》 — SHANG Blog&source=typescript ava nyc gitlab ci 实现代码覆盖率自动化以及 badges 显示" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.xinshangshangxin.com/2019/02/06/test-cov/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《typescript + ava + nyc + gitlab CI/CD 实现代码覆盖率》 — SHANG Blog&url=http://blog.xinshangshangxin.com/2019/02/06/test-cov/&via=http://blog.xinshangshangxin.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.xinshangshangxin.com/2019/02/06/test-cov/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+          </div>
+          
+              
+
+
+      
+    <div id="gitment"></div>
+
+
+
+          
+      </div>
+      
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/01/01/headless-chrome-start/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">headless Chrome 入门</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+      
+      
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#最终配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">最终配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置详解"><span class="post-toc-number">2.</span> <span class="post-toc-text">配置详解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ava-配置"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">ava 配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nyc-配置"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">nyc 配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#gitlab-配置"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">gitlab 配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#完整例子"><span class="post-toc-number">3.</span> <span class="post-toc-text">完整例子</span></a></li></ol><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考文档"><span class="post-toc-number"></span> <span class="post-toc-text">参考文档</span></a>
+            </li></nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+  </article>
+  
+  
+</div>
+
+        <footer class="footer">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                xinshangshangxin &copy; 2015 - 2019
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">hexo-theme-mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.xinshangshangxin.com/2019/02/06/test-cov/&title=《typescript + ava + nyc + gitlab CI/CD 实现代码覆盖率》 — SHANG Blog&pic=http://blog.xinshangshangxin.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.xinshangshangxin.com/2019/02/06/test-cov/&title=《typescript + ava + nyc + gitlab CI/CD 实现代码覆盖率》 — SHANG Blog&source=typescript ava nyc gitlab ci 实现代码覆盖率自动化以及 badges 显示" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.xinshangshangxin.com/2019/02/06/test-cov/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《typescript + ava + nyc + gitlab CI/CD 实现代码覆盖率》 — SHANG Blog&url=http://blog.xinshangshangxin.com/2019/02/06/test-cov/&via=http://blog.xinshangshangxin.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.xinshangshangxin.com/2019/02/06/test-cov/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://blog.xinshangshangxin.com/2019/02/06/test-cov/" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.1"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.1"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.1"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+        <script type="text/javascript" src="/js/plugins/gitmint.browser.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/gitment.js?v=1.4.1"></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>
