@@ -54,7 +54,7 @@ visit_counter:
 #####################
 
 # 头像
-avatar: /img/avatar.jpg
+avatar: /img/avatar.png
 
 # 头像点击后的链接地址
 avatar_link: / #默认为主页
