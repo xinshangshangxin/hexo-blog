@@ -685,9 +685,9 @@
       
         <tags>
             
-            <tag> cygwin </tag>
-            
             <tag> npm </tag>
+            
+            <tag> cygwin </tag>
             
         </tags>
       
