@@ -209,6 +209,70 @@
         <ul class="post-list">
         
             <li class="post-list-item fade">
+                <article id="post-object-toprimitive" class="article-card article-type-post" itemprop="blogPost">
+  
+    
+    
+    
+        
+
+
+  
+    <h3 class="post-title re-title" itemprop="name">
+      <a class="post-title-link" href="/2019/02/15/object-toprimitive/">对象转原始类型</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-meta">
+        <time class="post-time" title="2019年02月15日 20:43:14" datetime="2019-02-15T12:43:14.000Z" itemprop="datePublished">2019年02月15日</time>
+
+        
+
+
+        
+
+        
+
+
+<span class="post-comments-counter" id="/2019/02/15/object-toprimitive/">
+    <span class="post-meta-item-icon">
+        <i class="icon icon-comment-o"></i>
+    </span>
+    
+    <a href="/2019/02/15/object-toprimitive/#gitment" onclick="ShowGitment()">
+        <span class="post-comments-count gitment-comments-count" itemprop="commentsCount"></span>
+    </a>
+</span>
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        <p>对象转原始类型时, 会发生什么?</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> o = &#123;</span><br><span class="line">  valueOf() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(+o); <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> + o); <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> - o); <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">''</span> + o); <span class="comment">// '0'</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;o&#125;</span>`</span>); <span class="comment">// '[object Object]'</span></span><br></pre></td></tr></table></figure>
+    
+    <a href="/2019/02/15/object-toprimitive/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
                 <article id="post-test-cov" class="article-card article-type-post" itemprop="blogPost">
   
     
@@ -782,69 +846,6 @@ artifacts 可以设置自动过期时间,过期自动删除,cache 不会自动�
 <div class="post-footer">
     
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CI/">CI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitLab/">GitLab</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
-                <article id="post-remote-vscode" class="article-card article-type-post" itemprop="blogPost">
-  
-    
-    
-    
-        
-
-
-  
-    <h3 class="post-title re-title" itemprop="name">
-      <a class="post-title-link" href="/2018/07/11/remote-vscode/">使用 vscode 编辑远程文件</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-meta">
-        <time class="post-time" title="2018年07月11日 15:33:39" datetime="2018-07-11T07:33:39.000Z" itemprop="datePublished">2018年07月11日</time>
-
-        
-
-
-        
-
-        
-
-
-<span class="post-comments-counter" id="/2018/07/11/remote-vscode/">
-    <span class="post-meta-item-icon">
-        <i class="icon icon-comment-o"></i>
-    </span>
-    
-    <a href="/2018/07/11/remote-vscode/#gitment" onclick="ShowGitment()">
-        <span class="post-comments-count gitment-comments-count" itemprop="commentsCount"></span>
-    </a>
-</span>
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        <p>使用vim编辑文件不是很顺手, 利用 vscode 插件实现本地编辑远程文件<br>
-    
-    <a href="/2018/07/11/remote-vscode/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </p></div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vsc/">vsc</a></li></ul>
 
 </div>
 
