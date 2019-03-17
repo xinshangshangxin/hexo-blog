@@ -110,7 +110,7 @@ obj[Symbol.toPrimitive] = function(hint: hintType): primitiveType {
 };
 ```
 
-## toString / valueOf
+### toString / valueOf
 
 ```ts
 let user = {
