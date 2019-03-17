@@ -4117,7 +4117,7 @@ var Gitment = function () {
       }, options);
 
       this.state.user.isLoggingIn = true;
-      var logging = !proxy_gateway ? _utils.http.post('https://bak.smalbox.club', { code: code, client_id: client_id, client_secret: client_secret }, '') : _utils.http.post('/login/oauth/access_token', 'code=' + code + '&client_id=' + client_id, proxy_gateway);
+      var logging = !proxy_gateway ? _utils.http.post('//proxy.xinshangshangxin.com/login/oauth/access_token?__origin__=https%3A%2F%2Fgithub.com&', { code: code, client_id: client_id, client_secret: client_secret }, '') : _utils.http.post('/login/oauth/access_token', 'code=' + code + '&client_id=' + client_id, proxy_gateway);
       logging.then(function (data) {
         _this.accessToken = data.access_token;
         _this.update();
