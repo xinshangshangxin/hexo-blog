@@ -17,3 +17,4 @@ source/_posts/.idea
 !source/*
 !.gitignore
 !package.json
+/source/.DS_Store
