@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>npm install 报错 Error: ENOSPC, No space left on device | SHANG Blog | I am who I am</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="npm">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.1">
+    
+        <link rel="stylesheet" href="/css/third-party/gitment.css?v=1.4.1">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":true,"lazy":false,"owner":"demoshang","repo":"gitment","oauth":{"client_id":"9e85f59f12088bde45d8","client_secret":"4724811505851866f04a6a13fb5305a56e79a8f4"},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">xinshangshangxin</h5>
+          <!-- <a href="mailto:xinshangshangxin@gmail.com" title="xinshangshangxin@gmail.com" class="mail">
+            
+              <span>x</span>
+            
+              <span>i</span>
+            
+              <span>n</span>
+            
+              <span>s</span>
+            
+              <span>h</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>g</span>
+            
+              <span>s</span>
+            
+              <span>h</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>g</span>
+            
+              <span>x</span>
+            
+              <span>i</span>
+            
+              <span>n</span>
+            
+              <span>@</span>
+            
+              <span>g</span>
+            
+              <span>m</span>
+            
+              <span>a</span>
+            
+              <span>i</span>
+            
+              <span>l</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a> -->
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/xinshangshangxin" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://github.com/xinshangshangxin" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>npm install 报错 Error: ENOSPC, No space left on device</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">npm install 报错 Error: ENOSPC, No space left on device</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-04-09T11:05:13.000Z" itemprop="datePublished" class="page-time">
+  2019年04月09日
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-npm-no-space" class="post-article article-type-post" itemprop="blogPost">
+      <div class="post-card">
+          <h1 class="post-card-title">npm install 报错 Error: ENOSPC, No space left on device</h1>
+          <div class="post-meta">
+              <time class="post-time" title="2019年04月09日 19:05:13" datetime="2019-04-09T11:05:13.000Z" itemprop="datePublished">2019年04月09日</time>
+
+              
+
+
+              
+
+              
+
+
+<span class="post-comments-counter" id="/2019/04/09/npm-no-space/">
+    <span class="post-meta-item-icon">
+        <i class="icon icon-comment-o"></i>
+    </span>
+    
+    <a href="/2019/04/09/npm-no-space/#gitment" onclick="ShowGitment()">
+        <span class="post-comments-count gitment-comments-count" itemprop="commentsCount"></span>
+    </a>
+</span>
+
+              
+          </div>
+          <div class="post-content" id="post-content" itemprop="postContent">
+              
+              <h2 id="错误详情"><a href="#错误详情" class="headerlink" title="错误详情"></a>错误详情</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Unhandled rejection Error: ENOSPC: no space left on device, open &apos;~/.npm/_cacache/tmp/46ba10d0&apos;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><h3 id="df-h-检查磁盘是否有空间"><a href="#df-h-检查磁盘是否有空间" class="headerlink" title="df -h 检查磁盘是否有空间"></a><code>df -h</code> 检查磁盘是否有空间</h3><h3 id="df-i-检查-inode-是否满了"><a href="#df-i-检查-inode-是否满了" class="headerlink" title="df -i 检查 inode 是否满了"></a><code>df -i</code> 检查 <code>inode</code> 是否满了</h3><p>0 字节的文件会占用<code>inode</code>, 删除部分 0 字节文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 找到 /home 下 0字节文件</span></span><br><span class="line">sudo find /home -<span class="built_in">type</span> f -size 0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 找到 ~ 目录下, 文件名包含 npm-debug.log, 删除</span></span><br><span class="line">sudo find ~ -<span class="built_in">type</span> f -size 0 | grep <span class="string">"npm-debug.log"</span> | xargs rm</span><br></pre></td></tr></table></figure>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p><code>no space left on device</code> 第一反应是磁盘满了, 所以直接检查 <code>df -h</code> 磁盘还有没有空间, 但是发现磁盘空间很多<br>搜索之后, 发现 <a href="https://github.com/npm/npm/issues/1131#issuecomment-226420106" target="_blank" rel="noopener">这篇文章说<code>My problem was that I ran out of inodes</code></a><br>通过 <code>df -ih</code> 检查之后, 发现 <code>inode</code> 的确是 100%, 通过 <a href="https://blog.csdn.net/a1010256340/article/details/81083458" target="_blank" rel="noopener">这篇文章知道 0 字节的文件会占用 inode</a>, 发现有大量 <code>npm-debug.log.xxxxx</code> 文件, 删除后可以正常安装 <code>npm</code></p>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
+<li><a href="https://github.com/npm/npm/issues/1131#issuecomment-226420106" target="_blank" rel="noopener">npm ERR! No Space left on device</a></li>
+<li><a href="https://blog.csdn.net/a1010256340/article/details/81083458" target="_blank" rel="noopener">linux inode 已满解决方法</a><br><br></li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>文章若有纰漏请大家补充指正,谢谢~~</strong><br><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG 殇</p>
+</blockquote>
+
+          </div>
+          
+          
+          <div class="post-footer">
+              
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>
+
+              <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.xinshangshangxin.com/2019/04/09/npm-no-space/&title=《npm install 报错 Error: ENOSPC, No space left on device》 — SHANG Blog&pic=http://blog.xinshangshangxin.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.xinshangshangxin.com/2019/04/09/npm-no-space/&title=《npm install 报错 Error: ENOSPC, No space left on device》 — SHANG Blog&source=错误详情1Unhandled rejection Error: ENOSPC: no space left on device, open &apos;~..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.xinshangshangxin.com/2019/04/09/npm-no-space/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《npm install 报错 Error: ENOSPC, No space left on device》 — SHANG Blog&url=http://blog.xinshangshangxin.com/2019/04/09/npm-no-space/&via=http://blog.xinshangshangxin.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.xinshangshangxin.com/2019/04/09/npm-no-space/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+          </div>
+          
+              
+
+
+      
+    <div id="gitment"></div>
+
+
+
+          
+      </div>
+      
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/03/17/koa-source-code-1/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">koa源码解析 之 is-generator-function</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+      
+      
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#错误详情"><span class="post-toc-number">1.</span> <span class="post-toc-text">错误详情</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结论"><span class="post-toc-number">2.</span> <span class="post-toc-text">结论</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#df-h-检查磁盘是否有空间"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">df -h 检查磁盘是否有空间</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#df-i-检查-inode-是否满了"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">df -i 检查 inode 是否满了</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#过程"><span class="post-toc-number">3.</span> <span class="post-toc-text">过程</span></a></li></ol><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考文档"><span class="post-toc-number"></span> <span class="post-toc-text">参考文档</span></a>
+            </li></nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+  </article>
+  
+  
+</div>
+
+        <footer class="footer">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                xinshangshangxin &copy; 2015 - 2019
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">hexo-theme-mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.xinshangshangxin.com/2019/04/09/npm-no-space/&title=《npm install 报错 Error: ENOSPC, No space left on device》 — SHANG Blog&pic=http://blog.xinshangshangxin.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.xinshangshangxin.com/2019/04/09/npm-no-space/&title=《npm install 报错 Error: ENOSPC, No space left on device》 — SHANG Blog&source=错误详情1Unhandled rejection Error: ENOSPC: no space left on device, open &apos;~..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.xinshangshangxin.com/2019/04/09/npm-no-space/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《npm install 报错 Error: ENOSPC, No space left on device》 — SHANG Blog&url=http://blog.xinshangshangxin.com/2019/04/09/npm-no-space/&via=http://blog.xinshangshangxin.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.xinshangshangxin.com/2019/04/09/npm-no-space/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://blog.xinshangshangxin.com/2019/04/09/npm-no-space/" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.1"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.1"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.1"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+        <script type="text/javascript" src="/js/plugins/gitmint.browser.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/gitment.js?v=1.4.1"></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>
