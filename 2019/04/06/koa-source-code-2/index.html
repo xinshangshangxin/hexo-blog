@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>koa源码解析 之 koa-compose | SHANG Blog | I am who I am</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="koa,source code">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.1">
+    
+        <link rel="stylesheet" href="/css/third-party/gitment.css?v=1.4.1">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":true,"lazy":false,"owner":"demoshang","repo":"gitment","oauth":{"client_id":"9e85f59f12088bde45d8","client_secret":"4724811505851866f04a6a13fb5305a56e79a8f4"},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">xinshangshangxin</h5>
+          <!-- <a href="mailto:xinshangshangxin@gmail.com" title="xinshangshangxin@gmail.com" class="mail">
+            
+              <span>x</span>
+            
+              <span>i</span>
+            
+              <span>n</span>
+            
+              <span>s</span>
+            
+              <span>h</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>g</span>
+            
+              <span>s</span>
+            
+              <span>h</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>g</span>
+            
+              <span>x</span>
+            
+              <span>i</span>
+            
+              <span>n</span>
+            
+              <span>@</span>
+            
+              <span>g</span>
+            
+              <span>m</span>
+            
+              <span>a</span>
+            
+              <span>i</span>
+            
+              <span>l</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a> -->
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/xinshangshangxin" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://github.com/xinshangshangxin" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>koa源码解析 之 koa-compose</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">koa源码解析 之 koa-compose</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-04-06T07:09:18.000Z" itemprop="datePublished" class="page-time">
+  2019年04月06日
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-koa-source-code-2" class="post-article article-type-post" itemprop="blogPost">
+      <div class="post-card">
+          <h1 class="post-card-title">koa源码解析 之 koa-compose</h1>
+          <div class="post-meta">
+              <time class="post-time" title="2019年04月06日 15:09:18" datetime="2019-04-06T07:09:18.000Z" itemprop="datePublished">2019年04月06日</time>
+
+              
+
+
+              
+
+              
+
+
+<span class="post-comments-counter" id="/2019/04/06/koa-source-code-2/">
+    <span class="post-meta-item-icon">
+        <i class="icon icon-comment-o"></i>
+    </span>
+    
+    <a href="/2019/04/06/koa-source-code-2/#gitment" onclick="ShowGitment()">
+        <span class="post-comments-count gitment-comments-count" itemprop="commentsCount"></span>
+    </a>
+</span>
+
+              
+          </div>
+          <div class="post-content" id="post-content" itemprop="postContent">
+              
+              <h1 id="koajs-compose"><a href="#koajs-compose" class="headerlink" title="koajs/compose"></a><a href="https://github.com/koajs/compose" target="_blank" rel="noopener"><code>koajs/compose</code></a></h1><p><code>Koa</code> 的精粹思想就是洋葱模型(中间件模型), 它实现的核心就是借助 <a href="https://github.com/koajs/compose" target="_blank" rel="noopener"><code>koajs/compose</code></a> 这个库来实现的<br><figure class="image-box">
+                <a rel="koa源码解析" 之="" koa-compose="" href="/img/koa-source-code/koa_compose/compose.png" title="" data-fancybox="images"><img src="/img/koa-source-code/koa_compose/compose.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure></p>
+<a id="more"></a>
+<h2 id="源码解析"><a href="#源码解析" class="headerlink" title="源码解析"></a>源码解析</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compose</span>(<span class="params">middleware</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 判断 middleware 是不是数组</span></span><br><span class="line">  <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(middleware)) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Middleware stack must be an array!'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 判断每一个 middleware 是 函数</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> fn <span class="keyword">of</span> middleware) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> fn !== <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Middleware must be composed of functions!'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 返回一个函数闭包</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">context, next</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// context: 贯穿整个洋葱模型的变量, 用于存储一些公用数据</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// index 是用来记录中间件函数(middleware)运行到了哪一个函数</span></span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">-1</span>;</span><br><span class="line">    <span class="comment">// 执行第一个中间件函数</span></span><br><span class="line">    <span class="keyword">return</span> dispatch(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">dispatch</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 判断 某个中间件 是否执行了 2次 next</span></span><br><span class="line">      <span class="keyword">if</span> (i &lt;= index) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'next() called multiple times'</span>));</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      index = i;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 获取第 i 个中间件</span></span><br><span class="line">      <span class="keyword">let</span> fn = middleware[i];</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 超出 中间件的长度了, 执行之前传入的next</span></span><br><span class="line">      <span class="keyword">if</span> (i === middleware.length) &#123;</span><br><span class="line">        fn = next;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 如果没有函数,直接返回空值的 Promise</span></span><br><span class="line">      <span class="keyword">if</span> (!fn) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 对中间件的执行结果包裹一层Promise.resolve</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(</span><br><span class="line">          fn(context, () =&gt; &#123;</span><br><span class="line">            <span class="keyword">return</span> dispatch(i + <span class="number">1</span>);</span><br><span class="line">          &#125;)</span><br><span class="line">        );</span><br><span class="line">      &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(err);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="小知识点"><a href="#小知识点" class="headerlink" title="小知识点"></a>小知识点</h2><ul>
+<li><code>middleware</code> 是不可数名词, 没有复数形式…</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray" target="_blank" rel="noopener"><code>Array.isArray</code></a> 判断是否为一个数组(ES5+)</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of" target="_blank" rel="noopener"><code>for...of</code></a> 对可迭代对象进行遍历</li>
+<li><code>typeof fn === &#39;function&#39;</code> 可以直接判断是否是一个函数</li>
+</ul>
+<h2 id="多次调用-next-出错"><a href="#多次调用-next-出错" class="headerlink" title="多次调用 next 出错"></a>多次调用 <code>next</code> 出错</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">first</span>(<span class="params">ctx, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'1'</span>);</span><br><span class="line">  <span class="keyword">await</span> next();</span><br><span class="line">  <span class="keyword">await</span> next(); <span class="comment">// 两次调用 next</span></span><br><span class="line">  <span class="built_in">console</span>.log(ctx);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">second</span>(<span class="params">ctx, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'2'</span>);</span><br><span class="line">  <span class="keyword">await</span> next();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">third</span>(<span class="params">ctx, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'3'</span>);</span><br><span class="line">  <span class="keyword">await</span> next();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'4'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> middleware = [first, second, third];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> com = compose(middleware);</span><br><span class="line"></span><br><span class="line">com(&#123;&#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'hey'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="image-box">
+                <a rel="koa源码解析" 之="" koa-compose="" href="/img/koa-source-code/koa_compose/next-multi.png" title="" data-fancybox="images"><img src="/img/koa-source-code/koa_compose/next-multi.png" alt="" title="" class=""></a>
+                <p></p>
+            </figure>
+<h2 id="对中间件的执行结果包裹一层-Promise-resolve"><a href="#对中间件的执行结果包裹一层-Promise-resolve" class="headerlink" title="对中间件的执行结果包裹一层 Promise.resolve"></a>对中间件的执行结果包裹一层 Promise.resolve</h2><p><a href="https://cnodejs.org/topic/5ca3359e31010b2dfbb426c4" target="_blank" rel="noopener">问题在这里, 希望有人能回复</a></p>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
+<li><a href="https://github.com/zhangxiang958/zhangxiang958.github.io/issues/34" target="_blank" rel="noopener">理解 Koa 的中间件机制</a></li>
+<li><a href="https://juejin.im/post/5c7decbbe51d454a7c5e8474" target="_blank" rel="noopener">逐行分析 Koa 中间件机制</a><br><br></li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>文章若有纰漏请大家补充指正,谢谢~~</strong><br><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG 殇</p>
+</blockquote>
+
+          </div>
+          
+          
+          <div class="post-footer">
+              
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/koa/">koa</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/source-code/">source code</a></li></ul>
+
+              <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.xinshangshangxin.com/2019/04/06/koa-source-code-2/&title=《koa源码解析 之 koa-compose》 — SHANG Blog&pic=http://blog.xinshangshangxin.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.xinshangshangxin.com/2019/04/06/koa-source-code-2/&title=《koa源码解析 之 koa-compose》 — SHANG Blog&source=koajs/composeKoa 的精粹思想就是洋葱模型(中间件模型), 它实现的核心就是借助 koajs/compose 这个库来实现的
+       ..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.xinshangshangxin.com/2019/04/06/koa-source-code-2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《koa源码解析 之 koa-compose》 — SHANG Blog&url=http://blog.xinshangshangxin.com/2019/04/06/koa-source-code-2/&via=http://blog.xinshangshangxin.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.xinshangshangxin.com/2019/04/06/koa-source-code-2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+          </div>
+          
+              
+
+
+      
+    <div id="gitment"></div>
+
+
+
+          
+      </div>
+      
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="prev">
+      <a href="/2019/04/09/npm-no-space/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">npm install 报错 Error: ENOSPC, No space left on device</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="next">
+      <a href="/2019/03/17/koa-source-code-1/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">koa源码解析 之 is-generator-function</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+      
+      
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#koajs-compose"><span class="post-toc-number">1.</span> <span class="post-toc-text">koajs/compose</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码解析"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">源码解析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小知识点"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">小知识点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#多次调用-next-出错"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">多次调用 next 出错</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对中间件的执行结果包裹一层-Promise-resolve"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">对中间件的执行结果包裹一层 Promise.resolve</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考文档"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考文档</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+  </article>
+  
+  
+</div>
+
+        <footer class="footer">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                xinshangshangxin &copy; 2015 - 2019
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">hexo-theme-mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.xinshangshangxin.com/2019/04/06/koa-source-code-2/&title=《koa源码解析 之 koa-compose》 — SHANG Blog&pic=http://blog.xinshangshangxin.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.xinshangshangxin.com/2019/04/06/koa-source-code-2/&title=《koa源码解析 之 koa-compose》 — SHANG Blog&source=koajs/composeKoa 的精粹思想就是洋葱模型(中间件模型), 它实现的核心就是借助 koajs/compose 这个库来实现的
+       ..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.xinshangshangxin.com/2019/04/06/koa-source-code-2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《koa源码解析 之 koa-compose》 — SHANG Blog&url=http://blog.xinshangshangxin.com/2019/04/06/koa-source-code-2/&via=http://blog.xinshangshangxin.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.xinshangshangxin.com/2019/04/06/koa-source-code-2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://blog.xinshangshangxin.com/2019/04/06/koa-source-code-2/" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.1"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.1"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.1"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+        <script type="text/javascript" src="/js/plugins/gitmint.browser.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/gitment.js?v=1.4.1"></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>
