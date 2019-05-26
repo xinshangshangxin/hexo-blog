@@ -8,9 +8,11 @@ tags:
   - js
 ---
 
-# 转载自 [釐清幾個超容易混淆又很常用的 RxJS 運算子 (Operators)](https://blog.miniasp.com/post/2018/09/06/Clarify-some-confused-RxJS-operators)
+转载自 [釐清幾個超容易混淆又很常用的 RxJS 運算子 (Operators)](https://blog.miniasp.com/post/2018/09/06/Clarify-some-confused-RxJS-operators)
 
 原版文章更加详细清晰, 此文章仅用于个人笔记/快速查询
+
+<!-- more -->
 
 ## 关键字理解
 
@@ -36,15 +38,26 @@ tags:
 
 ## Operators
 
-| 关键字   | xxxAll     | xxxLatest     | xxxTo | xxxMap     | xxxMapTo    | xxxScan   |
-| -------- | ---------- | ------------- | ----- | ---------- | ----------- | --------- |
-| scan     | \*         | \*            | \*    | \*         | \*          | \*        |
-| map      | \*         | \*            | mapTo | \*         | \*          | \*        |
-| concat   | concatAll  | \*            | \*    | concatMap  | concatMapTo | \*        |
-| switch   | switchAll  | \*            | \*    | switchMap  | switchMapTo | \*        |
-| merge    | mergeAll   | \*            | \*    | mergeMap   | mergeMapTo  | mergeScan |
-| flat     | \*         | \*            | \*    | flatMap    | \*          | \*        |
-| exhaust  | \*         | \*            | \*    | exhaustMap | \*          | \*        |
-| zip      | zipAll     | \*            | \*    | \*         | \*          | \*        |
-| combine  | combineAll | combineLatest | \*    | \*         | \*          | \*        |
-| forkJoin | \*         | \*            | \*    | \*         | \*          | \*        |
+| 关键字                                                                   | xxxAll                                                                  | xxxLatest                                                                     | xxxTo                                                         | xxxMap                                                                  | xxxMapTo                                                                  | xxxScan                                                               |
+| ------------------------------------------------------------------------ | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| [scan](https://rxjs-dev.firebaseapp.com/api/operators/scan)              | /                                                                       | /                                                                             | /                                                             | /                                                                       | /                                                                         | /                                                                     |
+| [map](https://rxjs-dev.firebaseapp.com/api/operators/map)                | /                                                                       | /                                                                             | [mapTo](https://rxjs-dev.firebaseapp.com/api/operators/mapTo) | /                                                                       | /                                                                         | /                                                                     |
+| [concat](https://rxjs-dev.firebaseapp.com/api/operators/concat)          | [concatAll](https://rxjs-dev.firebaseapp.com/api/operators/concatAll)   | /                                                                             | /                                                             | [concatMap](https://rxjs-dev.firebaseapp.com/api/operators/concatMap)   | [concatMapTo](https://rxjs-dev.firebaseapp.com/api/operators/concatMapTo) | /                                                                     |
+| [switch](https://rxjs-dev.firebaseapp.com/api/operators/switch)          | [switchAll](https://rxjs-dev.firebaseapp.com/api/operators/switchAll)   | /                                                                             | /                                                             | [switchMap](https://rxjs-dev.firebaseapp.com/api/operators/switchMap)   | [switchMapTo](https://rxjs-dev.firebaseapp.com/api/operators/switchMapTo) | /                                                                     |
+| [merge](https://rxjs-dev.firebaseapp.com/api/operators/merge)            | [mergeAll](https://rxjs-dev.firebaseapp.com/api/operators/mergeAll)     | /                                                                             | /                                                             | [mergeMap](https://rxjs-dev.firebaseapp.com/api/operators/mergeMap)     | [mergeMapTo](https://rxjs-dev.firebaseapp.com/api/operators/mergeMapTo)   | [mergeScan](https://rxjs-dev.firebaseapp.com/api/operators/mergeScan) |
+| [flat](https://rxjs-dev.firebaseapp.com/api/operators/flat)              | /                                                                       | /                                                                             | /                                                             | [flatMap](https://rxjs-dev.firebaseapp.com/api/operators/flatMap)       | /                                                                         | /                                                                     |
+| [exhaust](https://rxjs-dev.firebaseapp.com/api/operators/exhaust)        | /                                                                       | /                                                                             | /                                                             | [exhaustMap](https://rxjs-dev.firebaseapp.com/api/operators/exhaustMap) | /                                                                         | /                                                                     |
+| [zip](https://rxjs-dev.firebaseapp.com/api/operators/zip)                | [zipAll](https://rxjs-dev.firebaseapp.com/api/operators/zipAll)         | /                                                                             | /                                                             | /                                                                       | /                                                                         | /                                                                     |
+| combine                                                                  | [combineAll](https://rxjs-dev.firebaseapp.com/api/operators/combineAll) | [combineLatest](https://rxjs-dev.firebaseapp.com/api/operators/combineLatest) | /                                                             | /                                                                       | /                                                                         | /                                                                     |
+| [forkJoin](https://rxjs-dev.firebaseapp.com/api/index/function/forkJoin) | /                                                                       | /                                                                             | /                                                             | /                                                                       | /                                                                         | /                                                                     |
+
+# 参考文档
+
+- [釐清幾個超容易混淆又很常用的 RxJS 運算子 (Operators)](https://blog.miniasp.com/post/2018/09/06/Clarify-some-confused-RxJS-operators)  
+  <br>
+
+---
+
+> **文章若有纰漏请大家补充指正,谢谢~~**
+
+> [http://blog.xinshangshangxin.com](http://blog.xinshangshangxin.com) SHANG 殇
