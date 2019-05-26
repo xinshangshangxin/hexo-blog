@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    
+    <title>[转] RxJS 操作符记忆法 | SHANG Blog | I am who I am</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="js,rxjs,RxJS">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.1">
+    
+        <link rel="stylesheet" href="/css/third-party/gitment.css?v=1.4.1">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
+            g: JSON.parse('{"enable":true,"lazy":false,"owner":"demoshang","repo":"gitment","oauth":{"client_id":"9e85f59f12088bde45d8","client_secret":"4724811505851866f04a6a13fb5305a56e79a8f4"},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/brand.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">xinshangshangxin</h5>
+          <!-- <a href="mailto:xinshangshangxin@gmail.com" title="xinshangshangxin@gmail.com" class="mail">
+            
+              <span>x</span>
+            
+              <span>i</span>
+            
+              <span>n</span>
+            
+              <span>s</span>
+            
+              <span>h</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>g</span>
+            
+              <span>s</span>
+            
+              <span>h</span>
+            
+              <span>a</span>
+            
+              <span>n</span>
+            
+              <span>g</span>
+            
+              <span>x</span>
+            
+              <span>i</span>
+            
+              <span>n</span>
+            
+              <span>@</span>
+            
+              <span>g</span>
+            
+              <span>m</span>
+            
+              <span>a</span>
+            
+              <span>i</span>
+            
+              <span>l</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a> -->
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/xinshangshangxin" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                HOME
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                TAGS
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                ARCHIVES
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="https://github.com/xinshangshangxin" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>[转] RxJS 操作符记忆法</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/banner.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">[转] RxJS 操作符记忆法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-05-26T05:28:31.000Z" itemprop="datePublished" class="page-time">
+  2019年05月26日
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left">
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-rxjs-operators" class="post-article article-type-post" itemprop="blogPost">
+      <div class="post-card">
+          <h1 class="post-card-title">[转] RxJS 操作符记忆法</h1>
+          <div class="post-meta">
+              <time class="post-time" title="2019年05月26日 13:28:31" datetime="2019-05-26T05:28:31.000Z" itemprop="datePublished">2019年05月26日</time>
+
+              
+
+
+              
+
+              
+
+
+<span class="post-comments-counter" id="/2019/05/26/rxjs-operators/">
+    <span class="post-meta-item-icon">
+        <i class="icon icon-comment-o"></i>
+    </span>
+    
+    <a href="/2019/05/26/rxjs-operators/#gitment" onclick="ShowGitment()">
+        <span class="post-comments-count gitment-comments-count" itemprop="commentsCount"></span>
+    </a>
+</span>
+
+              
+          </div>
+          <div class="post-content" id="post-content" itemprop="postContent">
+              
+              <p>转载自 <a href="https://blog.miniasp.com/post/2018/09/06/Clarify-some-confused-RxJS-operators" target="_blank" rel="noopener">釐清幾個超容易混淆又很常用的 RxJS 運算子 (Operators)</a></p>
+<p>原版文章更加详细清晰, 此文章仅用于个人笔记/快速查询</p>
+<a id="more"></a>
+<h2 id="关键字理解"><a href="#关键字理解" class="headerlink" title="关键字理解"></a>关键字理解</h2><table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>字义说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>scan</td>
+<td>【扫描】就是将传入 RxJS 运算子的事件资料，一笔一笔处理过一遍，每次处理的过程都会累加，并且处理一笔就 emit 一笔新的事件资料出来。</td>
+</tr>
+<tr>
+<td>map</td>
+<td>【对应】就是将一笔传入的资料，对应到另一种格式的资料，通常用来转换资料之用。</td>
+</tr>
+<tr>
+<td>concat</td>
+<td>【串接】就是将一笔一笔的资料串接在一起，通常是把多个 Observable 物件串接成一个新的 Observable 物件。</td>
+</tr>
+<tr>
+<td>switch</td>
+<td>【交换】就是将一笔资料”交换成” 另一种资料，当连续交换的事件发生时，还没交换的资料就会被放弃。</td>
+</tr>
+<tr>
+<td>merge</td>
+<td>【合并】就是将多笔资料合并成一笔，通常是将多个 Observable 物件合并成一个 Observable 物件。</td>
+</tr>
+<tr>
+<td>flat</td>
+<td>其用途跟 merge 完全一样，在语意上，通常代表把多个 Observable 物件「压平」成一个 Observable 物件。</td>
+</tr>
+<tr>
+<td>exhaust</td>
+<td>【耗尽】就是要把原本 Observable 物件送出的资料都跑完，才能继续跑下一个。</td>
+</tr>
+<tr>
+<td>zip</td>
+<td>这个单字有【拉链】的意思，你要发挥一点想像力，假设衣服的两端，拉链拉起来之后，每一节都会平整的被凑在一起。</td>
+</tr>
+<tr>
+<td>combine</td>
+<td>【组合】就是将多笔资料组合在一起。</td>
+</tr>
+<tr>
+<td>forkJoin</td>
+<td>这里的 fork 是【走进岔路】的意思，Join 则是【从不同的岔路合并回来】。通常意思代表多个 Observable 物件同时执行，但全部执行完之后，才会 emit 所有资料，等大家从岔路走回来的感觉。</td>
+</tr>
+<tr>
+<td>===========</td>
+<td>======================</td>
+</tr>
+<tr>
+<td>xxxAll</td>
+<td>【全部】就是将所有传入的 Observabe 物件，全部一起处理。</td>
+</tr>
+<tr>
+<td>xxxLatest</td>
+<td>【最新的】就是取得最新资料的意思。</td>
+</tr>
+<tr>
+<td>xxxTo</td>
+<td>这里的 To 有【表示结果】的意思，也就是直接把特定结果 emit 出去。</td>
+</tr>
+<tr>
+<td>xxxMap</td>
+<td>这里的 Map 有【对应】的意思，但是在 RxJS 的领域中，通常代表着在 Operator 中会对应到另一个不同的 Observable 物件。</td>
+</tr>
+<tr>
+<td>xxxMapTo</td>
+<td>这里就是 Map + To 的意思，但是在 RxJS 的领域中，通常代表着在 Operator 中会对应到另一个自行指定的 Observable 物件。</td>
+</tr>
+<tr>
+<td>xxxScan</td>
+<td>【扫描】就是将传入 RxJS 运算子的事件资料，一笔一笔处理过一遍，每次处理的过程都会累加，并且处理一笔就 emit 一笔新的事件资料出来。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a>Operators</h2><table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>xxxAll</th>
+<th>xxxLatest</th>
+<th>xxxTo</th>
+<th>xxxMap</th>
+<th>xxxMapTo</th>
+<th>xxxScan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/scan" target="_blank" rel="noopener">scan</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/map" target="_blank" rel="noopener">map</a></td>
+<td></td>
+<td></td>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/mapTo" target="_blank" rel="noopener">mapTo</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/concat" target="_blank" rel="noopener">concat</a></td>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/concatAll" target="_blank" rel="noopener">concatAll</a></td>
+<td></td>
+<td></td>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/concatMap" target="_blank" rel="noopener">concatMap</a></td>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/concatMapTo" target="_blank" rel="noopener">concatMapTo</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/switch" target="_blank" rel="noopener">switch</a></td>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/switchAll" target="_blank" rel="noopener">switchAll</a></td>
+<td></td>
+<td></td>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/switchMap" target="_blank" rel="noopener">switchMap</a></td>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/switchMapTo" target="_blank" rel="noopener">switchMapTo</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/merge" target="_blank" rel="noopener">merge</a></td>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/mergeAll" target="_blank" rel="noopener">mergeAll</a></td>
+<td></td>
+<td></td>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/mergeMap" target="_blank" rel="noopener">mergeMap</a></td>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/mergeMapTo" target="_blank" rel="noopener">mergeMapTo</a></td>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/mergeScan" target="_blank" rel="noopener">mergeScan</a></td>
+</tr>
+<tr>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/flat" target="_blank" rel="noopener">flat</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/flatMap" target="_blank" rel="noopener">flatMap</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/exhaust" target="_blank" rel="noopener">exhaust</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/exhaustMap" target="_blank" rel="noopener">exhaustMap</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/zip" target="_blank" rel="noopener">zip</a></td>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/zipAll" target="_blank" rel="noopener">zipAll</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>combine</td>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/combineAll" target="_blank" rel="noopener">combineAll</a></td>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/operators/combineLatest" target="_blank" rel="noopener">combineLatest</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://rxjs-dev.firebaseapp.com/api/index/function/forkJoin" target="_blank" rel="noopener">forkJoin</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
+<li><a href="https://blog.miniasp.com/post/2018/09/06/Clarify-some-confused-RxJS-operators" target="_blank" rel="noopener">釐清幾個超容易混淆又很常用的 RxJS 運算子 (Operators)</a><br><br></li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>文章若有纰漏请大家补充指正,谢谢~~</strong></p>
+</blockquote>
+<blockquote>
+<p><a href="http://blog.xinshangshangxin.com">http://blog.xinshangshangxin.com</a> SHANG 殇</p>
+</blockquote>
+
+          </div>
+          
+          
+          <div class="post-footer">
+              
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxJS/">RxJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rxjs/">rxjs</a></li></ul>
+
+              <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.xinshangshangxin.com/2019/05/26/rxjs-operators/&title=《[转] RxJS 操作符记忆法》 — SHANG Blog&pic=http://blog.xinshangshangxin.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.xinshangshangxin.com/2019/05/26/rxjs-operators/&title=《[转] RxJS 操作符记忆法》 — SHANG Blog&source=转载自 釐清幾個超容易混淆又很常用的 RxJS 運算子 (Operators)
+原版文章更加详细清晰, 此文章仅用于个人笔记/快速查询" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.xinshangshangxin.com/2019/05/26/rxjs-operators/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[转] RxJS 操作符记忆法》 — SHANG Blog&url=http://blog.xinshangshangxin.com/2019/05/26/rxjs-operators/&via=http://blog.xinshangshangxin.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.xinshangshangxin.com/2019/05/26/rxjs-operators/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+          </div>
+          
+              
+
+
+      
+    <div id="gitment"></div>
+
+
+
+          
+      </div>
+      
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/04/09/npm-no-space/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">npm install 报错 Error: ENOSPC, No space left on device</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+      
+      
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关键字理解"><span class="post-toc-number">1.</span> <span class="post-toc-text">关键字理解</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Operators"><span class="post-toc-number">2.</span> <span class="post-toc-text">Operators</span></a></li></ol><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考文档"><span class="post-toc-number"></span> <span class="post-toc-text">参考文档</span></a>
+            </li></nav>
+            <div class="toc-bar"><div>
+        </div></div></aside>
+    
+  </article>
+  
+  
+</div>
+
+        <footer class="footer">
+    
+    <div class="bottom">
+        <p>
+            <span>
+                xinshangshangxin &copy; 2015 - 2019
+            </span>
+        		
+           	
+            
+            
+            <span>
+	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">hexo-theme-mellow</a>
+            </span>
+            
+            
+            
+
+            
+                
+
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.xinshangshangxin.com/2019/05/26/rxjs-operators/&title=《[转] RxJS 操作符记忆法》 — SHANG Blog&pic=http://blog.xinshangshangxin.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.xinshangshangxin.com/2019/05/26/rxjs-operators/&title=《[转] RxJS 操作符记忆法》 — SHANG Blog&source=转载自 釐清幾個超容易混淆又很常用的 RxJS 運算子 (Operators)
+原版文章更加详细清晰, 此文章仅用于个人笔记/快速查询" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.xinshangshangxin.com/2019/05/26/rxjs-operators/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[转] RxJS 操作符记忆法》 — SHANG Blog&url=http://blog.xinshangshangxin.com/2019/05/26/rxjs-operators/&via=http://blog.xinshangshangxin.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.xinshangshangxin.com/2019/05/26/rxjs-operators/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://blog.xinshangshangxin.com/2019/05/26/rxjs-operators/" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.1"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.1"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.1"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+        <script type="text/javascript" src="/js/plugins/gitmint.browser.js?v=1.4.1"></script>
+<script type="text/javascript" src="/js/plugins/gitment.js?v=1.4.1"></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>
