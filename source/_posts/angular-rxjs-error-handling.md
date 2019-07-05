@@ -8,6 +8,7 @@ tags:
 ---
 
 翻译 `Angular Best Practice: RxJS Error Handling`
+![](/img/angular-rxjs-error-handling/good-catch-good.png)
 
 <!-- more -->
 
