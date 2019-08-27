@@ -10,7 +10,7 @@ tags:
 
 ---
 
-frp服务器端和客户端,unbutu开机启动以及作为socket5代理
+frp服务器端和客户端, `ubuntu` 开机启动以及作为socket5代理
 <!-- more -->
 
 
