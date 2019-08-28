@@ -84,7 +84,7 @@ ${nps_dir}/npc -server=${server} -vkey=${vkey}
 ### 一键安装启动[脚本](http://static.xinshangshangxin.com/shell-tools/nps/npc.sh)(macos/linux)
 
 ```bash
-bash -c "$(wget -O - http://static.xinshangshangxin.com/shell-tools/nps/npc.sh)" - -server=nps.xinshangshangxin.com:23456 -vkey=<密码> -type=tcp
+bash -c "$(wget -O - http://static.xinshangshangxin.com/shell-tools/nps/npc.sh)"
 ```
 
 # 参考文档
